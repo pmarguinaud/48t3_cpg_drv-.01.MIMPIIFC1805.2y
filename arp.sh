@@ -58,7 +58,7 @@ cd $NAM
 
 # Choose a pack
 
- PACK=/home/gmap/mrpm/marguina/pack/cy48t1_cpg_drv.01.MIMPIIFC1805.2y.pack
+ PACK=/home/gmap/mrpm/marguina/pack/48t3_cpg_drv+.01.MIMPIIFC1805.2y
 
 # Copy data to $TMPDIR
 
@@ -87,8 +87,8 @@ done
 # Set the number of nodes, tasks, threads for the model
 
 NNODE_FC=1
-NTASK_FC=4
-NOPMP_FC=8
+NTASK_FC=8
+NOPMP_FC=4
 
 # Set the number of nodes, tasks, threads for the IO server
 
@@ -143,6 +143,8 @@ xpnam --delta="
 &NAMFA
   NVGRIB=0,
 /
+&NAMPERTPAR
+/
 " --inplace fort.4
 
 xpnam --delta="
@@ -191,17 +193,12 @@ cat fort.4
 
 
 pack=$PACK
-#pack=$HOME/pack/cy48t1_cpg_drv_43d0bc961f71744300a71666600beff1589da7b1.gprcp=1.01.MIMPIIFC1805.2y.pack
-#pack=$HOME/pack/cy48t1_cpg_drv_d65247173713658d22f41cf09dec434ecbec2407.gprcp=0.01.MIMPIIFC1805.2y.pack
 
 /opt/softs/mpiauto/mpiauto --verbose --wrap --wrap-stdeo --nouse-slurm-mpi --prefix-mpirun '/usr/bin/time -f "time=%e"' \
     --nnp $NTASK_FC --nn $NNODE_FC --openmp $NOPMP_FC -- $pack/bin/MASTERODB \
  -- --nnp $NTASK_IO --nn $NNODE_IO --openmp $NOPMP_IO -- $pack/bin/MASTERODB 
 
- diffNODE.001_01 NODE.001_01 $PACK/ref.cy48t1_cpg_drv_43d0bc961f71744300a71666600beff1589da7b1.gprcp=1.01.MIMPIIFC1805.2y.pack/NODE.001_01.$NAM
-
-#cp NODE.001_01 $PACK/ref.cy48t1_cpg_drv_43d0bc961f71744300a71666600beff1589da7b1.gprcp=1.01.MIMPIIFC1805.2y.pack/NODE.001_01.$NAM
-#cp NODE.001_01 $PACK/ref.cy48t1_cpg_drv_d65247173713658d22f41cf09dec434ecbec2407.gprcp=0.01.MIMPIIFC1805.2y.pack/NODE.001_01.$NAM
+diffNODE.001_01 NODE.001_01 $PACK/ref.48t3_gprcp.01.MIMPIIFC1805.2y/NODE.001_01.$NAM
 
 
 ls -lrt
