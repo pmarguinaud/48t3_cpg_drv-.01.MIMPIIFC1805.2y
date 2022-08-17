@@ -1,0 +1,94 @@
+SUBROUTINE GPNSPNG_EXPL (YDSPNG,KPROMA,KFLEVG,KST,KND,YDVARS)
+
+! GPNSPNG_EXPL  - gridpoint sponge for purely grid-point GFL.
+
+! Purpose
+! -------
+
+! Interface
+! ---------
+!   KPROMA  - horizontal dimension     (in)
+!   KFLEVG  - vertical dimension       (in)
+!   KST     - start of work            (in)
+!   KND     - end of work              (in)
+!   PGFL    - GFL variables            (inout)
+
+! Externals
+! ---------
+
+! Method
+! ------
+
+! Reference
+! ---------
+!   ECMWF Research Department documentation of the IFS
+
+! Author
+! ------
+!   K. Yessad (CNRM/GMAP), after routine GPSPNG.
+!   October 2011
+
+! Modifications
+! -------------
+! End Modifications
+! -----------------------------------------------------------------------------
+
+USE PARKIND1 , ONLY : JPIM, JPRB
+USE YOMHOOK  , ONLY : LHOOK, DR_HOOK
+USE SPNG_MOD , ONLY : TSPNG
+USE FIELD_VARIABLES_MOD, ONLY : FIELD_VARIABLES
+
+IMPLICIT NONE
+
+TYPE(TSPNG)       ,INTENT(IN)    :: YDSPNG
+INTEGER(KIND=JPIM),INTENT(IN)    :: KPROMA
+INTEGER(KIND=JPIM),INTENT(IN)    :: KFLEVG
+INTEGER(KIND=JPIM),INTENT(IN)    :: KST
+INTEGER(KIND=JPIM),INTENT(IN)    :: KND
+TYPE(FIELD_VARIABLES),          INTENT(INOUT) :: YDVARS
+
+INTEGER(KIND=JPIM) :: JLEV, JROF
+
+REAL(KIND=JPRB) :: ZHOOK_HANDLE
+
+IF (LHOOK) CALL DR_HOOK('GPNSPNG_EXPL ',0,ZHOOK_HANDLE)
+
+IF(YDVARS%Q%LGP) THEN
+  DO JLEV=1,KFLEVG
+    DO JROF=KST,KND
+      YDVARS%Q%T0 (JROF,JLEV) = YDSPNG%RSPONGF(JLEV,3) * YDVARS%Q%T0 (JROF,JLEV)
+    ENDDO
+  ENDDO
+ENDIF
+IF(YDVARS%L%LGP) THEN
+  DO JLEV=1,KFLEVG
+    DO JROF=KST,KND
+      YDVARS%L%T0 (JROF,JLEV) = YDSPNG%RSPONGF(JLEV,3) * YDVARS%L%T0 (JROF,JLEV)
+    ENDDO
+  ENDDO
+ENDIF
+IF(YDVARS%I%LGP) THEN
+  DO JLEV=1,KFLEVG
+    DO JROF=KST,KND
+      YDVARS%I%T0 (JROF,JLEV) = YDSPNG%RSPONGF(JLEV,3) * YDVARS%I%T0 (JROF,JLEV)
+    ENDDO
+  ENDDO
+ENDIF
+IF(YDVARS%A%LGP) THEN
+  DO JLEV=1,KFLEVG
+    DO JROF=KST,KND
+      YDVARS%A%T0 (JROF,JLEV) = YDSPNG%RSPONGF(JLEV,3) * YDVARS%A%T0 (JROF,JLEV)
+    ENDDO
+  ENDDO
+ENDIF
+IF(YDVARS%O3%LGP) THEN
+  DO JLEV=1,KFLEVG
+    DO JROF=KST,KND
+      YDVARS%O3%T0 (JROF,JLEV) = YDSPNG%RSPONGF(JLEV,3) * YDVARS%O3%T0 (JROF,JLEV)
+    ENDDO
+  ENDDO
+ENDIF
+
+IF (LHOOK) CALL DR_HOOK('GPNSPNG_EXPL ',1,ZHOOK_HANDLE)
+
+END SUBROUTINE GPNSPNG_EXPL 

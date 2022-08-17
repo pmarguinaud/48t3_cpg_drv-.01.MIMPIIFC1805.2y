@@ -1,0 +1,160 @@
+#:set config_file = os.path.dirname(_THIS_FILE_) + '/../module/field_config.yaml'
+#:set config = field_config.VariableConfiguration(config_file)
+#:set gfl = config.groups['GFL']
+
+SUBROUTINE GPRCP_EXPL (YDCST,KPROMA,KST,KPROF,KFLEV,PCP,PR,PKAP,YDVARS,KGFLTYP)
+
+!**** *GPRCP_EXPL* - Computes Cp, R and R/Cp from Q
+
+!     Purpose.
+!     --------
+!        Computes Cp, R and R/Cp from Q
+
+!**   Interface.
+!     ----------
+!        *CALL* *GPRCP_EXPL(...)
+
+!        Explicit arguments :
+!        --------------------
+
+!        INPUT:
+!          KPROMA               - dimensioning.
+!          KSTART               - start of work.
+!          KPROF                - depth of work.
+!          KFLEV                - number of layers.
+
+!        OUTPUT:
+!          PCP(KPROMA,KFLEV)    - CP
+!          PR(KPROMA,KFLEV)     - R
+!          PKAP(KPROMA,KFLEV)   - KAPPA
+
+!        Implicit arguments :  Physical constants from YOMCST
+!        --------------------
+
+!     Method.
+!     -------
+!        See documentation
+
+!     Externals.  None.
+!     ----------
+
+!     Reference.
+!     ----------
+!        ECMWF Research Department documentation of the IFS
+
+!     Author.
+!     -------
+!      Mats Hamrud and Philippe Courtier  *ECMWF*
+!      Original : 88-02-04
+
+!     Modifications.
+!      M.Hamrud      01-Oct-2003 CY28 Cleaning
+!      Y.Seity  04-02-13 (Rain, Snow and Graupel)
+!      M.Hamrud  15-Jan-2006  Revised GPRCP
+!      K. Yessad (Jan 2011): more compact rewriting.
+!      R. El Khatib 28-Aug-2014 Optimizations :
+!       - compute R or CP only if required
+!       - loop collapsing whenever possible, through pure array syntax
+!      A. Geer      01-Oct-2015    For independence of observation operator in OOPS, 
+!                                  allow calls without YGFL initialised. Removal
+!                                  of all YGFL references will have to wait.
+!      H Petithomme (Dec 2020): general rewrite for optimization
+!     ------------------------------------------------------------------
+
+USE PARKIND1, ONLY: JPIM, JPRB
+USE YOMHOOK,  ONLY: LHOOK, DR_HOOK
+
+USE YOMCST,              ONLY: TCST
+USE FIELD_VARIABLES_MOD, ONLY : FIELD_VARIABLES
+
+IMPLICIT NONE
+
+TYPE(TCST),                     INTENT(IN)    :: YDCST
+INTEGER(KIND=JPIM),             INTENT(IN)    :: KPROMA,KFLEV,KST,KPROF
+INTEGER(KIND=JPIM),OPTIONAL,    INTENT(IN)    :: KGFLTYP
+TYPE(FIELD_VARIABLES),          INTENT(INOUT) :: YDVARS
+REAL(KIND=JPRB),OPTIONAL,TARGET,INTENT(OUT)   :: PCP(KPROMA,KFLEV)
+REAL(KIND=JPRB),OPTIONAL,TARGET,INTENT(OUT)   :: PR(KPROMA,KFLEV)
+REAL(KIND=JPRB),OPTIONAL,       INTENT(OUT)   :: PKAP(KPROMA,KFLEV)
+
+#include "abor1.intfb.h"
+
+REAL(KIND=JPRB),CONTIGUOUS,POINTER :: ZR(:,:)
+REAL(KIND=JPRB),CONTIGUOUS,POINTER :: ZCP(:,:)
+LOGICAL :: LLCP
+
+REAL(KIND=JPRB),TARGET :: ZCP0(KPROMA,KFLEV),ZR0(KPROMA,KFLEV)
+INTEGER(KIND=JPIM) :: IGFLTYP,JLON,JLEV
+
+REAL(KIND=JPRB) :: ZHOOK
+
+IF (LHOOK) CALL DR_HOOK("GPRCP_EXPL",0,ZHOOK)
+
+IF (PRESENT(PR)) THEN
+  ZR => PR(:,:)
+ELSEIF (PRESENT(PKAP)) THEN
+  ZR => ZR0(:,:)
+ENDIF
+
+LLCP = .TRUE.
+
+IF (PRESENT(PCP)) THEN
+  ZCP => PCP(:,:)
+ELSEIF (PRESENT(PKAP)) THEN
+  ZCP => ZCP0(:,:)
+ELSE
+  ZCP => NULL()
+  LLCP = .FALSE.
+ENDIF
+
+IF (LLCP) THEN
+  ZCP = 0._JPRB
+ENDIF
+
+ZR = 0._JPRB
+
+IGFLTYP = 0
+IF (PRESENT (KGFLTYP)) IGFLTYP = KGFLTYP 
+
+
+
+SELECT CASE (IGFLTYP)
+#:for t in ['0', '1', '9']
+  CASE (${t}$)
+#:for v in gfl.variables
+#:if v.array == 1
+#:else
+  IF (YDVARS%${v.name}$%LTHERMACT) THEN
+    DO JLEV = 1, KFLEV
+      DO JLON = KST, KPROF
+        ZR (JLON,JLEV) = ZR (JLON,JLEV) + (YDVARS%${v.name}$%R - YDCST%RD) * YDVARS%${v.name}$%T${t}$ (JLON, JLEV)
+        IF (LLCP) THEN
+          ZCP (JLON,JLEV) = ZCP (JLON,JLEV) + (YDVARS%${v.name}$%RCP - YDCST%RCPD) * YDVARS%${v.name}$%T${t}$ (JLON, JLEV)
+        ENDIF
+      ENDDO
+    ENDDO
+  ENDIF
+#:endif
+#:endfor
+#:endfor
+  CASE DEFAULT
+    CALL ABOR1 ('UNEXPECTED IGFLTYP')
+END SELECT 
+
+DO JLEV = 1, KFLEV
+  DO JLON = KST, KPROF
+    ZR (JLON,JLEV) = YDCST%RD + ZR (JLON,JLEV)
+    IF (LLCP) THEN
+      ZCP (JLON,JLEV) = YDCST%RCPD + ZCP (JLON,JLEV)
+    ENDIF
+  ENDDO
+ENDDO
+
+IF (PRESENT(PKAP)) THEN
+  PKAP(KST:KPROF,1:KFLEV)=ZR(KST:KPROF,1:KFLEV)/ZCP(KST:KPROF,1:KFLEV)
+ENDIF
+
+IF (LHOOK) CALL DR_HOOK("GPRCP_EXPL",1,ZHOOK)
+
+END SUBROUTINE GPRCP_EXPL
+
