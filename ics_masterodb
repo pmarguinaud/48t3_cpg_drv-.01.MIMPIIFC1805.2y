@@ -128,33 +128,33 @@ ENTRY=arp*/*/master.o
 end_of_masterodb_link
 # BACKGROUND LIBRARIES (from top to bottom) :
 cat > $GMKWRKDIR/.masterodb_libs <<end_of_masterodb_libs
-/home/gmap/mrpm/marguina/pack/48t3_cpg_drv+.01.MIMPIIFC1805.2y/lib/libaladin.main.a
-/home/gmap/mrpm/marguina/pack/48t3_cpg_drv+.01.MIMPIIFC1805.2y/lib/libarpifs.main.a
-/home/gmap/mrpm/marguina/pack/48t3_cpg_drv+.01.MIMPIIFC1805.2y/lib/libradiation.main.a
-/home/gmap/mrpm/marguina/pack/48t3_cpg_drv+.01.MIMPIIFC1805.2y/lib/libcrm.main.a
-/home/gmap/mrpm/marguina/pack/48t3_cpg_drv+.01.MIMPIIFC1805.2y/lib/libbiper.main.a
-/home/gmap/mrpm/marguina/pack/48t3_cpg_drv+.01.MIMPIIFC1805.2y/lib/libcoupling.main.a
-/home/gmap/mrpm/marguina/pack/48t3_cpg_drv+.01.MIMPIIFC1805.2y/lib/libetrans.main.a
-/home/gmap/mrpm/marguina/pack/48t3_cpg_drv+.01.MIMPIIFC1805.2y/lib/libtrans.main.a
-/home/gmap/mrpm/marguina/pack/48t3_cpg_drv+.01.MIMPIIFC1805.2y/lib/libalgor.main.a
-/home/gmap/mrpm/marguina/pack/48t3_cpg_drv+.01.MIMPIIFC1805.2y/lib/libifsaux.main.a
-/home/gmap/mrpm/marguina/pack/48t3_cpg_drv+.01.MIMPIIFC1805.2y/lib/libmse.main.a
-/home/gmap/mrpm/marguina/pack/48t3_cpg_drv+.01.MIMPIIFC1805.2y/lib/libsurfex.main.a
-/home/gmap/mrpm/marguina/pack/48t3_cpg_drv+.01.MIMPIIFC1805.2y/lib/libmpa.main.a
-/home/gmap/mrpm/marguina/pack/48t3_cpg_drv+.01.MIMPIIFC1805.2y/lib/libodb.main.a
-/home/gmap/mrpm/marguina/pack/48t3_cpg_drv+.01.MIMPIIFC1805.2y/lib/libcma-odb.main.a
-/home/gmap/mrpm/marguina/pack/48t3_cpg_drv+.01.MIMPIIFC1805.2y/lib/libcountryrst-odb.main.a
-/home/gmap/mrpm/marguina/pack/48t3_cpg_drv+.01.MIMPIIFC1805.2y/lib/libmtocomp-odb.main.a
-/home/gmap/mrpm/marguina/pack/48t3_cpg_drv+.01.MIMPIIFC1805.2y/lib/libport-odb.main.a
-/home/gmap/mrpm/marguina/pack/48t3_cpg_drv+.01.MIMPIIFC1805.2y/lib/librstbias-odb.main.a
-/home/gmap/mrpm/marguina/pack/48t3_cpg_drv+.01.MIMPIIFC1805.2y/lib/libsonderst-odb.main.a
-/home/gmap/mrpm/marguina/pack/48t3_cpg_drv+.01.MIMPIIFC1805.2y/lib/libsatrad.main.a
-/home/gmap/mrpm/marguina/pack/48t3_cpg_drv+.01.MIMPIIFC1805.2y/lib/libsurf.main.a
-/home/gmap/mrpm/marguina/pack/48t3_cpg_drv+.01.MIMPIIFC1805.2y/lib/libblacklist.main.a
-/home/gmap/mrpm/marguina/pack/48t3_cpg_drv+.01.MIMPIIFC1805.2y/lib/libaeolus.main.a
-/home/gmap/mrpm/marguina/pack/48t3_cpg_drv+.01.MIMPIIFC1805.2y/lib/libifsobs.main.a
-/home/gmap/mrpm/marguina/pack/48t3_cpg_drv+.01.MIMPIIFC1805.2y/lib/libecfftw.main.a
-/home/gmap/mrpm/marguina/pack/48t3_cpg_drv+.01.MIMPIIFC1805.2y/lib/libunsxref-verbose.main.a
+/home/gmap/mrpm/marguina/pack/48t3_cpg_drv-.01.MIMPIIFC1805.2y/lib/libaladin.main.a
+/home/gmap/mrpm/marguina/pack/48t3_cpg_drv-.01.MIMPIIFC1805.2y/lib/libarpifs.main.a
+/home/gmap/mrpm/marguina/pack/48t3_cpg_drv-.01.MIMPIIFC1805.2y/lib/libradiation.main.a
+/home/gmap/mrpm/marguina/pack/48t3_cpg_drv-.01.MIMPIIFC1805.2y/lib/libcrm.main.a
+/home/gmap/mrpm/marguina/pack/48t3_cpg_drv-.01.MIMPIIFC1805.2y/lib/libbiper.main.a
+/home/gmap/mrpm/marguina/pack/48t3_cpg_drv-.01.MIMPIIFC1805.2y/lib/libcoupling.main.a
+/home/gmap/mrpm/marguina/pack/48t3_cpg_drv-.01.MIMPIIFC1805.2y/lib/libetrans.main.a
+/home/gmap/mrpm/marguina/pack/48t3_cpg_drv-.01.MIMPIIFC1805.2y/lib/libtrans.main.a
+/home/gmap/mrpm/marguina/pack/48t3_cpg_drv-.01.MIMPIIFC1805.2y/lib/libalgor.main.a
+/home/gmap/mrpm/marguina/pack/48t3_cpg_drv-.01.MIMPIIFC1805.2y/lib/libifsaux.main.a
+/home/gmap/mrpm/marguina/pack/48t3_cpg_drv-.01.MIMPIIFC1805.2y/lib/libmse.main.a
+/home/gmap/mrpm/marguina/pack/48t3_cpg_drv-.01.MIMPIIFC1805.2y/lib/libsurfex.main.a
+/home/gmap/mrpm/marguina/pack/48t3_cpg_drv-.01.MIMPIIFC1805.2y/lib/libmpa.main.a
+/home/gmap/mrpm/marguina/pack/48t3_cpg_drv-.01.MIMPIIFC1805.2y/lib/libodb.main.a
+/home/gmap/mrpm/marguina/pack/48t3_cpg_drv-.01.MIMPIIFC1805.2y/lib/libcma-odb.main.a
+/home/gmap/mrpm/marguina/pack/48t3_cpg_drv-.01.MIMPIIFC1805.2y/lib/libcountryrst-odb.main.a
+/home/gmap/mrpm/marguina/pack/48t3_cpg_drv-.01.MIMPIIFC1805.2y/lib/libmtocomp-odb.main.a
+/home/gmap/mrpm/marguina/pack/48t3_cpg_drv-.01.MIMPIIFC1805.2y/lib/libport-odb.main.a
+/home/gmap/mrpm/marguina/pack/48t3_cpg_drv-.01.MIMPIIFC1805.2y/lib/librstbias-odb.main.a
+/home/gmap/mrpm/marguina/pack/48t3_cpg_drv-.01.MIMPIIFC1805.2y/lib/libsonderst-odb.main.a
+/home/gmap/mrpm/marguina/pack/48t3_cpg_drv-.01.MIMPIIFC1805.2y/lib/libsatrad.main.a
+/home/gmap/mrpm/marguina/pack/48t3_cpg_drv-.01.MIMPIIFC1805.2y/lib/libsurf.main.a
+/home/gmap/mrpm/marguina/pack/48t3_cpg_drv-.01.MIMPIIFC1805.2y/lib/libblacklist.main.a
+/home/gmap/mrpm/marguina/pack/48t3_cpg_drv-.01.MIMPIIFC1805.2y/lib/libaeolus.main.a
+/home/gmap/mrpm/marguina/pack/48t3_cpg_drv-.01.MIMPIIFC1805.2y/lib/libifsobs.main.a
+/home/gmap/mrpm/marguina/pack/48t3_cpg_drv-.01.MIMPIIFC1805.2y/lib/libecfftw.main.a
+/home/gmap/mrpm/marguina/pack/48t3_cpg_drv-.01.MIMPIIFC1805.2y/lib/libunsxref-verbose.main.a
 end_of_masterodb_libs
 # SYSTEM LIBRARIES :
 cat > $GMKWRKDIR/.masterodb_sys <<end_of_masterodb_sys
@@ -208,7 +208,7 @@ export ICS_BL_GENERATOR=
 export ICS_ECHO=1
 
 export GMKVIEW="main local"
-export TARGET_PACK=/home/gmap/mrpm/marguina/pack/48t3_cpg_drv+.01.MIMPIIFC1805.2y
+export TARGET_PACK=/home/gmap/mrpm/marguina/pack/48t3_cpg_drv-.01.MIMPIIFC1805.2y
 # ----------------------------------------------------------------------------------
 # ----------------------------------------------------------------------------------
 #

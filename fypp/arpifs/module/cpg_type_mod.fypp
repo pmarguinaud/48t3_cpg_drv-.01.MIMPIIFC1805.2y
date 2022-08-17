@@ -526,16 +526,12 @@ ELSE
   SELF%F_${v.name}$_P => NULL ()
 ENDIF
 
-#ifdef UNDEF
-
 IF (YGFL%Y${v.name}$%MP_SLX > 0 .AND. YGFL%Y${v.name}$%MP1 > 0) THEN
   JFLD = ISLB1GFL9  + (YGFL%Y${v.name}$%MP_SLX-1)*(NLEV+${extra_levels2}$)
   SELF%F_${v.name}$_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV${ubound_lev}$, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,${lbound_lev}$,1])
 ELSE
   SELF%F_${v.name}$_X => NULL ()
 ENDIF
-
-#endif
 
     #:endif
   #:endfor
@@ -655,8 +651,6 @@ IF (ASSOCIATED (SELF%F_DATA)) THEN
     SELF%${v.name}$_P => ZDUM${v.dim-1}$
   ENDIF
 
-!ifdef UNDEF
-
   IF (ASSOCIATED (SELF%F_${v.name}$_X)) THEN
     IF ((.NOT. SELF%F_${v.name}$_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%${v.name}$_X))) THEN
       SELF%${v.name}$_X => SELF%F_${v.name}$_X%GET_VIEW (BLOCK_INDEX)
@@ -664,8 +658,6 @@ IF (ASSOCIATED (SELF%F_DATA)) THEN
   ELSEIF (.NOT. ASSOCIATED (SELF%${v.name}$)) THEN
     SELF%${v.name}$_X => ZDUM${v.dim-1}$
   ENDIF
-
-!endif
 
     #:endif
   #:endfor
@@ -897,13 +889,9 @@ SELF%ZVIEW => NULL ()
   SELF%F_${v.name}$_P => NULL ()
   SELF%${v.name}$_P => NULL ()
 
-!ifdef UNDEF
-
   IF (ASSOCIATED (SELF%F_${v.name}$_X)) CALL DELETE_TEMPORARY (SELF%F_${v.name}$_X)
   SELF%F_${v.name}$_X => NULL ()
   SELF%${v.name}$_X => NULL ()
-
-!endif
 
     #:endif
   #:endfor
