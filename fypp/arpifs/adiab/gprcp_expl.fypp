@@ -84,7 +84,7 @@ REAL(KIND=JPRB),CONTIGUOUS,POINTER :: ZCP(:,:)
 LOGICAL :: LLCP
 
 REAL(KIND=JPRB),TARGET :: ZCP0(KPROMA,KFLEV),ZR0(KPROMA,KFLEV)
-INTEGER(KIND=JPIM) :: IGFLTYP,JLON,JLEV
+INTEGER(KIND=JPIM) :: IGFLTYP, JLON, JLEV, JFLD
 
 REAL(KIND=JPRB) :: ZHOOK
 
@@ -123,6 +123,18 @@ SELECT CASE (IGFLTYP)
   CASE (${t}$)
 #:for v in gfl.variables
 #:if v.array == 1
+  DO JFLD = 1, SIZE (YDVARS%${v.name}$)
+    IF (YDVARS%${v.name}$(JFLD)%LTHERMACT) THEN
+      DO JLEV = 1, KFLEV
+        DO JLON = KST, KPROF
+          ZR (JLON,JLEV) = ZR (JLON,JLEV) + (YDVARS%${v.name}$(JFLD)%R - YDCST%RD) * YDVARS%${v.name}$(JFLD)%T${t}$ (JLON, JLEV)
+          IF (LLCP) THEN
+            ZCP (JLON,JLEV) = ZCP (JLON,JLEV) + (YDVARS%${v.name}$(JFLD)%RCP - YDCST%RCPD) * YDVARS%${v.name}$(JFLD)%T${t}$ (JLON, JLEV)
+          ENDIF
+        ENDDO
+      ENDDO
+    ENDIF
+  ENDDO
 #:else
   IF (YDVARS%${v.name}$%LTHERMACT) THEN
     DO JLEV = 1, KFLEV
