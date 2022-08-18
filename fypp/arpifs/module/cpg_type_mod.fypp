@@ -272,7 +272,7 @@ TYPE CPG_SL${ind}$_TYPE
 #:if use_gfl
   #:for v in gfl.variables
     #:if v.array
-  TYPE (CPG_FIELD_3D_POINTER_2D_TYPE), ALLOCATABLE :: ${v.name}$ (:)
+  TYPE (CPG_SL1_3D_TYPE), ALLOCATABLE :: ${v.name}$ (:)
     #:elif v.dim == 3
   REAL (KIND=JPRB), POINTER, CONTIGUOUS :: ${v.name}$   (${', '.join ([':'] * (v.dim-1))}$) => NULL ()
 !>REAL (KIND=JPRB)                      :: ${v.name}$ (NPROMA, 0:NLEV+1)
@@ -308,9 +308,25 @@ CONTAINS
 END TYPE CPG_SL${ind}$_TYPE
 #:enddef
 
-TYPE CPG_FIELD_3D_POINTER_2D_TYPE
+TYPE CPG_SL1_3D_TYPE
   REAL (KIND=JPRB), POINTER, CONTIGUOUS :: P (:,:) => NULL ()
   TYPE (FIELD_3D), POINTER :: F_P => NULL ()
+
+  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: P_F (:,:) => NULL ()
+  TYPE (FIELD_3D), POINTER :: F_P_F => NULL ()
+
+  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: P_SPF (:,:) => NULL ()
+  TYPE (FIELD_3D), POINTER :: F_P_SPF => NULL ()
+
+  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: P_SP (:,:) => NULL ()
+  TYPE (FIELD_3D), POINTER :: F_P_SP => NULL ()
+
+  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: P_P (:,:) => NULL ()
+  TYPE (FIELD_3D), POINTER :: F_P_P => NULL ()
+
+  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: P_X (:,:) => NULL ()
+  TYPE (FIELD_3D), POINTER :: F_P_X => NULL ()
+
 END TYPE
 
 $:pcpg_sl_type_definition ("1", pb1_vars, True)
@@ -489,11 +505,7 @@ ENDIF
 
 ALLOCATE (SELF%${v.name}$ (SIZE (YGFL%Y${v.name}$)))
 
-WRITE (0, *) __FILE__, ':', __LINE__, " ${v.name}$ = ", SIZE (YGFL%Y${v.name}$)
-
 DO JGFL = 1, SIZE (YGFL%Y${v.name}$)
-
-WRITE (0, *) __FILE__, ':', __LINE__, JGFL, YGFL%Y${v.name}$(JGFL)%MP_SL1, YGFL%Y${v.name}$(JGFL)%MP1
 
   IF (YGFL%Y${v.name}$(JGFL)%MP_SL1 > 0 .AND. YGFL%Y${v.name}$(JGFL)%MP1 > 0) THEN
     JFLD = YDTPTRSLB${ind}$%MSLB1GFL9  + (YGFL%Y${v.name}$(JGFL)%MP_SL1-1)*(NLEV+${extra_levels2}$)
@@ -501,6 +513,44 @@ WRITE (0, *) __FILE__, ':', __LINE__, JGFL, YGFL%Y${v.name}$(JGFL)%MP_SL1, YGFL%
   ELSE
     SELF%${v.name}$(JGFL)%F_P => NULL ()
   ENDIF
+
+  IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
+    IF (YGFL%Y${v.name}$(JGFL)%MP_SL1 > 0 .AND. YGFL%Y${v.name}$(JGFL)%MP1 > 0) THEN
+      JFLD = YDTPTRSLB${ind}$%MSLB1GFLF9 + (YGFL%Y${v.name}$(JGFL)%MP_SL1-1)*(NLEV+${extra_levels2}$)
+      SELF%${v.name}$(JGFL)%F_P_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV${ubound_lev}$, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,${lbound_lev}$,1])
+    ELSE
+      SELF%${v.name}$(JGFL)%F_P_F => NULL ()
+    ENDIF
+  ENDIF
+  
+  IF (YGFL%Y${v.name}$(JGFL)%MP_SPL > 0 .AND. YGFL%Y${v.name}$(JGFL)%MP1 > 0) THEN
+    JFLD = YDTPTRSLB${ind}$%MSLB1GFLSPF9  + (YGFL%Y${v.name}$(JGFL)%MP_SPL-1)*(NLEV+${extra_levels2}$)
+    SELF%${v.name}$(JGFL)%F_P_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV${ubound_lev}$, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,${lbound_lev}$,1])
+  ELSE
+    SELF%${v.name}$(JGFL)%F_P_SPF => NULL ()
+  ENDIF
+  
+  IF (YGFL%Y${v.name}$(JGFL)%MP_SPL > 0 .AND. YGFL%Y${v.name}$(JGFL)%MP1 > 0) THEN
+    JFLD = YDTPTRSLB${ind}$%MSLB1GFLSP9  + (YGFL%Y${v.name}$(JGFL)%MP_SPL-1)*(NLEV+${extra_levels2}$)
+    SELF%${v.name}$(JGFL)%F_P_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV${ubound_lev}$, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,${lbound_lev}$,1])
+  ELSE
+    SELF%${v.name}$(JGFL)%F_P_SP => NULL ()
+  ENDIF
+  
+  IF (YGFL%Y${v.name}$(JGFL)%LPHY) THEN
+    JFLD = YDTPTRSLB${ind}$%MSLB1GFLP9  + (YGFL%Y${v.name}$(JGFL)%MGFL-1)*(NLEV+${extra_levels2}$)
+    SELF%${v.name}$(JGFL)%F_P_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV${ubound_lev}$, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,${lbound_lev}$,1])
+  ELSE
+    SELF%${v.name}$(JGFL)%F_P_P => NULL ()
+  ENDIF
+  
+  IF (YGFL%Y${v.name}$(JGFL)%MP_SLX > 0 .AND. YGFL%Y${v.name}$(JGFL)%MP1 > 0) THEN
+    JFLD = ISLB1GFL9  + (YGFL%Y${v.name}$(JGFL)%MP_SLX-1)*(NLEV+${extra_levels2}$)
+    SELF%${v.name}$(JGFL)%F_P_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV${ubound_lev}$, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,${lbound_lev}$,1])
+  ELSE
+    SELF%${v.name}$(JGFL)%F_P_X => NULL ()
+  ENDIF
+
 ENDDO
 
     #:elif v.dim == 3
@@ -691,6 +741,22 @@ SELF%${var}$ => NULL ()
 DO JGFL = 1, SIZE (SELF%${v.name}$)
   IF (ASSOCIATED (SELF%${v.name}$(JGFL)%F_P)) CALL DELETE_TEMPORARY (SELF%${v.name}$(JGFL)%F_P)
   SELF%${v.name}$(JGFL)%P => NULL ()
+
+  IF (ASSOCIATED (SELF%${v.name}$(JGFL)%F_P_F)) CALL DELETE_TEMPORARY (SELF%${v.name}$(JGFL)%F_P_F)
+  SELF%${v.name}$(JGFL)%P_F => NULL ()
+
+  IF (ASSOCIATED (SELF%${v.name}$(JGFL)%F_P_SPF)) CALL DELETE_TEMPORARY (SELF%${v.name}$(JGFL)%F_P_SPF)
+  SELF%${v.name}$(JGFL)%P_SPF => NULL ()
+
+  IF (ASSOCIATED (SELF%${v.name}$(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%${v.name}$(JGFL)%F_P_SP)
+  SELF%${v.name}$(JGFL)%P_SP => NULL ()
+
+  IF (ASSOCIATED (SELF%${v.name}$(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%${v.name}$(JGFL)%F_P_P)
+  SELF%${v.name}$(JGFL)%P_P => NULL ()
+
+  IF (ASSOCIATED (SELF%${v.name}$(JGFL)%F_P_X)) CALL DELETE_TEMPORARY (SELF%${v.name}$(JGFL)%F_P_X)
+  SELF%${v.name}$(JGFL)%P_X => NULL ()
+
 ENDDO
     #:elif v.dim == 3
 IF (ASSOCIATED (SELF%F_${v.name}$)) CALL DELETE_TEMPORARY (SELF%F_${v.name}$)
