@@ -124,29 +124,10 @@ SELECT CASE (IGFLTYP)
 #:for v in gfl.variables
 #:if v.array == 1
   DO JFLD = 1, SIZE (YDVARS%${v.name}$)
-    IF (YDVARS%${v.name}$(JFLD)%LTHERMACT) THEN
-      DO JLEV = 1, KFLEV
-        DO JLON = KST, KPROF
-          ZR (JLON,JLEV) = ZR (JLON,JLEV) + (YDVARS%${v.name}$(JFLD)%R - YDCST%RD) * YDVARS%${v.name}$(JFLD)%T${t}$ (JLON, JLEV)
-          IF (LLCP) THEN
-            ZCP (JLON,JLEV) = ZCP (JLON,JLEV) + (YDVARS%${v.name}$(JFLD)%RCP - YDCST%RCPD) * YDVARS%${v.name}$(JFLD)%T${t}$ (JLON, JLEV)
-          ENDIF
-        ENDDO
-      ENDDO
-    ENDIF
+    CALL GPRCP_EXPL_V (YDVARS%${v.name}$(JFLD)%LTHERMACT, YDVARS%${v.name}$(JFLD)%R, YDVARS%${v.name}$(JFLD)%RCP, YDVARS%${v.name}$(JFLD)%T${t}$)
   ENDDO
 #:else
-  CALL GPRCP_EXPL1 (YDVARS%${v.name}$%LTHERMACT, YDVARS%${v.name}$%R, YDVARS%${v.name}$%RCP, YDVARS%${v.name}$%T${t}$)
-! IF (YDVARS%${v.name}$%LTHERMACT) THEN
-!   DO JLEV = 1, KFLEV
-!     DO JLON = KST, KPROF
-!       ZR (JLON,JLEV) = ZR (JLON,JLEV) + (YDVARS%${v.name}$%R - YDCST%RD) * YDVARS%${v.name}$%T${t}$ (JLON, JLEV)
-!       IF (LLCP) THEN
-!         ZCP (JLON,JLEV) = ZCP (JLON,JLEV) + (YDVARS%${v.name}$%RCP - YDCST%RCPD) * YDVARS%${v.name}$%T${t}$ (JLON, JLEV)
-!       ENDIF
-!     ENDDO
-!   ENDDO
-! ENDIF
+  CALL GPRCP_EXPL_V (YDVARS%${v.name}$%LTHERMACT, YDVARS%${v.name}$%R, YDVARS%${v.name}$%RCP, YDVARS%${v.name}$%T${t}$)
 #:endif
 #:endfor
 #:endfor
@@ -171,25 +152,25 @@ IF (LHOOK) CALL DR_HOOK("GPRCP_EXPL",1,ZHOOK)
 
 CONTAINS
 
-SUBROUTINE GPRCP_EXPL1 (LDTHERMACT, P_R, P_RCP, P_T)
+SUBROUTINE GPRCP_EXPL_V (LDTHERMACT, PV_R, PV_RCP, PV_T)
 
 LOGICAL, INTENT (IN) :: LDTHERMACT
-REAL (KIND=JPRB), INTENT (IN) :: P_R
-REAL (KIND=JPRB), INTENT (IN) :: P_RCP
-REAL (KIND=JPRB), INTENT (IN) :: P_T (KPROMA,KFLEV)
+REAL (KIND=JPRB), INTENT (IN) :: PV_R
+REAL (KIND=JPRB), INTENT (IN) :: PV_RCP
+REAL (KIND=JPRB), INTENT (IN) :: PV_T (KPROMA,KFLEV)
 
 IF (LDTHERMACT) THEN
   DO JLEV = 1, KFLEV
     DO JLON = KST, KPROF
-      ZR (JLON,JLEV) = ZR (JLON,JLEV) + (P_R - YDCST%RD) * P_T (JLON, JLEV)
+      ZR (JLON,JLEV) = ZR (JLON,JLEV) + (PV_R - YDCST%RD) * PV_T (JLON, JLEV)
       IF (LLCP) THEN
-        ZCP (JLON,JLEV) = ZCP (JLON,JLEV) + (P_RCP - YDCST%RCPD) * P_T (JLON, JLEV)
+        ZCP (JLON,JLEV) = ZCP (JLON,JLEV) + (PV_RCP - YDCST%RCPD) * PV_T (JLON, JLEV)
       ENDIF
     ENDDO
   ENDDO
 ENDIF
 
-END SUBROUTINE GPRCP_EXPL1
+END SUBROUTINE GPRCP_EXPL_V
 
 END SUBROUTINE GPRCP_EXPL
 
