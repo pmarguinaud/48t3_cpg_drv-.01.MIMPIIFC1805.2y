@@ -28,6 +28,12 @@ IF (LHOOK) CALL DR_HOOK('LAVABO_EXPL_LAITVSPCQM_PART1',0,ZHOOK_HANDLE)
 
 #:for v in gfl.variables
 #:if v.array == 1
+DO JGFL = 1, SIZE (YDCPG_SL1%${v.name}$)
+  IF ((YGFL%Y${v.name}$(JGFL)%CSLINT /= 'LAITVSPCQM  ') .AND. YGFL%Y${v.name}$(JGFL)%LADV) THEN
+    YDCPG_SL1%${v.name}$(JGFL)%P(KST:KPROF,0)=0.0_JPRB
+    YDCPG_SL1%${v.name}$(JGFL)%P(KST:KPROF,YDGEOMETRY%YRDIMV%NFLEVG+1)=0.0_JPRB
+  ENDIF
+ENDDO
 #:else
 IF ((YGFL%Y${v.name}$%CSLINT /= 'LAITVSPCQM  ') .AND. YGFL%Y${v.name}$%LADV) THEN
   YDCPG_SL1%${v.name}$(KST:KPROF,0)=0.0_JPRB

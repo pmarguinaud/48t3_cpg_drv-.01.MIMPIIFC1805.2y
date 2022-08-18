@@ -609,6 +609,10 @@ SUBROUTINE CPG_SL${ind}$_TYPE_UPDATE_VIEW (SELF, BLOCK_INDEX)
 CLASS (CPG_SL${ind}$_TYPE)        :: SELF
 INTEGER(KIND=JPIM), INTENT (IN)   :: BLOCK_INDEX
 
+#:if use_gfl
+INTEGER (KIND=JPIM) :: JGFL
+#:endif
+
 IF (ASSOCIATED (SELF%F_DATA)) THEN
   SELF%ZVIEW => SELF%F_DATA%GET_VIEW (BLOCK_INDEX)
 #:for var in vars
@@ -634,6 +638,58 @@ IF (ASSOCIATED (SELF%F_DATA)) THEN
 #:if use_gfl
   #:for v in gfl.variables
     #:if v.array
+  DO JGFL = 1, SIZE (SELF%${v.name}$)
+
+    IF (ASSOCIATED (SELF%${v.name}$(JGFL)%F_P)) THEN
+      IF ((.NOT. SELF%${v.name}$(JGFL)%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%${v.name}$(JGFL)%P))) THEN
+        SELF%${v.name}$(JGFL)%P => SELF%${v.name}$(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
+      ENDIF
+    ELSEIF (.NOT. ASSOCIATED (SELF%${v.name}$(JGFL)%P)) THEN
+      SELF%${v.name}$(JGFL)%P => ZDUM${v.dim-1}$
+    ENDIF
+
+    IF (ASSOCIATED (SELF%${v.name}$(JGFL)%F_P_F)) THEN
+      IF ((.NOT. SELF%${v.name}$(JGFL)%F_P_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%${v.name}$(JGFL)%P_F))) THEN
+        SELF%${v.name}$(JGFL)%P_F => SELF%${v.name}$(JGFL)%F_P_F%GET_VIEW (BLOCK_INDEX)
+      ENDIF
+    ELSEIF (.NOT. ASSOCIATED (SELF%${v.name}$(JGFL)%P_F)) THEN
+      SELF%${v.name}$(JGFL)%P_F => ZDUM${v.dim-1}$
+    ENDIF
+
+    IF (ASSOCIATED (SELF%${v.name}$(JGFL)%F_P_SPF)) THEN
+      IF ((.NOT. SELF%${v.name}$(JGFL)%F_P_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%${v.name}$(JGFL)%P_SPF))) THEN
+        SELF%${v.name}$(JGFL)%P_SPF => SELF%${v.name}$(JGFL)%F_P_SPF%GET_VIEW (BLOCK_INDEX)
+      ENDIF
+    ELSEIF (.NOT. ASSOCIATED (SELF%${v.name}$(JGFL)%P_SPF)) THEN
+      SELF%${v.name}$(JGFL)%P_SPF => ZDUM${v.dim-1}$
+    ENDIF
+
+    IF (ASSOCIATED (SELF%${v.name}$(JGFL)%F_P_SP)) THEN
+      IF ((.NOT. SELF%${v.name}$(JGFL)%F_P_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%${v.name}$(JGFL)%P_SP))) THEN
+        SELF%${v.name}$(JGFL)%P_SP => SELF%${v.name}$(JGFL)%F_P_SP%GET_VIEW (BLOCK_INDEX)
+      ENDIF
+    ELSEIF (.NOT. ASSOCIATED (SELF%${v.name}$(JGFL)%P_SP)) THEN
+      SELF%${v.name}$(JGFL)%P_SP => ZDUM${v.dim-1}$
+    ENDIF
+
+    IF (ASSOCIATED (SELF%${v.name}$(JGFL)%F_P_P)) THEN
+      IF ((.NOT. SELF%${v.name}$(JGFL)%F_P_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%${v.name}$(JGFL)%P_P))) THEN
+        SELF%${v.name}$(JGFL)%P_P => SELF%${v.name}$(JGFL)%F_P_P%GET_VIEW (BLOCK_INDEX)
+      ENDIF
+    ELSEIF (.NOT. ASSOCIATED (SELF%${v.name}$(JGFL)%P_P)) THEN
+      SELF%${v.name}$(JGFL)%P_P => ZDUM${v.dim-1}$
+    ENDIF
+
+    IF (ASSOCIATED (SELF%${v.name}$(JGFL)%F_P_X)) THEN
+      IF ((.NOT. SELF%${v.name}$(JGFL)%F_P_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%${v.name}$(JGFL)%P_X))) THEN
+        SELF%${v.name}$(JGFL)%P_X => SELF%${v.name}$(JGFL)%F_P_X%GET_VIEW (BLOCK_INDEX)
+      ENDIF
+    ELSEIF (.NOT. ASSOCIATED (SELF%${v.name}$(JGFL)%P_X)) THEN
+      SELF%${v.name}$(JGFL)%P_X => ZDUM${v.dim-1}$
+    ENDIF
+
+  ENDDO
+
     #:elif v.dim == 3
   IF (ASSOCIATED (SELF%F_${v.name}$)) THEN
     IF ((.NOT. SELF%F_${v.name}$%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%${v.name}$))) THEN
@@ -647,7 +703,7 @@ IF (ASSOCIATED (SELF%F_DATA)) THEN
     IF ((.NOT. SELF%F_${v.name}$_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%${v.name}$_F))) THEN
       SELF%${v.name}$_F => SELF%F_${v.name}$_F%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%${v.name}$)) THEN
+  ELSEIF (.NOT. ASSOCIATED (SELF%${v.name}$_F)) THEN
     SELF%${v.name}$_F => ZDUM${v.dim-1}$
   ENDIF
 
@@ -655,7 +711,7 @@ IF (ASSOCIATED (SELF%F_DATA)) THEN
     IF ((.NOT. SELF%F_${v.name}$_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%${v.name}$_SPF))) THEN
       SELF%${v.name}$_SPF => SELF%F_${v.name}$_SPF%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%${v.name}$)) THEN
+  ELSEIF (.NOT. ASSOCIATED (SELF%${v.name}$_SPF)) THEN
     SELF%${v.name}$_SPF => ZDUM${v.dim-1}$
   ENDIF
 
@@ -663,7 +719,7 @@ IF (ASSOCIATED (SELF%F_DATA)) THEN
     IF ((.NOT. SELF%F_${v.name}$_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%${v.name}$_SP))) THEN
       SELF%${v.name}$_SP => SELF%F_${v.name}$_SP%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%${v.name}$)) THEN
+  ELSEIF (.NOT. ASSOCIATED (SELF%${v.name}$_SP)) THEN
     SELF%${v.name}$_SP => ZDUM${v.dim-1}$
   ENDIF
 
@@ -671,7 +727,7 @@ IF (ASSOCIATED (SELF%F_DATA)) THEN
     IF ((.NOT. SELF%F_${v.name}$_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%${v.name}$_P))) THEN
       SELF%${v.name}$_P => SELF%F_${v.name}$_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%${v.name}$)) THEN
+  ELSEIF (.NOT. ASSOCIATED (SELF%${v.name}$_P)) THEN
     SELF%${v.name}$_P => ZDUM${v.dim-1}$
   ENDIF
 
@@ -679,7 +735,7 @@ IF (ASSOCIATED (SELF%F_DATA)) THEN
     IF ((.NOT. SELF%F_${v.name}$_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%${v.name}$_X))) THEN
       SELF%${v.name}$_X => SELF%F_${v.name}$_X%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%${v.name}$)) THEN
+  ELSEIF (.NOT. ASSOCIATED (SELF%${v.name}$_X)) THEN
     SELF%${v.name}$_X => ZDUM${v.dim-1}$
   ENDIF
 
