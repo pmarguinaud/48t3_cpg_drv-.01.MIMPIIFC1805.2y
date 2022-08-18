@@ -28,6 +28,7 @@ TYPE(FIELD_VARIABLES),INTENT(INOUT) :: YDVARS
 LOGICAL :: LLTDIABLIN
 INTEGER (KIND=JPIM) :: JLEV
 INTEGER (KIND=JPIM) :: JROF
+INTEGER (KIND=JPIM) :: JGFL
 
 REAL(KIND=JPRB) :: ZHOOK_HANDLE
 
@@ -35,6 +36,10 @@ IF (LHOOK) CALL DR_HOOK('LATTEX_EXPL_3TL',0,ZHOOK_HANDLE)
 
 #:for v in gfl.variables
 #:if v.array == 1
+DO JGFL = 1, SIZE (YDCPG_SL1%${v.name}$)
+  CALL LATTEX_EXPL_3TL_V (YDML_GCONF%YGFL%Y${v.name}$(JGFL)%LADV, YDML_GCONF%YGFL%Y${v.name}$(JGFL)%LTDIABLIN, &
+                        & YDCPG_SL1%${v.name}$(JGFL)%P, YDCPG_SL1%${v.name}$(JGFL)%P_F, YDVARS%${v.name}$(JGFL)%T9)
+ENDDO
 #:else
 CALL LATTEX_EXPL_3TL_V (YDML_GCONF%YGFL%Y${v.name}$%LADV, YDML_GCONF%YGFL%Y${v.name}$%LTDIABLIN, &
                       & YDCPG_SL1%${v.name}$, YDCPG_SL1%${v.name}$_F, YDVARS%${v.name}$%T9)
