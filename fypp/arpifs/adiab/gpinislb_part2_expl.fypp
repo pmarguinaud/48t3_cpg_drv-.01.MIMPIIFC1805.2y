@@ -20,7 +20,7 @@ INTEGER(KIND=JPIM)     ,INTENT(IN)    :: KEN
 REAL(KIND=JPRB)        ,INTENT(IN)    :: PTE
 TYPE(FIELD_VARIABLES)  ,INTENT(INOUT) :: YDVARS
 
-INTEGER (KIND=JPIM) :: IV
+INTEGER (KIND=JPIM) :: JFLD
 
 REAL(KIND=JPRB) :: ZHOOK_HANDLE
 
@@ -30,8 +30,8 @@ IF (LDSLAG) THEN
   IF (LDTWOTL) THEN
 #:for v in gfl.variables
 #:if v.array == 1
-    DO IV = 1, SIZE (YDVARS%${v.name}$)
-      CALL SLG_2TL (YDVARS%${v.name}$ (IV))
+    DO JFLD = 1, SIZE (YDVARS%${v.name}$)
+      CALL SLG_2TL (YDVARS%${v.name}$ (JFLD))
     ENDDO
 #:else
     CALL SLG_2TL (YDVARS%${v.name}$)
@@ -40,8 +40,8 @@ IF (LDSLAG) THEN
   ELSE
 #:for v in gfl.variables
 #:if v.array == 1
-    DO IV = 1, SIZE (YDVARS%${v.name}$)
-      CALL SLG_3TL (YDVARS%${v.name}$ (IV))
+    DO JFLD = 1, SIZE (YDVARS%${v.name}$)
+      CALL SLG_3TL (YDVARS%${v.name}$ (JFLD))
     ENDDO
 #:else
     CALL SLG_3TL (YDVARS%${v.name}$)
@@ -52,8 +52,8 @@ ELSE
   IF (YDDYN%NCURRENT_ITER == 0) THEN
 #:for v in gfl.variables
 #:if v.array == 1
-    DO IV = 1, SIZE (YDVARS%${v.name}$)
-      CALL EUL_IT0 (YDVARS%${v.name}$ (IV))
+    DO JFLD = 1, SIZE (YDVARS%${v.name}$)
+      CALL EUL_IT0 (YDVARS%${v.name}$ (JFLD))
     ENDDO
 #:else
     CALL EUL_IT0 (YDVARS%${v.name}$)
@@ -62,8 +62,8 @@ ELSE
   ELSE
 #:for v in gfl.variables
 #:if v.array == 1
-    DO IV = 1, SIZE (YDVARS%${v.name}$)
-      CALL EUL_ITX (YDVARS%${v.name}$ (IV))
+    DO JFLD = 1, SIZE (YDVARS%${v.name}$)
+      CALL EUL_ITX (YDVARS%${v.name}$ (JFLD))
     ENDDO
 #:else
     CALL EUL_ITX (YDVARS%${v.name}$)
