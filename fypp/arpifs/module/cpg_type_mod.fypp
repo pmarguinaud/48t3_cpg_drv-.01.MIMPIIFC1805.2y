@@ -272,6 +272,7 @@ TYPE CPG_SL${ind}$_TYPE
 #:if use_gfl
   #:for v in gfl.variables
     #:if v.array
+  TYPE (CPG_FIELD_3D_POINTER_2D_TYPE), ALLOCATABLE :: ${v.name}$ (:)
     #:elif v.dim == 3
   REAL (KIND=JPRB), POINTER, CONTIGUOUS :: ${v.name}$   (${', '.join ([':'] * (v.dim-1))}$) => NULL ()
 !>REAL (KIND=JPRB)                      :: ${v.name}$ (NPROMA, 0:NLEV+1)
@@ -306,6 +307,11 @@ CONTAINS
   PROCEDURE :: FINAL => CPG_SL${ind}$_TYPE_FINAL
 END TYPE CPG_SL${ind}$_TYPE
 #:enddef
+
+TYPE CPG_FIELD_3D_POINTER_2D_TYPE
+  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: P (:,:) => NULL ()
+  TYPE (FIELD_3D), POINTER :: F_P => NULL ()
+END TYPE
 
 $:pcpg_sl_type_definition ("1", pb1_vars, True)
 
@@ -422,6 +428,7 @@ REAL (KIND=JPRB), OPTIONAL, TARGET, INTENT (IN)    :: PB${ind}$ (:, :, :)
 
 INTEGER (KIND=JPIM) :: JFLD
 #:if use_gfl
+INTEGER (KIND=JPIM) :: JGFL
 INTEGER (KIND=JPIM) :: ISLB1GFL9
 #:endif
 
@@ -479,6 +486,23 @@ ENDIF
 #:if use_gfl
   #:for v in gfl.variables
     #:if v.array
+
+ALLOCATE (SELF%${v.name}$ (SIZE (YGFL%Y${v.name}$)))
+
+WRITE (0, *) __FILE__, ':', __LINE__, " ${v.name}$ = ", SIZE (YGFL%Y${v.name}$)
+
+DO JGFL = 1, SIZE (YGFL%Y${v.name}$)
+
+WRITE (0, *) __FILE__, ':', __LINE__, JGFL, YGFL%Y${v.name}$(JGFL)%MP_SL1, YGFL%Y${v.name}$(JGFL)%MP1
+
+  IF (YGFL%Y${v.name}$(JGFL)%MP_SL1 > 0 .AND. YGFL%Y${v.name}$(JGFL)%MP1 > 0) THEN
+    JFLD = YDTPTRSLB${ind}$%MSLB1GFL9  + (YGFL%Y${v.name}$(JGFL)%MP_SL1-1)*(NLEV+${extra_levels2}$)
+    SELF%${v.name}$(JGFL)%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV${ubound_lev}$, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,${lbound_lev}$,1])
+  ELSE
+    SELF%${v.name}$(JGFL)%F_P => NULL ()
+  ENDIF
+ENDDO
+
     #:elif v.dim == 3
 IF (YGFL%Y${v.name}$%MP_SL1 > 0 .AND. YGFL%Y${v.name}$%MP1 > 0) THEN
   JFLD = YDTPTRSLB${ind}$%MSLB1GFL9  + (YGFL%Y${v.name}$%MP_SL1-1)*(NLEV+${extra_levels2}$)
@@ -641,6 +665,10 @@ END SUBROUTINE CPG_SL${ind}$_TYPE_UPDATE_VIEW
 SUBROUTINE CPG_SL${ind}$_TYPE_FINAL (SELF)
 CLASS (CPG_SL${ind}$_TYPE)          :: SELF
 
+#:if use_gfl
+INTEGER (KIND=JPIM) :: JGFL
+#:endif
+
 IF (ASSOCIATED (SELF%F_DATA)) CALL DELETE_TEMPORARY (SELF%F_DATA)
 SELF%F_DATA => NULL ()
 
@@ -652,38 +680,42 @@ SELF%ZDATA => NULL ()
 SELF%ZVIEW => NULL ()
 
 #:for var in vars
-  IF (ASSOCIATED (SELF%F_${var}$)) CALL DELETE_TEMPORARY (SELF%F_${var}$)
-  SELF%F_${var}$ => NULL ()
-  SELF%${var}$ => NULL ()
+IF (ASSOCIATED (SELF%F_${var}$)) CALL DELETE_TEMPORARY (SELF%F_${var}$)
+SELF%F_${var}$ => NULL ()
+SELF%${var}$ => NULL ()
 #:endfor
 
 #:if use_gfl
   #:for v in gfl.variables
     #:if v.array
+DO JGFL = 1, SIZE (SELF%${v.name}$)
+  IF (ASSOCIATED (SELF%${v.name}$(JGFL)%F_P)) CALL DELETE_TEMPORARY (SELF%${v.name}$(JGFL)%F_P)
+  SELF%${v.name}$(JGFL)%P => NULL ()
+ENDDO
     #:elif v.dim == 3
-  IF (ASSOCIATED (SELF%F_${v.name}$)) CALL DELETE_TEMPORARY (SELF%F_${v.name}$)
-  SELF%F_${v.name}$ => NULL ()
-  SELF%${v.name}$ => NULL ()
+IF (ASSOCIATED (SELF%F_${v.name}$)) CALL DELETE_TEMPORARY (SELF%F_${v.name}$)
+SELF%F_${v.name}$ => NULL ()
+SELF%${v.name}$ => NULL ()
 
-  IF (ASSOCIATED (SELF%F_${v.name}$_F)) CALL DELETE_TEMPORARY (SELF%F_${v.name}$_F)
-  SELF%F_${v.name}$_F => NULL ()
-  SELF%${v.name}$_F => NULL ()
+IF (ASSOCIATED (SELF%F_${v.name}$_F)) CALL DELETE_TEMPORARY (SELF%F_${v.name}$_F)
+SELF%F_${v.name}$_F => NULL ()
+SELF%${v.name}$_F => NULL ()
 
-  IF (ASSOCIATED (SELF%F_${v.name}$_SPF)) CALL DELETE_TEMPORARY (SELF%F_${v.name}$_SPF)
-  SELF%F_${v.name}$_SPF => NULL ()
-  SELF%${v.name}$_SPF => NULL ()
+IF (ASSOCIATED (SELF%F_${v.name}$_SPF)) CALL DELETE_TEMPORARY (SELF%F_${v.name}$_SPF)
+SELF%F_${v.name}$_SPF => NULL ()
+SELF%${v.name}$_SPF => NULL ()
 
-  IF (ASSOCIATED (SELF%F_${v.name}$_SP)) CALL DELETE_TEMPORARY (SELF%F_${v.name}$_SP)
-  SELF%F_${v.name}$_SP => NULL ()
-  SELF%${v.name}$_SP => NULL ()
+IF (ASSOCIATED (SELF%F_${v.name}$_SP)) CALL DELETE_TEMPORARY (SELF%F_${v.name}$_SP)
+SELF%F_${v.name}$_SP => NULL ()
+SELF%${v.name}$_SP => NULL ()
 
-  IF (ASSOCIATED (SELF%F_${v.name}$_P)) CALL DELETE_TEMPORARY (SELF%F_${v.name}$_P)
-  SELF%F_${v.name}$_P => NULL ()
-  SELF%${v.name}$_P => NULL ()
+IF (ASSOCIATED (SELF%F_${v.name}$_P)) CALL DELETE_TEMPORARY (SELF%F_${v.name}$_P)
+SELF%F_${v.name}$_P => NULL ()
+SELF%${v.name}$_P => NULL ()
 
-  IF (ASSOCIATED (SELF%F_${v.name}$_X)) CALL DELETE_TEMPORARY (SELF%F_${v.name}$_X)
-  SELF%F_${v.name}$_X => NULL ()
-  SELF%${v.name}$_X => NULL ()
+IF (ASSOCIATED (SELF%F_${v.name}$_X)) CALL DELETE_TEMPORARY (SELF%F_${v.name}$_X)
+SELF%F_${v.name}$_X => NULL ()
+SELF%${v.name}$_X => NULL ()
 
     #:endif
   #:endfor

@@ -37,7 +37,7 @@ mkdir -p $TMPDIR
 
 cd $TMPDIR
 
-for NAM1 in ARO.LPC_FULL
+for NAM1 in LTWOTL=T.ARO LTWOTL=T.ARO.LADV=T
 do
 
 for NAM2 in NHEE 
@@ -52,7 +52,7 @@ cd $NAM1.$NAM2
 
 # Choose a pack
 
- PACK=/home/gmap/mrpm/marguina/pack/cy48t1_cpg_drv.01.MIMPIIFC1805.2y.pack
+ PACK=/home/gmap/mrpm/marguina/pack/48t3_cpg_drv-.01.MIMPIIFC1805.2y
 
 # Copy data to $TMPDIR
 
@@ -144,6 +144,8 @@ xpnam --delta="
 &NAMFA
   NVGRIB=0,
 /
+&NAMPERTPAR
+/
 " --inplace fort.4
 
 xpnam --delta="
@@ -219,8 +221,7 @@ cat fort.4
 # Run the model; use your mpirun
 
 pack=$PACK
-#pack=$HOME/pack/cy48t1_cpg_drv_43d0bc961f71744300a71666600beff1589da7b1.gprcp=1.01.MIMPIIFC1805.2y.pack
-#pack=$HOME/pack/cy48t1_cpg_drv_d65247173713658d22f41cf09dec434ecbec2407.gprcp=0.01.MIMPIIFC1805.2y.pack
+#pack=$HOME/pack/48t3_gprcp.01.MIMPIIFC1805.2y
 
 /opt/softs/mpiauto/mpiauto --verbose --wrap --wrap-stdeo --nouse-slurm-mpi --prefix-mpirun '/usr/bin/time -f "time=%e"' \
     --nnp $NTASK_FC --nn $NNODE_FC --openmp $NOPMP_FC -- $pack/bin/MASTERODB \
@@ -228,9 +229,13 @@ pack=$PACK
 
 ls -lrt
 
- diffNODE.001_01 NODE.001_01 $pack/ref.cy48t1_cpg_drv_43d0bc961f71744300a71666600beff1589da7b1.gprcp=1.01.MIMPIIFC1805.2y.pack/NODE.001_01.$NAM1.$NAM2
-#cp NODE.001_01 $PACK/ref.cy48t1_cpg_drv_43d0bc961f71744300a71666600beff1589da7b1.gprcp=1.01.MIMPIIFC1805.2y.pack/NODE.001_01.$NAM1.$NAM2
-#cp NODE.001_01 $PACK/ref.cy48t1_cpg_drv_d65247173713658d22f41cf09dec434ecbec2407.gprcp=0.01.MIMPIIFC1805.2y.pack/NODE.001_01.$NAM1.$NAM2
+diffNODE.001_01 NODE.001_01 $pack/ref.48t3_gprcp.01.MIMPIIFC1805.2y/NODE.001_01.$NAM1.$NAM2
+
+#if [ ! -f "$PACK/ref.$(basename $pack)/NODE.001_01.$NAM1.$NAM2" ]
+#then
+#mkdir -p $PACK/$(basename $pack)
+#mv NODE.001_01 $PACK/ref.$(basename $pack)/NODE.001_01.$NAM1.$NAM2
+#fi
 
 cd ..
 

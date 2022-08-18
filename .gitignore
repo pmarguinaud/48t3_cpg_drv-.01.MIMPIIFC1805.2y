@@ -29,3 +29,4 @@ src/unsxref
 slurm-*.out
 src/local/.fypp
 *.lst
+.*.swp
