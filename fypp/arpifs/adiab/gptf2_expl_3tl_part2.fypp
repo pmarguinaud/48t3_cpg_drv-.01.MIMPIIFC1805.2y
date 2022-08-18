@@ -44,6 +44,9 @@ ELSE
 
 #:for v in gfl.variables
 #:if v.array == 1
+  DO JFLD = 1, SIZE (YDVARS%${v.name}$)
+    CALL GPTF2_EXPL_3TL_PART2_FSTEP_F (YDVARS%${v.name}$(JFLD)%LT9, YDVARS%${v.name}$(JFLD)%T9, YDVARS%${v.name}$(JFLD)%T0)
+  ENDDO
 #:else
   CALL GPTF2_EXPL_3TL_PART2_FSTEP_F (YDVARS%${v.name}$%LT9, YDVARS%${v.name}$%T9, YDVARS%${v.name}$%T0)
 #:endif
