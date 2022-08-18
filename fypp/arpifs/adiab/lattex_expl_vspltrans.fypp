@@ -26,10 +26,9 @@ TYPE(CPG_SL1_TYPE)            ,INTENT(INOUT)  :: YDCPG_SL1
 #include "vspltrans.intfb.h"
 
 LOGICAL :: LLTDIABLIN
-INTEGER(KIND=JPIM) :: IPXSP
-INTEGER (KIND=JPIM) :: IPX
 INTEGER (KIND=JPIM) :: JLEV
 INTEGER (KIND=JPIM) :: JROF
+INTEGER (KIND=JPIM) :: JGFL
 
 REAL(KIND=JPRB) :: ZHOOK_HANDLE
 
@@ -37,6 +36,11 @@ IF (LHOOK) CALL DR_HOOK('LATTEX_EXPL_VSPLTRANS',0,ZHOOK_HANDLE)
 
 #:for v in gfl.variables
 #:if v.array == 1
+DO JGFL = 1, SIZE (YDCPG_SL1%${v.name}$)
+  CALL LATTEX_EXPL_VSPLTRANS_V (YDML_GCONF%YGFL%Y${v.name}$(JGFL)%LADV, YDML_GCONF%YGFL%Y${v.name}$(JGFL)%LTDIABLIN,          &
+                              & YDML_GCONF%YGFL%Y${v.name}$(JGFL)%CSLINT, YDCPG_SL1%${v.name}$(JGFL)%P, YDCPG_SL1%${v.name}$(JGFL)%P_F, &
+                              & YDCPG_SL1%${v.name}$(JGFL)%P_SP, YDCPG_SL1%${v.name}$(JGFL)%P_SPF)
+ENDDO
 #:else
 CALL LATTEX_EXPL_VSPLTRANS_V (YDML_GCONF%YGFL%Y${v.name}$%LADV, YDML_GCONF%YGFL%Y${v.name}$%LTDIABLIN,          &
                             & YDML_GCONF%YGFL%Y${v.name}$%CSLINT, YDCPG_SL1%${v.name}$, YDCPG_SL1%${v.name}$_F, &
