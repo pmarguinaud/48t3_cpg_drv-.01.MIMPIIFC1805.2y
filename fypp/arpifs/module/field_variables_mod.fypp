@@ -135,16 +135,16 @@ CONTAINS
     ! Allocate a thread-local copy of the array
     NULLIFY(SELF%${v.name}$)
     ALLOCATE(SELF%${v.name}$(SIZE(SELF%${v.name}$_G)))
-
-    DO I=1, SIZE(SELF%${v.name}$_G)
-      ! Associate underpinning storage objects with thread-local variables
-      IF (ASSOCIATED(SELF%${v.name}$_G(I)%FT0))  SELF%${v.name}$(I)%FT0 => SELF%${v.name}$_G(I)%FT0
-      IF (ASSOCIATED(SELF%${v.name}$_G(I)%FT1))  SELF%${v.name}$(I)%FT1 => SELF%${v.name}$_G(I)%FT1
-      IF (ASSOCIATED(SELF%${v.name}$_G(I)%FT9))  SELF%${v.name}$(I)%FT9 => SELF%${v.name}$_G(I)%FT9
-      IF (ASSOCIATED(SELF%${v.name}$_G(I)%FPH9)) SELF%${v.name}$(I)%FPH9=> SELF%${v.name}$_G(I)%FPH9
-      IF (ASSOCIATED(SELF%${v.name}$_G(I)%FDL))  SELF%${v.name}$(I)%FDL => SELF%${v.name}$_G(I)%FDL
-      IF (ASSOCIATED(SELF%${v.name}$_G(I)%FDM))  SELF%${v.name}$(I)%FDM => SELF%${v.name}$_G(I)%FDM
-    END DO
+    SELF%${v.name}$ = SELF%${v.name}$_G
+!   DO I=1, SIZE(SELF%${v.name}$_G)
+!     ! Associate underpinning storage objects with thread-local variables
+!     IF (ASSOCIATED(SELF%${v.name}$_G(I)%FT0))  SELF%${v.name}$(I)%FT0 => SELF%${v.name}$_G(I)%FT0
+!     IF (ASSOCIATED(SELF%${v.name}$_G(I)%FT1))  SELF%${v.name}$(I)%FT1 => SELF%${v.name}$_G(I)%FT1
+!     IF (ASSOCIATED(SELF%${v.name}$_G(I)%FT9))  SELF%${v.name}$(I)%FT9 => SELF%${v.name}$_G(I)%FT9
+!     IF (ASSOCIATED(SELF%${v.name}$_G(I)%FPH9)) SELF%${v.name}$(I)%FPH9=> SELF%${v.name}$_G(I)%FPH9
+!     IF (ASSOCIATED(SELF%${v.name}$_G(I)%FDL))  SELF%${v.name}$(I)%FDL => SELF%${v.name}$_G(I)%FDL
+!     IF (ASSOCIATED(SELF%${v.name}$_G(I)%FDM))  SELF%${v.name}$(I)%FDM => SELF%${v.name}$_G(I)%FDM
+!   END DO
 #:endif
 #:endfor
   END SUBROUTINE FIELD_VARIABLES_CLONE_ARRAYS
