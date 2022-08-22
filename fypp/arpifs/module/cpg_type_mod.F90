@@ -489,6 +489,27 @@ END TYPE CPG_DDH_TYPE
 
 
 
+TYPE CPG_SL1_2D_TYPE
+  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: P (:) => NULL ()
+  TYPE (FIELD_2D), POINTER :: F_P => NULL ()
+
+  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: P_F (:) => NULL ()
+  TYPE (FIELD_2D), POINTER :: F_P_F => NULL ()
+
+  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: P_SPF (:) => NULL ()
+  TYPE (FIELD_2D), POINTER :: F_P_SPF => NULL ()
+
+  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: P_SP (:) => NULL ()
+  TYPE (FIELD_2D), POINTER :: F_P_SP => NULL ()
+
+  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: P_P (:) => NULL ()
+  TYPE (FIELD_2D), POINTER :: F_P_P => NULL ()
+
+  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: P_X (:) => NULL ()
+  TYPE (FIELD_2D), POINTER :: F_P_X => NULL ()
+
+END TYPE
+
 TYPE CPG_SL1_3D_TYPE
   REAL (KIND=JPRB), POINTER, CONTIGUOUS :: P (:,:) => NULL ()
   TYPE (FIELD_3D), POINTER :: F_P => NULL ()
@@ -517,874 +538,88 @@ TYPE CPG_SL1_TYPE
   REAL (KIND=JPRB), POINTER, CONTIGUOUS :: ZVIEW (:,:) => NULL ()
   REAL (KIND=JPRB), POINTER, CONTIGUOUS :: ZDATA (:,:,:) => NULL ()
   TYPE (FIELD_3D), POINTER :: F_DATA => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: U9 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: U9 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_U9 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: V9 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: V9 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_V9 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: T9 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: T9 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_T9 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: PD9 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: PD9 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_PD9 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: VD9 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: VD9 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_VD9 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: NHX9 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: NHX9 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_NHX9 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: UR0 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: UR0 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_UR0 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: VR0 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: VR0 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_VR0 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: ZR0 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: ZR0 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_ZR0 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: WR0 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: WR0 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_WR0 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: UR00 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: UR00 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_UR00 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: VR00 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: VR00 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_VR00 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: ZR00 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: ZR00 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_ZR00 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: WR00 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: WR00 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_WR00 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: WRA (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: WRA (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_WRA => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: UR9 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: UR9 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_UR9 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: VR9 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: VR9 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_VR9 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: DBBC9 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: DBBC9 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_DBBC9 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: DPHI9 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: DPHI9 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_DPHI9 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: GWS9 (:) => NULL ()
-!>REAL (KIND=JPRB)                      :: GWS9 (NPROMA)
-  TYPE (FIELD_2D), POINTER :: F_GWS9 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: U0 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: U0 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_U0 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: V0 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: V0 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_V0 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: T0 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: T0 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_T0 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: PD0 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: PD0 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_PD0 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: VD0 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: VD0 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_VD0 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: C9 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: C9 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_C9 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SP9 (:) => NULL ()
-!>REAL (KIND=JPRB)                      :: SP9 (NPROMA)
-  TYPE (FIELD_2D), POINTER :: F_SP9 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SP0 (:) => NULL ()
-!>REAL (KIND=JPRB)                      :: SP0 (NPROMA)
-  TYPE (FIELD_2D), POINTER :: F_SP0 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: C0 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: C0 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_C0 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: UP9 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: UP9 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_UP9 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: VP9 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: VP9 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_VP9 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: TP9 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: TP9 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_TP9 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: U9_SI (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: U9_SI (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_U9_SI => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: V9_SI (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: V9_SI (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_V9_SI => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: T9_SI (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: T9_SI (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_T9_SI => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: PD9_SI (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: PD9_SI (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_PD9_SI => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: VD9_SI (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: VD9_SI (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_VD9_SI => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: C9_SI (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: C9_SI (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_C9_SI => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: UF9 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: UF9 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_UF9 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: VF9 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: VF9 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_VF9 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: TF9 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: TF9 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_TF9 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: VDF9 (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: VDF9 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_VDF9 => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: U9_NL (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: U9_NL (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_U9_NL => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: V9_NL (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: V9_NL (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_V9_NL => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: T9_NL (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: T9_NL (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_T9_NL => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: PD9_NL (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: PD9_NL (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_PD9_NL => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: VD9_NL (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: VD9_NL (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_VD9_NL => NULL ()
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: C9_NL (:,:) => NULL ()
-!>REAL (KIND=JPRB)                      :: C9_NL (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_C9_NL => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: Q   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: Q (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_Q => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: Q_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: Q_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_Q_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: Q_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: Q_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_Q_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: Q_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: Q_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_Q_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: Q_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: Q_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_Q_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: Q_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: Q_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_Q_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: I   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: I (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_I => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: I_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: I_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_I_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: I_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: I_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_I_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: I_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: I_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_I_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: I_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: I_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_I_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: I_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: I_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_I_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: L   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: L (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_L => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: L_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: L_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_L_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: L_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: L_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_L_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: L_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: L_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_L_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: L_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: L_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_L_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: L_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: L_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_L_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: LCONV   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: LCONV (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_LCONV => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: LCONV_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: LCONV_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_LCONV_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: LCONV_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: LCONV_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_LCONV_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: LCONV_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: LCONV_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_LCONV_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: LCONV_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: LCONV_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_LCONV_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: LCONV_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: LCONV_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_LCONV_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: ICONV   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: ICONV (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_ICONV => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: ICONV_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: ICONV_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_ICONV_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: ICONV_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: ICONV_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_ICONV_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: ICONV_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: ICONV_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_ICONV_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: ICONV_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: ICONV_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_ICONV_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: ICONV_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: ICONV_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_ICONV_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: RCONV   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: RCONV (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_RCONV => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: RCONV_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: RCONV_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_RCONV_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: RCONV_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: RCONV_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_RCONV_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: RCONV_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: RCONV_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_RCONV_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: RCONV_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: RCONV_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_RCONV_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: RCONV_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: RCONV_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_RCONV_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SCONV   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: SCONV (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_SCONV => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SCONV_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: SCONV_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_SCONV_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SCONV_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: SCONV_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_SCONV_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SCONV_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: SCONV_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_SCONV_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SCONV_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: SCONV_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_SCONV_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SCONV_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: SCONV_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_SCONV_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: IRAD   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: IRAD (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_IRAD => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: IRAD_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: IRAD_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_IRAD_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: IRAD_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: IRAD_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_IRAD_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: IRAD_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: IRAD_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_IRAD_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: IRAD_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: IRAD_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_IRAD_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: IRAD_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: IRAD_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_IRAD_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: LRAD   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: LRAD (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_LRAD => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: LRAD_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: LRAD_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_LRAD_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: LRAD_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: LRAD_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_LRAD_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: LRAD_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: LRAD_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_LRAD_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: LRAD_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: LRAD_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_LRAD_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: LRAD_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: LRAD_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_LRAD_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: S   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: S (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_S => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: S_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: S_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_S_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: S_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: S_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_S_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: S_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: S_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_S_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: S_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: S_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_S_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: S_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: S_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_S_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: R   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: R (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_R => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: R_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: R_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_R_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: R_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: R_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_R_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: R_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: R_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_R_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: R_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: R_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_R_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: R_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: R_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_R_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: G   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: G (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_G => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: G_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: G_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_G_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: G_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: G_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_G_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: G_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: G_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_G_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: G_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: G_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_G_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: G_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: G_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_G_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: H   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: H (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_H => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: H_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: H_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_H_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: H_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: H_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_H_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: H_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: H_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_H_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: H_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: H_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_H_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: H_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: H_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_H_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: TKE   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: TKE (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_TKE => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: TKE_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: TKE_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_TKE_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: TKE_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: TKE_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_TKE_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: TKE_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: TKE_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_TKE_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: TKE_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: TKE_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_TKE_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: TKE_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: TKE_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_TKE_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: TTE   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: TTE (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_TTE => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: TTE_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: TTE_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_TTE_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: TTE_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: TTE_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_TTE_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: TTE_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: TTE_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_TTE_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: TTE_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: TTE_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_TTE_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: TTE_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: TTE_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_TTE_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: EFB1   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: EFB1 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_EFB1 => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: EFB1_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: EFB1_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_EFB1_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: EFB1_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: EFB1_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_EFB1_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: EFB1_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: EFB1_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_EFB1_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: EFB1_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: EFB1_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_EFB1_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: EFB1_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: EFB1_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_EFB1_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: EFB2   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: EFB2 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_EFB2 => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: EFB2_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: EFB2_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_EFB2_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: EFB2_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: EFB2_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_EFB2_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: EFB2_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: EFB2_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_EFB2_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: EFB2_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: EFB2_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_EFB2_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: EFB2_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: EFB2_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_EFB2_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: EFB3   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: EFB3 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_EFB3 => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: EFB3_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: EFB3_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_EFB3_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: EFB3_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: EFB3_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_EFB3_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: EFB3_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: EFB3_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_EFB3_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: EFB3_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: EFB3_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_EFB3_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: EFB3_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: EFB3_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_EFB3_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: A   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: A (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_A => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: A_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: A_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_A_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: A_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: A_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_A_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: A_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: A_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_A_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: A_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: A_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_A_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: A_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: A_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_A_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: O3   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: O3 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_O3 => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: O3_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: O3_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_O3_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: O3_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: O3_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_O3_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: O3_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: O3_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_O3_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: O3_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: O3_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_O3_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: O3_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: O3_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_O3_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SRC   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: SRC (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_SRC => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SRC_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: SRC_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_SRC_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SRC_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: SRC_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_SRC_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SRC_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: SRC_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_SRC_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SRC_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: SRC_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_SRC_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SRC_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: SRC_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_SRC_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: MXL   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: MXL (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_MXL => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: MXL_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: MXL_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_MXL_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: MXL_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: MXL_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_MXL_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: MXL_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: MXL_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_MXL_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: MXL_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: MXL_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_MXL_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: MXL_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: MXL_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_MXL_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SHTUR   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: SHTUR (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_SHTUR => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SHTUR_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: SHTUR_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_SHTUR_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SHTUR_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: SHTUR_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_SHTUR_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SHTUR_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: SHTUR_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_SHTUR_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SHTUR_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: SHTUR_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_SHTUR_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SHTUR_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: SHTUR_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_SHTUR_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: FQTUR   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: FQTUR (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_FQTUR => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: FQTUR_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: FQTUR_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_FQTUR_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: FQTUR_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: FQTUR_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_FQTUR_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: FQTUR_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: FQTUR_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_FQTUR_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: FQTUR_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: FQTUR_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_FQTUR_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: FQTUR_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: FQTUR_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_FQTUR_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: FSTUR   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: FSTUR (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_FSTUR => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: FSTUR_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: FSTUR_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_FSTUR_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: FSTUR_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: FSTUR_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_FSTUR_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: FSTUR_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: FSTUR_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_FSTUR_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: FSTUR_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: FSTUR_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_FSTUR_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: FSTUR_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: FSTUR_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_FSTUR_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: CPF   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: CPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_CPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: CPF_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: CPF_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_CPF_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: CPF_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: CPF_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_CPF_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: CPF_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: CPF_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_CPF_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: CPF_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: CPF_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_CPF_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: CPF_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: CPF_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_CPF_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SPF   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SPF_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: SPF_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_SPF_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SPF_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: SPF_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_SPF_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SPF_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: SPF_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_SPF_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SPF_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: SPF_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_SPF_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SPF_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: SPF_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_SPF_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: CVGQ   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: CVGQ (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_CVGQ => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: CVGQ_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: CVGQ_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_CVGQ_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: CVGQ_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: CVGQ_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_CVGQ_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: CVGQ_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: CVGQ_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_CVGQ_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: CVGQ_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: CVGQ_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_CVGQ_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: CVGQ_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: CVGQ_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_CVGQ_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: QVA   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: QVA (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_QVA => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: QVA_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: QVA_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_QVA_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: QVA_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: QVA_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_QVA_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: QVA_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: QVA_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_QVA_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: QVA_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: QVA_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_QVA_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: QVA_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: QVA_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_QVA_X => NULL ()
-
+  TYPE (CPG_SL1_3D_TYPE) :: U9
+  TYPE (CPG_SL1_3D_TYPE) :: V9
+  TYPE (CPG_SL1_3D_TYPE) :: T9
+  TYPE (CPG_SL1_3D_TYPE) :: PD9
+  TYPE (CPG_SL1_3D_TYPE) :: VD9
+  TYPE (CPG_SL1_3D_TYPE) :: NHX9
+  TYPE (CPG_SL1_3D_TYPE) :: UR0
+  TYPE (CPG_SL1_3D_TYPE) :: VR0
+  TYPE (CPG_SL1_3D_TYPE) :: ZR0
+  TYPE (CPG_SL1_3D_TYPE) :: WR0
+  TYPE (CPG_SL1_3D_TYPE) :: UR00
+  TYPE (CPG_SL1_3D_TYPE) :: VR00
+  TYPE (CPG_SL1_3D_TYPE) :: ZR00
+  TYPE (CPG_SL1_3D_TYPE) :: WR00
+  TYPE (CPG_SL1_3D_TYPE) :: WRA
+  TYPE (CPG_SL1_3D_TYPE) :: UR9
+  TYPE (CPG_SL1_3D_TYPE) :: VR9
+  TYPE (CPG_SL1_3D_TYPE) :: DBBC9
+  TYPE (CPG_SL1_3D_TYPE) :: DPHI9
+  TYPE (CPG_SL1_2D_TYPE) :: GWS9
+  TYPE (CPG_SL1_3D_TYPE) :: U0
+  TYPE (CPG_SL1_3D_TYPE) :: V0
+  TYPE (CPG_SL1_3D_TYPE) :: T0
+  TYPE (CPG_SL1_3D_TYPE) :: PD0
+  TYPE (CPG_SL1_3D_TYPE) :: VD0
+  TYPE (CPG_SL1_3D_TYPE) :: C9
+  TYPE (CPG_SL1_2D_TYPE) :: SP9
+  TYPE (CPG_SL1_2D_TYPE) :: SP0
+  TYPE (CPG_SL1_3D_TYPE) :: C0
+  TYPE (CPG_SL1_3D_TYPE) :: UP9
+  TYPE (CPG_SL1_3D_TYPE) :: VP9
+  TYPE (CPG_SL1_3D_TYPE) :: TP9
+  TYPE (CPG_SL1_3D_TYPE) :: U9_SI
+  TYPE (CPG_SL1_3D_TYPE) :: V9_SI
+  TYPE (CPG_SL1_3D_TYPE) :: T9_SI
+  TYPE (CPG_SL1_3D_TYPE) :: PD9_SI
+  TYPE (CPG_SL1_3D_TYPE) :: VD9_SI
+  TYPE (CPG_SL1_3D_TYPE) :: C9_SI
+  TYPE (CPG_SL1_3D_TYPE) :: UF9
+  TYPE (CPG_SL1_3D_TYPE) :: VF9
+  TYPE (CPG_SL1_3D_TYPE) :: TF9
+  TYPE (CPG_SL1_3D_TYPE) :: VDF9
+  TYPE (CPG_SL1_3D_TYPE) :: U9_NL
+  TYPE (CPG_SL1_3D_TYPE) :: V9_NL
+  TYPE (CPG_SL1_3D_TYPE) :: T9_NL
+  TYPE (CPG_SL1_3D_TYPE) :: PD9_NL
+  TYPE (CPG_SL1_3D_TYPE) :: VD9_NL
+  TYPE (CPG_SL1_3D_TYPE) :: C9_NL
+
+  TYPE (CPG_SL1_3D_TYPE) :: Q
+  TYPE (CPG_SL1_3D_TYPE) :: I
+  TYPE (CPG_SL1_3D_TYPE) :: L
+  TYPE (CPG_SL1_3D_TYPE) :: LCONV
+  TYPE (CPG_SL1_3D_TYPE) :: ICONV
+  TYPE (CPG_SL1_3D_TYPE) :: RCONV
+  TYPE (CPG_SL1_3D_TYPE) :: SCONV
+  TYPE (CPG_SL1_3D_TYPE) :: IRAD
+  TYPE (CPG_SL1_3D_TYPE) :: LRAD
+  TYPE (CPG_SL1_3D_TYPE) :: S
+  TYPE (CPG_SL1_3D_TYPE) :: R
+  TYPE (CPG_SL1_3D_TYPE) :: G
+  TYPE (CPG_SL1_3D_TYPE) :: H
+  TYPE (CPG_SL1_3D_TYPE) :: TKE
+  TYPE (CPG_SL1_3D_TYPE) :: TTE
+  TYPE (CPG_SL1_3D_TYPE) :: EFB1
+  TYPE (CPG_SL1_3D_TYPE) :: EFB2
+  TYPE (CPG_SL1_3D_TYPE) :: EFB3
+  TYPE (CPG_SL1_3D_TYPE) :: A
+  TYPE (CPG_SL1_3D_TYPE) :: O3
+  TYPE (CPG_SL1_3D_TYPE) :: SRC
+  TYPE (CPG_SL1_3D_TYPE) :: MXL
+  TYPE (CPG_SL1_3D_TYPE) :: SHTUR
+  TYPE (CPG_SL1_3D_TYPE) :: FQTUR
+  TYPE (CPG_SL1_3D_TYPE) :: FSTUR
+  TYPE (CPG_SL1_3D_TYPE) :: CPF
+  TYPE (CPG_SL1_3D_TYPE) :: SPF
+  TYPE (CPG_SL1_3D_TYPE) :: CVGQ
+  TYPE (CPG_SL1_3D_TYPE) :: QVA
   TYPE (CPG_SL1_3D_TYPE), ALLOCATABLE :: GHG (:)
   TYPE (CPG_SL1_3D_TYPE), ALLOCATABLE :: CHEM (:)
   TYPE (CPG_SL1_3D_TYPE), ALLOCATABLE :: AERO (:)
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: LRCH4   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: LRCH4 (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_LRCH4 => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: LRCH4_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: LRCH4_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_LRCH4_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: LRCH4_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: LRCH4_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_LRCH4_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: LRCH4_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: LRCH4_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_LRCH4_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: LRCH4_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: LRCH4_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_LRCH4_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: LRCH4_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: LRCH4_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_LRCH4_X => NULL ()
-
+  TYPE (CPG_SL1_3D_TYPE) :: LRCH4
   TYPE (CPG_SL1_3D_TYPE), ALLOCATABLE :: FORC (:)
   TYPE (CPG_SL1_3D_TYPE), ALLOCATABLE :: EZDIAG (:)
   TYPE (CPG_SL1_3D_TYPE), ALLOCATABLE :: ERA40 (:)
@@ -1397,344 +632,22 @@ TYPE CPG_SL1_TYPE
   TYPE (CPG_SL1_3D_TYPE), ALLOCATABLE :: AEROCLIM (:)
   TYPE (CPG_SL1_3D_TYPE), ALLOCATABLE :: UVP (:)
   TYPE (CPG_SL1_3D_TYPE), ALLOCATABLE :: PHYS (:)
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: PHYCTY   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: PHYCTY (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_PHYCTY => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: PHYCTY_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: PHYCTY_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_PHYCTY_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: PHYCTY_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: PHYCTY_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_PHYCTY_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: PHYCTY_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: PHYCTY_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_PHYCTY_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: PHYCTY_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: PHYCTY_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_PHYCTY_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: PHYCTY_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: PHYCTY_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_PHYCTY_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: RSPEC   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: RSPEC (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_RSPEC => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: RSPEC_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: RSPEC_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_RSPEC_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: RSPEC_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: RSPEC_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_RSPEC_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: RSPEC_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: RSPEC_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_RSPEC_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: RSPEC_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: RSPEC_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_RSPEC_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: RSPEC_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: RSPEC_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_RSPEC_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SDSAT   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: SDSAT (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_SDSAT => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SDSAT_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: SDSAT_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_SDSAT_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SDSAT_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: SDSAT_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_SDSAT_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SDSAT_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: SDSAT_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_SDSAT_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SDSAT_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: SDSAT_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_SDSAT_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: SDSAT_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: SDSAT_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_SDSAT_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: CVV   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: CVV (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_CVV => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: CVV_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: CVV_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_CVV_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: CVV_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: CVV_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_CVV_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: CVV_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: CVV_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_CVV_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: CVV_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: CVV_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_CVV_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: CVV_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: CVV_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_CVV_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: RKTH   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: RKTH (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_RKTH => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: RKTH_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: RKTH_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_RKTH_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: RKTH_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: RKTH_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_RKTH_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: RKTH_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: RKTH_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_RKTH_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: RKTH_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: RKTH_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_RKTH_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: RKTH_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: RKTH_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_RKTH_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: RKTQV   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: RKTQV (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_RKTQV => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: RKTQV_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: RKTQV_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_RKTQV_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: RKTQV_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: RKTQV_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_RKTQV_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: RKTQV_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: RKTQV_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_RKTQV_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: RKTQV_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: RKTQV_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_RKTQV_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: RKTQV_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: RKTQV_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_RKTQV_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: RKTQC   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: RKTQC (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_RKTQC => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: RKTQC_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: RKTQC_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_RKTQC_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: RKTQC_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: RKTQC_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_RKTQC_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: RKTQC_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: RKTQC_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_RKTQC_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: RKTQC_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: RKTQC_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_RKTQC_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: RKTQC_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: RKTQC_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_RKTQC_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: UOM   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: UOM (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_UOM => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: UOM_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: UOM_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_UOM_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: UOM_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: UOM_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_UOM_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: UOM_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: UOM_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_UOM_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: UOM_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: UOM_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_UOM_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: UOM_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: UOM_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_UOM_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: UAL   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: UAL (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_UAL => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: UAL_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: UAL_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_UAL_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: UAL_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: UAL_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_UAL_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: UAL_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: UAL_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_UAL_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: UAL_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: UAL_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_UAL_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: UAL_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: UAL_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_UAL_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: DOM   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: DOM (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_DOM => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: DOM_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: DOM_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_DOM_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: DOM_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: DOM_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_DOM_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: DOM_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: DOM_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_DOM_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: DOM_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: DOM_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_DOM_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: DOM_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: DOM_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_DOM_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: DAL   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: DAL (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_DAL => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: DAL_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: DAL_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_DAL_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: DAL_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: DAL_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_DAL_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: DAL_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: DAL_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_DAL_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: DAL_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: DAL_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_DAL_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: DAL_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: DAL_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_DAL_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: UEN   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: UEN (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_UEN => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: UEN_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: UEN_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_UEN_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: UEN_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: UEN_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_UEN_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: UEN_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: UEN_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_UEN_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: UEN_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: UEN_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_UEN_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: UEN_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: UEN_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_UEN_X => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: UNEBH   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: UNEBH (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_UNEBH => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: UNEBH_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: UNEBH_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_UNEBH_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: UNEBH_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: UNEBH_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_UNEBH_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: UNEBH_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: UNEBH_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_UNEBH_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: UNEBH_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: UNEBH_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_UNEBH_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: UNEBH_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: UNEBH_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_UNEBH_X => NULL ()
-
+  TYPE (CPG_SL1_3D_TYPE) :: PHYCTY
+  TYPE (CPG_SL1_3D_TYPE) :: RSPEC
+  TYPE (CPG_SL1_3D_TYPE) :: SDSAT
+  TYPE (CPG_SL1_3D_TYPE) :: CVV
+  TYPE (CPG_SL1_3D_TYPE) :: RKTH
+  TYPE (CPG_SL1_3D_TYPE) :: RKTQV
+  TYPE (CPG_SL1_3D_TYPE) :: RKTQC
+  TYPE (CPG_SL1_3D_TYPE) :: UOM
+  TYPE (CPG_SL1_3D_TYPE) :: UAL
+  TYPE (CPG_SL1_3D_TYPE) :: DOM
+  TYPE (CPG_SL1_3D_TYPE) :: DAL
+  TYPE (CPG_SL1_3D_TYPE) :: UEN
+  TYPE (CPG_SL1_3D_TYPE) :: UNEBH
   TYPE (CPG_SL1_3D_TYPE), ALLOCATABLE :: CRM (:)
   TYPE (CPG_SL1_3D_TYPE), ALLOCATABLE :: LIMA (:)
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: FSD   (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: FSD (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_FSD => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: FSD_F (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: FSD_F (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_FSD_F => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: FSD_SPF (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: FSD_SPF (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_FSD_SPF => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: FSD_SP (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: FSD_SP (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_FSD_SP => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: FSD_P (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: FSD_P (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_FSD_P => NULL ()
-
-  REAL (KIND=JPRB), POINTER, CONTIGUOUS :: FSD_X (:, :) => NULL ()
-!>REAL (KIND=JPRB)                      :: FSD_X (NPROMA, 0:NLEV+1)
-  TYPE (FIELD_3D), POINTER :: F_FSD_X => NULL ()
-
+  TYPE (CPG_SL1_3D_TYPE) :: FSD
   TYPE (CPG_SL1_3D_TYPE), ALLOCATABLE :: EXT (:)
 CONTAINS
   PROCEDURE :: INIT => CPG_SL1_TYPE_INIT
@@ -4107,3147 +3020,562 @@ ENDIF
 
 IF (YDTPTRSLB1%MSLB1U9 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1U9
-  SELF%F_U9 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%U9%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_U9 => NULL ()
+  SELF%U9%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1V9 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1V9
-  SELF%F_V9 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%V9%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_V9 => NULL ()
+  SELF%V9%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1T9 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1T9
-  SELF%F_T9 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%T9%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_T9 => NULL ()
+  SELF%T9%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1PD9 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1PD9
-  SELF%F_PD9 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%PD9%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_PD9 => NULL ()
+  SELF%PD9%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1VD9 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1VD9
-  SELF%F_VD9 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%VD9%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_VD9 => NULL ()
+  SELF%VD9%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1NHX9 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1NHX9
-  SELF%F_NHX9 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%NHX9%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_NHX9 => NULL ()
+  SELF%NHX9%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1UR0 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1UR0
-  SELF%F_UR0 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%UR0%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_UR0 => NULL ()
+  SELF%UR0%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1VR0 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1VR0
-  SELF%F_VR0 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%VR0%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_VR0 => NULL ()
+  SELF%VR0%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1ZR0 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1ZR0
-  SELF%F_ZR0 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%ZR0%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_ZR0 => NULL ()
+  SELF%ZR0%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1WR0 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1WR0
-  SELF%F_WR0 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%WR0%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_WR0 => NULL ()
+  SELF%WR0%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1UR00 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1UR00
-  SELF%F_UR00 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%UR00%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_UR00 => NULL ()
+  SELF%UR00%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1VR00 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1VR00
-  SELF%F_VR00 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%VR00%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_VR00 => NULL ()
+  SELF%VR00%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1ZR00 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1ZR00
-  SELF%F_ZR00 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%ZR00%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_ZR00 => NULL ()
+  SELF%ZR00%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1WR00 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1WR00
-  SELF%F_WR00 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%WR00%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_WR00 => NULL ()
+  SELF%WR00%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1WRA > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1WRA
-  SELF%F_WRA => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%WRA%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_WRA => NULL ()
+  SELF%WRA%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1UR9 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1UR9
-  SELF%F_UR9 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%UR9%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_UR9 => NULL ()
+  SELF%UR9%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1VR9 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1VR9
-  SELF%F_VR9 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%VR9%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_VR9 => NULL ()
+  SELF%VR9%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1DBBC9 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1DBBC9
-  SELF%F_DBBC9 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%DBBC9%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_DBBC9 => NULL ()
+  SELF%DBBC9%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1DPHI9 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1DPHI9
-  SELF%F_DPHI9 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%DPHI9%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_DPHI9 => NULL ()
+  SELF%DPHI9%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1GWS9 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1GWS9
-  SELF%F_GWS9 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD, :), PERSISTENT=LLPERSISTENT)
+  SELF%GWS9%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD, :), PERSISTENT=LLPERSISTENT)
 ELSE
-  SELF%F_GWS9 => NULL ()
+  SELF%GWS9%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1U0 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1U0
-  SELF%F_U0 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%U0%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_U0 => NULL ()
+  SELF%U0%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1V0 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1V0
-  SELF%F_V0 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%V0%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_V0 => NULL ()
+  SELF%V0%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1T0 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1T0
-  SELF%F_T0 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%T0%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_T0 => NULL ()
+  SELF%T0%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1PD0 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1PD0
-  SELF%F_PD0 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%PD0%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_PD0 => NULL ()
+  SELF%PD0%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1VD0 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1VD0
-  SELF%F_VD0 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%VD0%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_VD0 => NULL ()
+  SELF%VD0%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1C9 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1C9
-  SELF%F_C9 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%C9%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_C9 => NULL ()
+  SELF%C9%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1SP9 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1SP9
-  SELF%F_SP9 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD, :), PERSISTENT=LLPERSISTENT)
+  SELF%SP9%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD, :), PERSISTENT=LLPERSISTENT)
 ELSE
-  SELF%F_SP9 => NULL ()
+  SELF%SP9%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1SP0 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1SP0
-  SELF%F_SP0 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD, :), PERSISTENT=LLPERSISTENT)
+  SELF%SP0%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD, :), PERSISTENT=LLPERSISTENT)
 ELSE
-  SELF%F_SP0 => NULL ()
+  SELF%SP0%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1C0 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1C0
-  SELF%F_C0 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%C0%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_C0 => NULL ()
+  SELF%C0%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1UP9 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1UP9
-  SELF%F_UP9 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%UP9%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_UP9 => NULL ()
+  SELF%UP9%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1VP9 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1VP9
-  SELF%F_VP9 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%VP9%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_VP9 => NULL ()
+  SELF%VP9%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1TP9 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1TP9
-  SELF%F_TP9 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%TP9%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_TP9 => NULL ()
+  SELF%TP9%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1U9_SI > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1U9_SI
-  SELF%F_U9_SI => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%U9_SI%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_U9_SI => NULL ()
+  SELF%U9_SI%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1V9_SI > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1V9_SI
-  SELF%F_V9_SI => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%V9_SI%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_V9_SI => NULL ()
+  SELF%V9_SI%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1T9_SI > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1T9_SI
-  SELF%F_T9_SI => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%T9_SI%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_T9_SI => NULL ()
+  SELF%T9_SI%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1PD9_SI > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1PD9_SI
-  SELF%F_PD9_SI => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%PD9_SI%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_PD9_SI => NULL ()
+  SELF%PD9_SI%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1VD9_SI > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1VD9_SI
-  SELF%F_VD9_SI => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%VD9_SI%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_VD9_SI => NULL ()
+  SELF%VD9_SI%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1C9_SI > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1C9_SI
-  SELF%F_C9_SI => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%C9_SI%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_C9_SI => NULL ()
+  SELF%C9_SI%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1UF9 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1UF9
-  SELF%F_UF9 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%UF9%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_UF9 => NULL ()
+  SELF%UF9%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1VF9 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1VF9
-  SELF%F_VF9 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%VF9%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_VF9 => NULL ()
+  SELF%VF9%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1TF9 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1TF9
-  SELF%F_TF9 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%TF9%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_TF9 => NULL ()
+  SELF%TF9%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1VDF9 > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1VDF9
-  SELF%F_VDF9 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%VDF9%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_VDF9 => NULL ()
+  SELF%VDF9%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1U9_NL > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1U9_NL
-  SELF%F_U9_NL => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%U9_NL%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_U9_NL => NULL ()
+  SELF%U9_NL%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1V9_NL > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1V9_NL
-  SELF%F_V9_NL => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%V9_NL%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_V9_NL => NULL ()
+  SELF%V9_NL%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1T9_NL > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1T9_NL
-  SELF%F_T9_NL => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%T9_NL%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_T9_NL => NULL ()
+  SELF%T9_NL%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1PD9_NL > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1PD9_NL
-  SELF%F_PD9_NL => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%PD9_NL%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_PD9_NL => NULL ()
+  SELF%PD9_NL%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1VD9_NL > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1VD9_NL
-  SELF%F_VD9_NL => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%VD9_NL%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_VD9_NL => NULL ()
+  SELF%VD9_NL%F_P => NULL ()
 ENDIF
 IF (YDTPTRSLB1%MSLB1C9_NL > 0) THEN
   JFLD = YDTPTRSLB1%MSLB1C9_NL
-  SELF%F_C9_NL => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  SELF%C9_NL%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
 ELSE
-  SELF%F_C9_NL => NULL ()
+  SELF%C9_NL%F_P => NULL ()
 ENDIF
 
-IF (YGFL%YQ%MP_SL1 > 0 .AND. YGFL%YQ%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YQ%MP_SL1-1)*(NLEV+2)
-  SELF%F_Q => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_Q => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YQ%MP_SL1 > 0 .AND. YGFL%YQ%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YQ%MP_SL1-1)*(NLEV+2)
-    SELF%F_Q_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_Q_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YQ%MP_SPL > 0 .AND. YGFL%YQ%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YQ%MP_SPL-1)*(NLEV+2)
-  SELF%F_Q_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_Q_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YQ%MP_SPL > 0 .AND. YGFL%YQ%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YQ%MP_SPL-1)*(NLEV+2)
-  SELF%F_Q_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_Q_SP => NULL ()
-ENDIF
-
-IF (YGFL%YQ%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YQ%MGFL-1)*(NLEV+2)
-  SELF%F_Q_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_Q_P => NULL ()
-ENDIF
-
-IF (YGFL%YQ%MP_SLX > 0 .AND. YGFL%YQ%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YQ%MP_SLX-1)*(NLEV+2)
-  SELF%F_Q_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_Q_X => NULL ()
-ENDIF
-
-IF (YGFL%YI%MP_SL1 > 0 .AND. YGFL%YI%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YI%MP_SL1-1)*(NLEV+2)
-  SELF%F_I => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_I => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YI%MP_SL1 > 0 .AND. YGFL%YI%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YI%MP_SL1-1)*(NLEV+2)
-    SELF%F_I_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_I_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YI%MP_SPL > 0 .AND. YGFL%YI%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YI%MP_SPL-1)*(NLEV+2)
-  SELF%F_I_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_I_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YI%MP_SPL > 0 .AND. YGFL%YI%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YI%MP_SPL-1)*(NLEV+2)
-  SELF%F_I_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_I_SP => NULL ()
-ENDIF
-
-IF (YGFL%YI%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YI%MGFL-1)*(NLEV+2)
-  SELF%F_I_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_I_P => NULL ()
-ENDIF
-
-IF (YGFL%YI%MP_SLX > 0 .AND. YGFL%YI%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YI%MP_SLX-1)*(NLEV+2)
-  SELF%F_I_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_I_X => NULL ()
-ENDIF
-
-IF (YGFL%YL%MP_SL1 > 0 .AND. YGFL%YL%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YL%MP_SL1-1)*(NLEV+2)
-  SELF%F_L => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_L => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YL%MP_SL1 > 0 .AND. YGFL%YL%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YL%MP_SL1-1)*(NLEV+2)
-    SELF%F_L_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_L_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YL%MP_SPL > 0 .AND. YGFL%YL%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YL%MP_SPL-1)*(NLEV+2)
-  SELF%F_L_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_L_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YL%MP_SPL > 0 .AND. YGFL%YL%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YL%MP_SPL-1)*(NLEV+2)
-  SELF%F_L_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_L_SP => NULL ()
-ENDIF
-
-IF (YGFL%YL%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YL%MGFL-1)*(NLEV+2)
-  SELF%F_L_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_L_P => NULL ()
-ENDIF
-
-IF (YGFL%YL%MP_SLX > 0 .AND. YGFL%YL%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YL%MP_SLX-1)*(NLEV+2)
-  SELF%F_L_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_L_X => NULL ()
-ENDIF
-
-IF (YGFL%YLCONV%MP_SL1 > 0 .AND. YGFL%YLCONV%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YLCONV%MP_SL1-1)*(NLEV+2)
-  SELF%F_LCONV => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_LCONV => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YLCONV%MP_SL1 > 0 .AND. YGFL%YLCONV%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YLCONV%MP_SL1-1)*(NLEV+2)
-    SELF%F_LCONV_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_LCONV_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YLCONV%MP_SPL > 0 .AND. YGFL%YLCONV%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YLCONV%MP_SPL-1)*(NLEV+2)
-  SELF%F_LCONV_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_LCONV_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YLCONV%MP_SPL > 0 .AND. YGFL%YLCONV%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YLCONV%MP_SPL-1)*(NLEV+2)
-  SELF%F_LCONV_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_LCONV_SP => NULL ()
-ENDIF
-
-IF (YGFL%YLCONV%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YLCONV%MGFL-1)*(NLEV+2)
-  SELF%F_LCONV_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_LCONV_P => NULL ()
-ENDIF
-
-IF (YGFL%YLCONV%MP_SLX > 0 .AND. YGFL%YLCONV%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YLCONV%MP_SLX-1)*(NLEV+2)
-  SELF%F_LCONV_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_LCONV_X => NULL ()
-ENDIF
-
-IF (YGFL%YICONV%MP_SL1 > 0 .AND. YGFL%YICONV%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YICONV%MP_SL1-1)*(NLEV+2)
-  SELF%F_ICONV => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_ICONV => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YICONV%MP_SL1 > 0 .AND. YGFL%YICONV%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YICONV%MP_SL1-1)*(NLEV+2)
-    SELF%F_ICONV_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_ICONV_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YICONV%MP_SPL > 0 .AND. YGFL%YICONV%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YICONV%MP_SPL-1)*(NLEV+2)
-  SELF%F_ICONV_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_ICONV_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YICONV%MP_SPL > 0 .AND. YGFL%YICONV%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YICONV%MP_SPL-1)*(NLEV+2)
-  SELF%F_ICONV_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_ICONV_SP => NULL ()
-ENDIF
-
-IF (YGFL%YICONV%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YICONV%MGFL-1)*(NLEV+2)
-  SELF%F_ICONV_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_ICONV_P => NULL ()
-ENDIF
-
-IF (YGFL%YICONV%MP_SLX > 0 .AND. YGFL%YICONV%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YICONV%MP_SLX-1)*(NLEV+2)
-  SELF%F_ICONV_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_ICONV_X => NULL ()
-ENDIF
-
-IF (YGFL%YRCONV%MP_SL1 > 0 .AND. YGFL%YRCONV%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YRCONV%MP_SL1-1)*(NLEV+2)
-  SELF%F_RCONV => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_RCONV => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YRCONV%MP_SL1 > 0 .AND. YGFL%YRCONV%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YRCONV%MP_SL1-1)*(NLEV+2)
-    SELF%F_RCONV_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_RCONV_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YRCONV%MP_SPL > 0 .AND. YGFL%YRCONV%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YRCONV%MP_SPL-1)*(NLEV+2)
-  SELF%F_RCONV_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_RCONV_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YRCONV%MP_SPL > 0 .AND. YGFL%YRCONV%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YRCONV%MP_SPL-1)*(NLEV+2)
-  SELF%F_RCONV_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_RCONV_SP => NULL ()
-ENDIF
-
-IF (YGFL%YRCONV%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YRCONV%MGFL-1)*(NLEV+2)
-  SELF%F_RCONV_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_RCONV_P => NULL ()
-ENDIF
-
-IF (YGFL%YRCONV%MP_SLX > 0 .AND. YGFL%YRCONV%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YRCONV%MP_SLX-1)*(NLEV+2)
-  SELF%F_RCONV_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_RCONV_X => NULL ()
-ENDIF
-
-IF (YGFL%YSCONV%MP_SL1 > 0 .AND. YGFL%YSCONV%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YSCONV%MP_SL1-1)*(NLEV+2)
-  SELF%F_SCONV => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_SCONV => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YSCONV%MP_SL1 > 0 .AND. YGFL%YSCONV%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YSCONV%MP_SL1-1)*(NLEV+2)
-    SELF%F_SCONV_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_SCONV_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YSCONV%MP_SPL > 0 .AND. YGFL%YSCONV%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YSCONV%MP_SPL-1)*(NLEV+2)
-  SELF%F_SCONV_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_SCONV_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YSCONV%MP_SPL > 0 .AND. YGFL%YSCONV%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YSCONV%MP_SPL-1)*(NLEV+2)
-  SELF%F_SCONV_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_SCONV_SP => NULL ()
-ENDIF
-
-IF (YGFL%YSCONV%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YSCONV%MGFL-1)*(NLEV+2)
-  SELF%F_SCONV_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_SCONV_P => NULL ()
-ENDIF
-
-IF (YGFL%YSCONV%MP_SLX > 0 .AND. YGFL%YSCONV%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YSCONV%MP_SLX-1)*(NLEV+2)
-  SELF%F_SCONV_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_SCONV_X => NULL ()
-ENDIF
-
-IF (YGFL%YIRAD%MP_SL1 > 0 .AND. YGFL%YIRAD%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YIRAD%MP_SL1-1)*(NLEV+2)
-  SELF%F_IRAD => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_IRAD => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YIRAD%MP_SL1 > 0 .AND. YGFL%YIRAD%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YIRAD%MP_SL1-1)*(NLEV+2)
-    SELF%F_IRAD_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_IRAD_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YIRAD%MP_SPL > 0 .AND. YGFL%YIRAD%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YIRAD%MP_SPL-1)*(NLEV+2)
-  SELF%F_IRAD_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_IRAD_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YIRAD%MP_SPL > 0 .AND. YGFL%YIRAD%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YIRAD%MP_SPL-1)*(NLEV+2)
-  SELF%F_IRAD_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_IRAD_SP => NULL ()
-ENDIF
-
-IF (YGFL%YIRAD%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YIRAD%MGFL-1)*(NLEV+2)
-  SELF%F_IRAD_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_IRAD_P => NULL ()
-ENDIF
-
-IF (YGFL%YIRAD%MP_SLX > 0 .AND. YGFL%YIRAD%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YIRAD%MP_SLX-1)*(NLEV+2)
-  SELF%F_IRAD_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_IRAD_X => NULL ()
-ENDIF
-
-IF (YGFL%YLRAD%MP_SL1 > 0 .AND. YGFL%YLRAD%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YLRAD%MP_SL1-1)*(NLEV+2)
-  SELF%F_LRAD => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_LRAD => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YLRAD%MP_SL1 > 0 .AND. YGFL%YLRAD%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YLRAD%MP_SL1-1)*(NLEV+2)
-    SELF%F_LRAD_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_LRAD_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YLRAD%MP_SPL > 0 .AND. YGFL%YLRAD%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YLRAD%MP_SPL-1)*(NLEV+2)
-  SELF%F_LRAD_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_LRAD_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YLRAD%MP_SPL > 0 .AND. YGFL%YLRAD%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YLRAD%MP_SPL-1)*(NLEV+2)
-  SELF%F_LRAD_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_LRAD_SP => NULL ()
-ENDIF
-
-IF (YGFL%YLRAD%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YLRAD%MGFL-1)*(NLEV+2)
-  SELF%F_LRAD_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_LRAD_P => NULL ()
-ENDIF
-
-IF (YGFL%YLRAD%MP_SLX > 0 .AND. YGFL%YLRAD%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YLRAD%MP_SLX-1)*(NLEV+2)
-  SELF%F_LRAD_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_LRAD_X => NULL ()
-ENDIF
-
-IF (YGFL%YS%MP_SL1 > 0 .AND. YGFL%YS%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YS%MP_SL1-1)*(NLEV+2)
-  SELF%F_S => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_S => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YS%MP_SL1 > 0 .AND. YGFL%YS%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YS%MP_SL1-1)*(NLEV+2)
-    SELF%F_S_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_S_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YS%MP_SPL > 0 .AND. YGFL%YS%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YS%MP_SPL-1)*(NLEV+2)
-  SELF%F_S_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_S_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YS%MP_SPL > 0 .AND. YGFL%YS%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YS%MP_SPL-1)*(NLEV+2)
-  SELF%F_S_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_S_SP => NULL ()
-ENDIF
-
-IF (YGFL%YS%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YS%MGFL-1)*(NLEV+2)
-  SELF%F_S_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_S_P => NULL ()
-ENDIF
-
-IF (YGFL%YS%MP_SLX > 0 .AND. YGFL%YS%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YS%MP_SLX-1)*(NLEV+2)
-  SELF%F_S_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_S_X => NULL ()
-ENDIF
-
-IF (YGFL%YR%MP_SL1 > 0 .AND. YGFL%YR%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YR%MP_SL1-1)*(NLEV+2)
-  SELF%F_R => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_R => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YR%MP_SL1 > 0 .AND. YGFL%YR%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YR%MP_SL1-1)*(NLEV+2)
-    SELF%F_R_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_R_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YR%MP_SPL > 0 .AND. YGFL%YR%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YR%MP_SPL-1)*(NLEV+2)
-  SELF%F_R_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_R_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YR%MP_SPL > 0 .AND. YGFL%YR%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YR%MP_SPL-1)*(NLEV+2)
-  SELF%F_R_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_R_SP => NULL ()
-ENDIF
-
-IF (YGFL%YR%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YR%MGFL-1)*(NLEV+2)
-  SELF%F_R_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_R_P => NULL ()
-ENDIF
-
-IF (YGFL%YR%MP_SLX > 0 .AND. YGFL%YR%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YR%MP_SLX-1)*(NLEV+2)
-  SELF%F_R_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_R_X => NULL ()
-ENDIF
-
-IF (YGFL%YG%MP_SL1 > 0 .AND. YGFL%YG%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YG%MP_SL1-1)*(NLEV+2)
-  SELF%F_G => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_G => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YG%MP_SL1 > 0 .AND. YGFL%YG%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YG%MP_SL1-1)*(NLEV+2)
-    SELF%F_G_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_G_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YG%MP_SPL > 0 .AND. YGFL%YG%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YG%MP_SPL-1)*(NLEV+2)
-  SELF%F_G_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_G_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YG%MP_SPL > 0 .AND. YGFL%YG%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YG%MP_SPL-1)*(NLEV+2)
-  SELF%F_G_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_G_SP => NULL ()
-ENDIF
-
-IF (YGFL%YG%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YG%MGFL-1)*(NLEV+2)
-  SELF%F_G_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_G_P => NULL ()
-ENDIF
-
-IF (YGFL%YG%MP_SLX > 0 .AND. YGFL%YG%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YG%MP_SLX-1)*(NLEV+2)
-  SELF%F_G_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_G_X => NULL ()
-ENDIF
-
-IF (YGFL%YH%MP_SL1 > 0 .AND. YGFL%YH%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YH%MP_SL1-1)*(NLEV+2)
-  SELF%F_H => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_H => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YH%MP_SL1 > 0 .AND. YGFL%YH%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YH%MP_SL1-1)*(NLEV+2)
-    SELF%F_H_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_H_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YH%MP_SPL > 0 .AND. YGFL%YH%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YH%MP_SPL-1)*(NLEV+2)
-  SELF%F_H_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_H_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YH%MP_SPL > 0 .AND. YGFL%YH%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YH%MP_SPL-1)*(NLEV+2)
-  SELF%F_H_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_H_SP => NULL ()
-ENDIF
-
-IF (YGFL%YH%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YH%MGFL-1)*(NLEV+2)
-  SELF%F_H_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_H_P => NULL ()
-ENDIF
-
-IF (YGFL%YH%MP_SLX > 0 .AND. YGFL%YH%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YH%MP_SLX-1)*(NLEV+2)
-  SELF%F_H_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_H_X => NULL ()
-ENDIF
-
-IF (YGFL%YTKE%MP_SL1 > 0 .AND. YGFL%YTKE%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YTKE%MP_SL1-1)*(NLEV+2)
-  SELF%F_TKE => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_TKE => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YTKE%MP_SL1 > 0 .AND. YGFL%YTKE%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YTKE%MP_SL1-1)*(NLEV+2)
-    SELF%F_TKE_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_TKE_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YTKE%MP_SPL > 0 .AND. YGFL%YTKE%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YTKE%MP_SPL-1)*(NLEV+2)
-  SELF%F_TKE_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_TKE_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YTKE%MP_SPL > 0 .AND. YGFL%YTKE%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YTKE%MP_SPL-1)*(NLEV+2)
-  SELF%F_TKE_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_TKE_SP => NULL ()
-ENDIF
-
-IF (YGFL%YTKE%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YTKE%MGFL-1)*(NLEV+2)
-  SELF%F_TKE_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_TKE_P => NULL ()
-ENDIF
-
-IF (YGFL%YTKE%MP_SLX > 0 .AND. YGFL%YTKE%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YTKE%MP_SLX-1)*(NLEV+2)
-  SELF%F_TKE_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_TKE_X => NULL ()
-ENDIF
-
-IF (YGFL%YTTE%MP_SL1 > 0 .AND. YGFL%YTTE%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YTTE%MP_SL1-1)*(NLEV+2)
-  SELF%F_TTE => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_TTE => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YTTE%MP_SL1 > 0 .AND. YGFL%YTTE%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YTTE%MP_SL1-1)*(NLEV+2)
-    SELF%F_TTE_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_TTE_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YTTE%MP_SPL > 0 .AND. YGFL%YTTE%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YTTE%MP_SPL-1)*(NLEV+2)
-  SELF%F_TTE_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_TTE_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YTTE%MP_SPL > 0 .AND. YGFL%YTTE%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YTTE%MP_SPL-1)*(NLEV+2)
-  SELF%F_TTE_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_TTE_SP => NULL ()
-ENDIF
-
-IF (YGFL%YTTE%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YTTE%MGFL-1)*(NLEV+2)
-  SELF%F_TTE_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_TTE_P => NULL ()
-ENDIF
-
-IF (YGFL%YTTE%MP_SLX > 0 .AND. YGFL%YTTE%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YTTE%MP_SLX-1)*(NLEV+2)
-  SELF%F_TTE_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_TTE_X => NULL ()
-ENDIF
-
-IF (YGFL%YEFB1%MP_SL1 > 0 .AND. YGFL%YEFB1%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YEFB1%MP_SL1-1)*(NLEV+2)
-  SELF%F_EFB1 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_EFB1 => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YEFB1%MP_SL1 > 0 .AND. YGFL%YEFB1%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YEFB1%MP_SL1-1)*(NLEV+2)
-    SELF%F_EFB1_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_EFB1_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YEFB1%MP_SPL > 0 .AND. YGFL%YEFB1%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YEFB1%MP_SPL-1)*(NLEV+2)
-  SELF%F_EFB1_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_EFB1_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YEFB1%MP_SPL > 0 .AND. YGFL%YEFB1%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YEFB1%MP_SPL-1)*(NLEV+2)
-  SELF%F_EFB1_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_EFB1_SP => NULL ()
-ENDIF
-
-IF (YGFL%YEFB1%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YEFB1%MGFL-1)*(NLEV+2)
-  SELF%F_EFB1_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_EFB1_P => NULL ()
-ENDIF
-
-IF (YGFL%YEFB1%MP_SLX > 0 .AND. YGFL%YEFB1%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YEFB1%MP_SLX-1)*(NLEV+2)
-  SELF%F_EFB1_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_EFB1_X => NULL ()
-ENDIF
-
-IF (YGFL%YEFB2%MP_SL1 > 0 .AND. YGFL%YEFB2%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YEFB2%MP_SL1-1)*(NLEV+2)
-  SELF%F_EFB2 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_EFB2 => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YEFB2%MP_SL1 > 0 .AND. YGFL%YEFB2%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YEFB2%MP_SL1-1)*(NLEV+2)
-    SELF%F_EFB2_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_EFB2_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YEFB2%MP_SPL > 0 .AND. YGFL%YEFB2%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YEFB2%MP_SPL-1)*(NLEV+2)
-  SELF%F_EFB2_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_EFB2_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YEFB2%MP_SPL > 0 .AND. YGFL%YEFB2%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YEFB2%MP_SPL-1)*(NLEV+2)
-  SELF%F_EFB2_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_EFB2_SP => NULL ()
-ENDIF
-
-IF (YGFL%YEFB2%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YEFB2%MGFL-1)*(NLEV+2)
-  SELF%F_EFB2_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_EFB2_P => NULL ()
-ENDIF
-
-IF (YGFL%YEFB2%MP_SLX > 0 .AND. YGFL%YEFB2%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YEFB2%MP_SLX-1)*(NLEV+2)
-  SELF%F_EFB2_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_EFB2_X => NULL ()
-ENDIF
-
-IF (YGFL%YEFB3%MP_SL1 > 0 .AND. YGFL%YEFB3%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YEFB3%MP_SL1-1)*(NLEV+2)
-  SELF%F_EFB3 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_EFB3 => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YEFB3%MP_SL1 > 0 .AND. YGFL%YEFB3%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YEFB3%MP_SL1-1)*(NLEV+2)
-    SELF%F_EFB3_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_EFB3_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YEFB3%MP_SPL > 0 .AND. YGFL%YEFB3%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YEFB3%MP_SPL-1)*(NLEV+2)
-  SELF%F_EFB3_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_EFB3_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YEFB3%MP_SPL > 0 .AND. YGFL%YEFB3%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YEFB3%MP_SPL-1)*(NLEV+2)
-  SELF%F_EFB3_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_EFB3_SP => NULL ()
-ENDIF
-
-IF (YGFL%YEFB3%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YEFB3%MGFL-1)*(NLEV+2)
-  SELF%F_EFB3_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_EFB3_P => NULL ()
-ENDIF
-
-IF (YGFL%YEFB3%MP_SLX > 0 .AND. YGFL%YEFB3%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YEFB3%MP_SLX-1)*(NLEV+2)
-  SELF%F_EFB3_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_EFB3_X => NULL ()
-ENDIF
-
-IF (YGFL%YA%MP_SL1 > 0 .AND. YGFL%YA%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YA%MP_SL1-1)*(NLEV+2)
-  SELF%F_A => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_A => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YA%MP_SL1 > 0 .AND. YGFL%YA%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YA%MP_SL1-1)*(NLEV+2)
-    SELF%F_A_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_A_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YA%MP_SPL > 0 .AND. YGFL%YA%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YA%MP_SPL-1)*(NLEV+2)
-  SELF%F_A_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_A_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YA%MP_SPL > 0 .AND. YGFL%YA%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YA%MP_SPL-1)*(NLEV+2)
-  SELF%F_A_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_A_SP => NULL ()
-ENDIF
-
-IF (YGFL%YA%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YA%MGFL-1)*(NLEV+2)
-  SELF%F_A_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_A_P => NULL ()
-ENDIF
-
-IF (YGFL%YA%MP_SLX > 0 .AND. YGFL%YA%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YA%MP_SLX-1)*(NLEV+2)
-  SELF%F_A_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_A_X => NULL ()
-ENDIF
-
-IF (YGFL%YO3%MP_SL1 > 0 .AND. YGFL%YO3%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YO3%MP_SL1-1)*(NLEV+2)
-  SELF%F_O3 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_O3 => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YO3%MP_SL1 > 0 .AND. YGFL%YO3%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YO3%MP_SL1-1)*(NLEV+2)
-    SELF%F_O3_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_O3_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YO3%MP_SPL > 0 .AND. YGFL%YO3%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YO3%MP_SPL-1)*(NLEV+2)
-  SELF%F_O3_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_O3_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YO3%MP_SPL > 0 .AND. YGFL%YO3%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YO3%MP_SPL-1)*(NLEV+2)
-  SELF%F_O3_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_O3_SP => NULL ()
-ENDIF
-
-IF (YGFL%YO3%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YO3%MGFL-1)*(NLEV+2)
-  SELF%F_O3_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_O3_P => NULL ()
-ENDIF
-
-IF (YGFL%YO3%MP_SLX > 0 .AND. YGFL%YO3%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YO3%MP_SLX-1)*(NLEV+2)
-  SELF%F_O3_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_O3_X => NULL ()
-ENDIF
-
-IF (YGFL%YSRC%MP_SL1 > 0 .AND. YGFL%YSRC%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YSRC%MP_SL1-1)*(NLEV+2)
-  SELF%F_SRC => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_SRC => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YSRC%MP_SL1 > 0 .AND. YGFL%YSRC%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YSRC%MP_SL1-1)*(NLEV+2)
-    SELF%F_SRC_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_SRC_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YSRC%MP_SPL > 0 .AND. YGFL%YSRC%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YSRC%MP_SPL-1)*(NLEV+2)
-  SELF%F_SRC_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_SRC_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YSRC%MP_SPL > 0 .AND. YGFL%YSRC%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YSRC%MP_SPL-1)*(NLEV+2)
-  SELF%F_SRC_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_SRC_SP => NULL ()
-ENDIF
-
-IF (YGFL%YSRC%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YSRC%MGFL-1)*(NLEV+2)
-  SELF%F_SRC_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_SRC_P => NULL ()
-ENDIF
-
-IF (YGFL%YSRC%MP_SLX > 0 .AND. YGFL%YSRC%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YSRC%MP_SLX-1)*(NLEV+2)
-  SELF%F_SRC_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_SRC_X => NULL ()
-ENDIF
-
-IF (YGFL%YMXL%MP_SL1 > 0 .AND. YGFL%YMXL%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YMXL%MP_SL1-1)*(NLEV+2)
-  SELF%F_MXL => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_MXL => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YMXL%MP_SL1 > 0 .AND. YGFL%YMXL%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YMXL%MP_SL1-1)*(NLEV+2)
-    SELF%F_MXL_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_MXL_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YMXL%MP_SPL > 0 .AND. YGFL%YMXL%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YMXL%MP_SPL-1)*(NLEV+2)
-  SELF%F_MXL_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_MXL_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YMXL%MP_SPL > 0 .AND. YGFL%YMXL%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YMXL%MP_SPL-1)*(NLEV+2)
-  SELF%F_MXL_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_MXL_SP => NULL ()
-ENDIF
-
-IF (YGFL%YMXL%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YMXL%MGFL-1)*(NLEV+2)
-  SELF%F_MXL_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_MXL_P => NULL ()
-ENDIF
-
-IF (YGFL%YMXL%MP_SLX > 0 .AND. YGFL%YMXL%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YMXL%MP_SLX-1)*(NLEV+2)
-  SELF%F_MXL_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_MXL_X => NULL ()
-ENDIF
-
-IF (YGFL%YSHTUR%MP_SL1 > 0 .AND. YGFL%YSHTUR%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YSHTUR%MP_SL1-1)*(NLEV+2)
-  SELF%F_SHTUR => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_SHTUR => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YSHTUR%MP_SL1 > 0 .AND. YGFL%YSHTUR%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YSHTUR%MP_SL1-1)*(NLEV+2)
-    SELF%F_SHTUR_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_SHTUR_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YSHTUR%MP_SPL > 0 .AND. YGFL%YSHTUR%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YSHTUR%MP_SPL-1)*(NLEV+2)
-  SELF%F_SHTUR_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_SHTUR_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YSHTUR%MP_SPL > 0 .AND. YGFL%YSHTUR%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YSHTUR%MP_SPL-1)*(NLEV+2)
-  SELF%F_SHTUR_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_SHTUR_SP => NULL ()
-ENDIF
-
-IF (YGFL%YSHTUR%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YSHTUR%MGFL-1)*(NLEV+2)
-  SELF%F_SHTUR_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_SHTUR_P => NULL ()
-ENDIF
-
-IF (YGFL%YSHTUR%MP_SLX > 0 .AND. YGFL%YSHTUR%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YSHTUR%MP_SLX-1)*(NLEV+2)
-  SELF%F_SHTUR_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_SHTUR_X => NULL ()
-ENDIF
-
-IF (YGFL%YFQTUR%MP_SL1 > 0 .AND. YGFL%YFQTUR%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YFQTUR%MP_SL1-1)*(NLEV+2)
-  SELF%F_FQTUR => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_FQTUR => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YFQTUR%MP_SL1 > 0 .AND. YGFL%YFQTUR%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YFQTUR%MP_SL1-1)*(NLEV+2)
-    SELF%F_FQTUR_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_FQTUR_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YFQTUR%MP_SPL > 0 .AND. YGFL%YFQTUR%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YFQTUR%MP_SPL-1)*(NLEV+2)
-  SELF%F_FQTUR_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_FQTUR_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YFQTUR%MP_SPL > 0 .AND. YGFL%YFQTUR%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YFQTUR%MP_SPL-1)*(NLEV+2)
-  SELF%F_FQTUR_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_FQTUR_SP => NULL ()
-ENDIF
-
-IF (YGFL%YFQTUR%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YFQTUR%MGFL-1)*(NLEV+2)
-  SELF%F_FQTUR_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_FQTUR_P => NULL ()
-ENDIF
-
-IF (YGFL%YFQTUR%MP_SLX > 0 .AND. YGFL%YFQTUR%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YFQTUR%MP_SLX-1)*(NLEV+2)
-  SELF%F_FQTUR_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_FQTUR_X => NULL ()
-ENDIF
-
-IF (YGFL%YFSTUR%MP_SL1 > 0 .AND. YGFL%YFSTUR%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YFSTUR%MP_SL1-1)*(NLEV+2)
-  SELF%F_FSTUR => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_FSTUR => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YFSTUR%MP_SL1 > 0 .AND. YGFL%YFSTUR%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YFSTUR%MP_SL1-1)*(NLEV+2)
-    SELF%F_FSTUR_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_FSTUR_F => NULL ()
-  ENDIF
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%Q, YGFL%YQ)
 
-IF (YGFL%YFSTUR%MP_SPL > 0 .AND. YGFL%YFSTUR%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YFSTUR%MP_SPL-1)*(NLEV+2)
-  SELF%F_FSTUR_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_FSTUR_SPF => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%I, YGFL%YI)
 
-IF (YGFL%YFSTUR%MP_SPL > 0 .AND. YGFL%YFSTUR%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YFSTUR%MP_SPL-1)*(NLEV+2)
-  SELF%F_FSTUR_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_FSTUR_SP => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%L, YGFL%YL)
 
-IF (YGFL%YFSTUR%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YFSTUR%MGFL-1)*(NLEV+2)
-  SELF%F_FSTUR_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_FSTUR_P => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%LCONV, YGFL%YLCONV)
 
-IF (YGFL%YFSTUR%MP_SLX > 0 .AND. YGFL%YFSTUR%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YFSTUR%MP_SLX-1)*(NLEV+2)
-  SELF%F_FSTUR_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_FSTUR_X => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%ICONV, YGFL%YICONV)
 
-IF (YGFL%YCPF%MP_SL1 > 0 .AND. YGFL%YCPF%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YCPF%MP_SL1-1)*(NLEV+2)
-  SELF%F_CPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_CPF => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%RCONV, YGFL%YRCONV)
 
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YCPF%MP_SL1 > 0 .AND. YGFL%YCPF%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YCPF%MP_SL1-1)*(NLEV+2)
-    SELF%F_CPF_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_CPF_F => NULL ()
-  ENDIF
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%SCONV, YGFL%YSCONV)
 
-IF (YGFL%YCPF%MP_SPL > 0 .AND. YGFL%YCPF%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YCPF%MP_SPL-1)*(NLEV+2)
-  SELF%F_CPF_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_CPF_SPF => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%IRAD, YGFL%YIRAD)
 
-IF (YGFL%YCPF%MP_SPL > 0 .AND. YGFL%YCPF%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YCPF%MP_SPL-1)*(NLEV+2)
-  SELF%F_CPF_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_CPF_SP => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%LRAD, YGFL%YLRAD)
 
-IF (YGFL%YCPF%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YCPF%MGFL-1)*(NLEV+2)
-  SELF%F_CPF_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_CPF_P => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%S, YGFL%YS)
 
-IF (YGFL%YCPF%MP_SLX > 0 .AND. YGFL%YCPF%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YCPF%MP_SLX-1)*(NLEV+2)
-  SELF%F_CPF_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_CPF_X => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%R, YGFL%YR)
 
-IF (YGFL%YSPF%MP_SL1 > 0 .AND. YGFL%YSPF%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YSPF%MP_SL1-1)*(NLEV+2)
-  SELF%F_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_SPF => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%G, YGFL%YG)
 
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YSPF%MP_SL1 > 0 .AND. YGFL%YSPF%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YSPF%MP_SL1-1)*(NLEV+2)
-    SELF%F_SPF_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_SPF_F => NULL ()
-  ENDIF
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%H, YGFL%YH)
 
-IF (YGFL%YSPF%MP_SPL > 0 .AND. YGFL%YSPF%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YSPF%MP_SPL-1)*(NLEV+2)
-  SELF%F_SPF_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_SPF_SPF => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%TKE, YGFL%YTKE)
 
-IF (YGFL%YSPF%MP_SPL > 0 .AND. YGFL%YSPF%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YSPF%MP_SPL-1)*(NLEV+2)
-  SELF%F_SPF_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_SPF_SP => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%TTE, YGFL%YTTE)
 
-IF (YGFL%YSPF%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YSPF%MGFL-1)*(NLEV+2)
-  SELF%F_SPF_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_SPF_P => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%EFB1, YGFL%YEFB1)
 
-IF (YGFL%YSPF%MP_SLX > 0 .AND. YGFL%YSPF%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YSPF%MP_SLX-1)*(NLEV+2)
-  SELF%F_SPF_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_SPF_X => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%EFB2, YGFL%YEFB2)
 
-IF (YGFL%YCVGQ%MP_SL1 > 0 .AND. YGFL%YCVGQ%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YCVGQ%MP_SL1-1)*(NLEV+2)
-  SELF%F_CVGQ => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_CVGQ => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%EFB3, YGFL%YEFB3)
 
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YCVGQ%MP_SL1 > 0 .AND. YGFL%YCVGQ%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YCVGQ%MP_SL1-1)*(NLEV+2)
-    SELF%F_CVGQ_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_CVGQ_F => NULL ()
-  ENDIF
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%A, YGFL%YA)
 
-IF (YGFL%YCVGQ%MP_SPL > 0 .AND. YGFL%YCVGQ%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YCVGQ%MP_SPL-1)*(NLEV+2)
-  SELF%F_CVGQ_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_CVGQ_SPF => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%O3, YGFL%YO3)
 
-IF (YGFL%YCVGQ%MP_SPL > 0 .AND. YGFL%YCVGQ%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YCVGQ%MP_SPL-1)*(NLEV+2)
-  SELF%F_CVGQ_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_CVGQ_SP => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%SRC, YGFL%YSRC)
 
-IF (YGFL%YCVGQ%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YCVGQ%MGFL-1)*(NLEV+2)
-  SELF%F_CVGQ_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_CVGQ_P => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%MXL, YGFL%YMXL)
 
-IF (YGFL%YCVGQ%MP_SLX > 0 .AND. YGFL%YCVGQ%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YCVGQ%MP_SLX-1)*(NLEV+2)
-  SELF%F_CVGQ_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_CVGQ_X => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%SHTUR, YGFL%YSHTUR)
 
-IF (YGFL%YQVA%MP_SL1 > 0 .AND. YGFL%YQVA%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YQVA%MP_SL1-1)*(NLEV+2)
-  SELF%F_QVA => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_QVA => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%FQTUR, YGFL%YFQTUR)
 
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YQVA%MP_SL1 > 0 .AND. YGFL%YQVA%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YQVA%MP_SL1-1)*(NLEV+2)
-    SELF%F_QVA_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_QVA_F => NULL ()
-  ENDIF
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%FSTUR, YGFL%YFSTUR)
 
-IF (YGFL%YQVA%MP_SPL > 0 .AND. YGFL%YQVA%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YQVA%MP_SPL-1)*(NLEV+2)
-  SELF%F_QVA_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_QVA_SPF => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%CPF, YGFL%YCPF)
 
-IF (YGFL%YQVA%MP_SPL > 0 .AND. YGFL%YQVA%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YQVA%MP_SPL-1)*(NLEV+2)
-  SELF%F_QVA_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_QVA_SP => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%SPF, YGFL%YSPF)
 
-IF (YGFL%YQVA%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YQVA%MGFL-1)*(NLEV+2)
-  SELF%F_QVA_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_QVA_P => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%CVGQ, YGFL%YCVGQ)
 
-IF (YGFL%YQVA%MP_SLX > 0 .AND. YGFL%YQVA%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YQVA%MP_SLX-1)*(NLEV+2)
-  SELF%F_QVA_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_QVA_X => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%QVA, YGFL%YQVA)
 
 
 ALLOCATE (SELF%GHG (SIZE (YGFL%YGHG)))
 
 DO JGFL = 1, SIZE (YGFL%YGHG)
-
-  IF (YGFL%YGHG(JGFL)%MP_SL1 > 0 .AND. YGFL%YGHG(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YGHG(JGFL)%MP_SL1-1)*(NLEV+2)
-    SELF%GHG(JGFL)%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%GHG(JGFL)%F_P => NULL ()
-  ENDIF
-
-  IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-    IF (YGFL%YGHG(JGFL)%MP_SL1 > 0 .AND. YGFL%YGHG(JGFL)%MP1 > 0) THEN
-      JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YGHG(JGFL)%MP_SL1-1)*(NLEV+2)
-      SELF%GHG(JGFL)%F_P_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-    ELSE
-      SELF%GHG(JGFL)%F_P_F => NULL ()
-    ENDIF
-  ENDIF
-  
-  IF (YGFL%YGHG(JGFL)%MP_SPL > 0 .AND. YGFL%YGHG(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YGHG(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%GHG(JGFL)%F_P_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%GHG(JGFL)%F_P_SPF => NULL ()
-  ENDIF
-  
-  IF (YGFL%YGHG(JGFL)%MP_SPL > 0 .AND. YGFL%YGHG(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YGHG(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%GHG(JGFL)%F_P_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%GHG(JGFL)%F_P_SP => NULL ()
-  ENDIF
-  
-  IF (YGFL%YGHG(JGFL)%LPHY) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YGHG(JGFL)%MGFL-1)*(NLEV+2)
-    SELF%GHG(JGFL)%F_P_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%GHG(JGFL)%F_P_P => NULL ()
-  ENDIF
-  
-  IF (YGFL%YGHG(JGFL)%MP_SLX > 0 .AND. YGFL%YGHG(JGFL)%MP1 > 0) THEN
-    JFLD = ISLB1GFL9  + (YGFL%YGHG(JGFL)%MP_SLX-1)*(NLEV+2)
-    SELF%GHG(JGFL)%F_P_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%GHG(JGFL)%F_P_X => NULL ()
-  ENDIF
-
+  CALL CPG_SL1_TYPE_INIT_F3D (SELF%GHG(JGFL), YGFL%YGHG(JGFL))
 ENDDO
 
 
 ALLOCATE (SELF%CHEM (SIZE (YGFL%YCHEM)))
 
 DO JGFL = 1, SIZE (YGFL%YCHEM)
-
-  IF (YGFL%YCHEM(JGFL)%MP_SL1 > 0 .AND. YGFL%YCHEM(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YCHEM(JGFL)%MP_SL1-1)*(NLEV+2)
-    SELF%CHEM(JGFL)%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%CHEM(JGFL)%F_P => NULL ()
-  ENDIF
-
-  IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-    IF (YGFL%YCHEM(JGFL)%MP_SL1 > 0 .AND. YGFL%YCHEM(JGFL)%MP1 > 0) THEN
-      JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YCHEM(JGFL)%MP_SL1-1)*(NLEV+2)
-      SELF%CHEM(JGFL)%F_P_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-    ELSE
-      SELF%CHEM(JGFL)%F_P_F => NULL ()
-    ENDIF
-  ENDIF
-  
-  IF (YGFL%YCHEM(JGFL)%MP_SPL > 0 .AND. YGFL%YCHEM(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YCHEM(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%CHEM(JGFL)%F_P_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%CHEM(JGFL)%F_P_SPF => NULL ()
-  ENDIF
-  
-  IF (YGFL%YCHEM(JGFL)%MP_SPL > 0 .AND. YGFL%YCHEM(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YCHEM(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%CHEM(JGFL)%F_P_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%CHEM(JGFL)%F_P_SP => NULL ()
-  ENDIF
-  
-  IF (YGFL%YCHEM(JGFL)%LPHY) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YCHEM(JGFL)%MGFL-1)*(NLEV+2)
-    SELF%CHEM(JGFL)%F_P_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%CHEM(JGFL)%F_P_P => NULL ()
-  ENDIF
-  
-  IF (YGFL%YCHEM(JGFL)%MP_SLX > 0 .AND. YGFL%YCHEM(JGFL)%MP1 > 0) THEN
-    JFLD = ISLB1GFL9  + (YGFL%YCHEM(JGFL)%MP_SLX-1)*(NLEV+2)
-    SELF%CHEM(JGFL)%F_P_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%CHEM(JGFL)%F_P_X => NULL ()
-  ENDIF
-
+  CALL CPG_SL1_TYPE_INIT_F3D (SELF%CHEM(JGFL), YGFL%YCHEM(JGFL))
 ENDDO
 
 
 ALLOCATE (SELF%AERO (SIZE (YGFL%YAERO)))
 
 DO JGFL = 1, SIZE (YGFL%YAERO)
-
-  IF (YGFL%YAERO(JGFL)%MP_SL1 > 0 .AND. YGFL%YAERO(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YAERO(JGFL)%MP_SL1-1)*(NLEV+2)
-    SELF%AERO(JGFL)%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%AERO(JGFL)%F_P => NULL ()
-  ENDIF
-
-  IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-    IF (YGFL%YAERO(JGFL)%MP_SL1 > 0 .AND. YGFL%YAERO(JGFL)%MP1 > 0) THEN
-      JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YAERO(JGFL)%MP_SL1-1)*(NLEV+2)
-      SELF%AERO(JGFL)%F_P_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-    ELSE
-      SELF%AERO(JGFL)%F_P_F => NULL ()
-    ENDIF
-  ENDIF
-  
-  IF (YGFL%YAERO(JGFL)%MP_SPL > 0 .AND. YGFL%YAERO(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YAERO(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%AERO(JGFL)%F_P_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%AERO(JGFL)%F_P_SPF => NULL ()
-  ENDIF
-  
-  IF (YGFL%YAERO(JGFL)%MP_SPL > 0 .AND. YGFL%YAERO(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YAERO(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%AERO(JGFL)%F_P_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%AERO(JGFL)%F_P_SP => NULL ()
-  ENDIF
-  
-  IF (YGFL%YAERO(JGFL)%LPHY) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YAERO(JGFL)%MGFL-1)*(NLEV+2)
-    SELF%AERO(JGFL)%F_P_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%AERO(JGFL)%F_P_P => NULL ()
-  ENDIF
-  
-  IF (YGFL%YAERO(JGFL)%MP_SLX > 0 .AND. YGFL%YAERO(JGFL)%MP1 > 0) THEN
-    JFLD = ISLB1GFL9  + (YGFL%YAERO(JGFL)%MP_SLX-1)*(NLEV+2)
-    SELF%AERO(JGFL)%F_P_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%AERO(JGFL)%F_P_X => NULL ()
-  ENDIF
-
+  CALL CPG_SL1_TYPE_INIT_F3D (SELF%AERO(JGFL), YGFL%YAERO(JGFL))
 ENDDO
 
-IF (YGFL%YLRCH4%MP_SL1 > 0 .AND. YGFL%YLRCH4%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YLRCH4%MP_SL1-1)*(NLEV+2)
-  SELF%F_LRCH4 => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_LRCH4 => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YLRCH4%MP_SL1 > 0 .AND. YGFL%YLRCH4%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YLRCH4%MP_SL1-1)*(NLEV+2)
-    SELF%F_LRCH4_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_LRCH4_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YLRCH4%MP_SPL > 0 .AND. YGFL%YLRCH4%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YLRCH4%MP_SPL-1)*(NLEV+2)
-  SELF%F_LRCH4_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_LRCH4_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YLRCH4%MP_SPL > 0 .AND. YGFL%YLRCH4%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YLRCH4%MP_SPL-1)*(NLEV+2)
-  SELF%F_LRCH4_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_LRCH4_SP => NULL ()
-ENDIF
-
-IF (YGFL%YLRCH4%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YLRCH4%MGFL-1)*(NLEV+2)
-  SELF%F_LRCH4_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_LRCH4_P => NULL ()
-ENDIF
-
-IF (YGFL%YLRCH4%MP_SLX > 0 .AND. YGFL%YLRCH4%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YLRCH4%MP_SLX-1)*(NLEV+2)
-  SELF%F_LRCH4_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_LRCH4_X => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%LRCH4, YGFL%YLRCH4)
 
 
 ALLOCATE (SELF%FORC (SIZE (YGFL%YFORC)))
 
 DO JGFL = 1, SIZE (YGFL%YFORC)
-
-  IF (YGFL%YFORC(JGFL)%MP_SL1 > 0 .AND. YGFL%YFORC(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YFORC(JGFL)%MP_SL1-1)*(NLEV+2)
-    SELF%FORC(JGFL)%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%FORC(JGFL)%F_P => NULL ()
-  ENDIF
-
-  IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-    IF (YGFL%YFORC(JGFL)%MP_SL1 > 0 .AND. YGFL%YFORC(JGFL)%MP1 > 0) THEN
-      JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YFORC(JGFL)%MP_SL1-1)*(NLEV+2)
-      SELF%FORC(JGFL)%F_P_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-    ELSE
-      SELF%FORC(JGFL)%F_P_F => NULL ()
-    ENDIF
-  ENDIF
-  
-  IF (YGFL%YFORC(JGFL)%MP_SPL > 0 .AND. YGFL%YFORC(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YFORC(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%FORC(JGFL)%F_P_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%FORC(JGFL)%F_P_SPF => NULL ()
-  ENDIF
-  
-  IF (YGFL%YFORC(JGFL)%MP_SPL > 0 .AND. YGFL%YFORC(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YFORC(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%FORC(JGFL)%F_P_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%FORC(JGFL)%F_P_SP => NULL ()
-  ENDIF
-  
-  IF (YGFL%YFORC(JGFL)%LPHY) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YFORC(JGFL)%MGFL-1)*(NLEV+2)
-    SELF%FORC(JGFL)%F_P_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%FORC(JGFL)%F_P_P => NULL ()
-  ENDIF
-  
-  IF (YGFL%YFORC(JGFL)%MP_SLX > 0 .AND. YGFL%YFORC(JGFL)%MP1 > 0) THEN
-    JFLD = ISLB1GFL9  + (YGFL%YFORC(JGFL)%MP_SLX-1)*(NLEV+2)
-    SELF%FORC(JGFL)%F_P_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%FORC(JGFL)%F_P_X => NULL ()
-  ENDIF
-
+  CALL CPG_SL1_TYPE_INIT_F3D (SELF%FORC(JGFL), YGFL%YFORC(JGFL))
 ENDDO
 
 
 ALLOCATE (SELF%EZDIAG (SIZE (YGFL%YEZDIAG)))
 
 DO JGFL = 1, SIZE (YGFL%YEZDIAG)
-
-  IF (YGFL%YEZDIAG(JGFL)%MP_SL1 > 0 .AND. YGFL%YEZDIAG(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YEZDIAG(JGFL)%MP_SL1-1)*(NLEV+2)
-    SELF%EZDIAG(JGFL)%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%EZDIAG(JGFL)%F_P => NULL ()
-  ENDIF
-
-  IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-    IF (YGFL%YEZDIAG(JGFL)%MP_SL1 > 0 .AND. YGFL%YEZDIAG(JGFL)%MP1 > 0) THEN
-      JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YEZDIAG(JGFL)%MP_SL1-1)*(NLEV+2)
-      SELF%EZDIAG(JGFL)%F_P_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-    ELSE
-      SELF%EZDIAG(JGFL)%F_P_F => NULL ()
-    ENDIF
-  ENDIF
-  
-  IF (YGFL%YEZDIAG(JGFL)%MP_SPL > 0 .AND. YGFL%YEZDIAG(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YEZDIAG(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%EZDIAG(JGFL)%F_P_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%EZDIAG(JGFL)%F_P_SPF => NULL ()
-  ENDIF
-  
-  IF (YGFL%YEZDIAG(JGFL)%MP_SPL > 0 .AND. YGFL%YEZDIAG(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YEZDIAG(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%EZDIAG(JGFL)%F_P_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%EZDIAG(JGFL)%F_P_SP => NULL ()
-  ENDIF
-  
-  IF (YGFL%YEZDIAG(JGFL)%LPHY) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YEZDIAG(JGFL)%MGFL-1)*(NLEV+2)
-    SELF%EZDIAG(JGFL)%F_P_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%EZDIAG(JGFL)%F_P_P => NULL ()
-  ENDIF
-  
-  IF (YGFL%YEZDIAG(JGFL)%MP_SLX > 0 .AND. YGFL%YEZDIAG(JGFL)%MP1 > 0) THEN
-    JFLD = ISLB1GFL9  + (YGFL%YEZDIAG(JGFL)%MP_SLX-1)*(NLEV+2)
-    SELF%EZDIAG(JGFL)%F_P_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%EZDIAG(JGFL)%F_P_X => NULL ()
-  ENDIF
-
+  CALL CPG_SL1_TYPE_INIT_F3D (SELF%EZDIAG(JGFL), YGFL%YEZDIAG(JGFL))
 ENDDO
 
 
 ALLOCATE (SELF%ERA40 (SIZE (YGFL%YERA40)))
 
 DO JGFL = 1, SIZE (YGFL%YERA40)
-
-  IF (YGFL%YERA40(JGFL)%MP_SL1 > 0 .AND. YGFL%YERA40(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YERA40(JGFL)%MP_SL1-1)*(NLEV+2)
-    SELF%ERA40(JGFL)%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%ERA40(JGFL)%F_P => NULL ()
-  ENDIF
-
-  IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-    IF (YGFL%YERA40(JGFL)%MP_SL1 > 0 .AND. YGFL%YERA40(JGFL)%MP1 > 0) THEN
-      JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YERA40(JGFL)%MP_SL1-1)*(NLEV+2)
-      SELF%ERA40(JGFL)%F_P_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-    ELSE
-      SELF%ERA40(JGFL)%F_P_F => NULL ()
-    ENDIF
-  ENDIF
-  
-  IF (YGFL%YERA40(JGFL)%MP_SPL > 0 .AND. YGFL%YERA40(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YERA40(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%ERA40(JGFL)%F_P_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%ERA40(JGFL)%F_P_SPF => NULL ()
-  ENDIF
-  
-  IF (YGFL%YERA40(JGFL)%MP_SPL > 0 .AND. YGFL%YERA40(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YERA40(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%ERA40(JGFL)%F_P_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%ERA40(JGFL)%F_P_SP => NULL ()
-  ENDIF
-  
-  IF (YGFL%YERA40(JGFL)%LPHY) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YERA40(JGFL)%MGFL-1)*(NLEV+2)
-    SELF%ERA40(JGFL)%F_P_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%ERA40(JGFL)%F_P_P => NULL ()
-  ENDIF
-  
-  IF (YGFL%YERA40(JGFL)%MP_SLX > 0 .AND. YGFL%YERA40(JGFL)%MP1 > 0) THEN
-    JFLD = ISLB1GFL9  + (YGFL%YERA40(JGFL)%MP_SLX-1)*(NLEV+2)
-    SELF%ERA40(JGFL)%F_P_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%ERA40(JGFL)%F_P_X => NULL ()
-  ENDIF
-
+  CALL CPG_SL1_TYPE_INIT_F3D (SELF%ERA40(JGFL), YGFL%YERA40(JGFL))
 ENDDO
 
 
 ALLOCATE (SELF%NOGW (SIZE (YGFL%YNOGW)))
 
 DO JGFL = 1, SIZE (YGFL%YNOGW)
-
-  IF (YGFL%YNOGW(JGFL)%MP_SL1 > 0 .AND. YGFL%YNOGW(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YNOGW(JGFL)%MP_SL1-1)*(NLEV+2)
-    SELF%NOGW(JGFL)%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%NOGW(JGFL)%F_P => NULL ()
-  ENDIF
-
-  IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-    IF (YGFL%YNOGW(JGFL)%MP_SL1 > 0 .AND. YGFL%YNOGW(JGFL)%MP1 > 0) THEN
-      JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YNOGW(JGFL)%MP_SL1-1)*(NLEV+2)
-      SELF%NOGW(JGFL)%F_P_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-    ELSE
-      SELF%NOGW(JGFL)%F_P_F => NULL ()
-    ENDIF
-  ENDIF
-  
-  IF (YGFL%YNOGW(JGFL)%MP_SPL > 0 .AND. YGFL%YNOGW(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YNOGW(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%NOGW(JGFL)%F_P_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%NOGW(JGFL)%F_P_SPF => NULL ()
-  ENDIF
-  
-  IF (YGFL%YNOGW(JGFL)%MP_SPL > 0 .AND. YGFL%YNOGW(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YNOGW(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%NOGW(JGFL)%F_P_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%NOGW(JGFL)%F_P_SP => NULL ()
-  ENDIF
-  
-  IF (YGFL%YNOGW(JGFL)%LPHY) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YNOGW(JGFL)%MGFL-1)*(NLEV+2)
-    SELF%NOGW(JGFL)%F_P_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%NOGW(JGFL)%F_P_P => NULL ()
-  ENDIF
-  
-  IF (YGFL%YNOGW(JGFL)%MP_SLX > 0 .AND. YGFL%YNOGW(JGFL)%MP1 > 0) THEN
-    JFLD = ISLB1GFL9  + (YGFL%YNOGW(JGFL)%MP_SLX-1)*(NLEV+2)
-    SELF%NOGW(JGFL)%F_P_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%NOGW(JGFL)%F_P_X => NULL ()
-  ENDIF
-
+  CALL CPG_SL1_TYPE_INIT_F3D (SELF%NOGW(JGFL), YGFL%YNOGW(JGFL))
 ENDDO
 
 
 ALLOCATE (SELF%EDRP (SIZE (YGFL%YEDRP)))
 
 DO JGFL = 1, SIZE (YGFL%YEDRP)
-
-  IF (YGFL%YEDRP(JGFL)%MP_SL1 > 0 .AND. YGFL%YEDRP(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YEDRP(JGFL)%MP_SL1-1)*(NLEV+2)
-    SELF%EDRP(JGFL)%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%EDRP(JGFL)%F_P => NULL ()
-  ENDIF
-
-  IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-    IF (YGFL%YEDRP(JGFL)%MP_SL1 > 0 .AND. YGFL%YEDRP(JGFL)%MP1 > 0) THEN
-      JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YEDRP(JGFL)%MP_SL1-1)*(NLEV+2)
-      SELF%EDRP(JGFL)%F_P_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-    ELSE
-      SELF%EDRP(JGFL)%F_P_F => NULL ()
-    ENDIF
-  ENDIF
-  
-  IF (YGFL%YEDRP(JGFL)%MP_SPL > 0 .AND. YGFL%YEDRP(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YEDRP(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%EDRP(JGFL)%F_P_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%EDRP(JGFL)%F_P_SPF => NULL ()
-  ENDIF
-  
-  IF (YGFL%YEDRP(JGFL)%MP_SPL > 0 .AND. YGFL%YEDRP(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YEDRP(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%EDRP(JGFL)%F_P_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%EDRP(JGFL)%F_P_SP => NULL ()
-  ENDIF
-  
-  IF (YGFL%YEDRP(JGFL)%LPHY) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YEDRP(JGFL)%MGFL-1)*(NLEV+2)
-    SELF%EDRP(JGFL)%F_P_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%EDRP(JGFL)%F_P_P => NULL ()
-  ENDIF
-  
-  IF (YGFL%YEDRP(JGFL)%MP_SLX > 0 .AND. YGFL%YEDRP(JGFL)%MP1 > 0) THEN
-    JFLD = ISLB1GFL9  + (YGFL%YEDRP(JGFL)%MP_SLX-1)*(NLEV+2)
-    SELF%EDRP(JGFL)%F_P_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%EDRP(JGFL)%F_P_X => NULL ()
-  ENDIF
-
+  CALL CPG_SL1_TYPE_INIT_F3D (SELF%EDRP(JGFL), YGFL%YEDRP(JGFL))
 ENDDO
 
 
 ALLOCATE (SELF%SLDIA (SIZE (YGFL%YSLDIA)))
 
 DO JGFL = 1, SIZE (YGFL%YSLDIA)
-
-  IF (YGFL%YSLDIA(JGFL)%MP_SL1 > 0 .AND. YGFL%YSLDIA(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YSLDIA(JGFL)%MP_SL1-1)*(NLEV+2)
-    SELF%SLDIA(JGFL)%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%SLDIA(JGFL)%F_P => NULL ()
-  ENDIF
-
-  IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-    IF (YGFL%YSLDIA(JGFL)%MP_SL1 > 0 .AND. YGFL%YSLDIA(JGFL)%MP1 > 0) THEN
-      JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YSLDIA(JGFL)%MP_SL1-1)*(NLEV+2)
-      SELF%SLDIA(JGFL)%F_P_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-    ELSE
-      SELF%SLDIA(JGFL)%F_P_F => NULL ()
-    ENDIF
-  ENDIF
-  
-  IF (YGFL%YSLDIA(JGFL)%MP_SPL > 0 .AND. YGFL%YSLDIA(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YSLDIA(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%SLDIA(JGFL)%F_P_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%SLDIA(JGFL)%F_P_SPF => NULL ()
-  ENDIF
-  
-  IF (YGFL%YSLDIA(JGFL)%MP_SPL > 0 .AND. YGFL%YSLDIA(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YSLDIA(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%SLDIA(JGFL)%F_P_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%SLDIA(JGFL)%F_P_SP => NULL ()
-  ENDIF
-  
-  IF (YGFL%YSLDIA(JGFL)%LPHY) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YSLDIA(JGFL)%MGFL-1)*(NLEV+2)
-    SELF%SLDIA(JGFL)%F_P_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%SLDIA(JGFL)%F_P_P => NULL ()
-  ENDIF
-  
-  IF (YGFL%YSLDIA(JGFL)%MP_SLX > 0 .AND. YGFL%YSLDIA(JGFL)%MP1 > 0) THEN
-    JFLD = ISLB1GFL9  + (YGFL%YSLDIA(JGFL)%MP_SLX-1)*(NLEV+2)
-    SELF%SLDIA(JGFL)%F_P_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%SLDIA(JGFL)%F_P_X => NULL ()
-  ENDIF
-
+  CALL CPG_SL1_TYPE_INIT_F3D (SELF%SLDIA(JGFL), YGFL%YSLDIA(JGFL))
 ENDDO
 
 
 ALLOCATE (SELF%AERAOT (SIZE (YGFL%YAERAOT)))
 
 DO JGFL = 1, SIZE (YGFL%YAERAOT)
-
-  IF (YGFL%YAERAOT(JGFL)%MP_SL1 > 0 .AND. YGFL%YAERAOT(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YAERAOT(JGFL)%MP_SL1-1)*(NLEV+2)
-    SELF%AERAOT(JGFL)%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%AERAOT(JGFL)%F_P => NULL ()
-  ENDIF
-
-  IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-    IF (YGFL%YAERAOT(JGFL)%MP_SL1 > 0 .AND. YGFL%YAERAOT(JGFL)%MP1 > 0) THEN
-      JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YAERAOT(JGFL)%MP_SL1-1)*(NLEV+2)
-      SELF%AERAOT(JGFL)%F_P_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-    ELSE
-      SELF%AERAOT(JGFL)%F_P_F => NULL ()
-    ENDIF
-  ENDIF
-  
-  IF (YGFL%YAERAOT(JGFL)%MP_SPL > 0 .AND. YGFL%YAERAOT(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YAERAOT(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%AERAOT(JGFL)%F_P_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%AERAOT(JGFL)%F_P_SPF => NULL ()
-  ENDIF
-  
-  IF (YGFL%YAERAOT(JGFL)%MP_SPL > 0 .AND. YGFL%YAERAOT(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YAERAOT(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%AERAOT(JGFL)%F_P_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%AERAOT(JGFL)%F_P_SP => NULL ()
-  ENDIF
-  
-  IF (YGFL%YAERAOT(JGFL)%LPHY) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YAERAOT(JGFL)%MGFL-1)*(NLEV+2)
-    SELF%AERAOT(JGFL)%F_P_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%AERAOT(JGFL)%F_P_P => NULL ()
-  ENDIF
-  
-  IF (YGFL%YAERAOT(JGFL)%MP_SLX > 0 .AND. YGFL%YAERAOT(JGFL)%MP1 > 0) THEN
-    JFLD = ISLB1GFL9  + (YGFL%YAERAOT(JGFL)%MP_SLX-1)*(NLEV+2)
-    SELF%AERAOT(JGFL)%F_P_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%AERAOT(JGFL)%F_P_X => NULL ()
-  ENDIF
-
+  CALL CPG_SL1_TYPE_INIT_F3D (SELF%AERAOT(JGFL), YGFL%YAERAOT(JGFL))
 ENDDO
 
 
 ALLOCATE (SELF%AERLISI (SIZE (YGFL%YAERLISI)))
 
 DO JGFL = 1, SIZE (YGFL%YAERLISI)
-
-  IF (YGFL%YAERLISI(JGFL)%MP_SL1 > 0 .AND. YGFL%YAERLISI(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YAERLISI(JGFL)%MP_SL1-1)*(NLEV+2)
-    SELF%AERLISI(JGFL)%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%AERLISI(JGFL)%F_P => NULL ()
-  ENDIF
-
-  IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-    IF (YGFL%YAERLISI(JGFL)%MP_SL1 > 0 .AND. YGFL%YAERLISI(JGFL)%MP1 > 0) THEN
-      JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YAERLISI(JGFL)%MP_SL1-1)*(NLEV+2)
-      SELF%AERLISI(JGFL)%F_P_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-    ELSE
-      SELF%AERLISI(JGFL)%F_P_F => NULL ()
-    ENDIF
-  ENDIF
-  
-  IF (YGFL%YAERLISI(JGFL)%MP_SPL > 0 .AND. YGFL%YAERLISI(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YAERLISI(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%AERLISI(JGFL)%F_P_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%AERLISI(JGFL)%F_P_SPF => NULL ()
-  ENDIF
-  
-  IF (YGFL%YAERLISI(JGFL)%MP_SPL > 0 .AND. YGFL%YAERLISI(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YAERLISI(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%AERLISI(JGFL)%F_P_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%AERLISI(JGFL)%F_P_SP => NULL ()
-  ENDIF
-  
-  IF (YGFL%YAERLISI(JGFL)%LPHY) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YAERLISI(JGFL)%MGFL-1)*(NLEV+2)
-    SELF%AERLISI(JGFL)%F_P_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%AERLISI(JGFL)%F_P_P => NULL ()
-  ENDIF
-  
-  IF (YGFL%YAERLISI(JGFL)%MP_SLX > 0 .AND. YGFL%YAERLISI(JGFL)%MP1 > 0) THEN
-    JFLD = ISLB1GFL9  + (YGFL%YAERLISI(JGFL)%MP_SLX-1)*(NLEV+2)
-    SELF%AERLISI(JGFL)%F_P_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%AERLISI(JGFL)%F_P_X => NULL ()
-  ENDIF
-
+  CALL CPG_SL1_TYPE_INIT_F3D (SELF%AERLISI(JGFL), YGFL%YAERLISI(JGFL))
 ENDDO
 
 
 ALLOCATE (SELF%AEROUT (SIZE (YGFL%YAEROUT)))
 
 DO JGFL = 1, SIZE (YGFL%YAEROUT)
-
-  IF (YGFL%YAEROUT(JGFL)%MP_SL1 > 0 .AND. YGFL%YAEROUT(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YAEROUT(JGFL)%MP_SL1-1)*(NLEV+2)
-    SELF%AEROUT(JGFL)%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%AEROUT(JGFL)%F_P => NULL ()
-  ENDIF
-
-  IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-    IF (YGFL%YAEROUT(JGFL)%MP_SL1 > 0 .AND. YGFL%YAEROUT(JGFL)%MP1 > 0) THEN
-      JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YAEROUT(JGFL)%MP_SL1-1)*(NLEV+2)
-      SELF%AEROUT(JGFL)%F_P_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-    ELSE
-      SELF%AEROUT(JGFL)%F_P_F => NULL ()
-    ENDIF
-  ENDIF
-  
-  IF (YGFL%YAEROUT(JGFL)%MP_SPL > 0 .AND. YGFL%YAEROUT(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YAEROUT(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%AEROUT(JGFL)%F_P_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%AEROUT(JGFL)%F_P_SPF => NULL ()
-  ENDIF
-  
-  IF (YGFL%YAEROUT(JGFL)%MP_SPL > 0 .AND. YGFL%YAEROUT(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YAEROUT(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%AEROUT(JGFL)%F_P_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%AEROUT(JGFL)%F_P_SP => NULL ()
-  ENDIF
-  
-  IF (YGFL%YAEROUT(JGFL)%LPHY) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YAEROUT(JGFL)%MGFL-1)*(NLEV+2)
-    SELF%AEROUT(JGFL)%F_P_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%AEROUT(JGFL)%F_P_P => NULL ()
-  ENDIF
-  
-  IF (YGFL%YAEROUT(JGFL)%MP_SLX > 0 .AND. YGFL%YAEROUT(JGFL)%MP1 > 0) THEN
-    JFLD = ISLB1GFL9  + (YGFL%YAEROUT(JGFL)%MP_SLX-1)*(NLEV+2)
-    SELF%AEROUT(JGFL)%F_P_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%AEROUT(JGFL)%F_P_X => NULL ()
-  ENDIF
-
+  CALL CPG_SL1_TYPE_INIT_F3D (SELF%AEROUT(JGFL), YGFL%YAEROUT(JGFL))
 ENDDO
 
 
 ALLOCATE (SELF%AEROCLIM (SIZE (YGFL%YAEROCLIM)))
 
 DO JGFL = 1, SIZE (YGFL%YAEROCLIM)
-
-  IF (YGFL%YAEROCLIM(JGFL)%MP_SL1 > 0 .AND. YGFL%YAEROCLIM(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YAEROCLIM(JGFL)%MP_SL1-1)*(NLEV+2)
-    SELF%AEROCLIM(JGFL)%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%AEROCLIM(JGFL)%F_P => NULL ()
-  ENDIF
-
-  IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-    IF (YGFL%YAEROCLIM(JGFL)%MP_SL1 > 0 .AND. YGFL%YAEROCLIM(JGFL)%MP1 > 0) THEN
-      JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YAEROCLIM(JGFL)%MP_SL1-1)*(NLEV+2)
-      SELF%AEROCLIM(JGFL)%F_P_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-    ELSE
-      SELF%AEROCLIM(JGFL)%F_P_F => NULL ()
-    ENDIF
-  ENDIF
-  
-  IF (YGFL%YAEROCLIM(JGFL)%MP_SPL > 0 .AND. YGFL%YAEROCLIM(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YAEROCLIM(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%AEROCLIM(JGFL)%F_P_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%AEROCLIM(JGFL)%F_P_SPF => NULL ()
-  ENDIF
-  
-  IF (YGFL%YAEROCLIM(JGFL)%MP_SPL > 0 .AND. YGFL%YAEROCLIM(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YAEROCLIM(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%AEROCLIM(JGFL)%F_P_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%AEROCLIM(JGFL)%F_P_SP => NULL ()
-  ENDIF
-  
-  IF (YGFL%YAEROCLIM(JGFL)%LPHY) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YAEROCLIM(JGFL)%MGFL-1)*(NLEV+2)
-    SELF%AEROCLIM(JGFL)%F_P_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%AEROCLIM(JGFL)%F_P_P => NULL ()
-  ENDIF
-  
-  IF (YGFL%YAEROCLIM(JGFL)%MP_SLX > 0 .AND. YGFL%YAEROCLIM(JGFL)%MP1 > 0) THEN
-    JFLD = ISLB1GFL9  + (YGFL%YAEROCLIM(JGFL)%MP_SLX-1)*(NLEV+2)
-    SELF%AEROCLIM(JGFL)%F_P_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%AEROCLIM(JGFL)%F_P_X => NULL ()
-  ENDIF
-
+  CALL CPG_SL1_TYPE_INIT_F3D (SELF%AEROCLIM(JGFL), YGFL%YAEROCLIM(JGFL))
 ENDDO
 
 
 ALLOCATE (SELF%UVP (SIZE (YGFL%YUVP)))
 
 DO JGFL = 1, SIZE (YGFL%YUVP)
-
-  IF (YGFL%YUVP(JGFL)%MP_SL1 > 0 .AND. YGFL%YUVP(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YUVP(JGFL)%MP_SL1-1)*(NLEV+2)
-    SELF%UVP(JGFL)%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%UVP(JGFL)%F_P => NULL ()
-  ENDIF
-
-  IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-    IF (YGFL%YUVP(JGFL)%MP_SL1 > 0 .AND. YGFL%YUVP(JGFL)%MP1 > 0) THEN
-      JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YUVP(JGFL)%MP_SL1-1)*(NLEV+2)
-      SELF%UVP(JGFL)%F_P_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-    ELSE
-      SELF%UVP(JGFL)%F_P_F => NULL ()
-    ENDIF
-  ENDIF
-  
-  IF (YGFL%YUVP(JGFL)%MP_SPL > 0 .AND. YGFL%YUVP(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YUVP(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%UVP(JGFL)%F_P_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%UVP(JGFL)%F_P_SPF => NULL ()
-  ENDIF
-  
-  IF (YGFL%YUVP(JGFL)%MP_SPL > 0 .AND. YGFL%YUVP(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YUVP(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%UVP(JGFL)%F_P_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%UVP(JGFL)%F_P_SP => NULL ()
-  ENDIF
-  
-  IF (YGFL%YUVP(JGFL)%LPHY) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YUVP(JGFL)%MGFL-1)*(NLEV+2)
-    SELF%UVP(JGFL)%F_P_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%UVP(JGFL)%F_P_P => NULL ()
-  ENDIF
-  
-  IF (YGFL%YUVP(JGFL)%MP_SLX > 0 .AND. YGFL%YUVP(JGFL)%MP1 > 0) THEN
-    JFLD = ISLB1GFL9  + (YGFL%YUVP(JGFL)%MP_SLX-1)*(NLEV+2)
-    SELF%UVP(JGFL)%F_P_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%UVP(JGFL)%F_P_X => NULL ()
-  ENDIF
-
+  CALL CPG_SL1_TYPE_INIT_F3D (SELF%UVP(JGFL), YGFL%YUVP(JGFL))
 ENDDO
 
 
 ALLOCATE (SELF%PHYS (SIZE (YGFL%YPHYS)))
 
 DO JGFL = 1, SIZE (YGFL%YPHYS)
-
-  IF (YGFL%YPHYS(JGFL)%MP_SL1 > 0 .AND. YGFL%YPHYS(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YPHYS(JGFL)%MP_SL1-1)*(NLEV+2)
-    SELF%PHYS(JGFL)%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%PHYS(JGFL)%F_P => NULL ()
-  ENDIF
-
-  IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-    IF (YGFL%YPHYS(JGFL)%MP_SL1 > 0 .AND. YGFL%YPHYS(JGFL)%MP1 > 0) THEN
-      JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YPHYS(JGFL)%MP_SL1-1)*(NLEV+2)
-      SELF%PHYS(JGFL)%F_P_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-    ELSE
-      SELF%PHYS(JGFL)%F_P_F => NULL ()
-    ENDIF
-  ENDIF
-  
-  IF (YGFL%YPHYS(JGFL)%MP_SPL > 0 .AND. YGFL%YPHYS(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YPHYS(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%PHYS(JGFL)%F_P_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%PHYS(JGFL)%F_P_SPF => NULL ()
-  ENDIF
-  
-  IF (YGFL%YPHYS(JGFL)%MP_SPL > 0 .AND. YGFL%YPHYS(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YPHYS(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%PHYS(JGFL)%F_P_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%PHYS(JGFL)%F_P_SP => NULL ()
-  ENDIF
-  
-  IF (YGFL%YPHYS(JGFL)%LPHY) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YPHYS(JGFL)%MGFL-1)*(NLEV+2)
-    SELF%PHYS(JGFL)%F_P_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%PHYS(JGFL)%F_P_P => NULL ()
-  ENDIF
-  
-  IF (YGFL%YPHYS(JGFL)%MP_SLX > 0 .AND. YGFL%YPHYS(JGFL)%MP1 > 0) THEN
-    JFLD = ISLB1GFL9  + (YGFL%YPHYS(JGFL)%MP_SLX-1)*(NLEV+2)
-    SELF%PHYS(JGFL)%F_P_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%PHYS(JGFL)%F_P_X => NULL ()
-  ENDIF
-
+  CALL CPG_SL1_TYPE_INIT_F3D (SELF%PHYS(JGFL), YGFL%YPHYS(JGFL))
 ENDDO
 
-IF (YGFL%YPHYCTY%MP_SL1 > 0 .AND. YGFL%YPHYCTY%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YPHYCTY%MP_SL1-1)*(NLEV+2)
-  SELF%F_PHYCTY => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_PHYCTY => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%PHYCTY, YGFL%YPHYCTY)
 
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YPHYCTY%MP_SL1 > 0 .AND. YGFL%YPHYCTY%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YPHYCTY%MP_SL1-1)*(NLEV+2)
-    SELF%F_PHYCTY_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_PHYCTY_F => NULL ()
-  ENDIF
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%RSPEC, YGFL%YRSPEC)
 
-IF (YGFL%YPHYCTY%MP_SPL > 0 .AND. YGFL%YPHYCTY%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YPHYCTY%MP_SPL-1)*(NLEV+2)
-  SELF%F_PHYCTY_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_PHYCTY_SPF => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%SDSAT, YGFL%YSDSAT)
 
-IF (YGFL%YPHYCTY%MP_SPL > 0 .AND. YGFL%YPHYCTY%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YPHYCTY%MP_SPL-1)*(NLEV+2)
-  SELF%F_PHYCTY_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_PHYCTY_SP => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%CVV, YGFL%YCVV)
 
-IF (YGFL%YPHYCTY%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YPHYCTY%MGFL-1)*(NLEV+2)
-  SELF%F_PHYCTY_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_PHYCTY_P => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%RKTH, YGFL%YRKTH)
 
-IF (YGFL%YPHYCTY%MP_SLX > 0 .AND. YGFL%YPHYCTY%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YPHYCTY%MP_SLX-1)*(NLEV+2)
-  SELF%F_PHYCTY_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_PHYCTY_X => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%RKTQV, YGFL%YRKTQV)
 
-IF (YGFL%YRSPEC%MP_SL1 > 0 .AND. YGFL%YRSPEC%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YRSPEC%MP_SL1-1)*(NLEV+2)
-  SELF%F_RSPEC => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_RSPEC => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%RKTQC, YGFL%YRKTQC)
 
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YRSPEC%MP_SL1 > 0 .AND. YGFL%YRSPEC%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YRSPEC%MP_SL1-1)*(NLEV+2)
-    SELF%F_RSPEC_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_RSPEC_F => NULL ()
-  ENDIF
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%UOM, YGFL%YUOM)
 
-IF (YGFL%YRSPEC%MP_SPL > 0 .AND. YGFL%YRSPEC%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YRSPEC%MP_SPL-1)*(NLEV+2)
-  SELF%F_RSPEC_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_RSPEC_SPF => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%UAL, YGFL%YUAL)
 
-IF (YGFL%YRSPEC%MP_SPL > 0 .AND. YGFL%YRSPEC%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YRSPEC%MP_SPL-1)*(NLEV+2)
-  SELF%F_RSPEC_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_RSPEC_SP => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%DOM, YGFL%YDOM)
 
-IF (YGFL%YRSPEC%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YRSPEC%MGFL-1)*(NLEV+2)
-  SELF%F_RSPEC_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_RSPEC_P => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%DAL, YGFL%YDAL)
 
-IF (YGFL%YRSPEC%MP_SLX > 0 .AND. YGFL%YRSPEC%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YRSPEC%MP_SLX-1)*(NLEV+2)
-  SELF%F_RSPEC_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_RSPEC_X => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%UEN, YGFL%YUEN)
 
-IF (YGFL%YSDSAT%MP_SL1 > 0 .AND. YGFL%YSDSAT%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YSDSAT%MP_SL1-1)*(NLEV+2)
-  SELF%F_SDSAT => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_SDSAT => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YSDSAT%MP_SL1 > 0 .AND. YGFL%YSDSAT%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YSDSAT%MP_SL1-1)*(NLEV+2)
-    SELF%F_SDSAT_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_SDSAT_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YSDSAT%MP_SPL > 0 .AND. YGFL%YSDSAT%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YSDSAT%MP_SPL-1)*(NLEV+2)
-  SELF%F_SDSAT_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_SDSAT_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YSDSAT%MP_SPL > 0 .AND. YGFL%YSDSAT%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YSDSAT%MP_SPL-1)*(NLEV+2)
-  SELF%F_SDSAT_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_SDSAT_SP => NULL ()
-ENDIF
-
-IF (YGFL%YSDSAT%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YSDSAT%MGFL-1)*(NLEV+2)
-  SELF%F_SDSAT_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_SDSAT_P => NULL ()
-ENDIF
-
-IF (YGFL%YSDSAT%MP_SLX > 0 .AND. YGFL%YSDSAT%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YSDSAT%MP_SLX-1)*(NLEV+2)
-  SELF%F_SDSAT_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_SDSAT_X => NULL ()
-ENDIF
-
-IF (YGFL%YCVV%MP_SL1 > 0 .AND. YGFL%YCVV%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YCVV%MP_SL1-1)*(NLEV+2)
-  SELF%F_CVV => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_CVV => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YCVV%MP_SL1 > 0 .AND. YGFL%YCVV%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YCVV%MP_SL1-1)*(NLEV+2)
-    SELF%F_CVV_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_CVV_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YCVV%MP_SPL > 0 .AND. YGFL%YCVV%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YCVV%MP_SPL-1)*(NLEV+2)
-  SELF%F_CVV_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_CVV_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YCVV%MP_SPL > 0 .AND. YGFL%YCVV%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YCVV%MP_SPL-1)*(NLEV+2)
-  SELF%F_CVV_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_CVV_SP => NULL ()
-ENDIF
-
-IF (YGFL%YCVV%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YCVV%MGFL-1)*(NLEV+2)
-  SELF%F_CVV_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_CVV_P => NULL ()
-ENDIF
-
-IF (YGFL%YCVV%MP_SLX > 0 .AND. YGFL%YCVV%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YCVV%MP_SLX-1)*(NLEV+2)
-  SELF%F_CVV_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_CVV_X => NULL ()
-ENDIF
-
-IF (YGFL%YRKTH%MP_SL1 > 0 .AND. YGFL%YRKTH%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YRKTH%MP_SL1-1)*(NLEV+2)
-  SELF%F_RKTH => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_RKTH => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YRKTH%MP_SL1 > 0 .AND. YGFL%YRKTH%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YRKTH%MP_SL1-1)*(NLEV+2)
-    SELF%F_RKTH_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_RKTH_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YRKTH%MP_SPL > 0 .AND. YGFL%YRKTH%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YRKTH%MP_SPL-1)*(NLEV+2)
-  SELF%F_RKTH_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_RKTH_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YRKTH%MP_SPL > 0 .AND. YGFL%YRKTH%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YRKTH%MP_SPL-1)*(NLEV+2)
-  SELF%F_RKTH_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_RKTH_SP => NULL ()
-ENDIF
-
-IF (YGFL%YRKTH%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YRKTH%MGFL-1)*(NLEV+2)
-  SELF%F_RKTH_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_RKTH_P => NULL ()
-ENDIF
-
-IF (YGFL%YRKTH%MP_SLX > 0 .AND. YGFL%YRKTH%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YRKTH%MP_SLX-1)*(NLEV+2)
-  SELF%F_RKTH_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_RKTH_X => NULL ()
-ENDIF
-
-IF (YGFL%YRKTQV%MP_SL1 > 0 .AND. YGFL%YRKTQV%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YRKTQV%MP_SL1-1)*(NLEV+2)
-  SELF%F_RKTQV => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_RKTQV => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YRKTQV%MP_SL1 > 0 .AND. YGFL%YRKTQV%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YRKTQV%MP_SL1-1)*(NLEV+2)
-    SELF%F_RKTQV_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_RKTQV_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YRKTQV%MP_SPL > 0 .AND. YGFL%YRKTQV%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YRKTQV%MP_SPL-1)*(NLEV+2)
-  SELF%F_RKTQV_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_RKTQV_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YRKTQV%MP_SPL > 0 .AND. YGFL%YRKTQV%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YRKTQV%MP_SPL-1)*(NLEV+2)
-  SELF%F_RKTQV_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_RKTQV_SP => NULL ()
-ENDIF
-
-IF (YGFL%YRKTQV%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YRKTQV%MGFL-1)*(NLEV+2)
-  SELF%F_RKTQV_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_RKTQV_P => NULL ()
-ENDIF
-
-IF (YGFL%YRKTQV%MP_SLX > 0 .AND. YGFL%YRKTQV%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YRKTQV%MP_SLX-1)*(NLEV+2)
-  SELF%F_RKTQV_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_RKTQV_X => NULL ()
-ENDIF
-
-IF (YGFL%YRKTQC%MP_SL1 > 0 .AND. YGFL%YRKTQC%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YRKTQC%MP_SL1-1)*(NLEV+2)
-  SELF%F_RKTQC => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_RKTQC => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YRKTQC%MP_SL1 > 0 .AND. YGFL%YRKTQC%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YRKTQC%MP_SL1-1)*(NLEV+2)
-    SELF%F_RKTQC_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_RKTQC_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YRKTQC%MP_SPL > 0 .AND. YGFL%YRKTQC%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YRKTQC%MP_SPL-1)*(NLEV+2)
-  SELF%F_RKTQC_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_RKTQC_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YRKTQC%MP_SPL > 0 .AND. YGFL%YRKTQC%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YRKTQC%MP_SPL-1)*(NLEV+2)
-  SELF%F_RKTQC_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_RKTQC_SP => NULL ()
-ENDIF
-
-IF (YGFL%YRKTQC%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YRKTQC%MGFL-1)*(NLEV+2)
-  SELF%F_RKTQC_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_RKTQC_P => NULL ()
-ENDIF
-
-IF (YGFL%YRKTQC%MP_SLX > 0 .AND. YGFL%YRKTQC%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YRKTQC%MP_SLX-1)*(NLEV+2)
-  SELF%F_RKTQC_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_RKTQC_X => NULL ()
-ENDIF
-
-IF (YGFL%YUOM%MP_SL1 > 0 .AND. YGFL%YUOM%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YUOM%MP_SL1-1)*(NLEV+2)
-  SELF%F_UOM => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_UOM => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YUOM%MP_SL1 > 0 .AND. YGFL%YUOM%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YUOM%MP_SL1-1)*(NLEV+2)
-    SELF%F_UOM_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_UOM_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YUOM%MP_SPL > 0 .AND. YGFL%YUOM%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YUOM%MP_SPL-1)*(NLEV+2)
-  SELF%F_UOM_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_UOM_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YUOM%MP_SPL > 0 .AND. YGFL%YUOM%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YUOM%MP_SPL-1)*(NLEV+2)
-  SELF%F_UOM_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_UOM_SP => NULL ()
-ENDIF
-
-IF (YGFL%YUOM%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YUOM%MGFL-1)*(NLEV+2)
-  SELF%F_UOM_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_UOM_P => NULL ()
-ENDIF
-
-IF (YGFL%YUOM%MP_SLX > 0 .AND. YGFL%YUOM%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YUOM%MP_SLX-1)*(NLEV+2)
-  SELF%F_UOM_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_UOM_X => NULL ()
-ENDIF
-
-IF (YGFL%YUAL%MP_SL1 > 0 .AND. YGFL%YUAL%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YUAL%MP_SL1-1)*(NLEV+2)
-  SELF%F_UAL => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_UAL => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YUAL%MP_SL1 > 0 .AND. YGFL%YUAL%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YUAL%MP_SL1-1)*(NLEV+2)
-    SELF%F_UAL_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_UAL_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YUAL%MP_SPL > 0 .AND. YGFL%YUAL%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YUAL%MP_SPL-1)*(NLEV+2)
-  SELF%F_UAL_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_UAL_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YUAL%MP_SPL > 0 .AND. YGFL%YUAL%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YUAL%MP_SPL-1)*(NLEV+2)
-  SELF%F_UAL_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_UAL_SP => NULL ()
-ENDIF
-
-IF (YGFL%YUAL%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YUAL%MGFL-1)*(NLEV+2)
-  SELF%F_UAL_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_UAL_P => NULL ()
-ENDIF
-
-IF (YGFL%YUAL%MP_SLX > 0 .AND. YGFL%YUAL%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YUAL%MP_SLX-1)*(NLEV+2)
-  SELF%F_UAL_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_UAL_X => NULL ()
-ENDIF
-
-IF (YGFL%YDOM%MP_SL1 > 0 .AND. YGFL%YDOM%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YDOM%MP_SL1-1)*(NLEV+2)
-  SELF%F_DOM => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_DOM => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YDOM%MP_SL1 > 0 .AND. YGFL%YDOM%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YDOM%MP_SL1-1)*(NLEV+2)
-    SELF%F_DOM_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_DOM_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YDOM%MP_SPL > 0 .AND. YGFL%YDOM%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YDOM%MP_SPL-1)*(NLEV+2)
-  SELF%F_DOM_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_DOM_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YDOM%MP_SPL > 0 .AND. YGFL%YDOM%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YDOM%MP_SPL-1)*(NLEV+2)
-  SELF%F_DOM_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_DOM_SP => NULL ()
-ENDIF
-
-IF (YGFL%YDOM%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YDOM%MGFL-1)*(NLEV+2)
-  SELF%F_DOM_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_DOM_P => NULL ()
-ENDIF
-
-IF (YGFL%YDOM%MP_SLX > 0 .AND. YGFL%YDOM%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YDOM%MP_SLX-1)*(NLEV+2)
-  SELF%F_DOM_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_DOM_X => NULL ()
-ENDIF
-
-IF (YGFL%YDAL%MP_SL1 > 0 .AND. YGFL%YDAL%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YDAL%MP_SL1-1)*(NLEV+2)
-  SELF%F_DAL => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_DAL => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YDAL%MP_SL1 > 0 .AND. YGFL%YDAL%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YDAL%MP_SL1-1)*(NLEV+2)
-    SELF%F_DAL_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_DAL_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YDAL%MP_SPL > 0 .AND. YGFL%YDAL%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YDAL%MP_SPL-1)*(NLEV+2)
-  SELF%F_DAL_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_DAL_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YDAL%MP_SPL > 0 .AND. YGFL%YDAL%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YDAL%MP_SPL-1)*(NLEV+2)
-  SELF%F_DAL_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_DAL_SP => NULL ()
-ENDIF
-
-IF (YGFL%YDAL%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YDAL%MGFL-1)*(NLEV+2)
-  SELF%F_DAL_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_DAL_P => NULL ()
-ENDIF
-
-IF (YGFL%YDAL%MP_SLX > 0 .AND. YGFL%YDAL%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YDAL%MP_SLX-1)*(NLEV+2)
-  SELF%F_DAL_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_DAL_X => NULL ()
-ENDIF
-
-IF (YGFL%YUEN%MP_SL1 > 0 .AND. YGFL%YUEN%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YUEN%MP_SL1-1)*(NLEV+2)
-  SELF%F_UEN => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_UEN => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YUEN%MP_SL1 > 0 .AND. YGFL%YUEN%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YUEN%MP_SL1-1)*(NLEV+2)
-    SELF%F_UEN_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_UEN_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YUEN%MP_SPL > 0 .AND. YGFL%YUEN%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YUEN%MP_SPL-1)*(NLEV+2)
-  SELF%F_UEN_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_UEN_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YUEN%MP_SPL > 0 .AND. YGFL%YUEN%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YUEN%MP_SPL-1)*(NLEV+2)
-  SELF%F_UEN_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_UEN_SP => NULL ()
-ENDIF
-
-IF (YGFL%YUEN%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YUEN%MGFL-1)*(NLEV+2)
-  SELF%F_UEN_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_UEN_P => NULL ()
-ENDIF
-
-IF (YGFL%YUEN%MP_SLX > 0 .AND. YGFL%YUEN%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YUEN%MP_SLX-1)*(NLEV+2)
-  SELF%F_UEN_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_UEN_X => NULL ()
-ENDIF
-
-IF (YGFL%YUNEBH%MP_SL1 > 0 .AND. YGFL%YUNEBH%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YUNEBH%MP_SL1-1)*(NLEV+2)
-  SELF%F_UNEBH => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_UNEBH => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YUNEBH%MP_SL1 > 0 .AND. YGFL%YUNEBH%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YUNEBH%MP_SL1-1)*(NLEV+2)
-    SELF%F_UNEBH_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_UNEBH_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YUNEBH%MP_SPL > 0 .AND. YGFL%YUNEBH%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YUNEBH%MP_SPL-1)*(NLEV+2)
-  SELF%F_UNEBH_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_UNEBH_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YUNEBH%MP_SPL > 0 .AND. YGFL%YUNEBH%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YUNEBH%MP_SPL-1)*(NLEV+2)
-  SELF%F_UNEBH_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_UNEBH_SP => NULL ()
-ENDIF
-
-IF (YGFL%YUNEBH%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YUNEBH%MGFL-1)*(NLEV+2)
-  SELF%F_UNEBH_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_UNEBH_P => NULL ()
-ENDIF
-
-IF (YGFL%YUNEBH%MP_SLX > 0 .AND. YGFL%YUNEBH%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YUNEBH%MP_SLX-1)*(NLEV+2)
-  SELF%F_UNEBH_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_UNEBH_X => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%UNEBH, YGFL%YUNEBH)
 
 
 ALLOCATE (SELF%CRM (SIZE (YGFL%YCRM)))
 
 DO JGFL = 1, SIZE (YGFL%YCRM)
-
-  IF (YGFL%YCRM(JGFL)%MP_SL1 > 0 .AND. YGFL%YCRM(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YCRM(JGFL)%MP_SL1-1)*(NLEV+2)
-    SELF%CRM(JGFL)%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%CRM(JGFL)%F_P => NULL ()
-  ENDIF
-
-  IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-    IF (YGFL%YCRM(JGFL)%MP_SL1 > 0 .AND. YGFL%YCRM(JGFL)%MP1 > 0) THEN
-      JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YCRM(JGFL)%MP_SL1-1)*(NLEV+2)
-      SELF%CRM(JGFL)%F_P_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-    ELSE
-      SELF%CRM(JGFL)%F_P_F => NULL ()
-    ENDIF
-  ENDIF
-  
-  IF (YGFL%YCRM(JGFL)%MP_SPL > 0 .AND. YGFL%YCRM(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YCRM(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%CRM(JGFL)%F_P_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%CRM(JGFL)%F_P_SPF => NULL ()
-  ENDIF
-  
-  IF (YGFL%YCRM(JGFL)%MP_SPL > 0 .AND. YGFL%YCRM(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YCRM(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%CRM(JGFL)%F_P_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%CRM(JGFL)%F_P_SP => NULL ()
-  ENDIF
-  
-  IF (YGFL%YCRM(JGFL)%LPHY) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YCRM(JGFL)%MGFL-1)*(NLEV+2)
-    SELF%CRM(JGFL)%F_P_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%CRM(JGFL)%F_P_P => NULL ()
-  ENDIF
-  
-  IF (YGFL%YCRM(JGFL)%MP_SLX > 0 .AND. YGFL%YCRM(JGFL)%MP1 > 0) THEN
-    JFLD = ISLB1GFL9  + (YGFL%YCRM(JGFL)%MP_SLX-1)*(NLEV+2)
-    SELF%CRM(JGFL)%F_P_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%CRM(JGFL)%F_P_X => NULL ()
-  ENDIF
-
+  CALL CPG_SL1_TYPE_INIT_F3D (SELF%CRM(JGFL), YGFL%YCRM(JGFL))
 ENDDO
 
 
 ALLOCATE (SELF%LIMA (SIZE (YGFL%YLIMA)))
 
 DO JGFL = 1, SIZE (YGFL%YLIMA)
-
-  IF (YGFL%YLIMA(JGFL)%MP_SL1 > 0 .AND. YGFL%YLIMA(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YLIMA(JGFL)%MP_SL1-1)*(NLEV+2)
-    SELF%LIMA(JGFL)%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%LIMA(JGFL)%F_P => NULL ()
-  ENDIF
-
-  IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-    IF (YGFL%YLIMA(JGFL)%MP_SL1 > 0 .AND. YGFL%YLIMA(JGFL)%MP1 > 0) THEN
-      JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YLIMA(JGFL)%MP_SL1-1)*(NLEV+2)
-      SELF%LIMA(JGFL)%F_P_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-    ELSE
-      SELF%LIMA(JGFL)%F_P_F => NULL ()
-    ENDIF
-  ENDIF
-  
-  IF (YGFL%YLIMA(JGFL)%MP_SPL > 0 .AND. YGFL%YLIMA(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YLIMA(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%LIMA(JGFL)%F_P_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%LIMA(JGFL)%F_P_SPF => NULL ()
-  ENDIF
-  
-  IF (YGFL%YLIMA(JGFL)%MP_SPL > 0 .AND. YGFL%YLIMA(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YLIMA(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%LIMA(JGFL)%F_P_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%LIMA(JGFL)%F_P_SP => NULL ()
-  ENDIF
-  
-  IF (YGFL%YLIMA(JGFL)%LPHY) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YLIMA(JGFL)%MGFL-1)*(NLEV+2)
-    SELF%LIMA(JGFL)%F_P_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%LIMA(JGFL)%F_P_P => NULL ()
-  ENDIF
-  
-  IF (YGFL%YLIMA(JGFL)%MP_SLX > 0 .AND. YGFL%YLIMA(JGFL)%MP1 > 0) THEN
-    JFLD = ISLB1GFL9  + (YGFL%YLIMA(JGFL)%MP_SLX-1)*(NLEV+2)
-    SELF%LIMA(JGFL)%F_P_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%LIMA(JGFL)%F_P_X => NULL ()
-  ENDIF
-
+  CALL CPG_SL1_TYPE_INIT_F3D (SELF%LIMA(JGFL), YGFL%YLIMA(JGFL))
 ENDDO
 
-IF (YGFL%YFSD%MP_SL1 > 0 .AND. YGFL%YFSD%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YFSD%MP_SL1-1)*(NLEV+2)
-  SELF%F_FSD => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_FSD => NULL ()
-ENDIF
-
-IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-  IF (YGFL%YFSD%MP_SL1 > 0 .AND. YGFL%YFSD%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YFSD%MP_SL1-1)*(NLEV+2)
-    SELF%F_FSD_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%F_FSD_F => NULL ()
-  ENDIF
-ENDIF
-
-IF (YGFL%YFSD%MP_SPL > 0 .AND. YGFL%YFSD%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YFSD%MP_SPL-1)*(NLEV+2)
-  SELF%F_FSD_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_FSD_SPF => NULL ()
-ENDIF
-
-IF (YGFL%YFSD%MP_SPL > 0 .AND. YGFL%YFSD%MP1 > 0) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YFSD%MP_SPL-1)*(NLEV+2)
-  SELF%F_FSD_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_FSD_SP => NULL ()
-ENDIF
-
-IF (YGFL%YFSD%LPHY) THEN
-  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YFSD%MGFL-1)*(NLEV+2)
-  SELF%F_FSD_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_FSD_P => NULL ()
-ENDIF
-
-IF (YGFL%YFSD%MP_SLX > 0 .AND. YGFL%YFSD%MP1 > 0) THEN
-  JFLD = ISLB1GFL9  + (YGFL%YFSD%MP_SLX-1)*(NLEV+2)
-  SELF%F_FSD_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-ELSE
-  SELF%F_FSD_X => NULL ()
-ENDIF
+CALL CPG_SL1_TYPE_INIT_F3D (SELF%FSD, YGFL%YFSD)
 
 
 ALLOCATE (SELF%EXT (SIZE (YGFL%YEXT)))
 
 DO JGFL = 1, SIZE (YGFL%YEXT)
-
-  IF (YGFL%YEXT(JGFL)%MP_SL1 > 0 .AND. YGFL%YEXT(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFL9  + (YGFL%YEXT(JGFL)%MP_SL1-1)*(NLEV+2)
-    SELF%EXT(JGFL)%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%EXT(JGFL)%F_P => NULL ()
-  ENDIF
-
-  IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
-    IF (YGFL%YEXT(JGFL)%MP_SL1 > 0 .AND. YGFL%YEXT(JGFL)%MP1 > 0) THEN
-      JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YGFL%YEXT(JGFL)%MP_SL1-1)*(NLEV+2)
-      SELF%EXT(JGFL)%F_P_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-    ELSE
-      SELF%EXT(JGFL)%F_P_F => NULL ()
-    ENDIF
-  ENDIF
-  
-  IF (YGFL%YEXT(JGFL)%MP_SPL > 0 .AND. YGFL%YEXT(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YGFL%YEXT(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%EXT(JGFL)%F_P_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%EXT(JGFL)%F_P_SPF => NULL ()
-  ENDIF
-  
-  IF (YGFL%YEXT(JGFL)%MP_SPL > 0 .AND. YGFL%YEXT(JGFL)%MP1 > 0) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YGFL%YEXT(JGFL)%MP_SPL-1)*(NLEV+2)
-    SELF%EXT(JGFL)%F_P_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%EXT(JGFL)%F_P_SP => NULL ()
-  ENDIF
-  
-  IF (YGFL%YEXT(JGFL)%LPHY) THEN
-    JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YGFL%YEXT(JGFL)%MGFL-1)*(NLEV+2)
-    SELF%EXT(JGFL)%F_P_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%EXT(JGFL)%F_P_P => NULL ()
-  ENDIF
-  
-  IF (YGFL%YEXT(JGFL)%MP_SLX > 0 .AND. YGFL%YEXT(JGFL)%MP1 > 0) THEN
-    JFLD = ISLB1GFL9  + (YGFL%YEXT(JGFL)%MP_SLX-1)*(NLEV+2)
-    SELF%EXT(JGFL)%F_P_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
-  ELSE
-    SELF%EXT(JGFL)%F_P_X => NULL ()
-  ENDIF
-
+  CALL CPG_SL1_TYPE_INIT_F3D (SELF%EXT(JGFL), YGFL%YEXT(JGFL))
 ENDDO
 
+
+CONTAINS
+
+SUBROUTINE CPG_SL1_TYPE_INIT_F3D (YDF3D, YDGFC)
+
+USE YOM_YGFL, ONLY : TYPE_GFL_COMP
+
+TYPE (CPG_SL1_3D_TYPE), INTENT (INOUT) :: YDF3D
+TYPE(TYPE_GFL_COMP),    INTENT (IN)    :: YDGFC
+
+IF (YDGFC%MP_SL1 > 0 .AND. YDGFC%MP1 > 0) THEN
+  JFLD = YDTPTRSLB1%MSLB1GFL9  + (YDGFC%MP_SL1-1)*(NLEV+2)
+  YDF3D%F_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+ELSE
+  YDF3D%F_P => NULL ()
+ENDIF
+
+IF (YDMODEL%YRML_DYN%YRDYN%LSPLTHOIGFL .OR. (YDMODEL%YRML_DYN%YRDYN%NSPLTHOI /= 0)) THEN
+  IF (YDGFC%MP_SL1 > 0 .AND. YDGFC%MP1 > 0) THEN
+    JFLD = YDTPTRSLB1%MSLB1GFLF9 + (YDGFC%MP_SL1-1)*(NLEV+2)
+    YDF3D%F_P_F => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+  ELSE
+    YDF3D%F_P_F => NULL ()
+  ENDIF
+ENDIF
+
+IF (YDGFC%MP_SPL > 0 .AND. YDGFC%MP1 > 0) THEN
+  JFLD = YDTPTRSLB1%MSLB1GFLSPF9  + (YDGFC%MP_SPL-1)*(NLEV+2)
+  YDF3D%F_P_SPF => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+ELSE
+  YDF3D%F_P_SPF => NULL ()
+ENDIF
+
+IF (YDGFC%MP_SPL > 0 .AND. YDGFC%MP1 > 0) THEN
+  JFLD = YDTPTRSLB1%MSLB1GFLSP9  + (YDGFC%MP_SPL-1)*(NLEV+2)
+  YDF3D%F_P_SP => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+ELSE
+  YDF3D%F_P_SP => NULL ()
+ENDIF
+
+IF (YDGFC%LPHY) THEN
+  JFLD = YDTPTRSLB1%MSLB1GFLP9  + (YDGFC%MGFL-1)*(NLEV+2)
+  YDF3D%F_P_P => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+ELSE
+  YDF3D%F_P_P => NULL ()
+ENDIF
+
+IF (YDGFC%MP_SLX > 0 .AND. YDGFC%MP1 > 0) THEN
+  JFLD = ISLB1GFL9  + (YDGFC%MP_SLX-1)*(NLEV+2)
+  YDF3D%F_P_X => CREATE_FIELD_WRAP (SELF%ZDATA (:, JFLD:JFLD+NLEV+1, :), PERSISTENT=LLPERSISTENT, LBOUNDS=[1,0,1])
+ELSE
+  YDF3D%F_P_X => NULL ()
+ENDIF
+
+END SUBROUTINE CPG_SL1_TYPE_INIT_F3D
 
 END SUBROUTINE CPG_SL1_TYPE_INIT
 
@@ -7260,3534 +3588,725 @@ INTEGER (KIND=JPIM) :: JGFL
 
 IF (ASSOCIATED (SELF%F_DATA)) THEN
   SELF%ZVIEW => SELF%F_DATA%GET_VIEW (BLOCK_INDEX)
-  IF (ASSOCIATED (SELF%F_U9)) THEN
-    IF ((.NOT. SELF%F_U9%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%U9))) THEN
-      SELF%U9 => SELF%F_U9%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%U9%F_P)) THEN
+    IF ((.NOT. SELF%U9%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%U9%P))) THEN
+      SELF%U9%P => SELF%U9%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%U9)) THEN
-    SELF%U9 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%U9%P)) THEN
+    SELF%U9%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_V9)) THEN
-    IF ((.NOT. SELF%F_V9%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%V9))) THEN
-      SELF%V9 => SELF%F_V9%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%V9%F_P)) THEN
+    IF ((.NOT. SELF%V9%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%V9%P))) THEN
+      SELF%V9%P => SELF%V9%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%V9)) THEN
-    SELF%V9 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%V9%P)) THEN
+    SELF%V9%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_T9)) THEN
-    IF ((.NOT. SELF%F_T9%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%T9))) THEN
-      SELF%T9 => SELF%F_T9%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%T9%F_P)) THEN
+    IF ((.NOT. SELF%T9%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%T9%P))) THEN
+      SELF%T9%P => SELF%T9%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%T9)) THEN
-    SELF%T9 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%T9%P)) THEN
+    SELF%T9%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_PD9)) THEN
-    IF ((.NOT. SELF%F_PD9%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%PD9))) THEN
-      SELF%PD9 => SELF%F_PD9%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%PD9%F_P)) THEN
+    IF ((.NOT. SELF%PD9%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%PD9%P))) THEN
+      SELF%PD9%P => SELF%PD9%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%PD9)) THEN
-    SELF%PD9 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%PD9%P)) THEN
+    SELF%PD9%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_VD9)) THEN
-    IF ((.NOT. SELF%F_VD9%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%VD9))) THEN
-      SELF%VD9 => SELF%F_VD9%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%VD9%F_P)) THEN
+    IF ((.NOT. SELF%VD9%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%VD9%P))) THEN
+      SELF%VD9%P => SELF%VD9%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%VD9)) THEN
-    SELF%VD9 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%VD9%P)) THEN
+    SELF%VD9%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_NHX9)) THEN
-    IF ((.NOT. SELF%F_NHX9%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%NHX9))) THEN
-      SELF%NHX9 => SELF%F_NHX9%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%NHX9%F_P)) THEN
+    IF ((.NOT. SELF%NHX9%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%NHX9%P))) THEN
+      SELF%NHX9%P => SELF%NHX9%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%NHX9)) THEN
-    SELF%NHX9 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%NHX9%P)) THEN
+    SELF%NHX9%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_UR0)) THEN
-    IF ((.NOT. SELF%F_UR0%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UR0))) THEN
-      SELF%UR0 => SELF%F_UR0%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%UR0%F_P)) THEN
+    IF ((.NOT. SELF%UR0%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UR0%P))) THEN
+      SELF%UR0%P => SELF%UR0%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%UR0)) THEN
-    SELF%UR0 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%UR0%P)) THEN
+    SELF%UR0%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_VR0)) THEN
-    IF ((.NOT. SELF%F_VR0%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%VR0))) THEN
-      SELF%VR0 => SELF%F_VR0%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%VR0%F_P)) THEN
+    IF ((.NOT. SELF%VR0%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%VR0%P))) THEN
+      SELF%VR0%P => SELF%VR0%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%VR0)) THEN
-    SELF%VR0 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%VR0%P)) THEN
+    SELF%VR0%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_ZR0)) THEN
-    IF ((.NOT. SELF%F_ZR0%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%ZR0))) THEN
-      SELF%ZR0 => SELF%F_ZR0%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%ZR0%F_P)) THEN
+    IF ((.NOT. SELF%ZR0%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%ZR0%P))) THEN
+      SELF%ZR0%P => SELF%ZR0%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%ZR0)) THEN
-    SELF%ZR0 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%ZR0%P)) THEN
+    SELF%ZR0%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_WR0)) THEN
-    IF ((.NOT. SELF%F_WR0%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%WR0))) THEN
-      SELF%WR0 => SELF%F_WR0%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%WR0%F_P)) THEN
+    IF ((.NOT. SELF%WR0%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%WR0%P))) THEN
+      SELF%WR0%P => SELF%WR0%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%WR0)) THEN
-    SELF%WR0 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%WR0%P)) THEN
+    SELF%WR0%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_UR00)) THEN
-    IF ((.NOT. SELF%F_UR00%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UR00))) THEN
-      SELF%UR00 => SELF%F_UR00%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%UR00%F_P)) THEN
+    IF ((.NOT. SELF%UR00%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UR00%P))) THEN
+      SELF%UR00%P => SELF%UR00%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%UR00)) THEN
-    SELF%UR00 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%UR00%P)) THEN
+    SELF%UR00%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_VR00)) THEN
-    IF ((.NOT. SELF%F_VR00%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%VR00))) THEN
-      SELF%VR00 => SELF%F_VR00%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%VR00%F_P)) THEN
+    IF ((.NOT. SELF%VR00%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%VR00%P))) THEN
+      SELF%VR00%P => SELF%VR00%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%VR00)) THEN
-    SELF%VR00 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%VR00%P)) THEN
+    SELF%VR00%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_ZR00)) THEN
-    IF ((.NOT. SELF%F_ZR00%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%ZR00))) THEN
-      SELF%ZR00 => SELF%F_ZR00%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%ZR00%F_P)) THEN
+    IF ((.NOT. SELF%ZR00%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%ZR00%P))) THEN
+      SELF%ZR00%P => SELF%ZR00%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%ZR00)) THEN
-    SELF%ZR00 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%ZR00%P)) THEN
+    SELF%ZR00%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_WR00)) THEN
-    IF ((.NOT. SELF%F_WR00%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%WR00))) THEN
-      SELF%WR00 => SELF%F_WR00%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%WR00%F_P)) THEN
+    IF ((.NOT. SELF%WR00%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%WR00%P))) THEN
+      SELF%WR00%P => SELF%WR00%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%WR00)) THEN
-    SELF%WR00 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%WR00%P)) THEN
+    SELF%WR00%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_WRA)) THEN
-    IF ((.NOT. SELF%F_WRA%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%WRA))) THEN
-      SELF%WRA => SELF%F_WRA%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%WRA%F_P)) THEN
+    IF ((.NOT. SELF%WRA%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%WRA%P))) THEN
+      SELF%WRA%P => SELF%WRA%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%WRA)) THEN
-    SELF%WRA => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%WRA%P)) THEN
+    SELF%WRA%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_UR9)) THEN
-    IF ((.NOT. SELF%F_UR9%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UR9))) THEN
-      SELF%UR9 => SELF%F_UR9%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%UR9%F_P)) THEN
+    IF ((.NOT. SELF%UR9%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UR9%P))) THEN
+      SELF%UR9%P => SELF%UR9%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%UR9)) THEN
-    SELF%UR9 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%UR9%P)) THEN
+    SELF%UR9%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_VR9)) THEN
-    IF ((.NOT. SELF%F_VR9%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%VR9))) THEN
-      SELF%VR9 => SELF%F_VR9%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%VR9%F_P)) THEN
+    IF ((.NOT. SELF%VR9%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%VR9%P))) THEN
+      SELF%VR9%P => SELF%VR9%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%VR9)) THEN
-    SELF%VR9 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%VR9%P)) THEN
+    SELF%VR9%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_DBBC9)) THEN
-    IF ((.NOT. SELF%F_DBBC9%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%DBBC9))) THEN
-      SELF%DBBC9 => SELF%F_DBBC9%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%DBBC9%F_P)) THEN
+    IF ((.NOT. SELF%DBBC9%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%DBBC9%P))) THEN
+      SELF%DBBC9%P => SELF%DBBC9%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%DBBC9)) THEN
-    SELF%DBBC9 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%DBBC9%P)) THEN
+    SELF%DBBC9%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_DPHI9)) THEN
-    IF ((.NOT. SELF%F_DPHI9%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%DPHI9))) THEN
-      SELF%DPHI9 => SELF%F_DPHI9%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%DPHI9%F_P)) THEN
+    IF ((.NOT. SELF%DPHI9%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%DPHI9%P))) THEN
+      SELF%DPHI9%P => SELF%DPHI9%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%DPHI9)) THEN
-    SELF%DPHI9 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%DPHI9%P)) THEN
+    SELF%DPHI9%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_GWS9)) THEN
-    IF ((.NOT. SELF%F_GWS9%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%GWS9))) THEN
-      SELF%GWS9 => SELF%F_GWS9%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%GWS9%F_P)) THEN
+    IF ((.NOT. SELF%GWS9%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%GWS9%P))) THEN
+      SELF%GWS9%P => SELF%GWS9%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%GWS9)) THEN
-    SELF%GWS9 => ZDUM1
+  ELSEIF (.NOT. ASSOCIATED (SELF%GWS9%P)) THEN
+    SELF%GWS9%P => ZDUM1
   ENDIF
-  IF (ASSOCIATED (SELF%F_U0)) THEN
-    IF ((.NOT. SELF%F_U0%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%U0))) THEN
-      SELF%U0 => SELF%F_U0%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%U0%F_P)) THEN
+    IF ((.NOT. SELF%U0%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%U0%P))) THEN
+      SELF%U0%P => SELF%U0%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%U0)) THEN
-    SELF%U0 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%U0%P)) THEN
+    SELF%U0%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_V0)) THEN
-    IF ((.NOT. SELF%F_V0%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%V0))) THEN
-      SELF%V0 => SELF%F_V0%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%V0%F_P)) THEN
+    IF ((.NOT. SELF%V0%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%V0%P))) THEN
+      SELF%V0%P => SELF%V0%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%V0)) THEN
-    SELF%V0 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%V0%P)) THEN
+    SELF%V0%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_T0)) THEN
-    IF ((.NOT. SELF%F_T0%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%T0))) THEN
-      SELF%T0 => SELF%F_T0%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%T0%F_P)) THEN
+    IF ((.NOT. SELF%T0%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%T0%P))) THEN
+      SELF%T0%P => SELF%T0%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%T0)) THEN
-    SELF%T0 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%T0%P)) THEN
+    SELF%T0%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_PD0)) THEN
-    IF ((.NOT. SELF%F_PD0%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%PD0))) THEN
-      SELF%PD0 => SELF%F_PD0%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%PD0%F_P)) THEN
+    IF ((.NOT. SELF%PD0%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%PD0%P))) THEN
+      SELF%PD0%P => SELF%PD0%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%PD0)) THEN
-    SELF%PD0 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%PD0%P)) THEN
+    SELF%PD0%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_VD0)) THEN
-    IF ((.NOT. SELF%F_VD0%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%VD0))) THEN
-      SELF%VD0 => SELF%F_VD0%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%VD0%F_P)) THEN
+    IF ((.NOT. SELF%VD0%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%VD0%P))) THEN
+      SELF%VD0%P => SELF%VD0%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%VD0)) THEN
-    SELF%VD0 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%VD0%P)) THEN
+    SELF%VD0%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_C9)) THEN
-    IF ((.NOT. SELF%F_C9%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%C9))) THEN
-      SELF%C9 => SELF%F_C9%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%C9%F_P)) THEN
+    IF ((.NOT. SELF%C9%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%C9%P))) THEN
+      SELF%C9%P => SELF%C9%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%C9)) THEN
-    SELF%C9 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%C9%P)) THEN
+    SELF%C9%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_SP9)) THEN
-    IF ((.NOT. SELF%F_SP9%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SP9))) THEN
-      SELF%SP9 => SELF%F_SP9%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%SP9%F_P)) THEN
+    IF ((.NOT. SELF%SP9%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SP9%P))) THEN
+      SELF%SP9%P => SELF%SP9%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SP9)) THEN
-    SELF%SP9 => ZDUM1
+  ELSEIF (.NOT. ASSOCIATED (SELF%SP9%P)) THEN
+    SELF%SP9%P => ZDUM1
   ENDIF
-  IF (ASSOCIATED (SELF%F_SP0)) THEN
-    IF ((.NOT. SELF%F_SP0%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SP0))) THEN
-      SELF%SP0 => SELF%F_SP0%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%SP0%F_P)) THEN
+    IF ((.NOT. SELF%SP0%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SP0%P))) THEN
+      SELF%SP0%P => SELF%SP0%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SP0)) THEN
-    SELF%SP0 => ZDUM1
+  ELSEIF (.NOT. ASSOCIATED (SELF%SP0%P)) THEN
+    SELF%SP0%P => ZDUM1
   ENDIF
-  IF (ASSOCIATED (SELF%F_C0)) THEN
-    IF ((.NOT. SELF%F_C0%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%C0))) THEN
-      SELF%C0 => SELF%F_C0%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%C0%F_P)) THEN
+    IF ((.NOT. SELF%C0%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%C0%P))) THEN
+      SELF%C0%P => SELF%C0%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%C0)) THEN
-    SELF%C0 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%C0%P)) THEN
+    SELF%C0%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_UP9)) THEN
-    IF ((.NOT. SELF%F_UP9%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UP9))) THEN
-      SELF%UP9 => SELF%F_UP9%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%UP9%F_P)) THEN
+    IF ((.NOT. SELF%UP9%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UP9%P))) THEN
+      SELF%UP9%P => SELF%UP9%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%UP9)) THEN
-    SELF%UP9 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%UP9%P)) THEN
+    SELF%UP9%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_VP9)) THEN
-    IF ((.NOT. SELF%F_VP9%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%VP9))) THEN
-      SELF%VP9 => SELF%F_VP9%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%VP9%F_P)) THEN
+    IF ((.NOT. SELF%VP9%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%VP9%P))) THEN
+      SELF%VP9%P => SELF%VP9%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%VP9)) THEN
-    SELF%VP9 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%VP9%P)) THEN
+    SELF%VP9%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_TP9)) THEN
-    IF ((.NOT. SELF%F_TP9%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%TP9))) THEN
-      SELF%TP9 => SELF%F_TP9%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%TP9%F_P)) THEN
+    IF ((.NOT. SELF%TP9%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%TP9%P))) THEN
+      SELF%TP9%P => SELF%TP9%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%TP9)) THEN
-    SELF%TP9 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%TP9%P)) THEN
+    SELF%TP9%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_U9_SI)) THEN
-    IF ((.NOT. SELF%F_U9_SI%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%U9_SI))) THEN
-      SELF%U9_SI => SELF%F_U9_SI%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%U9_SI%F_P)) THEN
+    IF ((.NOT. SELF%U9_SI%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%U9_SI%P))) THEN
+      SELF%U9_SI%P => SELF%U9_SI%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%U9_SI)) THEN
-    SELF%U9_SI => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%U9_SI%P)) THEN
+    SELF%U9_SI%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_V9_SI)) THEN
-    IF ((.NOT. SELF%F_V9_SI%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%V9_SI))) THEN
-      SELF%V9_SI => SELF%F_V9_SI%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%V9_SI%F_P)) THEN
+    IF ((.NOT. SELF%V9_SI%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%V9_SI%P))) THEN
+      SELF%V9_SI%P => SELF%V9_SI%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%V9_SI)) THEN
-    SELF%V9_SI => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%V9_SI%P)) THEN
+    SELF%V9_SI%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_T9_SI)) THEN
-    IF ((.NOT. SELF%F_T9_SI%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%T9_SI))) THEN
-      SELF%T9_SI => SELF%F_T9_SI%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%T9_SI%F_P)) THEN
+    IF ((.NOT. SELF%T9_SI%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%T9_SI%P))) THEN
+      SELF%T9_SI%P => SELF%T9_SI%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%T9_SI)) THEN
-    SELF%T9_SI => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%T9_SI%P)) THEN
+    SELF%T9_SI%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_PD9_SI)) THEN
-    IF ((.NOT. SELF%F_PD9_SI%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%PD9_SI))) THEN
-      SELF%PD9_SI => SELF%F_PD9_SI%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%PD9_SI%F_P)) THEN
+    IF ((.NOT. SELF%PD9_SI%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%PD9_SI%P))) THEN
+      SELF%PD9_SI%P => SELF%PD9_SI%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%PD9_SI)) THEN
-    SELF%PD9_SI => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%PD9_SI%P)) THEN
+    SELF%PD9_SI%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_VD9_SI)) THEN
-    IF ((.NOT. SELF%F_VD9_SI%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%VD9_SI))) THEN
-      SELF%VD9_SI => SELF%F_VD9_SI%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%VD9_SI%F_P)) THEN
+    IF ((.NOT. SELF%VD9_SI%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%VD9_SI%P))) THEN
+      SELF%VD9_SI%P => SELF%VD9_SI%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%VD9_SI)) THEN
-    SELF%VD9_SI => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%VD9_SI%P)) THEN
+    SELF%VD9_SI%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_C9_SI)) THEN
-    IF ((.NOT. SELF%F_C9_SI%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%C9_SI))) THEN
-      SELF%C9_SI => SELF%F_C9_SI%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%C9_SI%F_P)) THEN
+    IF ((.NOT. SELF%C9_SI%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%C9_SI%P))) THEN
+      SELF%C9_SI%P => SELF%C9_SI%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%C9_SI)) THEN
-    SELF%C9_SI => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%C9_SI%P)) THEN
+    SELF%C9_SI%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_UF9)) THEN
-    IF ((.NOT. SELF%F_UF9%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UF9))) THEN
-      SELF%UF9 => SELF%F_UF9%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%UF9%F_P)) THEN
+    IF ((.NOT. SELF%UF9%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UF9%P))) THEN
+      SELF%UF9%P => SELF%UF9%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%UF9)) THEN
-    SELF%UF9 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%UF9%P)) THEN
+    SELF%UF9%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_VF9)) THEN
-    IF ((.NOT. SELF%F_VF9%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%VF9))) THEN
-      SELF%VF9 => SELF%F_VF9%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%VF9%F_P)) THEN
+    IF ((.NOT. SELF%VF9%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%VF9%P))) THEN
+      SELF%VF9%P => SELF%VF9%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%VF9)) THEN
-    SELF%VF9 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%VF9%P)) THEN
+    SELF%VF9%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_TF9)) THEN
-    IF ((.NOT. SELF%F_TF9%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%TF9))) THEN
-      SELF%TF9 => SELF%F_TF9%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%TF9%F_P)) THEN
+    IF ((.NOT. SELF%TF9%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%TF9%P))) THEN
+      SELF%TF9%P => SELF%TF9%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%TF9)) THEN
-    SELF%TF9 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%TF9%P)) THEN
+    SELF%TF9%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_VDF9)) THEN
-    IF ((.NOT. SELF%F_VDF9%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%VDF9))) THEN
-      SELF%VDF9 => SELF%F_VDF9%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%VDF9%F_P)) THEN
+    IF ((.NOT. SELF%VDF9%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%VDF9%P))) THEN
+      SELF%VDF9%P => SELF%VDF9%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%VDF9)) THEN
-    SELF%VDF9 => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%VDF9%P)) THEN
+    SELF%VDF9%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_U9_NL)) THEN
-    IF ((.NOT. SELF%F_U9_NL%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%U9_NL))) THEN
-      SELF%U9_NL => SELF%F_U9_NL%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%U9_NL%F_P)) THEN
+    IF ((.NOT. SELF%U9_NL%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%U9_NL%P))) THEN
+      SELF%U9_NL%P => SELF%U9_NL%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%U9_NL)) THEN
-    SELF%U9_NL => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%U9_NL%P)) THEN
+    SELF%U9_NL%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_V9_NL)) THEN
-    IF ((.NOT. SELF%F_V9_NL%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%V9_NL))) THEN
-      SELF%V9_NL => SELF%F_V9_NL%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%V9_NL%F_P)) THEN
+    IF ((.NOT. SELF%V9_NL%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%V9_NL%P))) THEN
+      SELF%V9_NL%P => SELF%V9_NL%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%V9_NL)) THEN
-    SELF%V9_NL => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%V9_NL%P)) THEN
+    SELF%V9_NL%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_T9_NL)) THEN
-    IF ((.NOT. SELF%F_T9_NL%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%T9_NL))) THEN
-      SELF%T9_NL => SELF%F_T9_NL%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%T9_NL%F_P)) THEN
+    IF ((.NOT. SELF%T9_NL%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%T9_NL%P))) THEN
+      SELF%T9_NL%P => SELF%T9_NL%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%T9_NL)) THEN
-    SELF%T9_NL => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%T9_NL%P)) THEN
+    SELF%T9_NL%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_PD9_NL)) THEN
-    IF ((.NOT. SELF%F_PD9_NL%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%PD9_NL))) THEN
-      SELF%PD9_NL => SELF%F_PD9_NL%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%PD9_NL%F_P)) THEN
+    IF ((.NOT. SELF%PD9_NL%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%PD9_NL%P))) THEN
+      SELF%PD9_NL%P => SELF%PD9_NL%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%PD9_NL)) THEN
-    SELF%PD9_NL => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%PD9_NL%P)) THEN
+    SELF%PD9_NL%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_VD9_NL)) THEN
-    IF ((.NOT. SELF%F_VD9_NL%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%VD9_NL))) THEN
-      SELF%VD9_NL => SELF%F_VD9_NL%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%VD9_NL%F_P)) THEN
+    IF ((.NOT. SELF%VD9_NL%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%VD9_NL%P))) THEN
+      SELF%VD9_NL%P => SELF%VD9_NL%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%VD9_NL)) THEN
-    SELF%VD9_NL => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%VD9_NL%P)) THEN
+    SELF%VD9_NL%P => ZDUM2
   ENDIF
-  IF (ASSOCIATED (SELF%F_C9_NL)) THEN
-    IF ((.NOT. SELF%F_C9_NL%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%C9_NL))) THEN
-      SELF%C9_NL => SELF%F_C9_NL%GET_VIEW (BLOCK_INDEX)
+  IF (ASSOCIATED (SELF%C9_NL%F_P)) THEN
+    IF ((.NOT. SELF%C9_NL%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%C9_NL%P))) THEN
+      SELF%C9_NL%P => SELF%C9_NL%F_P%GET_VIEW (BLOCK_INDEX)
     ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%C9_NL)) THEN
-    SELF%C9_NL => ZDUM2
+  ELSEIF (.NOT. ASSOCIATED (SELF%C9_NL%P)) THEN
+    SELF%C9_NL%P => ZDUM2
   ENDIF
 
-  IF (ASSOCIATED (SELF%F_Q)) THEN
-    IF ((.NOT. SELF%F_Q%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%Q))) THEN
-      SELF%Q => SELF%F_Q%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%Q)) THEN
-    SELF%Q => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_Q_F)) THEN
-    IF ((.NOT. SELF%F_Q_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%Q_F))) THEN
-      SELF%Q_F => SELF%F_Q_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%Q_F)) THEN
-    SELF%Q_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_Q_SPF)) THEN
-    IF ((.NOT. SELF%F_Q_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%Q_SPF))) THEN
-      SELF%Q_SPF => SELF%F_Q_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%Q_SPF)) THEN
-    SELF%Q_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_Q_SP)) THEN
-    IF ((.NOT. SELF%F_Q_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%Q_SP))) THEN
-      SELF%Q_SP => SELF%F_Q_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%Q_SP)) THEN
-    SELF%Q_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_Q_P)) THEN
-    IF ((.NOT. SELF%F_Q_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%Q_P))) THEN
-      SELF%Q_P => SELF%F_Q_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%Q_P)) THEN
-    SELF%Q_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_Q_X)) THEN
-    IF ((.NOT. SELF%F_Q_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%Q_X))) THEN
-      SELF%Q_X => SELF%F_Q_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%Q_X)) THEN
-    SELF%Q_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_I)) THEN
-    IF ((.NOT. SELF%F_I%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%I))) THEN
-      SELF%I => SELF%F_I%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%I)) THEN
-    SELF%I => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_I_F)) THEN
-    IF ((.NOT. SELF%F_I_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%I_F))) THEN
-      SELF%I_F => SELF%F_I_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%I_F)) THEN
-    SELF%I_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_I_SPF)) THEN
-    IF ((.NOT. SELF%F_I_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%I_SPF))) THEN
-      SELF%I_SPF => SELF%F_I_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%I_SPF)) THEN
-    SELF%I_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_I_SP)) THEN
-    IF ((.NOT. SELF%F_I_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%I_SP))) THEN
-      SELF%I_SP => SELF%F_I_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%I_SP)) THEN
-    SELF%I_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_I_P)) THEN
-    IF ((.NOT. SELF%F_I_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%I_P))) THEN
-      SELF%I_P => SELF%F_I_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%I_P)) THEN
-    SELF%I_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_I_X)) THEN
-    IF ((.NOT. SELF%F_I_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%I_X))) THEN
-      SELF%I_X => SELF%F_I_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%I_X)) THEN
-    SELF%I_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_L)) THEN
-    IF ((.NOT. SELF%F_L%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%L))) THEN
-      SELF%L => SELF%F_L%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%L)) THEN
-    SELF%L => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_L_F)) THEN
-    IF ((.NOT. SELF%F_L_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%L_F))) THEN
-      SELF%L_F => SELF%F_L_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%L_F)) THEN
-    SELF%L_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_L_SPF)) THEN
-    IF ((.NOT. SELF%F_L_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%L_SPF))) THEN
-      SELF%L_SPF => SELF%F_L_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%L_SPF)) THEN
-    SELF%L_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_L_SP)) THEN
-    IF ((.NOT. SELF%F_L_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%L_SP))) THEN
-      SELF%L_SP => SELF%F_L_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%L_SP)) THEN
-    SELF%L_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_L_P)) THEN
-    IF ((.NOT. SELF%F_L_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%L_P))) THEN
-      SELF%L_P => SELF%F_L_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%L_P)) THEN
-    SELF%L_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_L_X)) THEN
-    IF ((.NOT. SELF%F_L_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%L_X))) THEN
-      SELF%L_X => SELF%F_L_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%L_X)) THEN
-    SELF%L_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_LCONV)) THEN
-    IF ((.NOT. SELF%F_LCONV%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%LCONV))) THEN
-      SELF%LCONV => SELF%F_LCONV%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%LCONV)) THEN
-    SELF%LCONV => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_LCONV_F)) THEN
-    IF ((.NOT. SELF%F_LCONV_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%LCONV_F))) THEN
-      SELF%LCONV_F => SELF%F_LCONV_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%LCONV_F)) THEN
-    SELF%LCONV_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_LCONV_SPF)) THEN
-    IF ((.NOT. SELF%F_LCONV_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%LCONV_SPF))) THEN
-      SELF%LCONV_SPF => SELF%F_LCONV_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%LCONV_SPF)) THEN
-    SELF%LCONV_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_LCONV_SP)) THEN
-    IF ((.NOT. SELF%F_LCONV_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%LCONV_SP))) THEN
-      SELF%LCONV_SP => SELF%F_LCONV_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%LCONV_SP)) THEN
-    SELF%LCONV_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_LCONV_P)) THEN
-    IF ((.NOT. SELF%F_LCONV_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%LCONV_P))) THEN
-      SELF%LCONV_P => SELF%F_LCONV_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%LCONV_P)) THEN
-    SELF%LCONV_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_LCONV_X)) THEN
-    IF ((.NOT. SELF%F_LCONV_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%LCONV_X))) THEN
-      SELF%LCONV_X => SELF%F_LCONV_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%LCONV_X)) THEN
-    SELF%LCONV_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_ICONV)) THEN
-    IF ((.NOT. SELF%F_ICONV%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%ICONV))) THEN
-      SELF%ICONV => SELF%F_ICONV%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%ICONV)) THEN
-    SELF%ICONV => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_ICONV_F)) THEN
-    IF ((.NOT. SELF%F_ICONV_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%ICONV_F))) THEN
-      SELF%ICONV_F => SELF%F_ICONV_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%ICONV_F)) THEN
-    SELF%ICONV_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_ICONV_SPF)) THEN
-    IF ((.NOT. SELF%F_ICONV_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%ICONV_SPF))) THEN
-      SELF%ICONV_SPF => SELF%F_ICONV_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%ICONV_SPF)) THEN
-    SELF%ICONV_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_ICONV_SP)) THEN
-    IF ((.NOT. SELF%F_ICONV_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%ICONV_SP))) THEN
-      SELF%ICONV_SP => SELF%F_ICONV_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%ICONV_SP)) THEN
-    SELF%ICONV_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_ICONV_P)) THEN
-    IF ((.NOT. SELF%F_ICONV_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%ICONV_P))) THEN
-      SELF%ICONV_P => SELF%F_ICONV_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%ICONV_P)) THEN
-    SELF%ICONV_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_ICONV_X)) THEN
-    IF ((.NOT. SELF%F_ICONV_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%ICONV_X))) THEN
-      SELF%ICONV_X => SELF%F_ICONV_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%ICONV_X)) THEN
-    SELF%ICONV_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_RCONV)) THEN
-    IF ((.NOT. SELF%F_RCONV%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%RCONV))) THEN
-      SELF%RCONV => SELF%F_RCONV%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%RCONV)) THEN
-    SELF%RCONV => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_RCONV_F)) THEN
-    IF ((.NOT. SELF%F_RCONV_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%RCONV_F))) THEN
-      SELF%RCONV_F => SELF%F_RCONV_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%RCONV_F)) THEN
-    SELF%RCONV_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_RCONV_SPF)) THEN
-    IF ((.NOT. SELF%F_RCONV_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%RCONV_SPF))) THEN
-      SELF%RCONV_SPF => SELF%F_RCONV_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%RCONV_SPF)) THEN
-    SELF%RCONV_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_RCONV_SP)) THEN
-    IF ((.NOT. SELF%F_RCONV_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%RCONV_SP))) THEN
-      SELF%RCONV_SP => SELF%F_RCONV_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%RCONV_SP)) THEN
-    SELF%RCONV_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_RCONV_P)) THEN
-    IF ((.NOT. SELF%F_RCONV_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%RCONV_P))) THEN
-      SELF%RCONV_P => SELF%F_RCONV_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%RCONV_P)) THEN
-    SELF%RCONV_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_RCONV_X)) THEN
-    IF ((.NOT. SELF%F_RCONV_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%RCONV_X))) THEN
-      SELF%RCONV_X => SELF%F_RCONV_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%RCONV_X)) THEN
-    SELF%RCONV_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_SCONV)) THEN
-    IF ((.NOT. SELF%F_SCONV%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SCONV))) THEN
-      SELF%SCONV => SELF%F_SCONV%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SCONV)) THEN
-    SELF%SCONV => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_SCONV_F)) THEN
-    IF ((.NOT. SELF%F_SCONV_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SCONV_F))) THEN
-      SELF%SCONV_F => SELF%F_SCONV_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SCONV_F)) THEN
-    SELF%SCONV_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_SCONV_SPF)) THEN
-    IF ((.NOT. SELF%F_SCONV_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SCONV_SPF))) THEN
-      SELF%SCONV_SPF => SELF%F_SCONV_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SCONV_SPF)) THEN
-    SELF%SCONV_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_SCONV_SP)) THEN
-    IF ((.NOT. SELF%F_SCONV_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SCONV_SP))) THEN
-      SELF%SCONV_SP => SELF%F_SCONV_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SCONV_SP)) THEN
-    SELF%SCONV_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_SCONV_P)) THEN
-    IF ((.NOT. SELF%F_SCONV_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SCONV_P))) THEN
-      SELF%SCONV_P => SELF%F_SCONV_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SCONV_P)) THEN
-    SELF%SCONV_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_SCONV_X)) THEN
-    IF ((.NOT. SELF%F_SCONV_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SCONV_X))) THEN
-      SELF%SCONV_X => SELF%F_SCONV_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SCONV_X)) THEN
-    SELF%SCONV_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_IRAD)) THEN
-    IF ((.NOT. SELF%F_IRAD%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%IRAD))) THEN
-      SELF%IRAD => SELF%F_IRAD%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%IRAD)) THEN
-    SELF%IRAD => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_IRAD_F)) THEN
-    IF ((.NOT. SELF%F_IRAD_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%IRAD_F))) THEN
-      SELF%IRAD_F => SELF%F_IRAD_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%IRAD_F)) THEN
-    SELF%IRAD_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_IRAD_SPF)) THEN
-    IF ((.NOT. SELF%F_IRAD_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%IRAD_SPF))) THEN
-      SELF%IRAD_SPF => SELF%F_IRAD_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%IRAD_SPF)) THEN
-    SELF%IRAD_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_IRAD_SP)) THEN
-    IF ((.NOT. SELF%F_IRAD_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%IRAD_SP))) THEN
-      SELF%IRAD_SP => SELF%F_IRAD_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%IRAD_SP)) THEN
-    SELF%IRAD_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_IRAD_P)) THEN
-    IF ((.NOT. SELF%F_IRAD_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%IRAD_P))) THEN
-      SELF%IRAD_P => SELF%F_IRAD_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%IRAD_P)) THEN
-    SELF%IRAD_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_IRAD_X)) THEN
-    IF ((.NOT. SELF%F_IRAD_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%IRAD_X))) THEN
-      SELF%IRAD_X => SELF%F_IRAD_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%IRAD_X)) THEN
-    SELF%IRAD_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_LRAD)) THEN
-    IF ((.NOT. SELF%F_LRAD%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%LRAD))) THEN
-      SELF%LRAD => SELF%F_LRAD%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%LRAD)) THEN
-    SELF%LRAD => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_LRAD_F)) THEN
-    IF ((.NOT. SELF%F_LRAD_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%LRAD_F))) THEN
-      SELF%LRAD_F => SELF%F_LRAD_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%LRAD_F)) THEN
-    SELF%LRAD_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_LRAD_SPF)) THEN
-    IF ((.NOT. SELF%F_LRAD_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%LRAD_SPF))) THEN
-      SELF%LRAD_SPF => SELF%F_LRAD_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%LRAD_SPF)) THEN
-    SELF%LRAD_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_LRAD_SP)) THEN
-    IF ((.NOT. SELF%F_LRAD_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%LRAD_SP))) THEN
-      SELF%LRAD_SP => SELF%F_LRAD_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%LRAD_SP)) THEN
-    SELF%LRAD_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_LRAD_P)) THEN
-    IF ((.NOT. SELF%F_LRAD_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%LRAD_P))) THEN
-      SELF%LRAD_P => SELF%F_LRAD_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%LRAD_P)) THEN
-    SELF%LRAD_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_LRAD_X)) THEN
-    IF ((.NOT. SELF%F_LRAD_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%LRAD_X))) THEN
-      SELF%LRAD_X => SELF%F_LRAD_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%LRAD_X)) THEN
-    SELF%LRAD_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_S)) THEN
-    IF ((.NOT. SELF%F_S%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%S))) THEN
-      SELF%S => SELF%F_S%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%S)) THEN
-    SELF%S => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_S_F)) THEN
-    IF ((.NOT. SELF%F_S_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%S_F))) THEN
-      SELF%S_F => SELF%F_S_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%S_F)) THEN
-    SELF%S_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_S_SPF)) THEN
-    IF ((.NOT. SELF%F_S_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%S_SPF))) THEN
-      SELF%S_SPF => SELF%F_S_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%S_SPF)) THEN
-    SELF%S_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_S_SP)) THEN
-    IF ((.NOT. SELF%F_S_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%S_SP))) THEN
-      SELF%S_SP => SELF%F_S_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%S_SP)) THEN
-    SELF%S_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_S_P)) THEN
-    IF ((.NOT. SELF%F_S_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%S_P))) THEN
-      SELF%S_P => SELF%F_S_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%S_P)) THEN
-    SELF%S_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_S_X)) THEN
-    IF ((.NOT. SELF%F_S_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%S_X))) THEN
-      SELF%S_X => SELF%F_S_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%S_X)) THEN
-    SELF%S_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_R)) THEN
-    IF ((.NOT. SELF%F_R%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%R))) THEN
-      SELF%R => SELF%F_R%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%R)) THEN
-    SELF%R => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_R_F)) THEN
-    IF ((.NOT. SELF%F_R_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%R_F))) THEN
-      SELF%R_F => SELF%F_R_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%R_F)) THEN
-    SELF%R_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_R_SPF)) THEN
-    IF ((.NOT. SELF%F_R_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%R_SPF))) THEN
-      SELF%R_SPF => SELF%F_R_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%R_SPF)) THEN
-    SELF%R_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_R_SP)) THEN
-    IF ((.NOT. SELF%F_R_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%R_SP))) THEN
-      SELF%R_SP => SELF%F_R_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%R_SP)) THEN
-    SELF%R_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_R_P)) THEN
-    IF ((.NOT. SELF%F_R_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%R_P))) THEN
-      SELF%R_P => SELF%F_R_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%R_P)) THEN
-    SELF%R_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_R_X)) THEN
-    IF ((.NOT. SELF%F_R_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%R_X))) THEN
-      SELF%R_X => SELF%F_R_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%R_X)) THEN
-    SELF%R_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_G)) THEN
-    IF ((.NOT. SELF%F_G%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%G))) THEN
-      SELF%G => SELF%F_G%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%G)) THEN
-    SELF%G => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_G_F)) THEN
-    IF ((.NOT. SELF%F_G_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%G_F))) THEN
-      SELF%G_F => SELF%F_G_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%G_F)) THEN
-    SELF%G_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_G_SPF)) THEN
-    IF ((.NOT. SELF%F_G_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%G_SPF))) THEN
-      SELF%G_SPF => SELF%F_G_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%G_SPF)) THEN
-    SELF%G_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_G_SP)) THEN
-    IF ((.NOT. SELF%F_G_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%G_SP))) THEN
-      SELF%G_SP => SELF%F_G_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%G_SP)) THEN
-    SELF%G_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_G_P)) THEN
-    IF ((.NOT. SELF%F_G_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%G_P))) THEN
-      SELF%G_P => SELF%F_G_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%G_P)) THEN
-    SELF%G_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_G_X)) THEN
-    IF ((.NOT. SELF%F_G_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%G_X))) THEN
-      SELF%G_X => SELF%F_G_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%G_X)) THEN
-    SELF%G_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_H)) THEN
-    IF ((.NOT. SELF%F_H%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%H))) THEN
-      SELF%H => SELF%F_H%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%H)) THEN
-    SELF%H => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_H_F)) THEN
-    IF ((.NOT. SELF%F_H_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%H_F))) THEN
-      SELF%H_F => SELF%F_H_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%H_F)) THEN
-    SELF%H_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_H_SPF)) THEN
-    IF ((.NOT. SELF%F_H_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%H_SPF))) THEN
-      SELF%H_SPF => SELF%F_H_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%H_SPF)) THEN
-    SELF%H_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_H_SP)) THEN
-    IF ((.NOT. SELF%F_H_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%H_SP))) THEN
-      SELF%H_SP => SELF%F_H_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%H_SP)) THEN
-    SELF%H_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_H_P)) THEN
-    IF ((.NOT. SELF%F_H_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%H_P))) THEN
-      SELF%H_P => SELF%F_H_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%H_P)) THEN
-    SELF%H_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_H_X)) THEN
-    IF ((.NOT. SELF%F_H_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%H_X))) THEN
-      SELF%H_X => SELF%F_H_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%H_X)) THEN
-    SELF%H_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_TKE)) THEN
-    IF ((.NOT. SELF%F_TKE%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%TKE))) THEN
-      SELF%TKE => SELF%F_TKE%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%TKE)) THEN
-    SELF%TKE => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_TKE_F)) THEN
-    IF ((.NOT. SELF%F_TKE_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%TKE_F))) THEN
-      SELF%TKE_F => SELF%F_TKE_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%TKE_F)) THEN
-    SELF%TKE_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_TKE_SPF)) THEN
-    IF ((.NOT. SELF%F_TKE_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%TKE_SPF))) THEN
-      SELF%TKE_SPF => SELF%F_TKE_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%TKE_SPF)) THEN
-    SELF%TKE_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_TKE_SP)) THEN
-    IF ((.NOT. SELF%F_TKE_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%TKE_SP))) THEN
-      SELF%TKE_SP => SELF%F_TKE_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%TKE_SP)) THEN
-    SELF%TKE_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_TKE_P)) THEN
-    IF ((.NOT. SELF%F_TKE_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%TKE_P))) THEN
-      SELF%TKE_P => SELF%F_TKE_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%TKE_P)) THEN
-    SELF%TKE_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_TKE_X)) THEN
-    IF ((.NOT. SELF%F_TKE_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%TKE_X))) THEN
-      SELF%TKE_X => SELF%F_TKE_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%TKE_X)) THEN
-    SELF%TKE_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_TTE)) THEN
-    IF ((.NOT. SELF%F_TTE%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%TTE))) THEN
-      SELF%TTE => SELF%F_TTE%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%TTE)) THEN
-    SELF%TTE => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_TTE_F)) THEN
-    IF ((.NOT. SELF%F_TTE_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%TTE_F))) THEN
-      SELF%TTE_F => SELF%F_TTE_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%TTE_F)) THEN
-    SELF%TTE_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_TTE_SPF)) THEN
-    IF ((.NOT. SELF%F_TTE_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%TTE_SPF))) THEN
-      SELF%TTE_SPF => SELF%F_TTE_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%TTE_SPF)) THEN
-    SELF%TTE_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_TTE_SP)) THEN
-    IF ((.NOT. SELF%F_TTE_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%TTE_SP))) THEN
-      SELF%TTE_SP => SELF%F_TTE_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%TTE_SP)) THEN
-    SELF%TTE_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_TTE_P)) THEN
-    IF ((.NOT. SELF%F_TTE_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%TTE_P))) THEN
-      SELF%TTE_P => SELF%F_TTE_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%TTE_P)) THEN
-    SELF%TTE_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_TTE_X)) THEN
-    IF ((.NOT. SELF%F_TTE_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%TTE_X))) THEN
-      SELF%TTE_X => SELF%F_TTE_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%TTE_X)) THEN
-    SELF%TTE_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_EFB1)) THEN
-    IF ((.NOT. SELF%F_EFB1%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EFB1))) THEN
-      SELF%EFB1 => SELF%F_EFB1%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%EFB1)) THEN
-    SELF%EFB1 => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_EFB1_F)) THEN
-    IF ((.NOT. SELF%F_EFB1_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EFB1_F))) THEN
-      SELF%EFB1_F => SELF%F_EFB1_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%EFB1_F)) THEN
-    SELF%EFB1_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_EFB1_SPF)) THEN
-    IF ((.NOT. SELF%F_EFB1_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EFB1_SPF))) THEN
-      SELF%EFB1_SPF => SELF%F_EFB1_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%EFB1_SPF)) THEN
-    SELF%EFB1_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_EFB1_SP)) THEN
-    IF ((.NOT. SELF%F_EFB1_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EFB1_SP))) THEN
-      SELF%EFB1_SP => SELF%F_EFB1_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%EFB1_SP)) THEN
-    SELF%EFB1_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_EFB1_P)) THEN
-    IF ((.NOT. SELF%F_EFB1_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EFB1_P))) THEN
-      SELF%EFB1_P => SELF%F_EFB1_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%EFB1_P)) THEN
-    SELF%EFB1_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_EFB1_X)) THEN
-    IF ((.NOT. SELF%F_EFB1_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EFB1_X))) THEN
-      SELF%EFB1_X => SELF%F_EFB1_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%EFB1_X)) THEN
-    SELF%EFB1_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_EFB2)) THEN
-    IF ((.NOT. SELF%F_EFB2%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EFB2))) THEN
-      SELF%EFB2 => SELF%F_EFB2%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%EFB2)) THEN
-    SELF%EFB2 => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_EFB2_F)) THEN
-    IF ((.NOT. SELF%F_EFB2_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EFB2_F))) THEN
-      SELF%EFB2_F => SELF%F_EFB2_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%EFB2_F)) THEN
-    SELF%EFB2_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_EFB2_SPF)) THEN
-    IF ((.NOT. SELF%F_EFB2_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EFB2_SPF))) THEN
-      SELF%EFB2_SPF => SELF%F_EFB2_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%EFB2_SPF)) THEN
-    SELF%EFB2_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_EFB2_SP)) THEN
-    IF ((.NOT. SELF%F_EFB2_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EFB2_SP))) THEN
-      SELF%EFB2_SP => SELF%F_EFB2_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%EFB2_SP)) THEN
-    SELF%EFB2_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_EFB2_P)) THEN
-    IF ((.NOT. SELF%F_EFB2_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EFB2_P))) THEN
-      SELF%EFB2_P => SELF%F_EFB2_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%EFB2_P)) THEN
-    SELF%EFB2_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_EFB2_X)) THEN
-    IF ((.NOT. SELF%F_EFB2_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EFB2_X))) THEN
-      SELF%EFB2_X => SELF%F_EFB2_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%EFB2_X)) THEN
-    SELF%EFB2_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_EFB3)) THEN
-    IF ((.NOT. SELF%F_EFB3%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EFB3))) THEN
-      SELF%EFB3 => SELF%F_EFB3%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%EFB3)) THEN
-    SELF%EFB3 => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_EFB3_F)) THEN
-    IF ((.NOT. SELF%F_EFB3_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EFB3_F))) THEN
-      SELF%EFB3_F => SELF%F_EFB3_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%EFB3_F)) THEN
-    SELF%EFB3_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_EFB3_SPF)) THEN
-    IF ((.NOT. SELF%F_EFB3_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EFB3_SPF))) THEN
-      SELF%EFB3_SPF => SELF%F_EFB3_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%EFB3_SPF)) THEN
-    SELF%EFB3_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_EFB3_SP)) THEN
-    IF ((.NOT. SELF%F_EFB3_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EFB3_SP))) THEN
-      SELF%EFB3_SP => SELF%F_EFB3_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%EFB3_SP)) THEN
-    SELF%EFB3_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_EFB3_P)) THEN
-    IF ((.NOT. SELF%F_EFB3_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EFB3_P))) THEN
-      SELF%EFB3_P => SELF%F_EFB3_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%EFB3_P)) THEN
-    SELF%EFB3_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_EFB3_X)) THEN
-    IF ((.NOT. SELF%F_EFB3_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EFB3_X))) THEN
-      SELF%EFB3_X => SELF%F_EFB3_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%EFB3_X)) THEN
-    SELF%EFB3_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_A)) THEN
-    IF ((.NOT. SELF%F_A%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%A))) THEN
-      SELF%A => SELF%F_A%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%A)) THEN
-    SELF%A => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_A_F)) THEN
-    IF ((.NOT. SELF%F_A_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%A_F))) THEN
-      SELF%A_F => SELF%F_A_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%A_F)) THEN
-    SELF%A_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_A_SPF)) THEN
-    IF ((.NOT. SELF%F_A_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%A_SPF))) THEN
-      SELF%A_SPF => SELF%F_A_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%A_SPF)) THEN
-    SELF%A_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_A_SP)) THEN
-    IF ((.NOT. SELF%F_A_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%A_SP))) THEN
-      SELF%A_SP => SELF%F_A_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%A_SP)) THEN
-    SELF%A_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_A_P)) THEN
-    IF ((.NOT. SELF%F_A_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%A_P))) THEN
-      SELF%A_P => SELF%F_A_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%A_P)) THEN
-    SELF%A_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_A_X)) THEN
-    IF ((.NOT. SELF%F_A_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%A_X))) THEN
-      SELF%A_X => SELF%F_A_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%A_X)) THEN
-    SELF%A_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_O3)) THEN
-    IF ((.NOT. SELF%F_O3%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%O3))) THEN
-      SELF%O3 => SELF%F_O3%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%O3)) THEN
-    SELF%O3 => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_O3_F)) THEN
-    IF ((.NOT. SELF%F_O3_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%O3_F))) THEN
-      SELF%O3_F => SELF%F_O3_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%O3_F)) THEN
-    SELF%O3_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_O3_SPF)) THEN
-    IF ((.NOT. SELF%F_O3_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%O3_SPF))) THEN
-      SELF%O3_SPF => SELF%F_O3_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%O3_SPF)) THEN
-    SELF%O3_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_O3_SP)) THEN
-    IF ((.NOT. SELF%F_O3_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%O3_SP))) THEN
-      SELF%O3_SP => SELF%F_O3_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%O3_SP)) THEN
-    SELF%O3_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_O3_P)) THEN
-    IF ((.NOT. SELF%F_O3_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%O3_P))) THEN
-      SELF%O3_P => SELF%F_O3_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%O3_P)) THEN
-    SELF%O3_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_O3_X)) THEN
-    IF ((.NOT. SELF%F_O3_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%O3_X))) THEN
-      SELF%O3_X => SELF%F_O3_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%O3_X)) THEN
-    SELF%O3_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_SRC)) THEN
-    IF ((.NOT. SELF%F_SRC%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SRC))) THEN
-      SELF%SRC => SELF%F_SRC%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SRC)) THEN
-    SELF%SRC => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_SRC_F)) THEN
-    IF ((.NOT. SELF%F_SRC_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SRC_F))) THEN
-      SELF%SRC_F => SELF%F_SRC_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SRC_F)) THEN
-    SELF%SRC_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_SRC_SPF)) THEN
-    IF ((.NOT. SELF%F_SRC_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SRC_SPF))) THEN
-      SELF%SRC_SPF => SELF%F_SRC_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SRC_SPF)) THEN
-    SELF%SRC_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_SRC_SP)) THEN
-    IF ((.NOT. SELF%F_SRC_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SRC_SP))) THEN
-      SELF%SRC_SP => SELF%F_SRC_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SRC_SP)) THEN
-    SELF%SRC_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_SRC_P)) THEN
-    IF ((.NOT. SELF%F_SRC_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SRC_P))) THEN
-      SELF%SRC_P => SELF%F_SRC_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SRC_P)) THEN
-    SELF%SRC_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_SRC_X)) THEN
-    IF ((.NOT. SELF%F_SRC_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SRC_X))) THEN
-      SELF%SRC_X => SELF%F_SRC_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SRC_X)) THEN
-    SELF%SRC_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_MXL)) THEN
-    IF ((.NOT. SELF%F_MXL%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%MXL))) THEN
-      SELF%MXL => SELF%F_MXL%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%MXL)) THEN
-    SELF%MXL => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_MXL_F)) THEN
-    IF ((.NOT. SELF%F_MXL_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%MXL_F))) THEN
-      SELF%MXL_F => SELF%F_MXL_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%MXL_F)) THEN
-    SELF%MXL_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_MXL_SPF)) THEN
-    IF ((.NOT. SELF%F_MXL_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%MXL_SPF))) THEN
-      SELF%MXL_SPF => SELF%F_MXL_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%MXL_SPF)) THEN
-    SELF%MXL_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_MXL_SP)) THEN
-    IF ((.NOT. SELF%F_MXL_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%MXL_SP))) THEN
-      SELF%MXL_SP => SELF%F_MXL_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%MXL_SP)) THEN
-    SELF%MXL_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_MXL_P)) THEN
-    IF ((.NOT. SELF%F_MXL_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%MXL_P))) THEN
-      SELF%MXL_P => SELF%F_MXL_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%MXL_P)) THEN
-    SELF%MXL_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_MXL_X)) THEN
-    IF ((.NOT. SELF%F_MXL_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%MXL_X))) THEN
-      SELF%MXL_X => SELF%F_MXL_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%MXL_X)) THEN
-    SELF%MXL_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_SHTUR)) THEN
-    IF ((.NOT. SELF%F_SHTUR%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SHTUR))) THEN
-      SELF%SHTUR => SELF%F_SHTUR%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SHTUR)) THEN
-    SELF%SHTUR => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_SHTUR_F)) THEN
-    IF ((.NOT. SELF%F_SHTUR_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SHTUR_F))) THEN
-      SELF%SHTUR_F => SELF%F_SHTUR_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SHTUR_F)) THEN
-    SELF%SHTUR_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_SHTUR_SPF)) THEN
-    IF ((.NOT. SELF%F_SHTUR_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SHTUR_SPF))) THEN
-      SELF%SHTUR_SPF => SELF%F_SHTUR_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SHTUR_SPF)) THEN
-    SELF%SHTUR_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_SHTUR_SP)) THEN
-    IF ((.NOT. SELF%F_SHTUR_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SHTUR_SP))) THEN
-      SELF%SHTUR_SP => SELF%F_SHTUR_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SHTUR_SP)) THEN
-    SELF%SHTUR_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_SHTUR_P)) THEN
-    IF ((.NOT. SELF%F_SHTUR_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SHTUR_P))) THEN
-      SELF%SHTUR_P => SELF%F_SHTUR_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SHTUR_P)) THEN
-    SELF%SHTUR_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_SHTUR_X)) THEN
-    IF ((.NOT. SELF%F_SHTUR_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SHTUR_X))) THEN
-      SELF%SHTUR_X => SELF%F_SHTUR_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SHTUR_X)) THEN
-    SELF%SHTUR_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_FQTUR)) THEN
-    IF ((.NOT. SELF%F_FQTUR%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%FQTUR))) THEN
-      SELF%FQTUR => SELF%F_FQTUR%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%FQTUR)) THEN
-    SELF%FQTUR => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_FQTUR_F)) THEN
-    IF ((.NOT. SELF%F_FQTUR_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%FQTUR_F))) THEN
-      SELF%FQTUR_F => SELF%F_FQTUR_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%FQTUR_F)) THEN
-    SELF%FQTUR_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_FQTUR_SPF)) THEN
-    IF ((.NOT. SELF%F_FQTUR_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%FQTUR_SPF))) THEN
-      SELF%FQTUR_SPF => SELF%F_FQTUR_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%FQTUR_SPF)) THEN
-    SELF%FQTUR_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_FQTUR_SP)) THEN
-    IF ((.NOT. SELF%F_FQTUR_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%FQTUR_SP))) THEN
-      SELF%FQTUR_SP => SELF%F_FQTUR_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%FQTUR_SP)) THEN
-    SELF%FQTUR_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_FQTUR_P)) THEN
-    IF ((.NOT. SELF%F_FQTUR_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%FQTUR_P))) THEN
-      SELF%FQTUR_P => SELF%F_FQTUR_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%FQTUR_P)) THEN
-    SELF%FQTUR_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_FQTUR_X)) THEN
-    IF ((.NOT. SELF%F_FQTUR_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%FQTUR_X))) THEN
-      SELF%FQTUR_X => SELF%F_FQTUR_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%FQTUR_X)) THEN
-    SELF%FQTUR_X => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%Q)
 
-  IF (ASSOCIATED (SELF%F_FSTUR)) THEN
-    IF ((.NOT. SELF%F_FSTUR%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%FSTUR))) THEN
-      SELF%FSTUR => SELF%F_FSTUR%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%FSTUR)) THEN
-    SELF%FSTUR => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_FSTUR_F)) THEN
-    IF ((.NOT. SELF%F_FSTUR_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%FSTUR_F))) THEN
-      SELF%FSTUR_F => SELF%F_FSTUR_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%FSTUR_F)) THEN
-    SELF%FSTUR_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_FSTUR_SPF)) THEN
-    IF ((.NOT. SELF%F_FSTUR_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%FSTUR_SPF))) THEN
-      SELF%FSTUR_SPF => SELF%F_FSTUR_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%FSTUR_SPF)) THEN
-    SELF%FSTUR_SPF => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%I)
 
-  IF (ASSOCIATED (SELF%F_FSTUR_SP)) THEN
-    IF ((.NOT. SELF%F_FSTUR_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%FSTUR_SP))) THEN
-      SELF%FSTUR_SP => SELF%F_FSTUR_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%FSTUR_SP)) THEN
-    SELF%FSTUR_SP => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%L)
 
-  IF (ASSOCIATED (SELF%F_FSTUR_P)) THEN
-    IF ((.NOT. SELF%F_FSTUR_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%FSTUR_P))) THEN
-      SELF%FSTUR_P => SELF%F_FSTUR_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%FSTUR_P)) THEN
-    SELF%FSTUR_P => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%LCONV)
 
-  IF (ASSOCIATED (SELF%F_FSTUR_X)) THEN
-    IF ((.NOT. SELF%F_FSTUR_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%FSTUR_X))) THEN
-      SELF%FSTUR_X => SELF%F_FSTUR_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%FSTUR_X)) THEN
-    SELF%FSTUR_X => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%ICONV)
 
-  IF (ASSOCIATED (SELF%F_CPF)) THEN
-    IF ((.NOT. SELF%F_CPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%CPF))) THEN
-      SELF%CPF => SELF%F_CPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%CPF)) THEN
-    SELF%CPF => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%RCONV)
 
-  IF (ASSOCIATED (SELF%F_CPF_F)) THEN
-    IF ((.NOT. SELF%F_CPF_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%CPF_F))) THEN
-      SELF%CPF_F => SELF%F_CPF_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%CPF_F)) THEN
-    SELF%CPF_F => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%SCONV)
 
-  IF (ASSOCIATED (SELF%F_CPF_SPF)) THEN
-    IF ((.NOT. SELF%F_CPF_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%CPF_SPF))) THEN
-      SELF%CPF_SPF => SELF%F_CPF_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%CPF_SPF)) THEN
-    SELF%CPF_SPF => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%IRAD)
 
-  IF (ASSOCIATED (SELF%F_CPF_SP)) THEN
-    IF ((.NOT. SELF%F_CPF_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%CPF_SP))) THEN
-      SELF%CPF_SP => SELF%F_CPF_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%CPF_SP)) THEN
-    SELF%CPF_SP => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%LRAD)
 
-  IF (ASSOCIATED (SELF%F_CPF_P)) THEN
-    IF ((.NOT. SELF%F_CPF_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%CPF_P))) THEN
-      SELF%CPF_P => SELF%F_CPF_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%CPF_P)) THEN
-    SELF%CPF_P => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%S)
 
-  IF (ASSOCIATED (SELF%F_CPF_X)) THEN
-    IF ((.NOT. SELF%F_CPF_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%CPF_X))) THEN
-      SELF%CPF_X => SELF%F_CPF_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%CPF_X)) THEN
-    SELF%CPF_X => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%R)
 
-  IF (ASSOCIATED (SELF%F_SPF)) THEN
-    IF ((.NOT. SELF%F_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SPF))) THEN
-      SELF%SPF => SELF%F_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SPF)) THEN
-    SELF%SPF => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%G)
 
-  IF (ASSOCIATED (SELF%F_SPF_F)) THEN
-    IF ((.NOT. SELF%F_SPF_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SPF_F))) THEN
-      SELF%SPF_F => SELF%F_SPF_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SPF_F)) THEN
-    SELF%SPF_F => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%H)
 
-  IF (ASSOCIATED (SELF%F_SPF_SPF)) THEN
-    IF ((.NOT. SELF%F_SPF_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SPF_SPF))) THEN
-      SELF%SPF_SPF => SELF%F_SPF_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SPF_SPF)) THEN
-    SELF%SPF_SPF => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%TKE)
 
-  IF (ASSOCIATED (SELF%F_SPF_SP)) THEN
-    IF ((.NOT. SELF%F_SPF_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SPF_SP))) THEN
-      SELF%SPF_SP => SELF%F_SPF_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SPF_SP)) THEN
-    SELF%SPF_SP => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%TTE)
 
-  IF (ASSOCIATED (SELF%F_SPF_P)) THEN
-    IF ((.NOT. SELF%F_SPF_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SPF_P))) THEN
-      SELF%SPF_P => SELF%F_SPF_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SPF_P)) THEN
-    SELF%SPF_P => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%EFB1)
 
-  IF (ASSOCIATED (SELF%F_SPF_X)) THEN
-    IF ((.NOT. SELF%F_SPF_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SPF_X))) THEN
-      SELF%SPF_X => SELF%F_SPF_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SPF_X)) THEN
-    SELF%SPF_X => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%EFB2)
 
-  IF (ASSOCIATED (SELF%F_CVGQ)) THEN
-    IF ((.NOT. SELF%F_CVGQ%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%CVGQ))) THEN
-      SELF%CVGQ => SELF%F_CVGQ%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%CVGQ)) THEN
-    SELF%CVGQ => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%EFB3)
 
-  IF (ASSOCIATED (SELF%F_CVGQ_F)) THEN
-    IF ((.NOT. SELF%F_CVGQ_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%CVGQ_F))) THEN
-      SELF%CVGQ_F => SELF%F_CVGQ_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%CVGQ_F)) THEN
-    SELF%CVGQ_F => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%A)
 
-  IF (ASSOCIATED (SELF%F_CVGQ_SPF)) THEN
-    IF ((.NOT. SELF%F_CVGQ_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%CVGQ_SPF))) THEN
-      SELF%CVGQ_SPF => SELF%F_CVGQ_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%CVGQ_SPF)) THEN
-    SELF%CVGQ_SPF => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%O3)
 
-  IF (ASSOCIATED (SELF%F_CVGQ_SP)) THEN
-    IF ((.NOT. SELF%F_CVGQ_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%CVGQ_SP))) THEN
-      SELF%CVGQ_SP => SELF%F_CVGQ_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%CVGQ_SP)) THEN
-    SELF%CVGQ_SP => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%SRC)
 
-  IF (ASSOCIATED (SELF%F_CVGQ_P)) THEN
-    IF ((.NOT. SELF%F_CVGQ_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%CVGQ_P))) THEN
-      SELF%CVGQ_P => SELF%F_CVGQ_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%CVGQ_P)) THEN
-    SELF%CVGQ_P => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%MXL)
 
-  IF (ASSOCIATED (SELF%F_CVGQ_X)) THEN
-    IF ((.NOT. SELF%F_CVGQ_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%CVGQ_X))) THEN
-      SELF%CVGQ_X => SELF%F_CVGQ_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%CVGQ_X)) THEN
-    SELF%CVGQ_X => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%SHTUR)
 
-  IF (ASSOCIATED (SELF%F_QVA)) THEN
-    IF ((.NOT. SELF%F_QVA%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%QVA))) THEN
-      SELF%QVA => SELF%F_QVA%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%QVA)) THEN
-    SELF%QVA => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%FQTUR)
 
-  IF (ASSOCIATED (SELF%F_QVA_F)) THEN
-    IF ((.NOT. SELF%F_QVA_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%QVA_F))) THEN
-      SELF%QVA_F => SELF%F_QVA_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%QVA_F)) THEN
-    SELF%QVA_F => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%FSTUR)
 
-  IF (ASSOCIATED (SELF%F_QVA_SPF)) THEN
-    IF ((.NOT. SELF%F_QVA_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%QVA_SPF))) THEN
-      SELF%QVA_SPF => SELF%F_QVA_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%QVA_SPF)) THEN
-    SELF%QVA_SPF => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%CPF)
 
-  IF (ASSOCIATED (SELF%F_QVA_SP)) THEN
-    IF ((.NOT. SELF%F_QVA_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%QVA_SP))) THEN
-      SELF%QVA_SP => SELF%F_QVA_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%QVA_SP)) THEN
-    SELF%QVA_SP => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%SPF)
 
-  IF (ASSOCIATED (SELF%F_QVA_P)) THEN
-    IF ((.NOT. SELF%F_QVA_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%QVA_P))) THEN
-      SELF%QVA_P => SELF%F_QVA_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%QVA_P)) THEN
-    SELF%QVA_P => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%CVGQ)
 
-  IF (ASSOCIATED (SELF%F_QVA_X)) THEN
-    IF ((.NOT. SELF%F_QVA_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%QVA_X))) THEN
-      SELF%QVA_X => SELF%F_QVA_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%QVA_X)) THEN
-    SELF%QVA_X => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%QVA)
 
   DO JGFL = 1, SIZE (SELF%GHG)
-
-    IF (ASSOCIATED (SELF%GHG(JGFL)%F_P)) THEN
-      IF ((.NOT. SELF%GHG(JGFL)%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%GHG(JGFL)%P))) THEN
-        SELF%GHG(JGFL)%P => SELF%GHG(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%GHG(JGFL)%P)) THEN
-      SELF%GHG(JGFL)%P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%GHG(JGFL)%F_P_F)) THEN
-      IF ((.NOT. SELF%GHG(JGFL)%F_P_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%GHG(JGFL)%P_F))) THEN
-        SELF%GHG(JGFL)%P_F => SELF%GHG(JGFL)%F_P_F%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%GHG(JGFL)%P_F)) THEN
-      SELF%GHG(JGFL)%P_F => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%GHG(JGFL)%F_P_SPF)) THEN
-      IF ((.NOT. SELF%GHG(JGFL)%F_P_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%GHG(JGFL)%P_SPF))) THEN
-        SELF%GHG(JGFL)%P_SPF => SELF%GHG(JGFL)%F_P_SPF%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%GHG(JGFL)%P_SPF)) THEN
-      SELF%GHG(JGFL)%P_SPF => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%GHG(JGFL)%F_P_SP)) THEN
-      IF ((.NOT. SELF%GHG(JGFL)%F_P_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%GHG(JGFL)%P_SP))) THEN
-        SELF%GHG(JGFL)%P_SP => SELF%GHG(JGFL)%F_P_SP%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%GHG(JGFL)%P_SP)) THEN
-      SELF%GHG(JGFL)%P_SP => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%GHG(JGFL)%F_P_P)) THEN
-      IF ((.NOT. SELF%GHG(JGFL)%F_P_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%GHG(JGFL)%P_P))) THEN
-        SELF%GHG(JGFL)%P_P => SELF%GHG(JGFL)%F_P_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%GHG(JGFL)%P_P)) THEN
-      SELF%GHG(JGFL)%P_P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%GHG(JGFL)%F_P_X)) THEN
-      IF ((.NOT. SELF%GHG(JGFL)%F_P_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%GHG(JGFL)%P_X))) THEN
-        SELF%GHG(JGFL)%P_X => SELF%GHG(JGFL)%F_P_X%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%GHG(JGFL)%P_X)) THEN
-      SELF%GHG(JGFL)%P_X => ZDUM2
-    ENDIF
-
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%GHG(JGFL))
   ENDDO
 
   DO JGFL = 1, SIZE (SELF%CHEM)
-
-    IF (ASSOCIATED (SELF%CHEM(JGFL)%F_P)) THEN
-      IF ((.NOT. SELF%CHEM(JGFL)%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%CHEM(JGFL)%P))) THEN
-        SELF%CHEM(JGFL)%P => SELF%CHEM(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%CHEM(JGFL)%P)) THEN
-      SELF%CHEM(JGFL)%P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%CHEM(JGFL)%F_P_F)) THEN
-      IF ((.NOT. SELF%CHEM(JGFL)%F_P_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%CHEM(JGFL)%P_F))) THEN
-        SELF%CHEM(JGFL)%P_F => SELF%CHEM(JGFL)%F_P_F%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%CHEM(JGFL)%P_F)) THEN
-      SELF%CHEM(JGFL)%P_F => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%CHEM(JGFL)%F_P_SPF)) THEN
-      IF ((.NOT. SELF%CHEM(JGFL)%F_P_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%CHEM(JGFL)%P_SPF))) THEN
-        SELF%CHEM(JGFL)%P_SPF => SELF%CHEM(JGFL)%F_P_SPF%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%CHEM(JGFL)%P_SPF)) THEN
-      SELF%CHEM(JGFL)%P_SPF => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%CHEM(JGFL)%F_P_SP)) THEN
-      IF ((.NOT. SELF%CHEM(JGFL)%F_P_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%CHEM(JGFL)%P_SP))) THEN
-        SELF%CHEM(JGFL)%P_SP => SELF%CHEM(JGFL)%F_P_SP%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%CHEM(JGFL)%P_SP)) THEN
-      SELF%CHEM(JGFL)%P_SP => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%CHEM(JGFL)%F_P_P)) THEN
-      IF ((.NOT. SELF%CHEM(JGFL)%F_P_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%CHEM(JGFL)%P_P))) THEN
-        SELF%CHEM(JGFL)%P_P => SELF%CHEM(JGFL)%F_P_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%CHEM(JGFL)%P_P)) THEN
-      SELF%CHEM(JGFL)%P_P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%CHEM(JGFL)%F_P_X)) THEN
-      IF ((.NOT. SELF%CHEM(JGFL)%F_P_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%CHEM(JGFL)%P_X))) THEN
-        SELF%CHEM(JGFL)%P_X => SELF%CHEM(JGFL)%F_P_X%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%CHEM(JGFL)%P_X)) THEN
-      SELF%CHEM(JGFL)%P_X => ZDUM2
-    ENDIF
-
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%CHEM(JGFL))
   ENDDO
 
   DO JGFL = 1, SIZE (SELF%AERO)
-
-    IF (ASSOCIATED (SELF%AERO(JGFL)%F_P)) THEN
-      IF ((.NOT. SELF%AERO(JGFL)%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%AERO(JGFL)%P))) THEN
-        SELF%AERO(JGFL)%P => SELF%AERO(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%AERO(JGFL)%P)) THEN
-      SELF%AERO(JGFL)%P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%AERO(JGFL)%F_P_F)) THEN
-      IF ((.NOT. SELF%AERO(JGFL)%F_P_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%AERO(JGFL)%P_F))) THEN
-        SELF%AERO(JGFL)%P_F => SELF%AERO(JGFL)%F_P_F%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%AERO(JGFL)%P_F)) THEN
-      SELF%AERO(JGFL)%P_F => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%AERO(JGFL)%F_P_SPF)) THEN
-      IF ((.NOT. SELF%AERO(JGFL)%F_P_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%AERO(JGFL)%P_SPF))) THEN
-        SELF%AERO(JGFL)%P_SPF => SELF%AERO(JGFL)%F_P_SPF%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%AERO(JGFL)%P_SPF)) THEN
-      SELF%AERO(JGFL)%P_SPF => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%AERO(JGFL)%F_P_SP)) THEN
-      IF ((.NOT. SELF%AERO(JGFL)%F_P_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%AERO(JGFL)%P_SP))) THEN
-        SELF%AERO(JGFL)%P_SP => SELF%AERO(JGFL)%F_P_SP%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%AERO(JGFL)%P_SP)) THEN
-      SELF%AERO(JGFL)%P_SP => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%AERO(JGFL)%F_P_P)) THEN
-      IF ((.NOT. SELF%AERO(JGFL)%F_P_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%AERO(JGFL)%P_P))) THEN
-        SELF%AERO(JGFL)%P_P => SELF%AERO(JGFL)%F_P_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%AERO(JGFL)%P_P)) THEN
-      SELF%AERO(JGFL)%P_P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%AERO(JGFL)%F_P_X)) THEN
-      IF ((.NOT. SELF%AERO(JGFL)%F_P_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%AERO(JGFL)%P_X))) THEN
-        SELF%AERO(JGFL)%P_X => SELF%AERO(JGFL)%F_P_X%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%AERO(JGFL)%P_X)) THEN
-      SELF%AERO(JGFL)%P_X => ZDUM2
-    ENDIF
-
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%AERO(JGFL))
   ENDDO
 
-  IF (ASSOCIATED (SELF%F_LRCH4)) THEN
-    IF ((.NOT. SELF%F_LRCH4%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%LRCH4))) THEN
-      SELF%LRCH4 => SELF%F_LRCH4%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%LRCH4)) THEN
-    SELF%LRCH4 => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_LRCH4_F)) THEN
-    IF ((.NOT. SELF%F_LRCH4_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%LRCH4_F))) THEN
-      SELF%LRCH4_F => SELF%F_LRCH4_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%LRCH4_F)) THEN
-    SELF%LRCH4_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_LRCH4_SPF)) THEN
-    IF ((.NOT. SELF%F_LRCH4_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%LRCH4_SPF))) THEN
-      SELF%LRCH4_SPF => SELF%F_LRCH4_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%LRCH4_SPF)) THEN
-    SELF%LRCH4_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_LRCH4_SP)) THEN
-    IF ((.NOT. SELF%F_LRCH4_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%LRCH4_SP))) THEN
-      SELF%LRCH4_SP => SELF%F_LRCH4_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%LRCH4_SP)) THEN
-    SELF%LRCH4_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_LRCH4_P)) THEN
-    IF ((.NOT. SELF%F_LRCH4_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%LRCH4_P))) THEN
-      SELF%LRCH4_P => SELF%F_LRCH4_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%LRCH4_P)) THEN
-    SELF%LRCH4_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_LRCH4_X)) THEN
-    IF ((.NOT. SELF%F_LRCH4_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%LRCH4_X))) THEN
-      SELF%LRCH4_X => SELF%F_LRCH4_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%LRCH4_X)) THEN
-    SELF%LRCH4_X => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%LRCH4)
 
   DO JGFL = 1, SIZE (SELF%FORC)
-
-    IF (ASSOCIATED (SELF%FORC(JGFL)%F_P)) THEN
-      IF ((.NOT. SELF%FORC(JGFL)%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%FORC(JGFL)%P))) THEN
-        SELF%FORC(JGFL)%P => SELF%FORC(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%FORC(JGFL)%P)) THEN
-      SELF%FORC(JGFL)%P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%FORC(JGFL)%F_P_F)) THEN
-      IF ((.NOT. SELF%FORC(JGFL)%F_P_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%FORC(JGFL)%P_F))) THEN
-        SELF%FORC(JGFL)%P_F => SELF%FORC(JGFL)%F_P_F%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%FORC(JGFL)%P_F)) THEN
-      SELF%FORC(JGFL)%P_F => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%FORC(JGFL)%F_P_SPF)) THEN
-      IF ((.NOT. SELF%FORC(JGFL)%F_P_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%FORC(JGFL)%P_SPF))) THEN
-        SELF%FORC(JGFL)%P_SPF => SELF%FORC(JGFL)%F_P_SPF%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%FORC(JGFL)%P_SPF)) THEN
-      SELF%FORC(JGFL)%P_SPF => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%FORC(JGFL)%F_P_SP)) THEN
-      IF ((.NOT. SELF%FORC(JGFL)%F_P_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%FORC(JGFL)%P_SP))) THEN
-        SELF%FORC(JGFL)%P_SP => SELF%FORC(JGFL)%F_P_SP%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%FORC(JGFL)%P_SP)) THEN
-      SELF%FORC(JGFL)%P_SP => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%FORC(JGFL)%F_P_P)) THEN
-      IF ((.NOT. SELF%FORC(JGFL)%F_P_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%FORC(JGFL)%P_P))) THEN
-        SELF%FORC(JGFL)%P_P => SELF%FORC(JGFL)%F_P_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%FORC(JGFL)%P_P)) THEN
-      SELF%FORC(JGFL)%P_P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%FORC(JGFL)%F_P_X)) THEN
-      IF ((.NOT. SELF%FORC(JGFL)%F_P_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%FORC(JGFL)%P_X))) THEN
-        SELF%FORC(JGFL)%P_X => SELF%FORC(JGFL)%F_P_X%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%FORC(JGFL)%P_X)) THEN
-      SELF%FORC(JGFL)%P_X => ZDUM2
-    ENDIF
-
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%FORC(JGFL))
   ENDDO
 
   DO JGFL = 1, SIZE (SELF%EZDIAG)
-
-    IF (ASSOCIATED (SELF%EZDIAG(JGFL)%F_P)) THEN
-      IF ((.NOT. SELF%EZDIAG(JGFL)%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EZDIAG(JGFL)%P))) THEN
-        SELF%EZDIAG(JGFL)%P => SELF%EZDIAG(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%EZDIAG(JGFL)%P)) THEN
-      SELF%EZDIAG(JGFL)%P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%EZDIAG(JGFL)%F_P_F)) THEN
-      IF ((.NOT. SELF%EZDIAG(JGFL)%F_P_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EZDIAG(JGFL)%P_F))) THEN
-        SELF%EZDIAG(JGFL)%P_F => SELF%EZDIAG(JGFL)%F_P_F%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%EZDIAG(JGFL)%P_F)) THEN
-      SELF%EZDIAG(JGFL)%P_F => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%EZDIAG(JGFL)%F_P_SPF)) THEN
-      IF ((.NOT. SELF%EZDIAG(JGFL)%F_P_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EZDIAG(JGFL)%P_SPF))) THEN
-        SELF%EZDIAG(JGFL)%P_SPF => SELF%EZDIAG(JGFL)%F_P_SPF%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%EZDIAG(JGFL)%P_SPF)) THEN
-      SELF%EZDIAG(JGFL)%P_SPF => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%EZDIAG(JGFL)%F_P_SP)) THEN
-      IF ((.NOT. SELF%EZDIAG(JGFL)%F_P_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EZDIAG(JGFL)%P_SP))) THEN
-        SELF%EZDIAG(JGFL)%P_SP => SELF%EZDIAG(JGFL)%F_P_SP%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%EZDIAG(JGFL)%P_SP)) THEN
-      SELF%EZDIAG(JGFL)%P_SP => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%EZDIAG(JGFL)%F_P_P)) THEN
-      IF ((.NOT. SELF%EZDIAG(JGFL)%F_P_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EZDIAG(JGFL)%P_P))) THEN
-        SELF%EZDIAG(JGFL)%P_P => SELF%EZDIAG(JGFL)%F_P_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%EZDIAG(JGFL)%P_P)) THEN
-      SELF%EZDIAG(JGFL)%P_P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%EZDIAG(JGFL)%F_P_X)) THEN
-      IF ((.NOT. SELF%EZDIAG(JGFL)%F_P_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EZDIAG(JGFL)%P_X))) THEN
-        SELF%EZDIAG(JGFL)%P_X => SELF%EZDIAG(JGFL)%F_P_X%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%EZDIAG(JGFL)%P_X)) THEN
-      SELF%EZDIAG(JGFL)%P_X => ZDUM2
-    ENDIF
-
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%EZDIAG(JGFL))
   ENDDO
 
   DO JGFL = 1, SIZE (SELF%ERA40)
-
-    IF (ASSOCIATED (SELF%ERA40(JGFL)%F_P)) THEN
-      IF ((.NOT. SELF%ERA40(JGFL)%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%ERA40(JGFL)%P))) THEN
-        SELF%ERA40(JGFL)%P => SELF%ERA40(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%ERA40(JGFL)%P)) THEN
-      SELF%ERA40(JGFL)%P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%ERA40(JGFL)%F_P_F)) THEN
-      IF ((.NOT. SELF%ERA40(JGFL)%F_P_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%ERA40(JGFL)%P_F))) THEN
-        SELF%ERA40(JGFL)%P_F => SELF%ERA40(JGFL)%F_P_F%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%ERA40(JGFL)%P_F)) THEN
-      SELF%ERA40(JGFL)%P_F => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%ERA40(JGFL)%F_P_SPF)) THEN
-      IF ((.NOT. SELF%ERA40(JGFL)%F_P_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%ERA40(JGFL)%P_SPF))) THEN
-        SELF%ERA40(JGFL)%P_SPF => SELF%ERA40(JGFL)%F_P_SPF%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%ERA40(JGFL)%P_SPF)) THEN
-      SELF%ERA40(JGFL)%P_SPF => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%ERA40(JGFL)%F_P_SP)) THEN
-      IF ((.NOT. SELF%ERA40(JGFL)%F_P_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%ERA40(JGFL)%P_SP))) THEN
-        SELF%ERA40(JGFL)%P_SP => SELF%ERA40(JGFL)%F_P_SP%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%ERA40(JGFL)%P_SP)) THEN
-      SELF%ERA40(JGFL)%P_SP => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%ERA40(JGFL)%F_P_P)) THEN
-      IF ((.NOT. SELF%ERA40(JGFL)%F_P_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%ERA40(JGFL)%P_P))) THEN
-        SELF%ERA40(JGFL)%P_P => SELF%ERA40(JGFL)%F_P_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%ERA40(JGFL)%P_P)) THEN
-      SELF%ERA40(JGFL)%P_P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%ERA40(JGFL)%F_P_X)) THEN
-      IF ((.NOT. SELF%ERA40(JGFL)%F_P_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%ERA40(JGFL)%P_X))) THEN
-        SELF%ERA40(JGFL)%P_X => SELF%ERA40(JGFL)%F_P_X%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%ERA40(JGFL)%P_X)) THEN
-      SELF%ERA40(JGFL)%P_X => ZDUM2
-    ENDIF
-
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%ERA40(JGFL))
   ENDDO
 
   DO JGFL = 1, SIZE (SELF%NOGW)
-
-    IF (ASSOCIATED (SELF%NOGW(JGFL)%F_P)) THEN
-      IF ((.NOT. SELF%NOGW(JGFL)%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%NOGW(JGFL)%P))) THEN
-        SELF%NOGW(JGFL)%P => SELF%NOGW(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%NOGW(JGFL)%P)) THEN
-      SELF%NOGW(JGFL)%P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%NOGW(JGFL)%F_P_F)) THEN
-      IF ((.NOT. SELF%NOGW(JGFL)%F_P_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%NOGW(JGFL)%P_F))) THEN
-        SELF%NOGW(JGFL)%P_F => SELF%NOGW(JGFL)%F_P_F%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%NOGW(JGFL)%P_F)) THEN
-      SELF%NOGW(JGFL)%P_F => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%NOGW(JGFL)%F_P_SPF)) THEN
-      IF ((.NOT. SELF%NOGW(JGFL)%F_P_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%NOGW(JGFL)%P_SPF))) THEN
-        SELF%NOGW(JGFL)%P_SPF => SELF%NOGW(JGFL)%F_P_SPF%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%NOGW(JGFL)%P_SPF)) THEN
-      SELF%NOGW(JGFL)%P_SPF => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%NOGW(JGFL)%F_P_SP)) THEN
-      IF ((.NOT. SELF%NOGW(JGFL)%F_P_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%NOGW(JGFL)%P_SP))) THEN
-        SELF%NOGW(JGFL)%P_SP => SELF%NOGW(JGFL)%F_P_SP%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%NOGW(JGFL)%P_SP)) THEN
-      SELF%NOGW(JGFL)%P_SP => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%NOGW(JGFL)%F_P_P)) THEN
-      IF ((.NOT. SELF%NOGW(JGFL)%F_P_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%NOGW(JGFL)%P_P))) THEN
-        SELF%NOGW(JGFL)%P_P => SELF%NOGW(JGFL)%F_P_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%NOGW(JGFL)%P_P)) THEN
-      SELF%NOGW(JGFL)%P_P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%NOGW(JGFL)%F_P_X)) THEN
-      IF ((.NOT. SELF%NOGW(JGFL)%F_P_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%NOGW(JGFL)%P_X))) THEN
-        SELF%NOGW(JGFL)%P_X => SELF%NOGW(JGFL)%F_P_X%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%NOGW(JGFL)%P_X)) THEN
-      SELF%NOGW(JGFL)%P_X => ZDUM2
-    ENDIF
-
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%NOGW(JGFL))
   ENDDO
 
   DO JGFL = 1, SIZE (SELF%EDRP)
-
-    IF (ASSOCIATED (SELF%EDRP(JGFL)%F_P)) THEN
-      IF ((.NOT. SELF%EDRP(JGFL)%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EDRP(JGFL)%P))) THEN
-        SELF%EDRP(JGFL)%P => SELF%EDRP(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%EDRP(JGFL)%P)) THEN
-      SELF%EDRP(JGFL)%P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%EDRP(JGFL)%F_P_F)) THEN
-      IF ((.NOT. SELF%EDRP(JGFL)%F_P_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EDRP(JGFL)%P_F))) THEN
-        SELF%EDRP(JGFL)%P_F => SELF%EDRP(JGFL)%F_P_F%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%EDRP(JGFL)%P_F)) THEN
-      SELF%EDRP(JGFL)%P_F => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%EDRP(JGFL)%F_P_SPF)) THEN
-      IF ((.NOT. SELF%EDRP(JGFL)%F_P_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EDRP(JGFL)%P_SPF))) THEN
-        SELF%EDRP(JGFL)%P_SPF => SELF%EDRP(JGFL)%F_P_SPF%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%EDRP(JGFL)%P_SPF)) THEN
-      SELF%EDRP(JGFL)%P_SPF => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%EDRP(JGFL)%F_P_SP)) THEN
-      IF ((.NOT. SELF%EDRP(JGFL)%F_P_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EDRP(JGFL)%P_SP))) THEN
-        SELF%EDRP(JGFL)%P_SP => SELF%EDRP(JGFL)%F_P_SP%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%EDRP(JGFL)%P_SP)) THEN
-      SELF%EDRP(JGFL)%P_SP => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%EDRP(JGFL)%F_P_P)) THEN
-      IF ((.NOT. SELF%EDRP(JGFL)%F_P_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EDRP(JGFL)%P_P))) THEN
-        SELF%EDRP(JGFL)%P_P => SELF%EDRP(JGFL)%F_P_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%EDRP(JGFL)%P_P)) THEN
-      SELF%EDRP(JGFL)%P_P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%EDRP(JGFL)%F_P_X)) THEN
-      IF ((.NOT. SELF%EDRP(JGFL)%F_P_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EDRP(JGFL)%P_X))) THEN
-        SELF%EDRP(JGFL)%P_X => SELF%EDRP(JGFL)%F_P_X%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%EDRP(JGFL)%P_X)) THEN
-      SELF%EDRP(JGFL)%P_X => ZDUM2
-    ENDIF
-
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%EDRP(JGFL))
   ENDDO
 
   DO JGFL = 1, SIZE (SELF%SLDIA)
-
-    IF (ASSOCIATED (SELF%SLDIA(JGFL)%F_P)) THEN
-      IF ((.NOT. SELF%SLDIA(JGFL)%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SLDIA(JGFL)%P))) THEN
-        SELF%SLDIA(JGFL)%P => SELF%SLDIA(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%SLDIA(JGFL)%P)) THEN
-      SELF%SLDIA(JGFL)%P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%SLDIA(JGFL)%F_P_F)) THEN
-      IF ((.NOT. SELF%SLDIA(JGFL)%F_P_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SLDIA(JGFL)%P_F))) THEN
-        SELF%SLDIA(JGFL)%P_F => SELF%SLDIA(JGFL)%F_P_F%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%SLDIA(JGFL)%P_F)) THEN
-      SELF%SLDIA(JGFL)%P_F => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%SLDIA(JGFL)%F_P_SPF)) THEN
-      IF ((.NOT. SELF%SLDIA(JGFL)%F_P_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SLDIA(JGFL)%P_SPF))) THEN
-        SELF%SLDIA(JGFL)%P_SPF => SELF%SLDIA(JGFL)%F_P_SPF%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%SLDIA(JGFL)%P_SPF)) THEN
-      SELF%SLDIA(JGFL)%P_SPF => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%SLDIA(JGFL)%F_P_SP)) THEN
-      IF ((.NOT. SELF%SLDIA(JGFL)%F_P_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SLDIA(JGFL)%P_SP))) THEN
-        SELF%SLDIA(JGFL)%P_SP => SELF%SLDIA(JGFL)%F_P_SP%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%SLDIA(JGFL)%P_SP)) THEN
-      SELF%SLDIA(JGFL)%P_SP => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%SLDIA(JGFL)%F_P_P)) THEN
-      IF ((.NOT. SELF%SLDIA(JGFL)%F_P_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SLDIA(JGFL)%P_P))) THEN
-        SELF%SLDIA(JGFL)%P_P => SELF%SLDIA(JGFL)%F_P_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%SLDIA(JGFL)%P_P)) THEN
-      SELF%SLDIA(JGFL)%P_P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%SLDIA(JGFL)%F_P_X)) THEN
-      IF ((.NOT. SELF%SLDIA(JGFL)%F_P_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SLDIA(JGFL)%P_X))) THEN
-        SELF%SLDIA(JGFL)%P_X => SELF%SLDIA(JGFL)%F_P_X%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%SLDIA(JGFL)%P_X)) THEN
-      SELF%SLDIA(JGFL)%P_X => ZDUM2
-    ENDIF
-
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%SLDIA(JGFL))
   ENDDO
 
   DO JGFL = 1, SIZE (SELF%AERAOT)
-
-    IF (ASSOCIATED (SELF%AERAOT(JGFL)%F_P)) THEN
-      IF ((.NOT. SELF%AERAOT(JGFL)%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%AERAOT(JGFL)%P))) THEN
-        SELF%AERAOT(JGFL)%P => SELF%AERAOT(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%AERAOT(JGFL)%P)) THEN
-      SELF%AERAOT(JGFL)%P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%AERAOT(JGFL)%F_P_F)) THEN
-      IF ((.NOT. SELF%AERAOT(JGFL)%F_P_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%AERAOT(JGFL)%P_F))) THEN
-        SELF%AERAOT(JGFL)%P_F => SELF%AERAOT(JGFL)%F_P_F%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%AERAOT(JGFL)%P_F)) THEN
-      SELF%AERAOT(JGFL)%P_F => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%AERAOT(JGFL)%F_P_SPF)) THEN
-      IF ((.NOT. SELF%AERAOT(JGFL)%F_P_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%AERAOT(JGFL)%P_SPF))) THEN
-        SELF%AERAOT(JGFL)%P_SPF => SELF%AERAOT(JGFL)%F_P_SPF%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%AERAOT(JGFL)%P_SPF)) THEN
-      SELF%AERAOT(JGFL)%P_SPF => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%AERAOT(JGFL)%F_P_SP)) THEN
-      IF ((.NOT. SELF%AERAOT(JGFL)%F_P_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%AERAOT(JGFL)%P_SP))) THEN
-        SELF%AERAOT(JGFL)%P_SP => SELF%AERAOT(JGFL)%F_P_SP%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%AERAOT(JGFL)%P_SP)) THEN
-      SELF%AERAOT(JGFL)%P_SP => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%AERAOT(JGFL)%F_P_P)) THEN
-      IF ((.NOT. SELF%AERAOT(JGFL)%F_P_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%AERAOT(JGFL)%P_P))) THEN
-        SELF%AERAOT(JGFL)%P_P => SELF%AERAOT(JGFL)%F_P_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%AERAOT(JGFL)%P_P)) THEN
-      SELF%AERAOT(JGFL)%P_P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%AERAOT(JGFL)%F_P_X)) THEN
-      IF ((.NOT. SELF%AERAOT(JGFL)%F_P_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%AERAOT(JGFL)%P_X))) THEN
-        SELF%AERAOT(JGFL)%P_X => SELF%AERAOT(JGFL)%F_P_X%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%AERAOT(JGFL)%P_X)) THEN
-      SELF%AERAOT(JGFL)%P_X => ZDUM2
-    ENDIF
-
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%AERAOT(JGFL))
   ENDDO
 
   DO JGFL = 1, SIZE (SELF%AERLISI)
-
-    IF (ASSOCIATED (SELF%AERLISI(JGFL)%F_P)) THEN
-      IF ((.NOT. SELF%AERLISI(JGFL)%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%AERLISI(JGFL)%P))) THEN
-        SELF%AERLISI(JGFL)%P => SELF%AERLISI(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%AERLISI(JGFL)%P)) THEN
-      SELF%AERLISI(JGFL)%P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%AERLISI(JGFL)%F_P_F)) THEN
-      IF ((.NOT. SELF%AERLISI(JGFL)%F_P_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%AERLISI(JGFL)%P_F))) THEN
-        SELF%AERLISI(JGFL)%P_F => SELF%AERLISI(JGFL)%F_P_F%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%AERLISI(JGFL)%P_F)) THEN
-      SELF%AERLISI(JGFL)%P_F => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%AERLISI(JGFL)%F_P_SPF)) THEN
-      IF ((.NOT. SELF%AERLISI(JGFL)%F_P_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%AERLISI(JGFL)%P_SPF))) THEN
-        SELF%AERLISI(JGFL)%P_SPF => SELF%AERLISI(JGFL)%F_P_SPF%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%AERLISI(JGFL)%P_SPF)) THEN
-      SELF%AERLISI(JGFL)%P_SPF => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%AERLISI(JGFL)%F_P_SP)) THEN
-      IF ((.NOT. SELF%AERLISI(JGFL)%F_P_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%AERLISI(JGFL)%P_SP))) THEN
-        SELF%AERLISI(JGFL)%P_SP => SELF%AERLISI(JGFL)%F_P_SP%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%AERLISI(JGFL)%P_SP)) THEN
-      SELF%AERLISI(JGFL)%P_SP => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%AERLISI(JGFL)%F_P_P)) THEN
-      IF ((.NOT. SELF%AERLISI(JGFL)%F_P_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%AERLISI(JGFL)%P_P))) THEN
-        SELF%AERLISI(JGFL)%P_P => SELF%AERLISI(JGFL)%F_P_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%AERLISI(JGFL)%P_P)) THEN
-      SELF%AERLISI(JGFL)%P_P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%AERLISI(JGFL)%F_P_X)) THEN
-      IF ((.NOT. SELF%AERLISI(JGFL)%F_P_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%AERLISI(JGFL)%P_X))) THEN
-        SELF%AERLISI(JGFL)%P_X => SELF%AERLISI(JGFL)%F_P_X%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%AERLISI(JGFL)%P_X)) THEN
-      SELF%AERLISI(JGFL)%P_X => ZDUM2
-    ENDIF
-
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%AERLISI(JGFL))
   ENDDO
 
   DO JGFL = 1, SIZE (SELF%AEROUT)
-
-    IF (ASSOCIATED (SELF%AEROUT(JGFL)%F_P)) THEN
-      IF ((.NOT. SELF%AEROUT(JGFL)%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%AEROUT(JGFL)%P))) THEN
-        SELF%AEROUT(JGFL)%P => SELF%AEROUT(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%AEROUT(JGFL)%P)) THEN
-      SELF%AEROUT(JGFL)%P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%AEROUT(JGFL)%F_P_F)) THEN
-      IF ((.NOT. SELF%AEROUT(JGFL)%F_P_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%AEROUT(JGFL)%P_F))) THEN
-        SELF%AEROUT(JGFL)%P_F => SELF%AEROUT(JGFL)%F_P_F%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%AEROUT(JGFL)%P_F)) THEN
-      SELF%AEROUT(JGFL)%P_F => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%AEROUT(JGFL)%F_P_SPF)) THEN
-      IF ((.NOT. SELF%AEROUT(JGFL)%F_P_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%AEROUT(JGFL)%P_SPF))) THEN
-        SELF%AEROUT(JGFL)%P_SPF => SELF%AEROUT(JGFL)%F_P_SPF%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%AEROUT(JGFL)%P_SPF)) THEN
-      SELF%AEROUT(JGFL)%P_SPF => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%AEROUT(JGFL)%F_P_SP)) THEN
-      IF ((.NOT. SELF%AEROUT(JGFL)%F_P_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%AEROUT(JGFL)%P_SP))) THEN
-        SELF%AEROUT(JGFL)%P_SP => SELF%AEROUT(JGFL)%F_P_SP%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%AEROUT(JGFL)%P_SP)) THEN
-      SELF%AEROUT(JGFL)%P_SP => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%AEROUT(JGFL)%F_P_P)) THEN
-      IF ((.NOT. SELF%AEROUT(JGFL)%F_P_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%AEROUT(JGFL)%P_P))) THEN
-        SELF%AEROUT(JGFL)%P_P => SELF%AEROUT(JGFL)%F_P_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%AEROUT(JGFL)%P_P)) THEN
-      SELF%AEROUT(JGFL)%P_P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%AEROUT(JGFL)%F_P_X)) THEN
-      IF ((.NOT. SELF%AEROUT(JGFL)%F_P_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%AEROUT(JGFL)%P_X))) THEN
-        SELF%AEROUT(JGFL)%P_X => SELF%AEROUT(JGFL)%F_P_X%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%AEROUT(JGFL)%P_X)) THEN
-      SELF%AEROUT(JGFL)%P_X => ZDUM2
-    ENDIF
-
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%AEROUT(JGFL))
   ENDDO
 
   DO JGFL = 1, SIZE (SELF%AEROCLIM)
-
-    IF (ASSOCIATED (SELF%AEROCLIM(JGFL)%F_P)) THEN
-      IF ((.NOT. SELF%AEROCLIM(JGFL)%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%AEROCLIM(JGFL)%P))) THEN
-        SELF%AEROCLIM(JGFL)%P => SELF%AEROCLIM(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%AEROCLIM(JGFL)%P)) THEN
-      SELF%AEROCLIM(JGFL)%P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%AEROCLIM(JGFL)%F_P_F)) THEN
-      IF ((.NOT. SELF%AEROCLIM(JGFL)%F_P_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%AEROCLIM(JGFL)%P_F))) THEN
-        SELF%AEROCLIM(JGFL)%P_F => SELF%AEROCLIM(JGFL)%F_P_F%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%AEROCLIM(JGFL)%P_F)) THEN
-      SELF%AEROCLIM(JGFL)%P_F => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%AEROCLIM(JGFL)%F_P_SPF)) THEN
-      IF ((.NOT. SELF%AEROCLIM(JGFL)%F_P_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%AEROCLIM(JGFL)%P_SPF))) THEN
-        SELF%AEROCLIM(JGFL)%P_SPF => SELF%AEROCLIM(JGFL)%F_P_SPF%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%AEROCLIM(JGFL)%P_SPF)) THEN
-      SELF%AEROCLIM(JGFL)%P_SPF => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%AEROCLIM(JGFL)%F_P_SP)) THEN
-      IF ((.NOT. SELF%AEROCLIM(JGFL)%F_P_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%AEROCLIM(JGFL)%P_SP))) THEN
-        SELF%AEROCLIM(JGFL)%P_SP => SELF%AEROCLIM(JGFL)%F_P_SP%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%AEROCLIM(JGFL)%P_SP)) THEN
-      SELF%AEROCLIM(JGFL)%P_SP => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%AEROCLIM(JGFL)%F_P_P)) THEN
-      IF ((.NOT. SELF%AEROCLIM(JGFL)%F_P_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%AEROCLIM(JGFL)%P_P))) THEN
-        SELF%AEROCLIM(JGFL)%P_P => SELF%AEROCLIM(JGFL)%F_P_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%AEROCLIM(JGFL)%P_P)) THEN
-      SELF%AEROCLIM(JGFL)%P_P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%AEROCLIM(JGFL)%F_P_X)) THEN
-      IF ((.NOT. SELF%AEROCLIM(JGFL)%F_P_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%AEROCLIM(JGFL)%P_X))) THEN
-        SELF%AEROCLIM(JGFL)%P_X => SELF%AEROCLIM(JGFL)%F_P_X%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%AEROCLIM(JGFL)%P_X)) THEN
-      SELF%AEROCLIM(JGFL)%P_X => ZDUM2
-    ENDIF
-
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%AEROCLIM(JGFL))
   ENDDO
 
   DO JGFL = 1, SIZE (SELF%UVP)
-
-    IF (ASSOCIATED (SELF%UVP(JGFL)%F_P)) THEN
-      IF ((.NOT. SELF%UVP(JGFL)%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UVP(JGFL)%P))) THEN
-        SELF%UVP(JGFL)%P => SELF%UVP(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%UVP(JGFL)%P)) THEN
-      SELF%UVP(JGFL)%P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%UVP(JGFL)%F_P_F)) THEN
-      IF ((.NOT. SELF%UVP(JGFL)%F_P_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UVP(JGFL)%P_F))) THEN
-        SELF%UVP(JGFL)%P_F => SELF%UVP(JGFL)%F_P_F%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%UVP(JGFL)%P_F)) THEN
-      SELF%UVP(JGFL)%P_F => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%UVP(JGFL)%F_P_SPF)) THEN
-      IF ((.NOT. SELF%UVP(JGFL)%F_P_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UVP(JGFL)%P_SPF))) THEN
-        SELF%UVP(JGFL)%P_SPF => SELF%UVP(JGFL)%F_P_SPF%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%UVP(JGFL)%P_SPF)) THEN
-      SELF%UVP(JGFL)%P_SPF => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%UVP(JGFL)%F_P_SP)) THEN
-      IF ((.NOT. SELF%UVP(JGFL)%F_P_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UVP(JGFL)%P_SP))) THEN
-        SELF%UVP(JGFL)%P_SP => SELF%UVP(JGFL)%F_P_SP%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%UVP(JGFL)%P_SP)) THEN
-      SELF%UVP(JGFL)%P_SP => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%UVP(JGFL)%F_P_P)) THEN
-      IF ((.NOT. SELF%UVP(JGFL)%F_P_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UVP(JGFL)%P_P))) THEN
-        SELF%UVP(JGFL)%P_P => SELF%UVP(JGFL)%F_P_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%UVP(JGFL)%P_P)) THEN
-      SELF%UVP(JGFL)%P_P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%UVP(JGFL)%F_P_X)) THEN
-      IF ((.NOT. SELF%UVP(JGFL)%F_P_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UVP(JGFL)%P_X))) THEN
-        SELF%UVP(JGFL)%P_X => SELF%UVP(JGFL)%F_P_X%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%UVP(JGFL)%P_X)) THEN
-      SELF%UVP(JGFL)%P_X => ZDUM2
-    ENDIF
-
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%UVP(JGFL))
   ENDDO
 
   DO JGFL = 1, SIZE (SELF%PHYS)
-
-    IF (ASSOCIATED (SELF%PHYS(JGFL)%F_P)) THEN
-      IF ((.NOT. SELF%PHYS(JGFL)%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%PHYS(JGFL)%P))) THEN
-        SELF%PHYS(JGFL)%P => SELF%PHYS(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%PHYS(JGFL)%P)) THEN
-      SELF%PHYS(JGFL)%P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%PHYS(JGFL)%F_P_F)) THEN
-      IF ((.NOT. SELF%PHYS(JGFL)%F_P_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%PHYS(JGFL)%P_F))) THEN
-        SELF%PHYS(JGFL)%P_F => SELF%PHYS(JGFL)%F_P_F%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%PHYS(JGFL)%P_F)) THEN
-      SELF%PHYS(JGFL)%P_F => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%PHYS(JGFL)%F_P_SPF)) THEN
-      IF ((.NOT. SELF%PHYS(JGFL)%F_P_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%PHYS(JGFL)%P_SPF))) THEN
-        SELF%PHYS(JGFL)%P_SPF => SELF%PHYS(JGFL)%F_P_SPF%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%PHYS(JGFL)%P_SPF)) THEN
-      SELF%PHYS(JGFL)%P_SPF => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%PHYS(JGFL)%F_P_SP)) THEN
-      IF ((.NOT. SELF%PHYS(JGFL)%F_P_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%PHYS(JGFL)%P_SP))) THEN
-        SELF%PHYS(JGFL)%P_SP => SELF%PHYS(JGFL)%F_P_SP%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%PHYS(JGFL)%P_SP)) THEN
-      SELF%PHYS(JGFL)%P_SP => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%PHYS(JGFL)%F_P_P)) THEN
-      IF ((.NOT. SELF%PHYS(JGFL)%F_P_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%PHYS(JGFL)%P_P))) THEN
-        SELF%PHYS(JGFL)%P_P => SELF%PHYS(JGFL)%F_P_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%PHYS(JGFL)%P_P)) THEN
-      SELF%PHYS(JGFL)%P_P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%PHYS(JGFL)%F_P_X)) THEN
-      IF ((.NOT. SELF%PHYS(JGFL)%F_P_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%PHYS(JGFL)%P_X))) THEN
-        SELF%PHYS(JGFL)%P_X => SELF%PHYS(JGFL)%F_P_X%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%PHYS(JGFL)%P_X)) THEN
-      SELF%PHYS(JGFL)%P_X => ZDUM2
-    ENDIF
-
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%PHYS(JGFL))
   ENDDO
 
-  IF (ASSOCIATED (SELF%F_PHYCTY)) THEN
-    IF ((.NOT. SELF%F_PHYCTY%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%PHYCTY))) THEN
-      SELF%PHYCTY => SELF%F_PHYCTY%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%PHYCTY)) THEN
-    SELF%PHYCTY => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%PHYCTY)
 
-  IF (ASSOCIATED (SELF%F_PHYCTY_F)) THEN
-    IF ((.NOT. SELF%F_PHYCTY_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%PHYCTY_F))) THEN
-      SELF%PHYCTY_F => SELF%F_PHYCTY_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%PHYCTY_F)) THEN
-    SELF%PHYCTY_F => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%RSPEC)
 
-  IF (ASSOCIATED (SELF%F_PHYCTY_SPF)) THEN
-    IF ((.NOT. SELF%F_PHYCTY_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%PHYCTY_SPF))) THEN
-      SELF%PHYCTY_SPF => SELF%F_PHYCTY_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%PHYCTY_SPF)) THEN
-    SELF%PHYCTY_SPF => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%SDSAT)
 
-  IF (ASSOCIATED (SELF%F_PHYCTY_SP)) THEN
-    IF ((.NOT. SELF%F_PHYCTY_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%PHYCTY_SP))) THEN
-      SELF%PHYCTY_SP => SELF%F_PHYCTY_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%PHYCTY_SP)) THEN
-    SELF%PHYCTY_SP => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%CVV)
 
-  IF (ASSOCIATED (SELF%F_PHYCTY_P)) THEN
-    IF ((.NOT. SELF%F_PHYCTY_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%PHYCTY_P))) THEN
-      SELF%PHYCTY_P => SELF%F_PHYCTY_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%PHYCTY_P)) THEN
-    SELF%PHYCTY_P => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%RKTH)
 
-  IF (ASSOCIATED (SELF%F_PHYCTY_X)) THEN
-    IF ((.NOT. SELF%F_PHYCTY_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%PHYCTY_X))) THEN
-      SELF%PHYCTY_X => SELF%F_PHYCTY_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%PHYCTY_X)) THEN
-    SELF%PHYCTY_X => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%RKTQV)
 
-  IF (ASSOCIATED (SELF%F_RSPEC)) THEN
-    IF ((.NOT. SELF%F_RSPEC%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%RSPEC))) THEN
-      SELF%RSPEC => SELF%F_RSPEC%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%RSPEC)) THEN
-    SELF%RSPEC => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%RKTQC)
 
-  IF (ASSOCIATED (SELF%F_RSPEC_F)) THEN
-    IF ((.NOT. SELF%F_RSPEC_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%RSPEC_F))) THEN
-      SELF%RSPEC_F => SELF%F_RSPEC_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%RSPEC_F)) THEN
-    SELF%RSPEC_F => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%UOM)
 
-  IF (ASSOCIATED (SELF%F_RSPEC_SPF)) THEN
-    IF ((.NOT. SELF%F_RSPEC_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%RSPEC_SPF))) THEN
-      SELF%RSPEC_SPF => SELF%F_RSPEC_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%RSPEC_SPF)) THEN
-    SELF%RSPEC_SPF => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%UAL)
 
-  IF (ASSOCIATED (SELF%F_RSPEC_SP)) THEN
-    IF ((.NOT. SELF%F_RSPEC_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%RSPEC_SP))) THEN
-      SELF%RSPEC_SP => SELF%F_RSPEC_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%RSPEC_SP)) THEN
-    SELF%RSPEC_SP => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%DOM)
 
-  IF (ASSOCIATED (SELF%F_RSPEC_P)) THEN
-    IF ((.NOT. SELF%F_RSPEC_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%RSPEC_P))) THEN
-      SELF%RSPEC_P => SELF%F_RSPEC_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%RSPEC_P)) THEN
-    SELF%RSPEC_P => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%DAL)
 
-  IF (ASSOCIATED (SELF%F_RSPEC_X)) THEN
-    IF ((.NOT. SELF%F_RSPEC_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%RSPEC_X))) THEN
-      SELF%RSPEC_X => SELF%F_RSPEC_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%RSPEC_X)) THEN
-    SELF%RSPEC_X => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%UEN)
 
-  IF (ASSOCIATED (SELF%F_SDSAT)) THEN
-    IF ((.NOT. SELF%F_SDSAT%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SDSAT))) THEN
-      SELF%SDSAT => SELF%F_SDSAT%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SDSAT)) THEN
-    SELF%SDSAT => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_SDSAT_F)) THEN
-    IF ((.NOT. SELF%F_SDSAT_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SDSAT_F))) THEN
-      SELF%SDSAT_F => SELF%F_SDSAT_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SDSAT_F)) THEN
-    SELF%SDSAT_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_SDSAT_SPF)) THEN
-    IF ((.NOT. SELF%F_SDSAT_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SDSAT_SPF))) THEN
-      SELF%SDSAT_SPF => SELF%F_SDSAT_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SDSAT_SPF)) THEN
-    SELF%SDSAT_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_SDSAT_SP)) THEN
-    IF ((.NOT. SELF%F_SDSAT_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SDSAT_SP))) THEN
-      SELF%SDSAT_SP => SELF%F_SDSAT_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SDSAT_SP)) THEN
-    SELF%SDSAT_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_SDSAT_P)) THEN
-    IF ((.NOT. SELF%F_SDSAT_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SDSAT_P))) THEN
-      SELF%SDSAT_P => SELF%F_SDSAT_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SDSAT_P)) THEN
-    SELF%SDSAT_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_SDSAT_X)) THEN
-    IF ((.NOT. SELF%F_SDSAT_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%SDSAT_X))) THEN
-      SELF%SDSAT_X => SELF%F_SDSAT_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%SDSAT_X)) THEN
-    SELF%SDSAT_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_CVV)) THEN
-    IF ((.NOT. SELF%F_CVV%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%CVV))) THEN
-      SELF%CVV => SELF%F_CVV%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%CVV)) THEN
-    SELF%CVV => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_CVV_F)) THEN
-    IF ((.NOT. SELF%F_CVV_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%CVV_F))) THEN
-      SELF%CVV_F => SELF%F_CVV_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%CVV_F)) THEN
-    SELF%CVV_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_CVV_SPF)) THEN
-    IF ((.NOT. SELF%F_CVV_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%CVV_SPF))) THEN
-      SELF%CVV_SPF => SELF%F_CVV_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%CVV_SPF)) THEN
-    SELF%CVV_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_CVV_SP)) THEN
-    IF ((.NOT. SELF%F_CVV_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%CVV_SP))) THEN
-      SELF%CVV_SP => SELF%F_CVV_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%CVV_SP)) THEN
-    SELF%CVV_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_CVV_P)) THEN
-    IF ((.NOT. SELF%F_CVV_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%CVV_P))) THEN
-      SELF%CVV_P => SELF%F_CVV_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%CVV_P)) THEN
-    SELF%CVV_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_CVV_X)) THEN
-    IF ((.NOT. SELF%F_CVV_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%CVV_X))) THEN
-      SELF%CVV_X => SELF%F_CVV_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%CVV_X)) THEN
-    SELF%CVV_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_RKTH)) THEN
-    IF ((.NOT. SELF%F_RKTH%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%RKTH))) THEN
-      SELF%RKTH => SELF%F_RKTH%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%RKTH)) THEN
-    SELF%RKTH => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_RKTH_F)) THEN
-    IF ((.NOT. SELF%F_RKTH_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%RKTH_F))) THEN
-      SELF%RKTH_F => SELF%F_RKTH_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%RKTH_F)) THEN
-    SELF%RKTH_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_RKTH_SPF)) THEN
-    IF ((.NOT. SELF%F_RKTH_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%RKTH_SPF))) THEN
-      SELF%RKTH_SPF => SELF%F_RKTH_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%RKTH_SPF)) THEN
-    SELF%RKTH_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_RKTH_SP)) THEN
-    IF ((.NOT. SELF%F_RKTH_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%RKTH_SP))) THEN
-      SELF%RKTH_SP => SELF%F_RKTH_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%RKTH_SP)) THEN
-    SELF%RKTH_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_RKTH_P)) THEN
-    IF ((.NOT. SELF%F_RKTH_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%RKTH_P))) THEN
-      SELF%RKTH_P => SELF%F_RKTH_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%RKTH_P)) THEN
-    SELF%RKTH_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_RKTH_X)) THEN
-    IF ((.NOT. SELF%F_RKTH_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%RKTH_X))) THEN
-      SELF%RKTH_X => SELF%F_RKTH_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%RKTH_X)) THEN
-    SELF%RKTH_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_RKTQV)) THEN
-    IF ((.NOT. SELF%F_RKTQV%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%RKTQV))) THEN
-      SELF%RKTQV => SELF%F_RKTQV%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%RKTQV)) THEN
-    SELF%RKTQV => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_RKTQV_F)) THEN
-    IF ((.NOT. SELF%F_RKTQV_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%RKTQV_F))) THEN
-      SELF%RKTQV_F => SELF%F_RKTQV_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%RKTQV_F)) THEN
-    SELF%RKTQV_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_RKTQV_SPF)) THEN
-    IF ((.NOT. SELF%F_RKTQV_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%RKTQV_SPF))) THEN
-      SELF%RKTQV_SPF => SELF%F_RKTQV_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%RKTQV_SPF)) THEN
-    SELF%RKTQV_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_RKTQV_SP)) THEN
-    IF ((.NOT. SELF%F_RKTQV_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%RKTQV_SP))) THEN
-      SELF%RKTQV_SP => SELF%F_RKTQV_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%RKTQV_SP)) THEN
-    SELF%RKTQV_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_RKTQV_P)) THEN
-    IF ((.NOT. SELF%F_RKTQV_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%RKTQV_P))) THEN
-      SELF%RKTQV_P => SELF%F_RKTQV_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%RKTQV_P)) THEN
-    SELF%RKTQV_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_RKTQV_X)) THEN
-    IF ((.NOT. SELF%F_RKTQV_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%RKTQV_X))) THEN
-      SELF%RKTQV_X => SELF%F_RKTQV_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%RKTQV_X)) THEN
-    SELF%RKTQV_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_RKTQC)) THEN
-    IF ((.NOT. SELF%F_RKTQC%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%RKTQC))) THEN
-      SELF%RKTQC => SELF%F_RKTQC%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%RKTQC)) THEN
-    SELF%RKTQC => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_RKTQC_F)) THEN
-    IF ((.NOT. SELF%F_RKTQC_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%RKTQC_F))) THEN
-      SELF%RKTQC_F => SELF%F_RKTQC_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%RKTQC_F)) THEN
-    SELF%RKTQC_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_RKTQC_SPF)) THEN
-    IF ((.NOT. SELF%F_RKTQC_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%RKTQC_SPF))) THEN
-      SELF%RKTQC_SPF => SELF%F_RKTQC_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%RKTQC_SPF)) THEN
-    SELF%RKTQC_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_RKTQC_SP)) THEN
-    IF ((.NOT. SELF%F_RKTQC_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%RKTQC_SP))) THEN
-      SELF%RKTQC_SP => SELF%F_RKTQC_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%RKTQC_SP)) THEN
-    SELF%RKTQC_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_RKTQC_P)) THEN
-    IF ((.NOT. SELF%F_RKTQC_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%RKTQC_P))) THEN
-      SELF%RKTQC_P => SELF%F_RKTQC_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%RKTQC_P)) THEN
-    SELF%RKTQC_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_RKTQC_X)) THEN
-    IF ((.NOT. SELF%F_RKTQC_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%RKTQC_X))) THEN
-      SELF%RKTQC_X => SELF%F_RKTQC_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%RKTQC_X)) THEN
-    SELF%RKTQC_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_UOM)) THEN
-    IF ((.NOT. SELF%F_UOM%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UOM))) THEN
-      SELF%UOM => SELF%F_UOM%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%UOM)) THEN
-    SELF%UOM => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_UOM_F)) THEN
-    IF ((.NOT. SELF%F_UOM_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UOM_F))) THEN
-      SELF%UOM_F => SELF%F_UOM_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%UOM_F)) THEN
-    SELF%UOM_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_UOM_SPF)) THEN
-    IF ((.NOT. SELF%F_UOM_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UOM_SPF))) THEN
-      SELF%UOM_SPF => SELF%F_UOM_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%UOM_SPF)) THEN
-    SELF%UOM_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_UOM_SP)) THEN
-    IF ((.NOT. SELF%F_UOM_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UOM_SP))) THEN
-      SELF%UOM_SP => SELF%F_UOM_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%UOM_SP)) THEN
-    SELF%UOM_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_UOM_P)) THEN
-    IF ((.NOT. SELF%F_UOM_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UOM_P))) THEN
-      SELF%UOM_P => SELF%F_UOM_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%UOM_P)) THEN
-    SELF%UOM_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_UOM_X)) THEN
-    IF ((.NOT. SELF%F_UOM_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UOM_X))) THEN
-      SELF%UOM_X => SELF%F_UOM_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%UOM_X)) THEN
-    SELF%UOM_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_UAL)) THEN
-    IF ((.NOT. SELF%F_UAL%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UAL))) THEN
-      SELF%UAL => SELF%F_UAL%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%UAL)) THEN
-    SELF%UAL => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_UAL_F)) THEN
-    IF ((.NOT. SELF%F_UAL_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UAL_F))) THEN
-      SELF%UAL_F => SELF%F_UAL_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%UAL_F)) THEN
-    SELF%UAL_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_UAL_SPF)) THEN
-    IF ((.NOT. SELF%F_UAL_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UAL_SPF))) THEN
-      SELF%UAL_SPF => SELF%F_UAL_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%UAL_SPF)) THEN
-    SELF%UAL_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_UAL_SP)) THEN
-    IF ((.NOT. SELF%F_UAL_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UAL_SP))) THEN
-      SELF%UAL_SP => SELF%F_UAL_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%UAL_SP)) THEN
-    SELF%UAL_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_UAL_P)) THEN
-    IF ((.NOT. SELF%F_UAL_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UAL_P))) THEN
-      SELF%UAL_P => SELF%F_UAL_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%UAL_P)) THEN
-    SELF%UAL_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_UAL_X)) THEN
-    IF ((.NOT. SELF%F_UAL_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UAL_X))) THEN
-      SELF%UAL_X => SELF%F_UAL_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%UAL_X)) THEN
-    SELF%UAL_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_DOM)) THEN
-    IF ((.NOT. SELF%F_DOM%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%DOM))) THEN
-      SELF%DOM => SELF%F_DOM%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%DOM)) THEN
-    SELF%DOM => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_DOM_F)) THEN
-    IF ((.NOT. SELF%F_DOM_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%DOM_F))) THEN
-      SELF%DOM_F => SELF%F_DOM_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%DOM_F)) THEN
-    SELF%DOM_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_DOM_SPF)) THEN
-    IF ((.NOT. SELF%F_DOM_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%DOM_SPF))) THEN
-      SELF%DOM_SPF => SELF%F_DOM_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%DOM_SPF)) THEN
-    SELF%DOM_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_DOM_SP)) THEN
-    IF ((.NOT. SELF%F_DOM_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%DOM_SP))) THEN
-      SELF%DOM_SP => SELF%F_DOM_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%DOM_SP)) THEN
-    SELF%DOM_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_DOM_P)) THEN
-    IF ((.NOT. SELF%F_DOM_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%DOM_P))) THEN
-      SELF%DOM_P => SELF%F_DOM_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%DOM_P)) THEN
-    SELF%DOM_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_DOM_X)) THEN
-    IF ((.NOT. SELF%F_DOM_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%DOM_X))) THEN
-      SELF%DOM_X => SELF%F_DOM_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%DOM_X)) THEN
-    SELF%DOM_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_DAL)) THEN
-    IF ((.NOT. SELF%F_DAL%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%DAL))) THEN
-      SELF%DAL => SELF%F_DAL%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%DAL)) THEN
-    SELF%DAL => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_DAL_F)) THEN
-    IF ((.NOT. SELF%F_DAL_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%DAL_F))) THEN
-      SELF%DAL_F => SELF%F_DAL_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%DAL_F)) THEN
-    SELF%DAL_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_DAL_SPF)) THEN
-    IF ((.NOT. SELF%F_DAL_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%DAL_SPF))) THEN
-      SELF%DAL_SPF => SELF%F_DAL_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%DAL_SPF)) THEN
-    SELF%DAL_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_DAL_SP)) THEN
-    IF ((.NOT. SELF%F_DAL_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%DAL_SP))) THEN
-      SELF%DAL_SP => SELF%F_DAL_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%DAL_SP)) THEN
-    SELF%DAL_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_DAL_P)) THEN
-    IF ((.NOT. SELF%F_DAL_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%DAL_P))) THEN
-      SELF%DAL_P => SELF%F_DAL_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%DAL_P)) THEN
-    SELF%DAL_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_DAL_X)) THEN
-    IF ((.NOT. SELF%F_DAL_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%DAL_X))) THEN
-      SELF%DAL_X => SELF%F_DAL_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%DAL_X)) THEN
-    SELF%DAL_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_UEN)) THEN
-    IF ((.NOT. SELF%F_UEN%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UEN))) THEN
-      SELF%UEN => SELF%F_UEN%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%UEN)) THEN
-    SELF%UEN => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_UEN_F)) THEN
-    IF ((.NOT. SELF%F_UEN_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UEN_F))) THEN
-      SELF%UEN_F => SELF%F_UEN_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%UEN_F)) THEN
-    SELF%UEN_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_UEN_SPF)) THEN
-    IF ((.NOT. SELF%F_UEN_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UEN_SPF))) THEN
-      SELF%UEN_SPF => SELF%F_UEN_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%UEN_SPF)) THEN
-    SELF%UEN_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_UEN_SP)) THEN
-    IF ((.NOT. SELF%F_UEN_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UEN_SP))) THEN
-      SELF%UEN_SP => SELF%F_UEN_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%UEN_SP)) THEN
-    SELF%UEN_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_UEN_P)) THEN
-    IF ((.NOT. SELF%F_UEN_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UEN_P))) THEN
-      SELF%UEN_P => SELF%F_UEN_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%UEN_P)) THEN
-    SELF%UEN_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_UEN_X)) THEN
-    IF ((.NOT. SELF%F_UEN_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UEN_X))) THEN
-      SELF%UEN_X => SELF%F_UEN_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%UEN_X)) THEN
-    SELF%UEN_X => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_UNEBH)) THEN
-    IF ((.NOT. SELF%F_UNEBH%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UNEBH))) THEN
-      SELF%UNEBH => SELF%F_UNEBH%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%UNEBH)) THEN
-    SELF%UNEBH => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_UNEBH_F)) THEN
-    IF ((.NOT. SELF%F_UNEBH_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UNEBH_F))) THEN
-      SELF%UNEBH_F => SELF%F_UNEBH_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%UNEBH_F)) THEN
-    SELF%UNEBH_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_UNEBH_SPF)) THEN
-    IF ((.NOT. SELF%F_UNEBH_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UNEBH_SPF))) THEN
-      SELF%UNEBH_SPF => SELF%F_UNEBH_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%UNEBH_SPF)) THEN
-    SELF%UNEBH_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_UNEBH_SP)) THEN
-    IF ((.NOT. SELF%F_UNEBH_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UNEBH_SP))) THEN
-      SELF%UNEBH_SP => SELF%F_UNEBH_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%UNEBH_SP)) THEN
-    SELF%UNEBH_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_UNEBH_P)) THEN
-    IF ((.NOT. SELF%F_UNEBH_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UNEBH_P))) THEN
-      SELF%UNEBH_P => SELF%F_UNEBH_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%UNEBH_P)) THEN
-    SELF%UNEBH_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_UNEBH_X)) THEN
-    IF ((.NOT. SELF%F_UNEBH_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%UNEBH_X))) THEN
-      SELF%UNEBH_X => SELF%F_UNEBH_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%UNEBH_X)) THEN
-    SELF%UNEBH_X => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%UNEBH)
 
   DO JGFL = 1, SIZE (SELF%CRM)
-
-    IF (ASSOCIATED (SELF%CRM(JGFL)%F_P)) THEN
-      IF ((.NOT. SELF%CRM(JGFL)%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%CRM(JGFL)%P))) THEN
-        SELF%CRM(JGFL)%P => SELF%CRM(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%CRM(JGFL)%P)) THEN
-      SELF%CRM(JGFL)%P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%CRM(JGFL)%F_P_F)) THEN
-      IF ((.NOT. SELF%CRM(JGFL)%F_P_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%CRM(JGFL)%P_F))) THEN
-        SELF%CRM(JGFL)%P_F => SELF%CRM(JGFL)%F_P_F%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%CRM(JGFL)%P_F)) THEN
-      SELF%CRM(JGFL)%P_F => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%CRM(JGFL)%F_P_SPF)) THEN
-      IF ((.NOT. SELF%CRM(JGFL)%F_P_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%CRM(JGFL)%P_SPF))) THEN
-        SELF%CRM(JGFL)%P_SPF => SELF%CRM(JGFL)%F_P_SPF%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%CRM(JGFL)%P_SPF)) THEN
-      SELF%CRM(JGFL)%P_SPF => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%CRM(JGFL)%F_P_SP)) THEN
-      IF ((.NOT. SELF%CRM(JGFL)%F_P_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%CRM(JGFL)%P_SP))) THEN
-        SELF%CRM(JGFL)%P_SP => SELF%CRM(JGFL)%F_P_SP%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%CRM(JGFL)%P_SP)) THEN
-      SELF%CRM(JGFL)%P_SP => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%CRM(JGFL)%F_P_P)) THEN
-      IF ((.NOT. SELF%CRM(JGFL)%F_P_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%CRM(JGFL)%P_P))) THEN
-        SELF%CRM(JGFL)%P_P => SELF%CRM(JGFL)%F_P_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%CRM(JGFL)%P_P)) THEN
-      SELF%CRM(JGFL)%P_P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%CRM(JGFL)%F_P_X)) THEN
-      IF ((.NOT. SELF%CRM(JGFL)%F_P_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%CRM(JGFL)%P_X))) THEN
-        SELF%CRM(JGFL)%P_X => SELF%CRM(JGFL)%F_P_X%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%CRM(JGFL)%P_X)) THEN
-      SELF%CRM(JGFL)%P_X => ZDUM2
-    ENDIF
-
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%CRM(JGFL))
   ENDDO
 
   DO JGFL = 1, SIZE (SELF%LIMA)
-
-    IF (ASSOCIATED (SELF%LIMA(JGFL)%F_P)) THEN
-      IF ((.NOT. SELF%LIMA(JGFL)%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%LIMA(JGFL)%P))) THEN
-        SELF%LIMA(JGFL)%P => SELF%LIMA(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%LIMA(JGFL)%P)) THEN
-      SELF%LIMA(JGFL)%P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%LIMA(JGFL)%F_P_F)) THEN
-      IF ((.NOT. SELF%LIMA(JGFL)%F_P_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%LIMA(JGFL)%P_F))) THEN
-        SELF%LIMA(JGFL)%P_F => SELF%LIMA(JGFL)%F_P_F%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%LIMA(JGFL)%P_F)) THEN
-      SELF%LIMA(JGFL)%P_F => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%LIMA(JGFL)%F_P_SPF)) THEN
-      IF ((.NOT. SELF%LIMA(JGFL)%F_P_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%LIMA(JGFL)%P_SPF))) THEN
-        SELF%LIMA(JGFL)%P_SPF => SELF%LIMA(JGFL)%F_P_SPF%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%LIMA(JGFL)%P_SPF)) THEN
-      SELF%LIMA(JGFL)%P_SPF => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%LIMA(JGFL)%F_P_SP)) THEN
-      IF ((.NOT. SELF%LIMA(JGFL)%F_P_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%LIMA(JGFL)%P_SP))) THEN
-        SELF%LIMA(JGFL)%P_SP => SELF%LIMA(JGFL)%F_P_SP%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%LIMA(JGFL)%P_SP)) THEN
-      SELF%LIMA(JGFL)%P_SP => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%LIMA(JGFL)%F_P_P)) THEN
-      IF ((.NOT. SELF%LIMA(JGFL)%F_P_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%LIMA(JGFL)%P_P))) THEN
-        SELF%LIMA(JGFL)%P_P => SELF%LIMA(JGFL)%F_P_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%LIMA(JGFL)%P_P)) THEN
-      SELF%LIMA(JGFL)%P_P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%LIMA(JGFL)%F_P_X)) THEN
-      IF ((.NOT. SELF%LIMA(JGFL)%F_P_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%LIMA(JGFL)%P_X))) THEN
-        SELF%LIMA(JGFL)%P_X => SELF%LIMA(JGFL)%F_P_X%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%LIMA(JGFL)%P_X)) THEN
-      SELF%LIMA(JGFL)%P_X => ZDUM2
-    ENDIF
-
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%LIMA(JGFL))
   ENDDO
 
-  IF (ASSOCIATED (SELF%F_FSD)) THEN
-    IF ((.NOT. SELF%F_FSD%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%FSD))) THEN
-      SELF%FSD => SELF%F_FSD%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%FSD)) THEN
-    SELF%FSD => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_FSD_F)) THEN
-    IF ((.NOT. SELF%F_FSD_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%FSD_F))) THEN
-      SELF%FSD_F => SELF%F_FSD_F%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%FSD_F)) THEN
-    SELF%FSD_F => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_FSD_SPF)) THEN
-    IF ((.NOT. SELF%F_FSD_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%FSD_SPF))) THEN
-      SELF%FSD_SPF => SELF%F_FSD_SPF%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%FSD_SPF)) THEN
-    SELF%FSD_SPF => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_FSD_SP)) THEN
-    IF ((.NOT. SELF%F_FSD_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%FSD_SP))) THEN
-      SELF%FSD_SP => SELF%F_FSD_SP%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%FSD_SP)) THEN
-    SELF%FSD_SP => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_FSD_P)) THEN
-    IF ((.NOT. SELF%F_FSD_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%FSD_P))) THEN
-      SELF%FSD_P => SELF%F_FSD_P%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%FSD_P)) THEN
-    SELF%FSD_P => ZDUM2
-  ENDIF
-
-  IF (ASSOCIATED (SELF%F_FSD_X)) THEN
-    IF ((.NOT. SELF%F_FSD_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%FSD_X))) THEN
-      SELF%FSD_X => SELF%F_FSD_X%GET_VIEW (BLOCK_INDEX)
-    ENDIF
-  ELSEIF (.NOT. ASSOCIATED (SELF%FSD_X)) THEN
-    SELF%FSD_X => ZDUM2
-  ENDIF
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%FSD)
 
   DO JGFL = 1, SIZE (SELF%EXT)
-
-    IF (ASSOCIATED (SELF%EXT(JGFL)%F_P)) THEN
-      IF ((.NOT. SELF%EXT(JGFL)%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EXT(JGFL)%P))) THEN
-        SELF%EXT(JGFL)%P => SELF%EXT(JGFL)%F_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%EXT(JGFL)%P)) THEN
-      SELF%EXT(JGFL)%P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%EXT(JGFL)%F_P_F)) THEN
-      IF ((.NOT. SELF%EXT(JGFL)%F_P_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EXT(JGFL)%P_F))) THEN
-        SELF%EXT(JGFL)%P_F => SELF%EXT(JGFL)%F_P_F%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%EXT(JGFL)%P_F)) THEN
-      SELF%EXT(JGFL)%P_F => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%EXT(JGFL)%F_P_SPF)) THEN
-      IF ((.NOT. SELF%EXT(JGFL)%F_P_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EXT(JGFL)%P_SPF))) THEN
-        SELF%EXT(JGFL)%P_SPF => SELF%EXT(JGFL)%F_P_SPF%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%EXT(JGFL)%P_SPF)) THEN
-      SELF%EXT(JGFL)%P_SPF => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%EXT(JGFL)%F_P_SP)) THEN
-      IF ((.NOT. SELF%EXT(JGFL)%F_P_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EXT(JGFL)%P_SP))) THEN
-        SELF%EXT(JGFL)%P_SP => SELF%EXT(JGFL)%F_P_SP%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%EXT(JGFL)%P_SP)) THEN
-      SELF%EXT(JGFL)%P_SP => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%EXT(JGFL)%F_P_P)) THEN
-      IF ((.NOT. SELF%EXT(JGFL)%F_P_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EXT(JGFL)%P_P))) THEN
-        SELF%EXT(JGFL)%P_P => SELF%EXT(JGFL)%F_P_P%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%EXT(JGFL)%P_P)) THEN
-      SELF%EXT(JGFL)%P_P => ZDUM2
-    ENDIF
-
-    IF (ASSOCIATED (SELF%EXT(JGFL)%F_P_X)) THEN
-      IF ((.NOT. SELF%EXT(JGFL)%F_P_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (SELF%EXT(JGFL)%P_X))) THEN
-        SELF%EXT(JGFL)%P_X => SELF%EXT(JGFL)%F_P_X%GET_VIEW (BLOCK_INDEX)
-      ENDIF
-    ELSEIF (.NOT. ASSOCIATED (SELF%EXT(JGFL)%P_X)) THEN
-      SELF%EXT(JGFL)%P_X => ZDUM2
-    ENDIF
-
+    CALL CPG_SL1_TYPE_UPDATE_VIEW_F3D (SELF%EXT(JGFL))
   ENDDO
 
 
 ELSE
   SELF%ZVIEW => ZDUM2
 
-  IF (.NOT. ASSOCIATED (SELF%U9)) SELF%U9 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%V9)) SELF%V9 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%T9)) SELF%T9 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%PD9)) SELF%PD9 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%VD9)) SELF%VD9 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%NHX9)) SELF%NHX9 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%UR0)) SELF%UR0 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%VR0)) SELF%VR0 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%ZR0)) SELF%ZR0 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%WR0)) SELF%WR0 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%UR00)) SELF%UR00 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%VR00)) SELF%VR00 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%ZR00)) SELF%ZR00 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%WR00)) SELF%WR00 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%WRA)) SELF%WRA => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%UR9)) SELF%UR9 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%VR9)) SELF%VR9 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%DBBC9)) SELF%DBBC9 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%DPHI9)) SELF%DPHI9 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%GWS9)) SELF%GWS9 => ZDUM1
-  IF (.NOT. ASSOCIATED (SELF%U0)) SELF%U0 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%V0)) SELF%V0 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%T0)) SELF%T0 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%PD0)) SELF%PD0 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%VD0)) SELF%VD0 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%C9)) SELF%C9 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%SP9)) SELF%SP9 => ZDUM1
-  IF (.NOT. ASSOCIATED (SELF%SP0)) SELF%SP0 => ZDUM1
-  IF (.NOT. ASSOCIATED (SELF%C0)) SELF%C0 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%UP9)) SELF%UP9 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%VP9)) SELF%VP9 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%TP9)) SELF%TP9 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%U9_SI)) SELF%U9_SI => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%V9_SI)) SELF%V9_SI => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%T9_SI)) SELF%T9_SI => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%PD9_SI)) SELF%PD9_SI => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%VD9_SI)) SELF%VD9_SI => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%C9_SI)) SELF%C9_SI => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%UF9)) SELF%UF9 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%VF9)) SELF%VF9 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%TF9)) SELF%TF9 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%VDF9)) SELF%VDF9 => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%U9_NL)) SELF%U9_NL => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%V9_NL)) SELF%V9_NL => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%T9_NL)) SELF%T9_NL => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%PD9_NL)) SELF%PD9_NL => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%VD9_NL)) SELF%VD9_NL => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%C9_NL)) SELF%C9_NL => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%U9%F_P)) SELF%U9%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%V9%F_P)) SELF%V9%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%T9%F_P)) SELF%T9%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%PD9%F_P)) SELF%PD9%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%VD9%F_P)) SELF%VD9%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%NHX9%F_P)) SELF%NHX9%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%UR0%F_P)) SELF%UR0%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%VR0%F_P)) SELF%VR0%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%ZR0%F_P)) SELF%ZR0%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%WR0%F_P)) SELF%WR0%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%UR00%F_P)) SELF%UR00%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%VR00%F_P)) SELF%VR00%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%ZR00%F_P)) SELF%ZR00%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%WR00%F_P)) SELF%WR00%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%WRA%F_P)) SELF%WRA%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%UR9%F_P)) SELF%UR9%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%VR9%F_P)) SELF%VR9%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%DBBC9%F_P)) SELF%DBBC9%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%DPHI9%F_P)) SELF%DPHI9%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%GWS9%F_P)) SELF%GWS9%P => ZDUM1
+  IF (.NOT. ASSOCIATED (SELF%U0%F_P)) SELF%U0%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%V0%F_P)) SELF%V0%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%T0%F_P)) SELF%T0%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%PD0%F_P)) SELF%PD0%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%VD0%F_P)) SELF%VD0%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%C9%F_P)) SELF%C9%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%SP9%F_P)) SELF%SP9%P => ZDUM1
+  IF (.NOT. ASSOCIATED (SELF%SP0%F_P)) SELF%SP0%P => ZDUM1
+  IF (.NOT. ASSOCIATED (SELF%C0%F_P)) SELF%C0%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%UP9%F_P)) SELF%UP9%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%VP9%F_P)) SELF%VP9%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%TP9%F_P)) SELF%TP9%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%U9_SI%F_P)) SELF%U9_SI%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%V9_SI%F_P)) SELF%V9_SI%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%T9_SI%F_P)) SELF%T9_SI%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%PD9_SI%F_P)) SELF%PD9_SI%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%VD9_SI%F_P)) SELF%VD9_SI%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%C9_SI%F_P)) SELF%C9_SI%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%UF9%F_P)) SELF%UF9%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%VF9%F_P)) SELF%VF9%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%TF9%F_P)) SELF%TF9%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%VDF9%F_P)) SELF%VDF9%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%U9_NL%F_P)) SELF%U9_NL%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%V9_NL%F_P)) SELF%V9_NL%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%T9_NL%F_P)) SELF%T9_NL%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%PD9_NL%F_P)) SELF%PD9_NL%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%VD9_NL%F_P)) SELF%VD9_NL%P => ZDUM2
+  IF (.NOT. ASSOCIATED (SELF%C9_NL%F_P)) SELF%C9_NL%P => ZDUM2
 
-  IF (.NOT. ASSOCIATED (SELF%Q)) SELF%Q   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%Q)) SELF%Q_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%I)) SELF%I   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%I)) SELF%I_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%L)) SELF%L   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%L)) SELF%L_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%LCONV)) SELF%LCONV   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%LCONV)) SELF%LCONV_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%ICONV)) SELF%ICONV   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%ICONV)) SELF%ICONV_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%RCONV)) SELF%RCONV   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%RCONV)) SELF%RCONV_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%SCONV)) SELF%SCONV   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%SCONV)) SELF%SCONV_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%IRAD)) SELF%IRAD   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%IRAD)) SELF%IRAD_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%LRAD)) SELF%LRAD   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%LRAD)) SELF%LRAD_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%S)) SELF%S   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%S)) SELF%S_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%R)) SELF%R   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%R)) SELF%R_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%G)) SELF%G   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%G)) SELF%G_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%H)) SELF%H   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%H)) SELF%H_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%TKE)) SELF%TKE   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%TKE)) SELF%TKE_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%TTE)) SELF%TTE   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%TTE)) SELF%TTE_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%EFB1)) SELF%EFB1   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%EFB1)) SELF%EFB1_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%EFB2)) SELF%EFB2   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%EFB2)) SELF%EFB2_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%EFB3)) SELF%EFB3   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%EFB3)) SELF%EFB3_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%A)) SELF%A   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%A)) SELF%A_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%O3)) SELF%O3   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%O3)) SELF%O3_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%SRC)) SELF%SRC   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%SRC)) SELF%SRC_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%MXL)) SELF%MXL   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%MXL)) SELF%MXL_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%SHTUR)) SELF%SHTUR   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%SHTUR)) SELF%SHTUR_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%FQTUR)) SELF%FQTUR   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%FQTUR)) SELF%FQTUR_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%FSTUR)) SELF%FSTUR   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%FSTUR)) SELF%FSTUR_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%CPF)) SELF%CPF   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%CPF)) SELF%CPF_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%SPF)) SELF%SPF   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%SPF)) SELF%SPF_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%CVGQ)) SELF%CVGQ   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%CVGQ)) SELF%CVGQ_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%QVA)) SELF%QVA   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%QVA)) SELF%QVA_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%LRCH4)) SELF%LRCH4   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%LRCH4)) SELF%LRCH4_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%PHYCTY)) SELF%PHYCTY   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%PHYCTY)) SELF%PHYCTY_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%RSPEC)) SELF%RSPEC   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%RSPEC)) SELF%RSPEC_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%SDSAT)) SELF%SDSAT   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%SDSAT)) SELF%SDSAT_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%CVV)) SELF%CVV   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%CVV)) SELF%CVV_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%RKTH)) SELF%RKTH   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%RKTH)) SELF%RKTH_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%RKTQV)) SELF%RKTQV   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%RKTQV)) SELF%RKTQV_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%RKTQC)) SELF%RKTQC   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%RKTQC)) SELF%RKTQC_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%UOM)) SELF%UOM   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%UOM)) SELF%UOM_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%UAL)) SELF%UAL   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%UAL)) SELF%UAL_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%DOM)) SELF%DOM   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%DOM)) SELF%DOM_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%DAL)) SELF%DAL   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%DAL)) SELF%DAL_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%UEN)) SELF%UEN   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%UEN)) SELF%UEN_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%UNEBH)) SELF%UNEBH   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%UNEBH)) SELF%UNEBH_F => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%FSD)) SELF%FSD   => ZDUM2
-  IF (.NOT. ASSOCIATED (SELF%FSD)) SELF%FSD_F => ZDUM2
+  CALL NULLIFY_F3D (SELF%Q)
+  CALL NULLIFY_F3D (SELF%I)
+  CALL NULLIFY_F3D (SELF%L)
+  CALL NULLIFY_F3D (SELF%LCONV)
+  CALL NULLIFY_F3D (SELF%ICONV)
+  CALL NULLIFY_F3D (SELF%RCONV)
+  CALL NULLIFY_F3D (SELF%SCONV)
+  CALL NULLIFY_F3D (SELF%IRAD)
+  CALL NULLIFY_F3D (SELF%LRAD)
+  CALL NULLIFY_F3D (SELF%S)
+  CALL NULLIFY_F3D (SELF%R)
+  CALL NULLIFY_F3D (SELF%G)
+  CALL NULLIFY_F3D (SELF%H)
+  CALL NULLIFY_F3D (SELF%TKE)
+  CALL NULLIFY_F3D (SELF%TTE)
+  CALL NULLIFY_F3D (SELF%EFB1)
+  CALL NULLIFY_F3D (SELF%EFB2)
+  CALL NULLIFY_F3D (SELF%EFB3)
+  CALL NULLIFY_F3D (SELF%A)
+  CALL NULLIFY_F3D (SELF%O3)
+  CALL NULLIFY_F3D (SELF%SRC)
+  CALL NULLIFY_F3D (SELF%MXL)
+  CALL NULLIFY_F3D (SELF%SHTUR)
+  CALL NULLIFY_F3D (SELF%FQTUR)
+  CALL NULLIFY_F3D (SELF%FSTUR)
+  CALL NULLIFY_F3D (SELF%CPF)
+  CALL NULLIFY_F3D (SELF%SPF)
+  CALL NULLIFY_F3D (SELF%CVGQ)
+  CALL NULLIFY_F3D (SELF%QVA)
+  DO JGFL = 1, SIZE (SELF%GHG)
+    CALL NULLIFY_F3D (SELF%GHG(JGFL))
+  ENDDO
+  DO JGFL = 1, SIZE (SELF%CHEM)
+    CALL NULLIFY_F3D (SELF%CHEM(JGFL))
+  ENDDO
+  DO JGFL = 1, SIZE (SELF%AERO)
+    CALL NULLIFY_F3D (SELF%AERO(JGFL))
+  ENDDO
+  CALL NULLIFY_F3D (SELF%LRCH4)
+  DO JGFL = 1, SIZE (SELF%FORC)
+    CALL NULLIFY_F3D (SELF%FORC(JGFL))
+  ENDDO
+  DO JGFL = 1, SIZE (SELF%EZDIAG)
+    CALL NULLIFY_F3D (SELF%EZDIAG(JGFL))
+  ENDDO
+  DO JGFL = 1, SIZE (SELF%ERA40)
+    CALL NULLIFY_F3D (SELF%ERA40(JGFL))
+  ENDDO
+  DO JGFL = 1, SIZE (SELF%NOGW)
+    CALL NULLIFY_F3D (SELF%NOGW(JGFL))
+  ENDDO
+  DO JGFL = 1, SIZE (SELF%EDRP)
+    CALL NULLIFY_F3D (SELF%EDRP(JGFL))
+  ENDDO
+  DO JGFL = 1, SIZE (SELF%SLDIA)
+    CALL NULLIFY_F3D (SELF%SLDIA(JGFL))
+  ENDDO
+  DO JGFL = 1, SIZE (SELF%AERAOT)
+    CALL NULLIFY_F3D (SELF%AERAOT(JGFL))
+  ENDDO
+  DO JGFL = 1, SIZE (SELF%AERLISI)
+    CALL NULLIFY_F3D (SELF%AERLISI(JGFL))
+  ENDDO
+  DO JGFL = 1, SIZE (SELF%AEROUT)
+    CALL NULLIFY_F3D (SELF%AEROUT(JGFL))
+  ENDDO
+  DO JGFL = 1, SIZE (SELF%AEROCLIM)
+    CALL NULLIFY_F3D (SELF%AEROCLIM(JGFL))
+  ENDDO
+  DO JGFL = 1, SIZE (SELF%UVP)
+    CALL NULLIFY_F3D (SELF%UVP(JGFL))
+  ENDDO
+  DO JGFL = 1, SIZE (SELF%PHYS)
+    CALL NULLIFY_F3D (SELF%PHYS(JGFL))
+  ENDDO
+  CALL NULLIFY_F3D (SELF%PHYCTY)
+  CALL NULLIFY_F3D (SELF%RSPEC)
+  CALL NULLIFY_F3D (SELF%SDSAT)
+  CALL NULLIFY_F3D (SELF%CVV)
+  CALL NULLIFY_F3D (SELF%RKTH)
+  CALL NULLIFY_F3D (SELF%RKTQV)
+  CALL NULLIFY_F3D (SELF%RKTQC)
+  CALL NULLIFY_F3D (SELF%UOM)
+  CALL NULLIFY_F3D (SELF%UAL)
+  CALL NULLIFY_F3D (SELF%DOM)
+  CALL NULLIFY_F3D (SELF%DAL)
+  CALL NULLIFY_F3D (SELF%UEN)
+  CALL NULLIFY_F3D (SELF%UNEBH)
+  DO JGFL = 1, SIZE (SELF%CRM)
+    CALL NULLIFY_F3D (SELF%CRM(JGFL))
+  ENDDO
+  DO JGFL = 1, SIZE (SELF%LIMA)
+    CALL NULLIFY_F3D (SELF%LIMA(JGFL))
+  ENDDO
+  CALL NULLIFY_F3D (SELF%FSD)
+  DO JGFL = 1, SIZE (SELF%EXT)
+    CALL NULLIFY_F3D (SELF%EXT(JGFL))
+  ENDDO
 
 ENDIF
+
+CONTAINS
+
+SUBROUTINE NULLIFY_F3D (YDF3D)
+
+TYPE (CPG_SL1_3D_TYPE), INTENT (INOUT) :: YDF3D
+
+IF (.NOT. ASSOCIATED (YDF3D%F_P    )) YDF3D%P     => ZDUM2
+IF (.NOT. ASSOCIATED (YDF3D%F_P_F  )) YDF3D%P_F   => ZDUM2
+IF (.NOT. ASSOCIATED (YDF3D%F_P_SPF)) YDF3D%P_SPF => ZDUM2
+IF (.NOT. ASSOCIATED (YDF3D%F_P_SP )) YDF3D%P_SP  => ZDUM2
+IF (.NOT. ASSOCIATED (YDF3D%F_P_P  )) YDF3D%P_P   => ZDUM2
+IF (.NOT. ASSOCIATED (YDF3D%F_P_X  )) YDF3D%P_X   => ZDUM2
+
+END SUBROUTINE NULLIFY_F3D
+
+SUBROUTINE CPG_SL1_TYPE_UPDATE_VIEW_F3D (YDF3D)
+
+TYPE (CPG_SL1_3D_TYPE), INTENT (INOUT) :: YDF3D
+
+IF (ASSOCIATED (YDF3D%F_P)) THEN
+  IF ((.NOT. YDF3D%F_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (YDF3D%P))) THEN
+    YDF3D%P => YDF3D%F_P%GET_VIEW (BLOCK_INDEX)
+  ENDIF
+ELSEIF (.NOT. ASSOCIATED (YDF3D%P)) THEN
+  YDF3D%P => ZDUM2
+ENDIF
+
+IF (ASSOCIATED (YDF3D%F_P_F)) THEN
+  IF ((.NOT. YDF3D%F_P_F%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (YDF3D%P_F))) THEN
+    YDF3D%P_F => YDF3D%F_P_F%GET_VIEW (BLOCK_INDEX)
+  ENDIF
+ELSEIF (.NOT. ASSOCIATED (YDF3D%P_F)) THEN
+  YDF3D%P_F => ZDUM2
+ENDIF
+
+IF (ASSOCIATED (YDF3D%F_P_SPF)) THEN
+  IF ((.NOT. YDF3D%F_P_SPF%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (YDF3D%P_SPF))) THEN
+    YDF3D%P_SPF => YDF3D%F_P_SPF%GET_VIEW (BLOCK_INDEX)
+  ENDIF
+ELSEIF (.NOT. ASSOCIATED (YDF3D%P_SPF)) THEN
+  YDF3D%P_SPF => ZDUM2
+ENDIF
+
+IF (ASSOCIATED (YDF3D%F_P_SP)) THEN
+  IF ((.NOT. YDF3D%F_P_SP%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (YDF3D%P_SP))) THEN
+    YDF3D%P_SP => YDF3D%F_P_SP%GET_VIEW (BLOCK_INDEX)
+  ENDIF
+ELSEIF (.NOT. ASSOCIATED (YDF3D%P_SP)) THEN
+  YDF3D%P_SP => ZDUM2
+ENDIF
+
+IF (ASSOCIATED (YDF3D%F_P_P)) THEN
+  IF ((.NOT. YDF3D%F_P_P%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (YDF3D%P_P))) THEN
+    YDF3D%P_P => YDF3D%F_P_P%GET_VIEW (BLOCK_INDEX)
+  ENDIF
+ELSEIF (.NOT. ASSOCIATED (YDF3D%P_P)) THEN
+  YDF3D%P_P => ZDUM2
+ENDIF
+
+IF (ASSOCIATED (YDF3D%F_P_X)) THEN
+  IF ((.NOT. YDF3D%F_P_X%THREAD_BUFFER) .OR. (.NOT. ASSOCIATED (YDF3D%P_X))) THEN
+    YDF3D%P_X => YDF3D%F_P_X%GET_VIEW (BLOCK_INDEX)
+  ENDIF
+ELSEIF (.NOT. ASSOCIATED (YDF3D%P_X)) THEN
+  YDF3D%P_X => ZDUM2
+ENDIF
+
+END SUBROUTINE CPG_SL1_TYPE_UPDATE_VIEW_F3D
 
 END SUBROUTINE CPG_SL1_TYPE_UPDATE_VIEW
 
@@ -10806,1567 +4325,325 @@ ENDIF
 SELF%ZDATA => NULL ()
 SELF%ZVIEW => NULL ()
 
-IF (ASSOCIATED (SELF%F_U9)) CALL DELETE_TEMPORARY (SELF%F_U9)
-SELF%F_U9 => NULL ()
-SELF%U9 => NULL ()
-IF (ASSOCIATED (SELF%F_V9)) CALL DELETE_TEMPORARY (SELF%F_V9)
-SELF%F_V9 => NULL ()
-SELF%V9 => NULL ()
-IF (ASSOCIATED (SELF%F_T9)) CALL DELETE_TEMPORARY (SELF%F_T9)
-SELF%F_T9 => NULL ()
-SELF%T9 => NULL ()
-IF (ASSOCIATED (SELF%F_PD9)) CALL DELETE_TEMPORARY (SELF%F_PD9)
-SELF%F_PD9 => NULL ()
-SELF%PD9 => NULL ()
-IF (ASSOCIATED (SELF%F_VD9)) CALL DELETE_TEMPORARY (SELF%F_VD9)
-SELF%F_VD9 => NULL ()
-SELF%VD9 => NULL ()
-IF (ASSOCIATED (SELF%F_NHX9)) CALL DELETE_TEMPORARY (SELF%F_NHX9)
-SELF%F_NHX9 => NULL ()
-SELF%NHX9 => NULL ()
-IF (ASSOCIATED (SELF%F_UR0)) CALL DELETE_TEMPORARY (SELF%F_UR0)
-SELF%F_UR0 => NULL ()
-SELF%UR0 => NULL ()
-IF (ASSOCIATED (SELF%F_VR0)) CALL DELETE_TEMPORARY (SELF%F_VR0)
-SELF%F_VR0 => NULL ()
-SELF%VR0 => NULL ()
-IF (ASSOCIATED (SELF%F_ZR0)) CALL DELETE_TEMPORARY (SELF%F_ZR0)
-SELF%F_ZR0 => NULL ()
-SELF%ZR0 => NULL ()
-IF (ASSOCIATED (SELF%F_WR0)) CALL DELETE_TEMPORARY (SELF%F_WR0)
-SELF%F_WR0 => NULL ()
-SELF%WR0 => NULL ()
-IF (ASSOCIATED (SELF%F_UR00)) CALL DELETE_TEMPORARY (SELF%F_UR00)
-SELF%F_UR00 => NULL ()
-SELF%UR00 => NULL ()
-IF (ASSOCIATED (SELF%F_VR00)) CALL DELETE_TEMPORARY (SELF%F_VR00)
-SELF%F_VR00 => NULL ()
-SELF%VR00 => NULL ()
-IF (ASSOCIATED (SELF%F_ZR00)) CALL DELETE_TEMPORARY (SELF%F_ZR00)
-SELF%F_ZR00 => NULL ()
-SELF%ZR00 => NULL ()
-IF (ASSOCIATED (SELF%F_WR00)) CALL DELETE_TEMPORARY (SELF%F_WR00)
-SELF%F_WR00 => NULL ()
-SELF%WR00 => NULL ()
-IF (ASSOCIATED (SELF%F_WRA)) CALL DELETE_TEMPORARY (SELF%F_WRA)
-SELF%F_WRA => NULL ()
-SELF%WRA => NULL ()
-IF (ASSOCIATED (SELF%F_UR9)) CALL DELETE_TEMPORARY (SELF%F_UR9)
-SELF%F_UR9 => NULL ()
-SELF%UR9 => NULL ()
-IF (ASSOCIATED (SELF%F_VR9)) CALL DELETE_TEMPORARY (SELF%F_VR9)
-SELF%F_VR9 => NULL ()
-SELF%VR9 => NULL ()
-IF (ASSOCIATED (SELF%F_DBBC9)) CALL DELETE_TEMPORARY (SELF%F_DBBC9)
-SELF%F_DBBC9 => NULL ()
-SELF%DBBC9 => NULL ()
-IF (ASSOCIATED (SELF%F_DPHI9)) CALL DELETE_TEMPORARY (SELF%F_DPHI9)
-SELF%F_DPHI9 => NULL ()
-SELF%DPHI9 => NULL ()
-IF (ASSOCIATED (SELF%F_GWS9)) CALL DELETE_TEMPORARY (SELF%F_GWS9)
-SELF%F_GWS9 => NULL ()
-SELF%GWS9 => NULL ()
-IF (ASSOCIATED (SELF%F_U0)) CALL DELETE_TEMPORARY (SELF%F_U0)
-SELF%F_U0 => NULL ()
-SELF%U0 => NULL ()
-IF (ASSOCIATED (SELF%F_V0)) CALL DELETE_TEMPORARY (SELF%F_V0)
-SELF%F_V0 => NULL ()
-SELF%V0 => NULL ()
-IF (ASSOCIATED (SELF%F_T0)) CALL DELETE_TEMPORARY (SELF%F_T0)
-SELF%F_T0 => NULL ()
-SELF%T0 => NULL ()
-IF (ASSOCIATED (SELF%F_PD0)) CALL DELETE_TEMPORARY (SELF%F_PD0)
-SELF%F_PD0 => NULL ()
-SELF%PD0 => NULL ()
-IF (ASSOCIATED (SELF%F_VD0)) CALL DELETE_TEMPORARY (SELF%F_VD0)
-SELF%F_VD0 => NULL ()
-SELF%VD0 => NULL ()
-IF (ASSOCIATED (SELF%F_C9)) CALL DELETE_TEMPORARY (SELF%F_C9)
-SELF%F_C9 => NULL ()
-SELF%C9 => NULL ()
-IF (ASSOCIATED (SELF%F_SP9)) CALL DELETE_TEMPORARY (SELF%F_SP9)
-SELF%F_SP9 => NULL ()
-SELF%SP9 => NULL ()
-IF (ASSOCIATED (SELF%F_SP0)) CALL DELETE_TEMPORARY (SELF%F_SP0)
-SELF%F_SP0 => NULL ()
-SELF%SP0 => NULL ()
-IF (ASSOCIATED (SELF%F_C0)) CALL DELETE_TEMPORARY (SELF%F_C0)
-SELF%F_C0 => NULL ()
-SELF%C0 => NULL ()
-IF (ASSOCIATED (SELF%F_UP9)) CALL DELETE_TEMPORARY (SELF%F_UP9)
-SELF%F_UP9 => NULL ()
-SELF%UP9 => NULL ()
-IF (ASSOCIATED (SELF%F_VP9)) CALL DELETE_TEMPORARY (SELF%F_VP9)
-SELF%F_VP9 => NULL ()
-SELF%VP9 => NULL ()
-IF (ASSOCIATED (SELF%F_TP9)) CALL DELETE_TEMPORARY (SELF%F_TP9)
-SELF%F_TP9 => NULL ()
-SELF%TP9 => NULL ()
-IF (ASSOCIATED (SELF%F_U9_SI)) CALL DELETE_TEMPORARY (SELF%F_U9_SI)
-SELF%F_U9_SI => NULL ()
-SELF%U9_SI => NULL ()
-IF (ASSOCIATED (SELF%F_V9_SI)) CALL DELETE_TEMPORARY (SELF%F_V9_SI)
-SELF%F_V9_SI => NULL ()
-SELF%V9_SI => NULL ()
-IF (ASSOCIATED (SELF%F_T9_SI)) CALL DELETE_TEMPORARY (SELF%F_T9_SI)
-SELF%F_T9_SI => NULL ()
-SELF%T9_SI => NULL ()
-IF (ASSOCIATED (SELF%F_PD9_SI)) CALL DELETE_TEMPORARY (SELF%F_PD9_SI)
-SELF%F_PD9_SI => NULL ()
-SELF%PD9_SI => NULL ()
-IF (ASSOCIATED (SELF%F_VD9_SI)) CALL DELETE_TEMPORARY (SELF%F_VD9_SI)
-SELF%F_VD9_SI => NULL ()
-SELF%VD9_SI => NULL ()
-IF (ASSOCIATED (SELF%F_C9_SI)) CALL DELETE_TEMPORARY (SELF%F_C9_SI)
-SELF%F_C9_SI => NULL ()
-SELF%C9_SI => NULL ()
-IF (ASSOCIATED (SELF%F_UF9)) CALL DELETE_TEMPORARY (SELF%F_UF9)
-SELF%F_UF9 => NULL ()
-SELF%UF9 => NULL ()
-IF (ASSOCIATED (SELF%F_VF9)) CALL DELETE_TEMPORARY (SELF%F_VF9)
-SELF%F_VF9 => NULL ()
-SELF%VF9 => NULL ()
-IF (ASSOCIATED (SELF%F_TF9)) CALL DELETE_TEMPORARY (SELF%F_TF9)
-SELF%F_TF9 => NULL ()
-SELF%TF9 => NULL ()
-IF (ASSOCIATED (SELF%F_VDF9)) CALL DELETE_TEMPORARY (SELF%F_VDF9)
-SELF%F_VDF9 => NULL ()
-SELF%VDF9 => NULL ()
-IF (ASSOCIATED (SELF%F_U9_NL)) CALL DELETE_TEMPORARY (SELF%F_U9_NL)
-SELF%F_U9_NL => NULL ()
-SELF%U9_NL => NULL ()
-IF (ASSOCIATED (SELF%F_V9_NL)) CALL DELETE_TEMPORARY (SELF%F_V9_NL)
-SELF%F_V9_NL => NULL ()
-SELF%V9_NL => NULL ()
-IF (ASSOCIATED (SELF%F_T9_NL)) CALL DELETE_TEMPORARY (SELF%F_T9_NL)
-SELF%F_T9_NL => NULL ()
-SELF%T9_NL => NULL ()
-IF (ASSOCIATED (SELF%F_PD9_NL)) CALL DELETE_TEMPORARY (SELF%F_PD9_NL)
-SELF%F_PD9_NL => NULL ()
-SELF%PD9_NL => NULL ()
-IF (ASSOCIATED (SELF%F_VD9_NL)) CALL DELETE_TEMPORARY (SELF%F_VD9_NL)
-SELF%F_VD9_NL => NULL ()
-SELF%VD9_NL => NULL ()
-IF (ASSOCIATED (SELF%F_C9_NL)) CALL DELETE_TEMPORARY (SELF%F_C9_NL)
-SELF%F_C9_NL => NULL ()
-SELF%C9_NL => NULL ()
+IF (ASSOCIATED (SELF%U9%F_P)) CALL DELETE_TEMPORARY (SELF%U9%F_P)
+SELF%U9%F_P => NULL ()
+SELF%U9%P => NULL ()
+IF (ASSOCIATED (SELF%V9%F_P)) CALL DELETE_TEMPORARY (SELF%V9%F_P)
+SELF%V9%F_P => NULL ()
+SELF%V9%P => NULL ()
+IF (ASSOCIATED (SELF%T9%F_P)) CALL DELETE_TEMPORARY (SELF%T9%F_P)
+SELF%T9%F_P => NULL ()
+SELF%T9%P => NULL ()
+IF (ASSOCIATED (SELF%PD9%F_P)) CALL DELETE_TEMPORARY (SELF%PD9%F_P)
+SELF%PD9%F_P => NULL ()
+SELF%PD9%P => NULL ()
+IF (ASSOCIATED (SELF%VD9%F_P)) CALL DELETE_TEMPORARY (SELF%VD9%F_P)
+SELF%VD9%F_P => NULL ()
+SELF%VD9%P => NULL ()
+IF (ASSOCIATED (SELF%NHX9%F_P)) CALL DELETE_TEMPORARY (SELF%NHX9%F_P)
+SELF%NHX9%F_P => NULL ()
+SELF%NHX9%P => NULL ()
+IF (ASSOCIATED (SELF%UR0%F_P)) CALL DELETE_TEMPORARY (SELF%UR0%F_P)
+SELF%UR0%F_P => NULL ()
+SELF%UR0%P => NULL ()
+IF (ASSOCIATED (SELF%VR0%F_P)) CALL DELETE_TEMPORARY (SELF%VR0%F_P)
+SELF%VR0%F_P => NULL ()
+SELF%VR0%P => NULL ()
+IF (ASSOCIATED (SELF%ZR0%F_P)) CALL DELETE_TEMPORARY (SELF%ZR0%F_P)
+SELF%ZR0%F_P => NULL ()
+SELF%ZR0%P => NULL ()
+IF (ASSOCIATED (SELF%WR0%F_P)) CALL DELETE_TEMPORARY (SELF%WR0%F_P)
+SELF%WR0%F_P => NULL ()
+SELF%WR0%P => NULL ()
+IF (ASSOCIATED (SELF%UR00%F_P)) CALL DELETE_TEMPORARY (SELF%UR00%F_P)
+SELF%UR00%F_P => NULL ()
+SELF%UR00%P => NULL ()
+IF (ASSOCIATED (SELF%VR00%F_P)) CALL DELETE_TEMPORARY (SELF%VR00%F_P)
+SELF%VR00%F_P => NULL ()
+SELF%VR00%P => NULL ()
+IF (ASSOCIATED (SELF%ZR00%F_P)) CALL DELETE_TEMPORARY (SELF%ZR00%F_P)
+SELF%ZR00%F_P => NULL ()
+SELF%ZR00%P => NULL ()
+IF (ASSOCIATED (SELF%WR00%F_P)) CALL DELETE_TEMPORARY (SELF%WR00%F_P)
+SELF%WR00%F_P => NULL ()
+SELF%WR00%P => NULL ()
+IF (ASSOCIATED (SELF%WRA%F_P)) CALL DELETE_TEMPORARY (SELF%WRA%F_P)
+SELF%WRA%F_P => NULL ()
+SELF%WRA%P => NULL ()
+IF (ASSOCIATED (SELF%UR9%F_P)) CALL DELETE_TEMPORARY (SELF%UR9%F_P)
+SELF%UR9%F_P => NULL ()
+SELF%UR9%P => NULL ()
+IF (ASSOCIATED (SELF%VR9%F_P)) CALL DELETE_TEMPORARY (SELF%VR9%F_P)
+SELF%VR9%F_P => NULL ()
+SELF%VR9%P => NULL ()
+IF (ASSOCIATED (SELF%DBBC9%F_P)) CALL DELETE_TEMPORARY (SELF%DBBC9%F_P)
+SELF%DBBC9%F_P => NULL ()
+SELF%DBBC9%P => NULL ()
+IF (ASSOCIATED (SELF%DPHI9%F_P)) CALL DELETE_TEMPORARY (SELF%DPHI9%F_P)
+SELF%DPHI9%F_P => NULL ()
+SELF%DPHI9%P => NULL ()
+IF (ASSOCIATED (SELF%GWS9%F_P)) CALL DELETE_TEMPORARY (SELF%GWS9%F_P)
+SELF%GWS9%F_P => NULL ()
+SELF%GWS9%P => NULL ()
+IF (ASSOCIATED (SELF%U0%F_P)) CALL DELETE_TEMPORARY (SELF%U0%F_P)
+SELF%U0%F_P => NULL ()
+SELF%U0%P => NULL ()
+IF (ASSOCIATED (SELF%V0%F_P)) CALL DELETE_TEMPORARY (SELF%V0%F_P)
+SELF%V0%F_P => NULL ()
+SELF%V0%P => NULL ()
+IF (ASSOCIATED (SELF%T0%F_P)) CALL DELETE_TEMPORARY (SELF%T0%F_P)
+SELF%T0%F_P => NULL ()
+SELF%T0%P => NULL ()
+IF (ASSOCIATED (SELF%PD0%F_P)) CALL DELETE_TEMPORARY (SELF%PD0%F_P)
+SELF%PD0%F_P => NULL ()
+SELF%PD0%P => NULL ()
+IF (ASSOCIATED (SELF%VD0%F_P)) CALL DELETE_TEMPORARY (SELF%VD0%F_P)
+SELF%VD0%F_P => NULL ()
+SELF%VD0%P => NULL ()
+IF (ASSOCIATED (SELF%C9%F_P)) CALL DELETE_TEMPORARY (SELF%C9%F_P)
+SELF%C9%F_P => NULL ()
+SELF%C9%P => NULL ()
+IF (ASSOCIATED (SELF%SP9%F_P)) CALL DELETE_TEMPORARY (SELF%SP9%F_P)
+SELF%SP9%F_P => NULL ()
+SELF%SP9%P => NULL ()
+IF (ASSOCIATED (SELF%SP0%F_P)) CALL DELETE_TEMPORARY (SELF%SP0%F_P)
+SELF%SP0%F_P => NULL ()
+SELF%SP0%P => NULL ()
+IF (ASSOCIATED (SELF%C0%F_P)) CALL DELETE_TEMPORARY (SELF%C0%F_P)
+SELF%C0%F_P => NULL ()
+SELF%C0%P => NULL ()
+IF (ASSOCIATED (SELF%UP9%F_P)) CALL DELETE_TEMPORARY (SELF%UP9%F_P)
+SELF%UP9%F_P => NULL ()
+SELF%UP9%P => NULL ()
+IF (ASSOCIATED (SELF%VP9%F_P)) CALL DELETE_TEMPORARY (SELF%VP9%F_P)
+SELF%VP9%F_P => NULL ()
+SELF%VP9%P => NULL ()
+IF (ASSOCIATED (SELF%TP9%F_P)) CALL DELETE_TEMPORARY (SELF%TP9%F_P)
+SELF%TP9%F_P => NULL ()
+SELF%TP9%P => NULL ()
+IF (ASSOCIATED (SELF%U9_SI%F_P)) CALL DELETE_TEMPORARY (SELF%U9_SI%F_P)
+SELF%U9_SI%F_P => NULL ()
+SELF%U9_SI%P => NULL ()
+IF (ASSOCIATED (SELF%V9_SI%F_P)) CALL DELETE_TEMPORARY (SELF%V9_SI%F_P)
+SELF%V9_SI%F_P => NULL ()
+SELF%V9_SI%P => NULL ()
+IF (ASSOCIATED (SELF%T9_SI%F_P)) CALL DELETE_TEMPORARY (SELF%T9_SI%F_P)
+SELF%T9_SI%F_P => NULL ()
+SELF%T9_SI%P => NULL ()
+IF (ASSOCIATED (SELF%PD9_SI%F_P)) CALL DELETE_TEMPORARY (SELF%PD9_SI%F_P)
+SELF%PD9_SI%F_P => NULL ()
+SELF%PD9_SI%P => NULL ()
+IF (ASSOCIATED (SELF%VD9_SI%F_P)) CALL DELETE_TEMPORARY (SELF%VD9_SI%F_P)
+SELF%VD9_SI%F_P => NULL ()
+SELF%VD9_SI%P => NULL ()
+IF (ASSOCIATED (SELF%C9_SI%F_P)) CALL DELETE_TEMPORARY (SELF%C9_SI%F_P)
+SELF%C9_SI%F_P => NULL ()
+SELF%C9_SI%P => NULL ()
+IF (ASSOCIATED (SELF%UF9%F_P)) CALL DELETE_TEMPORARY (SELF%UF9%F_P)
+SELF%UF9%F_P => NULL ()
+SELF%UF9%P => NULL ()
+IF (ASSOCIATED (SELF%VF9%F_P)) CALL DELETE_TEMPORARY (SELF%VF9%F_P)
+SELF%VF9%F_P => NULL ()
+SELF%VF9%P => NULL ()
+IF (ASSOCIATED (SELF%TF9%F_P)) CALL DELETE_TEMPORARY (SELF%TF9%F_P)
+SELF%TF9%F_P => NULL ()
+SELF%TF9%P => NULL ()
+IF (ASSOCIATED (SELF%VDF9%F_P)) CALL DELETE_TEMPORARY (SELF%VDF9%F_P)
+SELF%VDF9%F_P => NULL ()
+SELF%VDF9%P => NULL ()
+IF (ASSOCIATED (SELF%U9_NL%F_P)) CALL DELETE_TEMPORARY (SELF%U9_NL%F_P)
+SELF%U9_NL%F_P => NULL ()
+SELF%U9_NL%P => NULL ()
+IF (ASSOCIATED (SELF%V9_NL%F_P)) CALL DELETE_TEMPORARY (SELF%V9_NL%F_P)
+SELF%V9_NL%F_P => NULL ()
+SELF%V9_NL%P => NULL ()
+IF (ASSOCIATED (SELF%T9_NL%F_P)) CALL DELETE_TEMPORARY (SELF%T9_NL%F_P)
+SELF%T9_NL%F_P => NULL ()
+SELF%T9_NL%P => NULL ()
+IF (ASSOCIATED (SELF%PD9_NL%F_P)) CALL DELETE_TEMPORARY (SELF%PD9_NL%F_P)
+SELF%PD9_NL%F_P => NULL ()
+SELF%PD9_NL%P => NULL ()
+IF (ASSOCIATED (SELF%VD9_NL%F_P)) CALL DELETE_TEMPORARY (SELF%VD9_NL%F_P)
+SELF%VD9_NL%F_P => NULL ()
+SELF%VD9_NL%P => NULL ()
+IF (ASSOCIATED (SELF%C9_NL%F_P)) CALL DELETE_TEMPORARY (SELF%C9_NL%F_P)
+SELF%C9_NL%F_P => NULL ()
+SELF%C9_NL%P => NULL ()
 
-IF (ASSOCIATED (SELF%F_Q)) CALL DELETE_TEMPORARY (SELF%F_Q)
-SELF%F_Q => NULL ()
-SELF%Q => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%Q)
 
-IF (ASSOCIATED (SELF%F_Q_F)) CALL DELETE_TEMPORARY (SELF%F_Q_F)
-SELF%F_Q_F => NULL ()
-SELF%Q_F => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%I)
 
-IF (ASSOCIATED (SELF%F_Q_SPF)) CALL DELETE_TEMPORARY (SELF%F_Q_SPF)
-SELF%F_Q_SPF => NULL ()
-SELF%Q_SPF => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%L)
 
-IF (ASSOCIATED (SELF%F_Q_SP)) CALL DELETE_TEMPORARY (SELF%F_Q_SP)
-SELF%F_Q_SP => NULL ()
-SELF%Q_SP => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%LCONV)
 
-IF (ASSOCIATED (SELF%F_Q_P)) CALL DELETE_TEMPORARY (SELF%F_Q_P)
-SELF%F_Q_P => NULL ()
-SELF%Q_P => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%ICONV)
 
-IF (ASSOCIATED (SELF%F_Q_X)) CALL DELETE_TEMPORARY (SELF%F_Q_X)
-SELF%F_Q_X => NULL ()
-SELF%Q_X => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%RCONV)
 
-IF (ASSOCIATED (SELF%F_I)) CALL DELETE_TEMPORARY (SELF%F_I)
-SELF%F_I => NULL ()
-SELF%I => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%SCONV)
 
-IF (ASSOCIATED (SELF%F_I_F)) CALL DELETE_TEMPORARY (SELF%F_I_F)
-SELF%F_I_F => NULL ()
-SELF%I_F => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%IRAD)
 
-IF (ASSOCIATED (SELF%F_I_SPF)) CALL DELETE_TEMPORARY (SELF%F_I_SPF)
-SELF%F_I_SPF => NULL ()
-SELF%I_SPF => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%LRAD)
 
-IF (ASSOCIATED (SELF%F_I_SP)) CALL DELETE_TEMPORARY (SELF%F_I_SP)
-SELF%F_I_SP => NULL ()
-SELF%I_SP => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%S)
 
-IF (ASSOCIATED (SELF%F_I_P)) CALL DELETE_TEMPORARY (SELF%F_I_P)
-SELF%F_I_P => NULL ()
-SELF%I_P => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%R)
 
-IF (ASSOCIATED (SELF%F_I_X)) CALL DELETE_TEMPORARY (SELF%F_I_X)
-SELF%F_I_X => NULL ()
-SELF%I_X => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%G)
 
-IF (ASSOCIATED (SELF%F_L)) CALL DELETE_TEMPORARY (SELF%F_L)
-SELF%F_L => NULL ()
-SELF%L => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%H)
 
-IF (ASSOCIATED (SELF%F_L_F)) CALL DELETE_TEMPORARY (SELF%F_L_F)
-SELF%F_L_F => NULL ()
-SELF%L_F => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%TKE)
 
-IF (ASSOCIATED (SELF%F_L_SPF)) CALL DELETE_TEMPORARY (SELF%F_L_SPF)
-SELF%F_L_SPF => NULL ()
-SELF%L_SPF => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%TTE)
 
-IF (ASSOCIATED (SELF%F_L_SP)) CALL DELETE_TEMPORARY (SELF%F_L_SP)
-SELF%F_L_SP => NULL ()
-SELF%L_SP => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%EFB1)
 
-IF (ASSOCIATED (SELF%F_L_P)) CALL DELETE_TEMPORARY (SELF%F_L_P)
-SELF%F_L_P => NULL ()
-SELF%L_P => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%EFB2)
 
-IF (ASSOCIATED (SELF%F_L_X)) CALL DELETE_TEMPORARY (SELF%F_L_X)
-SELF%F_L_X => NULL ()
-SELF%L_X => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%EFB3)
 
-IF (ASSOCIATED (SELF%F_LCONV)) CALL DELETE_TEMPORARY (SELF%F_LCONV)
-SELF%F_LCONV => NULL ()
-SELF%LCONV => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%A)
 
-IF (ASSOCIATED (SELF%F_LCONV_F)) CALL DELETE_TEMPORARY (SELF%F_LCONV_F)
-SELF%F_LCONV_F => NULL ()
-SELF%LCONV_F => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%O3)
 
-IF (ASSOCIATED (SELF%F_LCONV_SPF)) CALL DELETE_TEMPORARY (SELF%F_LCONV_SPF)
-SELF%F_LCONV_SPF => NULL ()
-SELF%LCONV_SPF => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%SRC)
 
-IF (ASSOCIATED (SELF%F_LCONV_SP)) CALL DELETE_TEMPORARY (SELF%F_LCONV_SP)
-SELF%F_LCONV_SP => NULL ()
-SELF%LCONV_SP => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%MXL)
 
-IF (ASSOCIATED (SELF%F_LCONV_P)) CALL DELETE_TEMPORARY (SELF%F_LCONV_P)
-SELF%F_LCONV_P => NULL ()
-SELF%LCONV_P => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%SHTUR)
 
-IF (ASSOCIATED (SELF%F_LCONV_X)) CALL DELETE_TEMPORARY (SELF%F_LCONV_X)
-SELF%F_LCONV_X => NULL ()
-SELF%LCONV_X => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%FQTUR)
 
-IF (ASSOCIATED (SELF%F_ICONV)) CALL DELETE_TEMPORARY (SELF%F_ICONV)
-SELF%F_ICONV => NULL ()
-SELF%ICONV => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%FSTUR)
 
-IF (ASSOCIATED (SELF%F_ICONV_F)) CALL DELETE_TEMPORARY (SELF%F_ICONV_F)
-SELF%F_ICONV_F => NULL ()
-SELF%ICONV_F => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%CPF)
 
-IF (ASSOCIATED (SELF%F_ICONV_SPF)) CALL DELETE_TEMPORARY (SELF%F_ICONV_SPF)
-SELF%F_ICONV_SPF => NULL ()
-SELF%ICONV_SPF => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%SPF)
 
-IF (ASSOCIATED (SELF%F_ICONV_SP)) CALL DELETE_TEMPORARY (SELF%F_ICONV_SP)
-SELF%F_ICONV_SP => NULL ()
-SELF%ICONV_SP => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%CVGQ)
 
-IF (ASSOCIATED (SELF%F_ICONV_P)) CALL DELETE_TEMPORARY (SELF%F_ICONV_P)
-SELF%F_ICONV_P => NULL ()
-SELF%ICONV_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_ICONV_X)) CALL DELETE_TEMPORARY (SELF%F_ICONV_X)
-SELF%F_ICONV_X => NULL ()
-SELF%ICONV_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_RCONV)) CALL DELETE_TEMPORARY (SELF%F_RCONV)
-SELF%F_RCONV => NULL ()
-SELF%RCONV => NULL ()
-
-IF (ASSOCIATED (SELF%F_RCONV_F)) CALL DELETE_TEMPORARY (SELF%F_RCONV_F)
-SELF%F_RCONV_F => NULL ()
-SELF%RCONV_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_RCONV_SPF)) CALL DELETE_TEMPORARY (SELF%F_RCONV_SPF)
-SELF%F_RCONV_SPF => NULL ()
-SELF%RCONV_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_RCONV_SP)) CALL DELETE_TEMPORARY (SELF%F_RCONV_SP)
-SELF%F_RCONV_SP => NULL ()
-SELF%RCONV_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_RCONV_P)) CALL DELETE_TEMPORARY (SELF%F_RCONV_P)
-SELF%F_RCONV_P => NULL ()
-SELF%RCONV_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_RCONV_X)) CALL DELETE_TEMPORARY (SELF%F_RCONV_X)
-SELF%F_RCONV_X => NULL ()
-SELF%RCONV_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_SCONV)) CALL DELETE_TEMPORARY (SELF%F_SCONV)
-SELF%F_SCONV => NULL ()
-SELF%SCONV => NULL ()
-
-IF (ASSOCIATED (SELF%F_SCONV_F)) CALL DELETE_TEMPORARY (SELF%F_SCONV_F)
-SELF%F_SCONV_F => NULL ()
-SELF%SCONV_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_SCONV_SPF)) CALL DELETE_TEMPORARY (SELF%F_SCONV_SPF)
-SELF%F_SCONV_SPF => NULL ()
-SELF%SCONV_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_SCONV_SP)) CALL DELETE_TEMPORARY (SELF%F_SCONV_SP)
-SELF%F_SCONV_SP => NULL ()
-SELF%SCONV_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_SCONV_P)) CALL DELETE_TEMPORARY (SELF%F_SCONV_P)
-SELF%F_SCONV_P => NULL ()
-SELF%SCONV_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_SCONV_X)) CALL DELETE_TEMPORARY (SELF%F_SCONV_X)
-SELF%F_SCONV_X => NULL ()
-SELF%SCONV_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_IRAD)) CALL DELETE_TEMPORARY (SELF%F_IRAD)
-SELF%F_IRAD => NULL ()
-SELF%IRAD => NULL ()
-
-IF (ASSOCIATED (SELF%F_IRAD_F)) CALL DELETE_TEMPORARY (SELF%F_IRAD_F)
-SELF%F_IRAD_F => NULL ()
-SELF%IRAD_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_IRAD_SPF)) CALL DELETE_TEMPORARY (SELF%F_IRAD_SPF)
-SELF%F_IRAD_SPF => NULL ()
-SELF%IRAD_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_IRAD_SP)) CALL DELETE_TEMPORARY (SELF%F_IRAD_SP)
-SELF%F_IRAD_SP => NULL ()
-SELF%IRAD_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_IRAD_P)) CALL DELETE_TEMPORARY (SELF%F_IRAD_P)
-SELF%F_IRAD_P => NULL ()
-SELF%IRAD_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_IRAD_X)) CALL DELETE_TEMPORARY (SELF%F_IRAD_X)
-SELF%F_IRAD_X => NULL ()
-SELF%IRAD_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_LRAD)) CALL DELETE_TEMPORARY (SELF%F_LRAD)
-SELF%F_LRAD => NULL ()
-SELF%LRAD => NULL ()
-
-IF (ASSOCIATED (SELF%F_LRAD_F)) CALL DELETE_TEMPORARY (SELF%F_LRAD_F)
-SELF%F_LRAD_F => NULL ()
-SELF%LRAD_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_LRAD_SPF)) CALL DELETE_TEMPORARY (SELF%F_LRAD_SPF)
-SELF%F_LRAD_SPF => NULL ()
-SELF%LRAD_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_LRAD_SP)) CALL DELETE_TEMPORARY (SELF%F_LRAD_SP)
-SELF%F_LRAD_SP => NULL ()
-SELF%LRAD_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_LRAD_P)) CALL DELETE_TEMPORARY (SELF%F_LRAD_P)
-SELF%F_LRAD_P => NULL ()
-SELF%LRAD_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_LRAD_X)) CALL DELETE_TEMPORARY (SELF%F_LRAD_X)
-SELF%F_LRAD_X => NULL ()
-SELF%LRAD_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_S)) CALL DELETE_TEMPORARY (SELF%F_S)
-SELF%F_S => NULL ()
-SELF%S => NULL ()
-
-IF (ASSOCIATED (SELF%F_S_F)) CALL DELETE_TEMPORARY (SELF%F_S_F)
-SELF%F_S_F => NULL ()
-SELF%S_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_S_SPF)) CALL DELETE_TEMPORARY (SELF%F_S_SPF)
-SELF%F_S_SPF => NULL ()
-SELF%S_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_S_SP)) CALL DELETE_TEMPORARY (SELF%F_S_SP)
-SELF%F_S_SP => NULL ()
-SELF%S_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_S_P)) CALL DELETE_TEMPORARY (SELF%F_S_P)
-SELF%F_S_P => NULL ()
-SELF%S_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_S_X)) CALL DELETE_TEMPORARY (SELF%F_S_X)
-SELF%F_S_X => NULL ()
-SELF%S_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_R)) CALL DELETE_TEMPORARY (SELF%F_R)
-SELF%F_R => NULL ()
-SELF%R => NULL ()
-
-IF (ASSOCIATED (SELF%F_R_F)) CALL DELETE_TEMPORARY (SELF%F_R_F)
-SELF%F_R_F => NULL ()
-SELF%R_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_R_SPF)) CALL DELETE_TEMPORARY (SELF%F_R_SPF)
-SELF%F_R_SPF => NULL ()
-SELF%R_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_R_SP)) CALL DELETE_TEMPORARY (SELF%F_R_SP)
-SELF%F_R_SP => NULL ()
-SELF%R_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_R_P)) CALL DELETE_TEMPORARY (SELF%F_R_P)
-SELF%F_R_P => NULL ()
-SELF%R_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_R_X)) CALL DELETE_TEMPORARY (SELF%F_R_X)
-SELF%F_R_X => NULL ()
-SELF%R_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_G)) CALL DELETE_TEMPORARY (SELF%F_G)
-SELF%F_G => NULL ()
-SELF%G => NULL ()
-
-IF (ASSOCIATED (SELF%F_G_F)) CALL DELETE_TEMPORARY (SELF%F_G_F)
-SELF%F_G_F => NULL ()
-SELF%G_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_G_SPF)) CALL DELETE_TEMPORARY (SELF%F_G_SPF)
-SELF%F_G_SPF => NULL ()
-SELF%G_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_G_SP)) CALL DELETE_TEMPORARY (SELF%F_G_SP)
-SELF%F_G_SP => NULL ()
-SELF%G_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_G_P)) CALL DELETE_TEMPORARY (SELF%F_G_P)
-SELF%F_G_P => NULL ()
-SELF%G_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_G_X)) CALL DELETE_TEMPORARY (SELF%F_G_X)
-SELF%F_G_X => NULL ()
-SELF%G_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_H)) CALL DELETE_TEMPORARY (SELF%F_H)
-SELF%F_H => NULL ()
-SELF%H => NULL ()
-
-IF (ASSOCIATED (SELF%F_H_F)) CALL DELETE_TEMPORARY (SELF%F_H_F)
-SELF%F_H_F => NULL ()
-SELF%H_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_H_SPF)) CALL DELETE_TEMPORARY (SELF%F_H_SPF)
-SELF%F_H_SPF => NULL ()
-SELF%H_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_H_SP)) CALL DELETE_TEMPORARY (SELF%F_H_SP)
-SELF%F_H_SP => NULL ()
-SELF%H_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_H_P)) CALL DELETE_TEMPORARY (SELF%F_H_P)
-SELF%F_H_P => NULL ()
-SELF%H_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_H_X)) CALL DELETE_TEMPORARY (SELF%F_H_X)
-SELF%F_H_X => NULL ()
-SELF%H_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_TKE)) CALL DELETE_TEMPORARY (SELF%F_TKE)
-SELF%F_TKE => NULL ()
-SELF%TKE => NULL ()
-
-IF (ASSOCIATED (SELF%F_TKE_F)) CALL DELETE_TEMPORARY (SELF%F_TKE_F)
-SELF%F_TKE_F => NULL ()
-SELF%TKE_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_TKE_SPF)) CALL DELETE_TEMPORARY (SELF%F_TKE_SPF)
-SELF%F_TKE_SPF => NULL ()
-SELF%TKE_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_TKE_SP)) CALL DELETE_TEMPORARY (SELF%F_TKE_SP)
-SELF%F_TKE_SP => NULL ()
-SELF%TKE_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_TKE_P)) CALL DELETE_TEMPORARY (SELF%F_TKE_P)
-SELF%F_TKE_P => NULL ()
-SELF%TKE_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_TKE_X)) CALL DELETE_TEMPORARY (SELF%F_TKE_X)
-SELF%F_TKE_X => NULL ()
-SELF%TKE_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_TTE)) CALL DELETE_TEMPORARY (SELF%F_TTE)
-SELF%F_TTE => NULL ()
-SELF%TTE => NULL ()
-
-IF (ASSOCIATED (SELF%F_TTE_F)) CALL DELETE_TEMPORARY (SELF%F_TTE_F)
-SELF%F_TTE_F => NULL ()
-SELF%TTE_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_TTE_SPF)) CALL DELETE_TEMPORARY (SELF%F_TTE_SPF)
-SELF%F_TTE_SPF => NULL ()
-SELF%TTE_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_TTE_SP)) CALL DELETE_TEMPORARY (SELF%F_TTE_SP)
-SELF%F_TTE_SP => NULL ()
-SELF%TTE_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_TTE_P)) CALL DELETE_TEMPORARY (SELF%F_TTE_P)
-SELF%F_TTE_P => NULL ()
-SELF%TTE_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_TTE_X)) CALL DELETE_TEMPORARY (SELF%F_TTE_X)
-SELF%F_TTE_X => NULL ()
-SELF%TTE_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_EFB1)) CALL DELETE_TEMPORARY (SELF%F_EFB1)
-SELF%F_EFB1 => NULL ()
-SELF%EFB1 => NULL ()
-
-IF (ASSOCIATED (SELF%F_EFB1_F)) CALL DELETE_TEMPORARY (SELF%F_EFB1_F)
-SELF%F_EFB1_F => NULL ()
-SELF%EFB1_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_EFB1_SPF)) CALL DELETE_TEMPORARY (SELF%F_EFB1_SPF)
-SELF%F_EFB1_SPF => NULL ()
-SELF%EFB1_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_EFB1_SP)) CALL DELETE_TEMPORARY (SELF%F_EFB1_SP)
-SELF%F_EFB1_SP => NULL ()
-SELF%EFB1_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_EFB1_P)) CALL DELETE_TEMPORARY (SELF%F_EFB1_P)
-SELF%F_EFB1_P => NULL ()
-SELF%EFB1_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_EFB1_X)) CALL DELETE_TEMPORARY (SELF%F_EFB1_X)
-SELF%F_EFB1_X => NULL ()
-SELF%EFB1_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_EFB2)) CALL DELETE_TEMPORARY (SELF%F_EFB2)
-SELF%F_EFB2 => NULL ()
-SELF%EFB2 => NULL ()
-
-IF (ASSOCIATED (SELF%F_EFB2_F)) CALL DELETE_TEMPORARY (SELF%F_EFB2_F)
-SELF%F_EFB2_F => NULL ()
-SELF%EFB2_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_EFB2_SPF)) CALL DELETE_TEMPORARY (SELF%F_EFB2_SPF)
-SELF%F_EFB2_SPF => NULL ()
-SELF%EFB2_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_EFB2_SP)) CALL DELETE_TEMPORARY (SELF%F_EFB2_SP)
-SELF%F_EFB2_SP => NULL ()
-SELF%EFB2_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_EFB2_P)) CALL DELETE_TEMPORARY (SELF%F_EFB2_P)
-SELF%F_EFB2_P => NULL ()
-SELF%EFB2_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_EFB2_X)) CALL DELETE_TEMPORARY (SELF%F_EFB2_X)
-SELF%F_EFB2_X => NULL ()
-SELF%EFB2_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_EFB3)) CALL DELETE_TEMPORARY (SELF%F_EFB3)
-SELF%F_EFB3 => NULL ()
-SELF%EFB3 => NULL ()
-
-IF (ASSOCIATED (SELF%F_EFB3_F)) CALL DELETE_TEMPORARY (SELF%F_EFB3_F)
-SELF%F_EFB3_F => NULL ()
-SELF%EFB3_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_EFB3_SPF)) CALL DELETE_TEMPORARY (SELF%F_EFB3_SPF)
-SELF%F_EFB3_SPF => NULL ()
-SELF%EFB3_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_EFB3_SP)) CALL DELETE_TEMPORARY (SELF%F_EFB3_SP)
-SELF%F_EFB3_SP => NULL ()
-SELF%EFB3_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_EFB3_P)) CALL DELETE_TEMPORARY (SELF%F_EFB3_P)
-SELF%F_EFB3_P => NULL ()
-SELF%EFB3_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_EFB3_X)) CALL DELETE_TEMPORARY (SELF%F_EFB3_X)
-SELF%F_EFB3_X => NULL ()
-SELF%EFB3_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_A)) CALL DELETE_TEMPORARY (SELF%F_A)
-SELF%F_A => NULL ()
-SELF%A => NULL ()
-
-IF (ASSOCIATED (SELF%F_A_F)) CALL DELETE_TEMPORARY (SELF%F_A_F)
-SELF%F_A_F => NULL ()
-SELF%A_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_A_SPF)) CALL DELETE_TEMPORARY (SELF%F_A_SPF)
-SELF%F_A_SPF => NULL ()
-SELF%A_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_A_SP)) CALL DELETE_TEMPORARY (SELF%F_A_SP)
-SELF%F_A_SP => NULL ()
-SELF%A_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_A_P)) CALL DELETE_TEMPORARY (SELF%F_A_P)
-SELF%F_A_P => NULL ()
-SELF%A_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_A_X)) CALL DELETE_TEMPORARY (SELF%F_A_X)
-SELF%F_A_X => NULL ()
-SELF%A_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_O3)) CALL DELETE_TEMPORARY (SELF%F_O3)
-SELF%F_O3 => NULL ()
-SELF%O3 => NULL ()
-
-IF (ASSOCIATED (SELF%F_O3_F)) CALL DELETE_TEMPORARY (SELF%F_O3_F)
-SELF%F_O3_F => NULL ()
-SELF%O3_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_O3_SPF)) CALL DELETE_TEMPORARY (SELF%F_O3_SPF)
-SELF%F_O3_SPF => NULL ()
-SELF%O3_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_O3_SP)) CALL DELETE_TEMPORARY (SELF%F_O3_SP)
-SELF%F_O3_SP => NULL ()
-SELF%O3_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_O3_P)) CALL DELETE_TEMPORARY (SELF%F_O3_P)
-SELF%F_O3_P => NULL ()
-SELF%O3_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_O3_X)) CALL DELETE_TEMPORARY (SELF%F_O3_X)
-SELF%F_O3_X => NULL ()
-SELF%O3_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_SRC)) CALL DELETE_TEMPORARY (SELF%F_SRC)
-SELF%F_SRC => NULL ()
-SELF%SRC => NULL ()
-
-IF (ASSOCIATED (SELF%F_SRC_F)) CALL DELETE_TEMPORARY (SELF%F_SRC_F)
-SELF%F_SRC_F => NULL ()
-SELF%SRC_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_SRC_SPF)) CALL DELETE_TEMPORARY (SELF%F_SRC_SPF)
-SELF%F_SRC_SPF => NULL ()
-SELF%SRC_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_SRC_SP)) CALL DELETE_TEMPORARY (SELF%F_SRC_SP)
-SELF%F_SRC_SP => NULL ()
-SELF%SRC_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_SRC_P)) CALL DELETE_TEMPORARY (SELF%F_SRC_P)
-SELF%F_SRC_P => NULL ()
-SELF%SRC_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_SRC_X)) CALL DELETE_TEMPORARY (SELF%F_SRC_X)
-SELF%F_SRC_X => NULL ()
-SELF%SRC_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_MXL)) CALL DELETE_TEMPORARY (SELF%F_MXL)
-SELF%F_MXL => NULL ()
-SELF%MXL => NULL ()
-
-IF (ASSOCIATED (SELF%F_MXL_F)) CALL DELETE_TEMPORARY (SELF%F_MXL_F)
-SELF%F_MXL_F => NULL ()
-SELF%MXL_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_MXL_SPF)) CALL DELETE_TEMPORARY (SELF%F_MXL_SPF)
-SELF%F_MXL_SPF => NULL ()
-SELF%MXL_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_MXL_SP)) CALL DELETE_TEMPORARY (SELF%F_MXL_SP)
-SELF%F_MXL_SP => NULL ()
-SELF%MXL_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_MXL_P)) CALL DELETE_TEMPORARY (SELF%F_MXL_P)
-SELF%F_MXL_P => NULL ()
-SELF%MXL_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_MXL_X)) CALL DELETE_TEMPORARY (SELF%F_MXL_X)
-SELF%F_MXL_X => NULL ()
-SELF%MXL_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_SHTUR)) CALL DELETE_TEMPORARY (SELF%F_SHTUR)
-SELF%F_SHTUR => NULL ()
-SELF%SHTUR => NULL ()
-
-IF (ASSOCIATED (SELF%F_SHTUR_F)) CALL DELETE_TEMPORARY (SELF%F_SHTUR_F)
-SELF%F_SHTUR_F => NULL ()
-SELF%SHTUR_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_SHTUR_SPF)) CALL DELETE_TEMPORARY (SELF%F_SHTUR_SPF)
-SELF%F_SHTUR_SPF => NULL ()
-SELF%SHTUR_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_SHTUR_SP)) CALL DELETE_TEMPORARY (SELF%F_SHTUR_SP)
-SELF%F_SHTUR_SP => NULL ()
-SELF%SHTUR_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_SHTUR_P)) CALL DELETE_TEMPORARY (SELF%F_SHTUR_P)
-SELF%F_SHTUR_P => NULL ()
-SELF%SHTUR_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_SHTUR_X)) CALL DELETE_TEMPORARY (SELF%F_SHTUR_X)
-SELF%F_SHTUR_X => NULL ()
-SELF%SHTUR_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_FQTUR)) CALL DELETE_TEMPORARY (SELF%F_FQTUR)
-SELF%F_FQTUR => NULL ()
-SELF%FQTUR => NULL ()
-
-IF (ASSOCIATED (SELF%F_FQTUR_F)) CALL DELETE_TEMPORARY (SELF%F_FQTUR_F)
-SELF%F_FQTUR_F => NULL ()
-SELF%FQTUR_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_FQTUR_SPF)) CALL DELETE_TEMPORARY (SELF%F_FQTUR_SPF)
-SELF%F_FQTUR_SPF => NULL ()
-SELF%FQTUR_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_FQTUR_SP)) CALL DELETE_TEMPORARY (SELF%F_FQTUR_SP)
-SELF%F_FQTUR_SP => NULL ()
-SELF%FQTUR_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_FQTUR_P)) CALL DELETE_TEMPORARY (SELF%F_FQTUR_P)
-SELF%F_FQTUR_P => NULL ()
-SELF%FQTUR_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_FQTUR_X)) CALL DELETE_TEMPORARY (SELF%F_FQTUR_X)
-SELF%F_FQTUR_X => NULL ()
-SELF%FQTUR_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_FSTUR)) CALL DELETE_TEMPORARY (SELF%F_FSTUR)
-SELF%F_FSTUR => NULL ()
-SELF%FSTUR => NULL ()
-
-IF (ASSOCIATED (SELF%F_FSTUR_F)) CALL DELETE_TEMPORARY (SELF%F_FSTUR_F)
-SELF%F_FSTUR_F => NULL ()
-SELF%FSTUR_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_FSTUR_SPF)) CALL DELETE_TEMPORARY (SELF%F_FSTUR_SPF)
-SELF%F_FSTUR_SPF => NULL ()
-SELF%FSTUR_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_FSTUR_SP)) CALL DELETE_TEMPORARY (SELF%F_FSTUR_SP)
-SELF%F_FSTUR_SP => NULL ()
-SELF%FSTUR_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_FSTUR_P)) CALL DELETE_TEMPORARY (SELF%F_FSTUR_P)
-SELF%F_FSTUR_P => NULL ()
-SELF%FSTUR_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_FSTUR_X)) CALL DELETE_TEMPORARY (SELF%F_FSTUR_X)
-SELF%F_FSTUR_X => NULL ()
-SELF%FSTUR_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_CPF)) CALL DELETE_TEMPORARY (SELF%F_CPF)
-SELF%F_CPF => NULL ()
-SELF%CPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_CPF_F)) CALL DELETE_TEMPORARY (SELF%F_CPF_F)
-SELF%F_CPF_F => NULL ()
-SELF%CPF_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_CPF_SPF)) CALL DELETE_TEMPORARY (SELF%F_CPF_SPF)
-SELF%F_CPF_SPF => NULL ()
-SELF%CPF_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_CPF_SP)) CALL DELETE_TEMPORARY (SELF%F_CPF_SP)
-SELF%F_CPF_SP => NULL ()
-SELF%CPF_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_CPF_P)) CALL DELETE_TEMPORARY (SELF%F_CPF_P)
-SELF%F_CPF_P => NULL ()
-SELF%CPF_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_CPF_X)) CALL DELETE_TEMPORARY (SELF%F_CPF_X)
-SELF%F_CPF_X => NULL ()
-SELF%CPF_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_SPF)) CALL DELETE_TEMPORARY (SELF%F_SPF)
-SELF%F_SPF => NULL ()
-SELF%SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_SPF_F)) CALL DELETE_TEMPORARY (SELF%F_SPF_F)
-SELF%F_SPF_F => NULL ()
-SELF%SPF_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_SPF_SPF)) CALL DELETE_TEMPORARY (SELF%F_SPF_SPF)
-SELF%F_SPF_SPF => NULL ()
-SELF%SPF_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_SPF_SP)) CALL DELETE_TEMPORARY (SELF%F_SPF_SP)
-SELF%F_SPF_SP => NULL ()
-SELF%SPF_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_SPF_P)) CALL DELETE_TEMPORARY (SELF%F_SPF_P)
-SELF%F_SPF_P => NULL ()
-SELF%SPF_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_SPF_X)) CALL DELETE_TEMPORARY (SELF%F_SPF_X)
-SELF%F_SPF_X => NULL ()
-SELF%SPF_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_CVGQ)) CALL DELETE_TEMPORARY (SELF%F_CVGQ)
-SELF%F_CVGQ => NULL ()
-SELF%CVGQ => NULL ()
-
-IF (ASSOCIATED (SELF%F_CVGQ_F)) CALL DELETE_TEMPORARY (SELF%F_CVGQ_F)
-SELF%F_CVGQ_F => NULL ()
-SELF%CVGQ_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_CVGQ_SPF)) CALL DELETE_TEMPORARY (SELF%F_CVGQ_SPF)
-SELF%F_CVGQ_SPF => NULL ()
-SELF%CVGQ_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_CVGQ_SP)) CALL DELETE_TEMPORARY (SELF%F_CVGQ_SP)
-SELF%F_CVGQ_SP => NULL ()
-SELF%CVGQ_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_CVGQ_P)) CALL DELETE_TEMPORARY (SELF%F_CVGQ_P)
-SELF%F_CVGQ_P => NULL ()
-SELF%CVGQ_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_CVGQ_X)) CALL DELETE_TEMPORARY (SELF%F_CVGQ_X)
-SELF%F_CVGQ_X => NULL ()
-SELF%CVGQ_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_QVA)) CALL DELETE_TEMPORARY (SELF%F_QVA)
-SELF%F_QVA => NULL ()
-SELF%QVA => NULL ()
-
-IF (ASSOCIATED (SELF%F_QVA_F)) CALL DELETE_TEMPORARY (SELF%F_QVA_F)
-SELF%F_QVA_F => NULL ()
-SELF%QVA_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_QVA_SPF)) CALL DELETE_TEMPORARY (SELF%F_QVA_SPF)
-SELF%F_QVA_SPF => NULL ()
-SELF%QVA_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_QVA_SP)) CALL DELETE_TEMPORARY (SELF%F_QVA_SP)
-SELF%F_QVA_SP => NULL ()
-SELF%QVA_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_QVA_P)) CALL DELETE_TEMPORARY (SELF%F_QVA_P)
-SELF%F_QVA_P => NULL ()
-SELF%QVA_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_QVA_X)) CALL DELETE_TEMPORARY (SELF%F_QVA_X)
-SELF%F_QVA_X => NULL ()
-SELF%QVA_X => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%QVA)
 
 DO JGFL = 1, SIZE (SELF%GHG)
-  IF (ASSOCIATED (SELF%GHG(JGFL)%F_P)) CALL DELETE_TEMPORARY (SELF%GHG(JGFL)%F_P)
-  SELF%GHG(JGFL)%P => NULL ()
-
-  IF (ASSOCIATED (SELF%GHG(JGFL)%F_P_F)) CALL DELETE_TEMPORARY (SELF%GHG(JGFL)%F_P_F)
-  SELF%GHG(JGFL)%P_F => NULL ()
-
-  IF (ASSOCIATED (SELF%GHG(JGFL)%F_P_SPF)) CALL DELETE_TEMPORARY (SELF%GHG(JGFL)%F_P_SPF)
-  SELF%GHG(JGFL)%P_SPF => NULL ()
-
-  IF (ASSOCIATED (SELF%GHG(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%GHG(JGFL)%F_P_SP)
-  SELF%GHG(JGFL)%P_SP => NULL ()
-
-  IF (ASSOCIATED (SELF%GHG(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%GHG(JGFL)%F_P_P)
-  SELF%GHG(JGFL)%P_P => NULL ()
-
-  IF (ASSOCIATED (SELF%GHG(JGFL)%F_P_X)) CALL DELETE_TEMPORARY (SELF%GHG(JGFL)%F_P_X)
-  SELF%GHG(JGFL)%P_X => NULL ()
-
+  CALL CPG_SL1_TYPE_FINAL_F3D (SELF%GHG(JGFL))
 ENDDO
 DO JGFL = 1, SIZE (SELF%CHEM)
-  IF (ASSOCIATED (SELF%CHEM(JGFL)%F_P)) CALL DELETE_TEMPORARY (SELF%CHEM(JGFL)%F_P)
-  SELF%CHEM(JGFL)%P => NULL ()
-
-  IF (ASSOCIATED (SELF%CHEM(JGFL)%F_P_F)) CALL DELETE_TEMPORARY (SELF%CHEM(JGFL)%F_P_F)
-  SELF%CHEM(JGFL)%P_F => NULL ()
-
-  IF (ASSOCIATED (SELF%CHEM(JGFL)%F_P_SPF)) CALL DELETE_TEMPORARY (SELF%CHEM(JGFL)%F_P_SPF)
-  SELF%CHEM(JGFL)%P_SPF => NULL ()
-
-  IF (ASSOCIATED (SELF%CHEM(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%CHEM(JGFL)%F_P_SP)
-  SELF%CHEM(JGFL)%P_SP => NULL ()
-
-  IF (ASSOCIATED (SELF%CHEM(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%CHEM(JGFL)%F_P_P)
-  SELF%CHEM(JGFL)%P_P => NULL ()
-
-  IF (ASSOCIATED (SELF%CHEM(JGFL)%F_P_X)) CALL DELETE_TEMPORARY (SELF%CHEM(JGFL)%F_P_X)
-  SELF%CHEM(JGFL)%P_X => NULL ()
-
+  CALL CPG_SL1_TYPE_FINAL_F3D (SELF%CHEM(JGFL))
 ENDDO
 DO JGFL = 1, SIZE (SELF%AERO)
-  IF (ASSOCIATED (SELF%AERO(JGFL)%F_P)) CALL DELETE_TEMPORARY (SELF%AERO(JGFL)%F_P)
-  SELF%AERO(JGFL)%P => NULL ()
-
-  IF (ASSOCIATED (SELF%AERO(JGFL)%F_P_F)) CALL DELETE_TEMPORARY (SELF%AERO(JGFL)%F_P_F)
-  SELF%AERO(JGFL)%P_F => NULL ()
-
-  IF (ASSOCIATED (SELF%AERO(JGFL)%F_P_SPF)) CALL DELETE_TEMPORARY (SELF%AERO(JGFL)%F_P_SPF)
-  SELF%AERO(JGFL)%P_SPF => NULL ()
-
-  IF (ASSOCIATED (SELF%AERO(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%AERO(JGFL)%F_P_SP)
-  SELF%AERO(JGFL)%P_SP => NULL ()
-
-  IF (ASSOCIATED (SELF%AERO(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%AERO(JGFL)%F_P_P)
-  SELF%AERO(JGFL)%P_P => NULL ()
-
-  IF (ASSOCIATED (SELF%AERO(JGFL)%F_P_X)) CALL DELETE_TEMPORARY (SELF%AERO(JGFL)%F_P_X)
-  SELF%AERO(JGFL)%P_X => NULL ()
-
+  CALL CPG_SL1_TYPE_FINAL_F3D (SELF%AERO(JGFL))
 ENDDO
-IF (ASSOCIATED (SELF%F_LRCH4)) CALL DELETE_TEMPORARY (SELF%F_LRCH4)
-SELF%F_LRCH4 => NULL ()
-SELF%LRCH4 => NULL ()
-
-IF (ASSOCIATED (SELF%F_LRCH4_F)) CALL DELETE_TEMPORARY (SELF%F_LRCH4_F)
-SELF%F_LRCH4_F => NULL ()
-SELF%LRCH4_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_LRCH4_SPF)) CALL DELETE_TEMPORARY (SELF%F_LRCH4_SPF)
-SELF%F_LRCH4_SPF => NULL ()
-SELF%LRCH4_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_LRCH4_SP)) CALL DELETE_TEMPORARY (SELF%F_LRCH4_SP)
-SELF%F_LRCH4_SP => NULL ()
-SELF%LRCH4_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_LRCH4_P)) CALL DELETE_TEMPORARY (SELF%F_LRCH4_P)
-SELF%F_LRCH4_P => NULL ()
-SELF%LRCH4_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_LRCH4_X)) CALL DELETE_TEMPORARY (SELF%F_LRCH4_X)
-SELF%F_LRCH4_X => NULL ()
-SELF%LRCH4_X => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%LRCH4)
 
 DO JGFL = 1, SIZE (SELF%FORC)
-  IF (ASSOCIATED (SELF%FORC(JGFL)%F_P)) CALL DELETE_TEMPORARY (SELF%FORC(JGFL)%F_P)
-  SELF%FORC(JGFL)%P => NULL ()
-
-  IF (ASSOCIATED (SELF%FORC(JGFL)%F_P_F)) CALL DELETE_TEMPORARY (SELF%FORC(JGFL)%F_P_F)
-  SELF%FORC(JGFL)%P_F => NULL ()
-
-  IF (ASSOCIATED (SELF%FORC(JGFL)%F_P_SPF)) CALL DELETE_TEMPORARY (SELF%FORC(JGFL)%F_P_SPF)
-  SELF%FORC(JGFL)%P_SPF => NULL ()
-
-  IF (ASSOCIATED (SELF%FORC(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%FORC(JGFL)%F_P_SP)
-  SELF%FORC(JGFL)%P_SP => NULL ()
-
-  IF (ASSOCIATED (SELF%FORC(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%FORC(JGFL)%F_P_P)
-  SELF%FORC(JGFL)%P_P => NULL ()
-
-  IF (ASSOCIATED (SELF%FORC(JGFL)%F_P_X)) CALL DELETE_TEMPORARY (SELF%FORC(JGFL)%F_P_X)
-  SELF%FORC(JGFL)%P_X => NULL ()
-
+  CALL CPG_SL1_TYPE_FINAL_F3D (SELF%FORC(JGFL))
 ENDDO
 DO JGFL = 1, SIZE (SELF%EZDIAG)
-  IF (ASSOCIATED (SELF%EZDIAG(JGFL)%F_P)) CALL DELETE_TEMPORARY (SELF%EZDIAG(JGFL)%F_P)
-  SELF%EZDIAG(JGFL)%P => NULL ()
-
-  IF (ASSOCIATED (SELF%EZDIAG(JGFL)%F_P_F)) CALL DELETE_TEMPORARY (SELF%EZDIAG(JGFL)%F_P_F)
-  SELF%EZDIAG(JGFL)%P_F => NULL ()
-
-  IF (ASSOCIATED (SELF%EZDIAG(JGFL)%F_P_SPF)) CALL DELETE_TEMPORARY (SELF%EZDIAG(JGFL)%F_P_SPF)
-  SELF%EZDIAG(JGFL)%P_SPF => NULL ()
-
-  IF (ASSOCIATED (SELF%EZDIAG(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%EZDIAG(JGFL)%F_P_SP)
-  SELF%EZDIAG(JGFL)%P_SP => NULL ()
-
-  IF (ASSOCIATED (SELF%EZDIAG(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%EZDIAG(JGFL)%F_P_P)
-  SELF%EZDIAG(JGFL)%P_P => NULL ()
-
-  IF (ASSOCIATED (SELF%EZDIAG(JGFL)%F_P_X)) CALL DELETE_TEMPORARY (SELF%EZDIAG(JGFL)%F_P_X)
-  SELF%EZDIAG(JGFL)%P_X => NULL ()
-
+  CALL CPG_SL1_TYPE_FINAL_F3D (SELF%EZDIAG(JGFL))
 ENDDO
 DO JGFL = 1, SIZE (SELF%ERA40)
-  IF (ASSOCIATED (SELF%ERA40(JGFL)%F_P)) CALL DELETE_TEMPORARY (SELF%ERA40(JGFL)%F_P)
-  SELF%ERA40(JGFL)%P => NULL ()
-
-  IF (ASSOCIATED (SELF%ERA40(JGFL)%F_P_F)) CALL DELETE_TEMPORARY (SELF%ERA40(JGFL)%F_P_F)
-  SELF%ERA40(JGFL)%P_F => NULL ()
-
-  IF (ASSOCIATED (SELF%ERA40(JGFL)%F_P_SPF)) CALL DELETE_TEMPORARY (SELF%ERA40(JGFL)%F_P_SPF)
-  SELF%ERA40(JGFL)%P_SPF => NULL ()
-
-  IF (ASSOCIATED (SELF%ERA40(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%ERA40(JGFL)%F_P_SP)
-  SELF%ERA40(JGFL)%P_SP => NULL ()
-
-  IF (ASSOCIATED (SELF%ERA40(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%ERA40(JGFL)%F_P_P)
-  SELF%ERA40(JGFL)%P_P => NULL ()
-
-  IF (ASSOCIATED (SELF%ERA40(JGFL)%F_P_X)) CALL DELETE_TEMPORARY (SELF%ERA40(JGFL)%F_P_X)
-  SELF%ERA40(JGFL)%P_X => NULL ()
-
+  CALL CPG_SL1_TYPE_FINAL_F3D (SELF%ERA40(JGFL))
 ENDDO
 DO JGFL = 1, SIZE (SELF%NOGW)
-  IF (ASSOCIATED (SELF%NOGW(JGFL)%F_P)) CALL DELETE_TEMPORARY (SELF%NOGW(JGFL)%F_P)
-  SELF%NOGW(JGFL)%P => NULL ()
-
-  IF (ASSOCIATED (SELF%NOGW(JGFL)%F_P_F)) CALL DELETE_TEMPORARY (SELF%NOGW(JGFL)%F_P_F)
-  SELF%NOGW(JGFL)%P_F => NULL ()
-
-  IF (ASSOCIATED (SELF%NOGW(JGFL)%F_P_SPF)) CALL DELETE_TEMPORARY (SELF%NOGW(JGFL)%F_P_SPF)
-  SELF%NOGW(JGFL)%P_SPF => NULL ()
-
-  IF (ASSOCIATED (SELF%NOGW(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%NOGW(JGFL)%F_P_SP)
-  SELF%NOGW(JGFL)%P_SP => NULL ()
-
-  IF (ASSOCIATED (SELF%NOGW(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%NOGW(JGFL)%F_P_P)
-  SELF%NOGW(JGFL)%P_P => NULL ()
-
-  IF (ASSOCIATED (SELF%NOGW(JGFL)%F_P_X)) CALL DELETE_TEMPORARY (SELF%NOGW(JGFL)%F_P_X)
-  SELF%NOGW(JGFL)%P_X => NULL ()
-
+  CALL CPG_SL1_TYPE_FINAL_F3D (SELF%NOGW(JGFL))
 ENDDO
 DO JGFL = 1, SIZE (SELF%EDRP)
-  IF (ASSOCIATED (SELF%EDRP(JGFL)%F_P)) CALL DELETE_TEMPORARY (SELF%EDRP(JGFL)%F_P)
-  SELF%EDRP(JGFL)%P => NULL ()
-
-  IF (ASSOCIATED (SELF%EDRP(JGFL)%F_P_F)) CALL DELETE_TEMPORARY (SELF%EDRP(JGFL)%F_P_F)
-  SELF%EDRP(JGFL)%P_F => NULL ()
-
-  IF (ASSOCIATED (SELF%EDRP(JGFL)%F_P_SPF)) CALL DELETE_TEMPORARY (SELF%EDRP(JGFL)%F_P_SPF)
-  SELF%EDRP(JGFL)%P_SPF => NULL ()
-
-  IF (ASSOCIATED (SELF%EDRP(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%EDRP(JGFL)%F_P_SP)
-  SELF%EDRP(JGFL)%P_SP => NULL ()
-
-  IF (ASSOCIATED (SELF%EDRP(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%EDRP(JGFL)%F_P_P)
-  SELF%EDRP(JGFL)%P_P => NULL ()
-
-  IF (ASSOCIATED (SELF%EDRP(JGFL)%F_P_X)) CALL DELETE_TEMPORARY (SELF%EDRP(JGFL)%F_P_X)
-  SELF%EDRP(JGFL)%P_X => NULL ()
-
+  CALL CPG_SL1_TYPE_FINAL_F3D (SELF%EDRP(JGFL))
 ENDDO
 DO JGFL = 1, SIZE (SELF%SLDIA)
-  IF (ASSOCIATED (SELF%SLDIA(JGFL)%F_P)) CALL DELETE_TEMPORARY (SELF%SLDIA(JGFL)%F_P)
-  SELF%SLDIA(JGFL)%P => NULL ()
-
-  IF (ASSOCIATED (SELF%SLDIA(JGFL)%F_P_F)) CALL DELETE_TEMPORARY (SELF%SLDIA(JGFL)%F_P_F)
-  SELF%SLDIA(JGFL)%P_F => NULL ()
-
-  IF (ASSOCIATED (SELF%SLDIA(JGFL)%F_P_SPF)) CALL DELETE_TEMPORARY (SELF%SLDIA(JGFL)%F_P_SPF)
-  SELF%SLDIA(JGFL)%P_SPF => NULL ()
-
-  IF (ASSOCIATED (SELF%SLDIA(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%SLDIA(JGFL)%F_P_SP)
-  SELF%SLDIA(JGFL)%P_SP => NULL ()
-
-  IF (ASSOCIATED (SELF%SLDIA(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%SLDIA(JGFL)%F_P_P)
-  SELF%SLDIA(JGFL)%P_P => NULL ()
-
-  IF (ASSOCIATED (SELF%SLDIA(JGFL)%F_P_X)) CALL DELETE_TEMPORARY (SELF%SLDIA(JGFL)%F_P_X)
-  SELF%SLDIA(JGFL)%P_X => NULL ()
-
+  CALL CPG_SL1_TYPE_FINAL_F3D (SELF%SLDIA(JGFL))
 ENDDO
 DO JGFL = 1, SIZE (SELF%AERAOT)
-  IF (ASSOCIATED (SELF%AERAOT(JGFL)%F_P)) CALL DELETE_TEMPORARY (SELF%AERAOT(JGFL)%F_P)
-  SELF%AERAOT(JGFL)%P => NULL ()
-
-  IF (ASSOCIATED (SELF%AERAOT(JGFL)%F_P_F)) CALL DELETE_TEMPORARY (SELF%AERAOT(JGFL)%F_P_F)
-  SELF%AERAOT(JGFL)%P_F => NULL ()
-
-  IF (ASSOCIATED (SELF%AERAOT(JGFL)%F_P_SPF)) CALL DELETE_TEMPORARY (SELF%AERAOT(JGFL)%F_P_SPF)
-  SELF%AERAOT(JGFL)%P_SPF => NULL ()
-
-  IF (ASSOCIATED (SELF%AERAOT(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%AERAOT(JGFL)%F_P_SP)
-  SELF%AERAOT(JGFL)%P_SP => NULL ()
-
-  IF (ASSOCIATED (SELF%AERAOT(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%AERAOT(JGFL)%F_P_P)
-  SELF%AERAOT(JGFL)%P_P => NULL ()
-
-  IF (ASSOCIATED (SELF%AERAOT(JGFL)%F_P_X)) CALL DELETE_TEMPORARY (SELF%AERAOT(JGFL)%F_P_X)
-  SELF%AERAOT(JGFL)%P_X => NULL ()
-
+  CALL CPG_SL1_TYPE_FINAL_F3D (SELF%AERAOT(JGFL))
 ENDDO
 DO JGFL = 1, SIZE (SELF%AERLISI)
-  IF (ASSOCIATED (SELF%AERLISI(JGFL)%F_P)) CALL DELETE_TEMPORARY (SELF%AERLISI(JGFL)%F_P)
-  SELF%AERLISI(JGFL)%P => NULL ()
-
-  IF (ASSOCIATED (SELF%AERLISI(JGFL)%F_P_F)) CALL DELETE_TEMPORARY (SELF%AERLISI(JGFL)%F_P_F)
-  SELF%AERLISI(JGFL)%P_F => NULL ()
-
-  IF (ASSOCIATED (SELF%AERLISI(JGFL)%F_P_SPF)) CALL DELETE_TEMPORARY (SELF%AERLISI(JGFL)%F_P_SPF)
-  SELF%AERLISI(JGFL)%P_SPF => NULL ()
-
-  IF (ASSOCIATED (SELF%AERLISI(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%AERLISI(JGFL)%F_P_SP)
-  SELF%AERLISI(JGFL)%P_SP => NULL ()
-
-  IF (ASSOCIATED (SELF%AERLISI(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%AERLISI(JGFL)%F_P_P)
-  SELF%AERLISI(JGFL)%P_P => NULL ()
-
-  IF (ASSOCIATED (SELF%AERLISI(JGFL)%F_P_X)) CALL DELETE_TEMPORARY (SELF%AERLISI(JGFL)%F_P_X)
-  SELF%AERLISI(JGFL)%P_X => NULL ()
-
+  CALL CPG_SL1_TYPE_FINAL_F3D (SELF%AERLISI(JGFL))
 ENDDO
 DO JGFL = 1, SIZE (SELF%AEROUT)
-  IF (ASSOCIATED (SELF%AEROUT(JGFL)%F_P)) CALL DELETE_TEMPORARY (SELF%AEROUT(JGFL)%F_P)
-  SELF%AEROUT(JGFL)%P => NULL ()
-
-  IF (ASSOCIATED (SELF%AEROUT(JGFL)%F_P_F)) CALL DELETE_TEMPORARY (SELF%AEROUT(JGFL)%F_P_F)
-  SELF%AEROUT(JGFL)%P_F => NULL ()
-
-  IF (ASSOCIATED (SELF%AEROUT(JGFL)%F_P_SPF)) CALL DELETE_TEMPORARY (SELF%AEROUT(JGFL)%F_P_SPF)
-  SELF%AEROUT(JGFL)%P_SPF => NULL ()
-
-  IF (ASSOCIATED (SELF%AEROUT(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%AEROUT(JGFL)%F_P_SP)
-  SELF%AEROUT(JGFL)%P_SP => NULL ()
-
-  IF (ASSOCIATED (SELF%AEROUT(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%AEROUT(JGFL)%F_P_P)
-  SELF%AEROUT(JGFL)%P_P => NULL ()
-
-  IF (ASSOCIATED (SELF%AEROUT(JGFL)%F_P_X)) CALL DELETE_TEMPORARY (SELF%AEROUT(JGFL)%F_P_X)
-  SELF%AEROUT(JGFL)%P_X => NULL ()
-
+  CALL CPG_SL1_TYPE_FINAL_F3D (SELF%AEROUT(JGFL))
 ENDDO
 DO JGFL = 1, SIZE (SELF%AEROCLIM)
-  IF (ASSOCIATED (SELF%AEROCLIM(JGFL)%F_P)) CALL DELETE_TEMPORARY (SELF%AEROCLIM(JGFL)%F_P)
-  SELF%AEROCLIM(JGFL)%P => NULL ()
-
-  IF (ASSOCIATED (SELF%AEROCLIM(JGFL)%F_P_F)) CALL DELETE_TEMPORARY (SELF%AEROCLIM(JGFL)%F_P_F)
-  SELF%AEROCLIM(JGFL)%P_F => NULL ()
-
-  IF (ASSOCIATED (SELF%AEROCLIM(JGFL)%F_P_SPF)) CALL DELETE_TEMPORARY (SELF%AEROCLIM(JGFL)%F_P_SPF)
-  SELF%AEROCLIM(JGFL)%P_SPF => NULL ()
-
-  IF (ASSOCIATED (SELF%AEROCLIM(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%AEROCLIM(JGFL)%F_P_SP)
-  SELF%AEROCLIM(JGFL)%P_SP => NULL ()
-
-  IF (ASSOCIATED (SELF%AEROCLIM(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%AEROCLIM(JGFL)%F_P_P)
-  SELF%AEROCLIM(JGFL)%P_P => NULL ()
-
-  IF (ASSOCIATED (SELF%AEROCLIM(JGFL)%F_P_X)) CALL DELETE_TEMPORARY (SELF%AEROCLIM(JGFL)%F_P_X)
-  SELF%AEROCLIM(JGFL)%P_X => NULL ()
-
+  CALL CPG_SL1_TYPE_FINAL_F3D (SELF%AEROCLIM(JGFL))
 ENDDO
 DO JGFL = 1, SIZE (SELF%UVP)
-  IF (ASSOCIATED (SELF%UVP(JGFL)%F_P)) CALL DELETE_TEMPORARY (SELF%UVP(JGFL)%F_P)
-  SELF%UVP(JGFL)%P => NULL ()
-
-  IF (ASSOCIATED (SELF%UVP(JGFL)%F_P_F)) CALL DELETE_TEMPORARY (SELF%UVP(JGFL)%F_P_F)
-  SELF%UVP(JGFL)%P_F => NULL ()
-
-  IF (ASSOCIATED (SELF%UVP(JGFL)%F_P_SPF)) CALL DELETE_TEMPORARY (SELF%UVP(JGFL)%F_P_SPF)
-  SELF%UVP(JGFL)%P_SPF => NULL ()
-
-  IF (ASSOCIATED (SELF%UVP(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%UVP(JGFL)%F_P_SP)
-  SELF%UVP(JGFL)%P_SP => NULL ()
-
-  IF (ASSOCIATED (SELF%UVP(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%UVP(JGFL)%F_P_P)
-  SELF%UVP(JGFL)%P_P => NULL ()
-
-  IF (ASSOCIATED (SELF%UVP(JGFL)%F_P_X)) CALL DELETE_TEMPORARY (SELF%UVP(JGFL)%F_P_X)
-  SELF%UVP(JGFL)%P_X => NULL ()
-
+  CALL CPG_SL1_TYPE_FINAL_F3D (SELF%UVP(JGFL))
 ENDDO
 DO JGFL = 1, SIZE (SELF%PHYS)
-  IF (ASSOCIATED (SELF%PHYS(JGFL)%F_P)) CALL DELETE_TEMPORARY (SELF%PHYS(JGFL)%F_P)
-  SELF%PHYS(JGFL)%P => NULL ()
-
-  IF (ASSOCIATED (SELF%PHYS(JGFL)%F_P_F)) CALL DELETE_TEMPORARY (SELF%PHYS(JGFL)%F_P_F)
-  SELF%PHYS(JGFL)%P_F => NULL ()
-
-  IF (ASSOCIATED (SELF%PHYS(JGFL)%F_P_SPF)) CALL DELETE_TEMPORARY (SELF%PHYS(JGFL)%F_P_SPF)
-  SELF%PHYS(JGFL)%P_SPF => NULL ()
-
-  IF (ASSOCIATED (SELF%PHYS(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%PHYS(JGFL)%F_P_SP)
-  SELF%PHYS(JGFL)%P_SP => NULL ()
-
-  IF (ASSOCIATED (SELF%PHYS(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%PHYS(JGFL)%F_P_P)
-  SELF%PHYS(JGFL)%P_P => NULL ()
-
-  IF (ASSOCIATED (SELF%PHYS(JGFL)%F_P_X)) CALL DELETE_TEMPORARY (SELF%PHYS(JGFL)%F_P_X)
-  SELF%PHYS(JGFL)%P_X => NULL ()
-
+  CALL CPG_SL1_TYPE_FINAL_F3D (SELF%PHYS(JGFL))
 ENDDO
-IF (ASSOCIATED (SELF%F_PHYCTY)) CALL DELETE_TEMPORARY (SELF%F_PHYCTY)
-SELF%F_PHYCTY => NULL ()
-SELF%PHYCTY => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%PHYCTY)
 
-IF (ASSOCIATED (SELF%F_PHYCTY_F)) CALL DELETE_TEMPORARY (SELF%F_PHYCTY_F)
-SELF%F_PHYCTY_F => NULL ()
-SELF%PHYCTY_F => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%RSPEC)
 
-IF (ASSOCIATED (SELF%F_PHYCTY_SPF)) CALL DELETE_TEMPORARY (SELF%F_PHYCTY_SPF)
-SELF%F_PHYCTY_SPF => NULL ()
-SELF%PHYCTY_SPF => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%SDSAT)
 
-IF (ASSOCIATED (SELF%F_PHYCTY_SP)) CALL DELETE_TEMPORARY (SELF%F_PHYCTY_SP)
-SELF%F_PHYCTY_SP => NULL ()
-SELF%PHYCTY_SP => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%CVV)
 
-IF (ASSOCIATED (SELF%F_PHYCTY_P)) CALL DELETE_TEMPORARY (SELF%F_PHYCTY_P)
-SELF%F_PHYCTY_P => NULL ()
-SELF%PHYCTY_P => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%RKTH)
 
-IF (ASSOCIATED (SELF%F_PHYCTY_X)) CALL DELETE_TEMPORARY (SELF%F_PHYCTY_X)
-SELF%F_PHYCTY_X => NULL ()
-SELF%PHYCTY_X => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%RKTQV)
 
-IF (ASSOCIATED (SELF%F_RSPEC)) CALL DELETE_TEMPORARY (SELF%F_RSPEC)
-SELF%F_RSPEC => NULL ()
-SELF%RSPEC => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%RKTQC)
 
-IF (ASSOCIATED (SELF%F_RSPEC_F)) CALL DELETE_TEMPORARY (SELF%F_RSPEC_F)
-SELF%F_RSPEC_F => NULL ()
-SELF%RSPEC_F => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%UOM)
 
-IF (ASSOCIATED (SELF%F_RSPEC_SPF)) CALL DELETE_TEMPORARY (SELF%F_RSPEC_SPF)
-SELF%F_RSPEC_SPF => NULL ()
-SELF%RSPEC_SPF => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%UAL)
 
-IF (ASSOCIATED (SELF%F_RSPEC_SP)) CALL DELETE_TEMPORARY (SELF%F_RSPEC_SP)
-SELF%F_RSPEC_SP => NULL ()
-SELF%RSPEC_SP => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%DOM)
 
-IF (ASSOCIATED (SELF%F_RSPEC_P)) CALL DELETE_TEMPORARY (SELF%F_RSPEC_P)
-SELF%F_RSPEC_P => NULL ()
-SELF%RSPEC_P => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%DAL)
 
-IF (ASSOCIATED (SELF%F_RSPEC_X)) CALL DELETE_TEMPORARY (SELF%F_RSPEC_X)
-SELF%F_RSPEC_X => NULL ()
-SELF%RSPEC_X => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%UEN)
 
-IF (ASSOCIATED (SELF%F_SDSAT)) CALL DELETE_TEMPORARY (SELF%F_SDSAT)
-SELF%F_SDSAT => NULL ()
-SELF%SDSAT => NULL ()
-
-IF (ASSOCIATED (SELF%F_SDSAT_F)) CALL DELETE_TEMPORARY (SELF%F_SDSAT_F)
-SELF%F_SDSAT_F => NULL ()
-SELF%SDSAT_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_SDSAT_SPF)) CALL DELETE_TEMPORARY (SELF%F_SDSAT_SPF)
-SELF%F_SDSAT_SPF => NULL ()
-SELF%SDSAT_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_SDSAT_SP)) CALL DELETE_TEMPORARY (SELF%F_SDSAT_SP)
-SELF%F_SDSAT_SP => NULL ()
-SELF%SDSAT_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_SDSAT_P)) CALL DELETE_TEMPORARY (SELF%F_SDSAT_P)
-SELF%F_SDSAT_P => NULL ()
-SELF%SDSAT_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_SDSAT_X)) CALL DELETE_TEMPORARY (SELF%F_SDSAT_X)
-SELF%F_SDSAT_X => NULL ()
-SELF%SDSAT_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_CVV)) CALL DELETE_TEMPORARY (SELF%F_CVV)
-SELF%F_CVV => NULL ()
-SELF%CVV => NULL ()
-
-IF (ASSOCIATED (SELF%F_CVV_F)) CALL DELETE_TEMPORARY (SELF%F_CVV_F)
-SELF%F_CVV_F => NULL ()
-SELF%CVV_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_CVV_SPF)) CALL DELETE_TEMPORARY (SELF%F_CVV_SPF)
-SELF%F_CVV_SPF => NULL ()
-SELF%CVV_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_CVV_SP)) CALL DELETE_TEMPORARY (SELF%F_CVV_SP)
-SELF%F_CVV_SP => NULL ()
-SELF%CVV_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_CVV_P)) CALL DELETE_TEMPORARY (SELF%F_CVV_P)
-SELF%F_CVV_P => NULL ()
-SELF%CVV_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_CVV_X)) CALL DELETE_TEMPORARY (SELF%F_CVV_X)
-SELF%F_CVV_X => NULL ()
-SELF%CVV_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_RKTH)) CALL DELETE_TEMPORARY (SELF%F_RKTH)
-SELF%F_RKTH => NULL ()
-SELF%RKTH => NULL ()
-
-IF (ASSOCIATED (SELF%F_RKTH_F)) CALL DELETE_TEMPORARY (SELF%F_RKTH_F)
-SELF%F_RKTH_F => NULL ()
-SELF%RKTH_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_RKTH_SPF)) CALL DELETE_TEMPORARY (SELF%F_RKTH_SPF)
-SELF%F_RKTH_SPF => NULL ()
-SELF%RKTH_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_RKTH_SP)) CALL DELETE_TEMPORARY (SELF%F_RKTH_SP)
-SELF%F_RKTH_SP => NULL ()
-SELF%RKTH_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_RKTH_P)) CALL DELETE_TEMPORARY (SELF%F_RKTH_P)
-SELF%F_RKTH_P => NULL ()
-SELF%RKTH_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_RKTH_X)) CALL DELETE_TEMPORARY (SELF%F_RKTH_X)
-SELF%F_RKTH_X => NULL ()
-SELF%RKTH_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_RKTQV)) CALL DELETE_TEMPORARY (SELF%F_RKTQV)
-SELF%F_RKTQV => NULL ()
-SELF%RKTQV => NULL ()
-
-IF (ASSOCIATED (SELF%F_RKTQV_F)) CALL DELETE_TEMPORARY (SELF%F_RKTQV_F)
-SELF%F_RKTQV_F => NULL ()
-SELF%RKTQV_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_RKTQV_SPF)) CALL DELETE_TEMPORARY (SELF%F_RKTQV_SPF)
-SELF%F_RKTQV_SPF => NULL ()
-SELF%RKTQV_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_RKTQV_SP)) CALL DELETE_TEMPORARY (SELF%F_RKTQV_SP)
-SELF%F_RKTQV_SP => NULL ()
-SELF%RKTQV_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_RKTQV_P)) CALL DELETE_TEMPORARY (SELF%F_RKTQV_P)
-SELF%F_RKTQV_P => NULL ()
-SELF%RKTQV_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_RKTQV_X)) CALL DELETE_TEMPORARY (SELF%F_RKTQV_X)
-SELF%F_RKTQV_X => NULL ()
-SELF%RKTQV_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_RKTQC)) CALL DELETE_TEMPORARY (SELF%F_RKTQC)
-SELF%F_RKTQC => NULL ()
-SELF%RKTQC => NULL ()
-
-IF (ASSOCIATED (SELF%F_RKTQC_F)) CALL DELETE_TEMPORARY (SELF%F_RKTQC_F)
-SELF%F_RKTQC_F => NULL ()
-SELF%RKTQC_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_RKTQC_SPF)) CALL DELETE_TEMPORARY (SELF%F_RKTQC_SPF)
-SELF%F_RKTQC_SPF => NULL ()
-SELF%RKTQC_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_RKTQC_SP)) CALL DELETE_TEMPORARY (SELF%F_RKTQC_SP)
-SELF%F_RKTQC_SP => NULL ()
-SELF%RKTQC_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_RKTQC_P)) CALL DELETE_TEMPORARY (SELF%F_RKTQC_P)
-SELF%F_RKTQC_P => NULL ()
-SELF%RKTQC_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_RKTQC_X)) CALL DELETE_TEMPORARY (SELF%F_RKTQC_X)
-SELF%F_RKTQC_X => NULL ()
-SELF%RKTQC_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_UOM)) CALL DELETE_TEMPORARY (SELF%F_UOM)
-SELF%F_UOM => NULL ()
-SELF%UOM => NULL ()
-
-IF (ASSOCIATED (SELF%F_UOM_F)) CALL DELETE_TEMPORARY (SELF%F_UOM_F)
-SELF%F_UOM_F => NULL ()
-SELF%UOM_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_UOM_SPF)) CALL DELETE_TEMPORARY (SELF%F_UOM_SPF)
-SELF%F_UOM_SPF => NULL ()
-SELF%UOM_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_UOM_SP)) CALL DELETE_TEMPORARY (SELF%F_UOM_SP)
-SELF%F_UOM_SP => NULL ()
-SELF%UOM_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_UOM_P)) CALL DELETE_TEMPORARY (SELF%F_UOM_P)
-SELF%F_UOM_P => NULL ()
-SELF%UOM_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_UOM_X)) CALL DELETE_TEMPORARY (SELF%F_UOM_X)
-SELF%F_UOM_X => NULL ()
-SELF%UOM_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_UAL)) CALL DELETE_TEMPORARY (SELF%F_UAL)
-SELF%F_UAL => NULL ()
-SELF%UAL => NULL ()
-
-IF (ASSOCIATED (SELF%F_UAL_F)) CALL DELETE_TEMPORARY (SELF%F_UAL_F)
-SELF%F_UAL_F => NULL ()
-SELF%UAL_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_UAL_SPF)) CALL DELETE_TEMPORARY (SELF%F_UAL_SPF)
-SELF%F_UAL_SPF => NULL ()
-SELF%UAL_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_UAL_SP)) CALL DELETE_TEMPORARY (SELF%F_UAL_SP)
-SELF%F_UAL_SP => NULL ()
-SELF%UAL_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_UAL_P)) CALL DELETE_TEMPORARY (SELF%F_UAL_P)
-SELF%F_UAL_P => NULL ()
-SELF%UAL_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_UAL_X)) CALL DELETE_TEMPORARY (SELF%F_UAL_X)
-SELF%F_UAL_X => NULL ()
-SELF%UAL_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_DOM)) CALL DELETE_TEMPORARY (SELF%F_DOM)
-SELF%F_DOM => NULL ()
-SELF%DOM => NULL ()
-
-IF (ASSOCIATED (SELF%F_DOM_F)) CALL DELETE_TEMPORARY (SELF%F_DOM_F)
-SELF%F_DOM_F => NULL ()
-SELF%DOM_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_DOM_SPF)) CALL DELETE_TEMPORARY (SELF%F_DOM_SPF)
-SELF%F_DOM_SPF => NULL ()
-SELF%DOM_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_DOM_SP)) CALL DELETE_TEMPORARY (SELF%F_DOM_SP)
-SELF%F_DOM_SP => NULL ()
-SELF%DOM_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_DOM_P)) CALL DELETE_TEMPORARY (SELF%F_DOM_P)
-SELF%F_DOM_P => NULL ()
-SELF%DOM_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_DOM_X)) CALL DELETE_TEMPORARY (SELF%F_DOM_X)
-SELF%F_DOM_X => NULL ()
-SELF%DOM_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_DAL)) CALL DELETE_TEMPORARY (SELF%F_DAL)
-SELF%F_DAL => NULL ()
-SELF%DAL => NULL ()
-
-IF (ASSOCIATED (SELF%F_DAL_F)) CALL DELETE_TEMPORARY (SELF%F_DAL_F)
-SELF%F_DAL_F => NULL ()
-SELF%DAL_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_DAL_SPF)) CALL DELETE_TEMPORARY (SELF%F_DAL_SPF)
-SELF%F_DAL_SPF => NULL ()
-SELF%DAL_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_DAL_SP)) CALL DELETE_TEMPORARY (SELF%F_DAL_SP)
-SELF%F_DAL_SP => NULL ()
-SELF%DAL_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_DAL_P)) CALL DELETE_TEMPORARY (SELF%F_DAL_P)
-SELF%F_DAL_P => NULL ()
-SELF%DAL_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_DAL_X)) CALL DELETE_TEMPORARY (SELF%F_DAL_X)
-SELF%F_DAL_X => NULL ()
-SELF%DAL_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_UEN)) CALL DELETE_TEMPORARY (SELF%F_UEN)
-SELF%F_UEN => NULL ()
-SELF%UEN => NULL ()
-
-IF (ASSOCIATED (SELF%F_UEN_F)) CALL DELETE_TEMPORARY (SELF%F_UEN_F)
-SELF%F_UEN_F => NULL ()
-SELF%UEN_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_UEN_SPF)) CALL DELETE_TEMPORARY (SELF%F_UEN_SPF)
-SELF%F_UEN_SPF => NULL ()
-SELF%UEN_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_UEN_SP)) CALL DELETE_TEMPORARY (SELF%F_UEN_SP)
-SELF%F_UEN_SP => NULL ()
-SELF%UEN_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_UEN_P)) CALL DELETE_TEMPORARY (SELF%F_UEN_P)
-SELF%F_UEN_P => NULL ()
-SELF%UEN_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_UEN_X)) CALL DELETE_TEMPORARY (SELF%F_UEN_X)
-SELF%F_UEN_X => NULL ()
-SELF%UEN_X => NULL ()
-
-IF (ASSOCIATED (SELF%F_UNEBH)) CALL DELETE_TEMPORARY (SELF%F_UNEBH)
-SELF%F_UNEBH => NULL ()
-SELF%UNEBH => NULL ()
-
-IF (ASSOCIATED (SELF%F_UNEBH_F)) CALL DELETE_TEMPORARY (SELF%F_UNEBH_F)
-SELF%F_UNEBH_F => NULL ()
-SELF%UNEBH_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_UNEBH_SPF)) CALL DELETE_TEMPORARY (SELF%F_UNEBH_SPF)
-SELF%F_UNEBH_SPF => NULL ()
-SELF%UNEBH_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_UNEBH_SP)) CALL DELETE_TEMPORARY (SELF%F_UNEBH_SP)
-SELF%F_UNEBH_SP => NULL ()
-SELF%UNEBH_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_UNEBH_P)) CALL DELETE_TEMPORARY (SELF%F_UNEBH_P)
-SELF%F_UNEBH_P => NULL ()
-SELF%UNEBH_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_UNEBH_X)) CALL DELETE_TEMPORARY (SELF%F_UNEBH_X)
-SELF%F_UNEBH_X => NULL ()
-SELF%UNEBH_X => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%UNEBH)
 
 DO JGFL = 1, SIZE (SELF%CRM)
-  IF (ASSOCIATED (SELF%CRM(JGFL)%F_P)) CALL DELETE_TEMPORARY (SELF%CRM(JGFL)%F_P)
-  SELF%CRM(JGFL)%P => NULL ()
-
-  IF (ASSOCIATED (SELF%CRM(JGFL)%F_P_F)) CALL DELETE_TEMPORARY (SELF%CRM(JGFL)%F_P_F)
-  SELF%CRM(JGFL)%P_F => NULL ()
-
-  IF (ASSOCIATED (SELF%CRM(JGFL)%F_P_SPF)) CALL DELETE_TEMPORARY (SELF%CRM(JGFL)%F_P_SPF)
-  SELF%CRM(JGFL)%P_SPF => NULL ()
-
-  IF (ASSOCIATED (SELF%CRM(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%CRM(JGFL)%F_P_SP)
-  SELF%CRM(JGFL)%P_SP => NULL ()
-
-  IF (ASSOCIATED (SELF%CRM(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%CRM(JGFL)%F_P_P)
-  SELF%CRM(JGFL)%P_P => NULL ()
-
-  IF (ASSOCIATED (SELF%CRM(JGFL)%F_P_X)) CALL DELETE_TEMPORARY (SELF%CRM(JGFL)%F_P_X)
-  SELF%CRM(JGFL)%P_X => NULL ()
-
+  CALL CPG_SL1_TYPE_FINAL_F3D (SELF%CRM(JGFL))
 ENDDO
 DO JGFL = 1, SIZE (SELF%LIMA)
-  IF (ASSOCIATED (SELF%LIMA(JGFL)%F_P)) CALL DELETE_TEMPORARY (SELF%LIMA(JGFL)%F_P)
-  SELF%LIMA(JGFL)%P => NULL ()
-
-  IF (ASSOCIATED (SELF%LIMA(JGFL)%F_P_F)) CALL DELETE_TEMPORARY (SELF%LIMA(JGFL)%F_P_F)
-  SELF%LIMA(JGFL)%P_F => NULL ()
-
-  IF (ASSOCIATED (SELF%LIMA(JGFL)%F_P_SPF)) CALL DELETE_TEMPORARY (SELF%LIMA(JGFL)%F_P_SPF)
-  SELF%LIMA(JGFL)%P_SPF => NULL ()
-
-  IF (ASSOCIATED (SELF%LIMA(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%LIMA(JGFL)%F_P_SP)
-  SELF%LIMA(JGFL)%P_SP => NULL ()
-
-  IF (ASSOCIATED (SELF%LIMA(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%LIMA(JGFL)%F_P_P)
-  SELF%LIMA(JGFL)%P_P => NULL ()
-
-  IF (ASSOCIATED (SELF%LIMA(JGFL)%F_P_X)) CALL DELETE_TEMPORARY (SELF%LIMA(JGFL)%F_P_X)
-  SELF%LIMA(JGFL)%P_X => NULL ()
-
+  CALL CPG_SL1_TYPE_FINAL_F3D (SELF%LIMA(JGFL))
 ENDDO
-IF (ASSOCIATED (SELF%F_FSD)) CALL DELETE_TEMPORARY (SELF%F_FSD)
-SELF%F_FSD => NULL ()
-SELF%FSD => NULL ()
-
-IF (ASSOCIATED (SELF%F_FSD_F)) CALL DELETE_TEMPORARY (SELF%F_FSD_F)
-SELF%F_FSD_F => NULL ()
-SELF%FSD_F => NULL ()
-
-IF (ASSOCIATED (SELF%F_FSD_SPF)) CALL DELETE_TEMPORARY (SELF%F_FSD_SPF)
-SELF%F_FSD_SPF => NULL ()
-SELF%FSD_SPF => NULL ()
-
-IF (ASSOCIATED (SELF%F_FSD_SP)) CALL DELETE_TEMPORARY (SELF%F_FSD_SP)
-SELF%F_FSD_SP => NULL ()
-SELF%FSD_SP => NULL ()
-
-IF (ASSOCIATED (SELF%F_FSD_P)) CALL DELETE_TEMPORARY (SELF%F_FSD_P)
-SELF%F_FSD_P => NULL ()
-SELF%FSD_P => NULL ()
-
-IF (ASSOCIATED (SELF%F_FSD_X)) CALL DELETE_TEMPORARY (SELF%F_FSD_X)
-SELF%F_FSD_X => NULL ()
-SELF%FSD_X => NULL ()
+CALL CPG_SL1_TYPE_FINAL_F3D (SELF%FSD)
 
 DO JGFL = 1, SIZE (SELF%EXT)
-  IF (ASSOCIATED (SELF%EXT(JGFL)%F_P)) CALL DELETE_TEMPORARY (SELF%EXT(JGFL)%F_P)
-  SELF%EXT(JGFL)%P => NULL ()
-
-  IF (ASSOCIATED (SELF%EXT(JGFL)%F_P_F)) CALL DELETE_TEMPORARY (SELF%EXT(JGFL)%F_P_F)
-  SELF%EXT(JGFL)%P_F => NULL ()
-
-  IF (ASSOCIATED (SELF%EXT(JGFL)%F_P_SPF)) CALL DELETE_TEMPORARY (SELF%EXT(JGFL)%F_P_SPF)
-  SELF%EXT(JGFL)%P_SPF => NULL ()
-
-  IF (ASSOCIATED (SELF%EXT(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%EXT(JGFL)%F_P_SP)
-  SELF%EXT(JGFL)%P_SP => NULL ()
-
-  IF (ASSOCIATED (SELF%EXT(JGFL)%F_P_SP)) CALL DELETE_TEMPORARY (SELF%EXT(JGFL)%F_P_P)
-  SELF%EXT(JGFL)%P_P => NULL ()
-
-  IF (ASSOCIATED (SELF%EXT(JGFL)%F_P_X)) CALL DELETE_TEMPORARY (SELF%EXT(JGFL)%F_P_X)
-  SELF%EXT(JGFL)%P_X => NULL ()
-
+  CALL CPG_SL1_TYPE_FINAL_F3D (SELF%EXT(JGFL))
 ENDDO
+
+CONTAINS
+
+SUBROUTINE CPG_SL1_TYPE_FINAL_F3D (YDF3D)
+
+TYPE (CPG_SL1_3D_TYPE), INTENT (INOUT) :: YDF3D
+
+IF (ASSOCIATED (YDF3D%F_P)) CALL DELETE_TEMPORARY (YDF3D%F_P)
+YDF3D%F_P => NULL ()
+YDF3D%P => NULL ()
+
+IF (ASSOCIATED (YDF3D%F_P_F)) CALL DELETE_TEMPORARY (YDF3D%F_P_F)
+YDF3D%F_P_F => NULL ()
+YDF3D%P_F => NULL ()
+
+IF (ASSOCIATED (YDF3D%F_P_SPF)) CALL DELETE_TEMPORARY (YDF3D%F_P_SPF)
+YDF3D%F_P_SPF => NULL ()
+YDF3D%P_SPF => NULL ()
+
+IF (ASSOCIATED (YDF3D%F_P_SP)) CALL DELETE_TEMPORARY (YDF3D%F_P_SP)
+YDF3D%F_P_SP => NULL ()
+YDF3D%P_SP => NULL ()
+
+IF (ASSOCIATED (YDF3D%F_P_P)) CALL DELETE_TEMPORARY (YDF3D%F_P_P)
+YDF3D%F_P_P => NULL ()
+YDF3D%P_P => NULL ()
+
+IF (ASSOCIATED (YDF3D%F_P_X)) CALL DELETE_TEMPORARY (YDF3D%F_P_X)
+YDF3D%F_P_X => NULL ()
+YDF3D%P_X => NULL ()
+
+END SUBROUTINE CPG_SL1_TYPE_FINAL_F3D
 
 END SUBROUTINE CPG_SL1_TYPE_FINAL
 
