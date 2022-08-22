@@ -224,6 +224,7 @@ REAL(KIND=JPRB) :: ZHOOK_HANDLE
 #include "cpg_gp_tenc.intfb.h"
 #include "cpg_gp.intfb.h"
 #include "cpg_pt_ulp.intfb.h"
+#include "cpg_pt_ulp_expl.intfb.h"
 #include "ec_phys_lslphy.intfb.h"
 #include "gpiniddh.intfb.h"
 #include "cpg_pb1.intfb.h"
@@ -365,9 +366,14 @@ IF (CDPART (3:3) == 'X') THEN
   !   - pressure departure variable: its diabatic tendency is currently
   !     assumed to be zero and it is ignored.
   
+      IF (.FALSE.) THEN
       CALL CPG_PT_ULP(YDMODEL, YDGEOMETRY, YDCPG_SL1, YDVARS, YGFL, YDCPG_BNDS%KIDIA, &
       & YDCPG_BNDS%KFDIA, NCURRENT_ITER > 0, PGFLPT=PGFLPT, PGFLT1=PGFLT1, PGFL=PGFL)
-    
+      ELSE
+      CALL CPG_PT_ULP_EXPL(YDMODEL, YDGEOMETRY, YDCPG_SL1, YDVARS, YGFL, YDCPG_BNDS%KIDIA, &
+      & YDCPG_BNDS%KFDIA, NCURRENT_ITER > 0, PGFLPT=PGFLPT, PGFLT1=PGFLT1, PGFL=PGFL)
+      ENDIF    
+
     ENDIF
   
   ENDIF
