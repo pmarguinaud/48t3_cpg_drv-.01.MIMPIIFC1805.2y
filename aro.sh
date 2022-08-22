@@ -231,11 +231,7 @@ pack=$PACK
 
 ls -lrt
 
-diffNODE.001_01 NODE.001_01 $pack/ref.48t3_gprcp.01.MIMPIIFC1805.2y/NODE.001_01.$NAM1.$NAM2
-grep AERO.001 NODE.001_01 > aero.1.txt
-grep AERO.001 $pack/ref.48t3_gprcp.01.MIMPIIFC1805.2y/NODE.001_01.$NAM1.$NAM2 > aero.2.txt
-
-diff aero.1.txt aero.2.txt
+diffNODE.001_01 --gpnorms AERO.001 NODE.001_01 $pack/ref.48t3_gprcp.01.MIMPIIFC1805.2y/NODE.001_01.$NAM1.$NAM2
 
 cd ..
 
