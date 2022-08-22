@@ -37,7 +37,7 @@ mkdir -p $TMPDIR
 
 cd $TMPDIR
 
-for NAM1 in LTWOTL=T.ARO LTWOTL=F.ARO HAIL SPNG LTENC ARO.LPC_FULL
+for NAM1 in LTWOTL=T.ARO LTWOTL=F.ARO HAIL SPNG LTENC ARO.LPC_FULL LTWOTL=T.ARO.AERO
 do
 
 for NAM2 in NHEE NHQE
@@ -71,6 +71,9 @@ do
   \rm -f $b
   ln -s $f $b
 done
+
+\rm ICMSHFCSTINIT
+ln -s aro/ICMSHFCSTINIT ICMSHFCSTINIT
 
 cp EXSEG1.nam EXSEG1.nam.tmp
 \rm -f EXSEG1.nam
@@ -229,6 +232,10 @@ pack=$PACK
 ls -lrt
 
 diffNODE.001_01 NODE.001_01 $pack/ref.48t3_gprcp.01.MIMPIIFC1805.2y/NODE.001_01.$NAM1.$NAM2
+grep AERO.001 NODE.001_01 > aero.1.txt
+grep AERO.001 $pack/ref.48t3_gprcp.01.MIMPIIFC1805.2y/NODE.001_01.$NAM1.$NAM2 > aero.2.txt
+
+diff aero.1.txt aero.2.txt
 
 cd ..
 
