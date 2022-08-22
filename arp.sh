@@ -43,7 +43,7 @@ mkdir -p $TMPDIR
 cd $TMPDIR
 
 
-for NAM in ARP LACE LTWOTL=F.ARP SPNG SLHD LTWOTL=F.ARP.LSLAG=T LSLPHY
+for NAM in ARP LACE LTWOTL=F.ARP SPNG SLHD LTWOTL=F.ARP.LSLAG=T LSLPHY LTWOTL=T.ARP.AERO
 do
 
 mkdir -p $NAM
@@ -77,6 +77,9 @@ do
   \rm -f $b
   ln -s $f $b
 done
+
+rm ICMSHFCSTINIT
+ln -s arp/ICMSHFCSTINIT
 
 for f in $DATA/arp/code/43oops/naml/*
 do
@@ -198,7 +201,7 @@ pack=$PACK
     --nnp $NTASK_FC --nn $NNODE_FC --openmp $NOPMP_FC -- $pack/bin/MASTERODB \
  -- --nnp $NTASK_IO --nn $NNODE_IO --openmp $NOPMP_IO -- $pack/bin/MASTERODB 
 
-diffNODE.001_01 NODE.001_01 $PACK/ref.48t3_gprcp.01.MIMPIIFC1805.2y/NODE.001_01.$NAM
+diffNODE.001_01 --gpnorms AERO.001 NODE.001_01 $PACK/ref.48t3_gprcp.01.MIMPIIFC1805.2y/NODE.001_01.$NAM
 
 
 ls -lrt
