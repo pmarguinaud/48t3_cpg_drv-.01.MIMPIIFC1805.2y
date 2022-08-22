@@ -73,52 +73,52 @@ IF (LSLAG) THEN
   ! Taken from cp_ptrslb1.F90
   
   IF (YDDYN%NWLAG == 4) THEN
-    SELF%U   => YDCPG_SL1%U0 
-    SELF%F_U => YDCPG_SL1%F_U0
-    SELF%V   => YDCPG_SL1%V0 
-    SELF%F_V => YDCPG_SL1%F_V0
+    SELF%U   => YDCPG_SL1%U0%P 
+    SELF%F_U => YDCPG_SL1%U0%F_P
+    SELF%V   => YDCPG_SL1%V0%P 
+    SELF%F_V => YDCPG_SL1%V0%F_P
   ELSE
     IF (YDDYN%NSPLTHOI /= 0) THEN
-      SELF%U   => YDCPG_SL1%UF9 
-      SELF%F_U => YDCPG_SL1%F_UF9 
-      SELF%V   => YDCPG_SL1%VF9 
-      SELF%F_V => YDCPG_SL1%F_VF9 
+      SELF%U   => YDCPG_SL1%UF9%P 
+      SELF%F_U => YDCPG_SL1%UF9%F_P
+      SELF%V   => YDCPG_SL1%VF9%P 
+      SELF%F_V => YDCPG_SL1%VF9%F_P
     ELSE
-      SELF%U   => YDCPG_SL1%U9 
-      SELF%F_U => YDCPG_SL1%F_U9 
-      SELF%V   => YDCPG_SL1%V9 
-      SELF%F_V => YDCPG_SL1%F_V9 
+      SELF%U   => YDCPG_SL1%U9%P 
+      SELF%F_U => YDCPG_SL1%U9%F_P
+      SELF%V   => YDCPG_SL1%V9%P 
+      SELF%F_V => YDCPG_SL1%V9%F_P
     ENDIF
   ENDIF
   ! * temperature
   IF (YDDYN%NTLAG == 4) THEN
-    SELF%T   => YDCPG_SL1%T0 
-    SELF%F_T => YDCPG_SL1%F_T0 
+    SELF%T   => YDCPG_SL1%T0%P 
+    SELF%F_T => YDCPG_SL1%T0%F_P
   ELSE
     IF (YDDYN%NSPLTHOI /= 0) THEN
-      SELF%T   => YDCPG_SL1%TF9 
-      SELF%F_T => YDCPG_SL1%F_TF9 
+      SELF%T   => YDCPG_SL1%TF9%P 
+      SELF%F_T => YDCPG_SL1%TF9%F_P
     ELSE
-      SELF%T   => YDCPG_SL1%T9 
-      SELF%F_T => YDCPG_SL1%F_T9 
+      SELF%T   => YDCPG_SL1%T9%P 
+      SELF%F_T => YDCPG_SL1%T9%F_P
     ENDIF
   ENDIF
   ! * vertical divergence
   IF (YDDYN%NSVDLAG == 4) THEN
-    SELF%SVD   => YDCPG_SL1%VD0
-    SELF%F_SVD => YDCPG_SL1%F_VD0
+    SELF%SVD   => YDCPG_SL1%VD0%P
+    SELF%F_SVD => YDCPG_SL1%VD0%F_P
   ELSE
     IF (YDDYN%NSPLTHOI /= 0) THEN
-      SELF%SVD   => YDCPG_SL1%VDF9
-      SELF%F_SVD => YDCPG_SL1%F_VDF9
+      SELF%SVD   => YDCPG_SL1%VDF9%P
+      SELF%F_SVD => YDCPG_SL1%VDF9%F_P
     ELSE
-      SELF%SVD   => YDCPG_SL1%VD9
-      SELF%F_SVD => YDCPG_SL1%F_VD9
+      SELF%SVD   => YDCPG_SL1%VD9%P
+      SELF%F_SVD => YDCPG_SL1%VD9%F_P
     ENDIF
   ENDIF
 
-  SELF%SP   => YDCPG_SL1%SP9
-  SELF%F_SP => YDCPG_SL1%F_SP9
+  SELF%SP   => YDCPG_SL1%SP9%P
+  SELF%F_SP => YDCPG_SL1%SP9%F_P
 
   ! * GFL arrays
   IF (YDDYN%LSPLTHOIGFL.OR.(YDDYN%NSPLTHOI /= 0)) THEN
@@ -126,8 +126,8 @@ IF (LSLAG) THEN
   #:if v.array
   #:elif v.dim == 3
     IF (YDVARS%${v.name}$%LADV) THEN
-      SELF%${v.name}$   => YDCPG_SL1%${v.name}$_F
-      SELF%F_${v.name}$ => YDCPG_SL1%F_${v.name}$_F
+      SELF%${v.name}$   => YDCPG_SL1%${v.name}$%P_F
+      SELF%F_${v.name}$ => YDCPG_SL1%${v.name}$%F_P_F
     ELSE
       SELF%${v.name}$   => YDVARS%${v.name}$%T1
       SELF%F_${v.name}$ => YDVARS%${v.name}$%FT1
@@ -139,8 +139,8 @@ IF (LSLAG) THEN
   #:if v.array
   #:elif v.dim == 3
     IF (YDVARS%${v.name}$%LADV) THEN
-      SELF%${v.name}$   => YDCPG_SL1%${v.name}$
-      SELF%F_${v.name}$ => YDCPG_SL1%F_${v.name}$
+      SELF%${v.name}$   => YDCPG_SL1%${v.name}$%P
+      SELF%F_${v.name}$ => YDCPG_SL1%${v.name}$%F_P
     ELSE
       SELF%${v.name}$   => YDVARS%${v.name}$%T1
       SELF%F_${v.name}$ => YDVARS%${v.name}$%FT1

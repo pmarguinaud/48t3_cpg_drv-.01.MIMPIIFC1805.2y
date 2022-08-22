@@ -43,8 +43,8 @@ DO JGFL = 1, SIZE (YDCPG_SL1%${v.name}$)
 ENDDO
 #:else
 CALL LATTEX_EXPL_VSPLTRANS_V (YDML_GCONF%YGFL%Y${v.name}$%LADV, YDML_GCONF%YGFL%Y${v.name}$%LTDIABLIN,          &
-                            & YDML_GCONF%YGFL%Y${v.name}$%CSLINT, YDCPG_SL1%${v.name}$, YDCPG_SL1%${v.name}$_F, &
-                            & YDCPG_SL1%${v.name}$_SP, YDCPG_SL1%${v.name}$_SPF)
+                            & YDML_GCONF%YGFL%Y${v.name}$%CSLINT, YDCPG_SL1%${v.name}$%P, YDCPG_SL1%${v.name}$%P_F, &
+                            & YDCPG_SL1%${v.name}$%P_SP, YDCPG_SL1%${v.name}$%P_SPF)
 #:endif
 #:endfor
 
