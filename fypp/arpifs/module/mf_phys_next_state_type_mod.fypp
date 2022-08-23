@@ -131,13 +131,6 @@ IF (LSLAG) THEN
     ENDDO
   #:elif v.dim == 3
     CALL MF_PHYS_NEXT_STATE_TYPE_INIT_SPLTHOI_3D (YDVARS%${v.name}$, SELF%${v.name}$, YDCPG_SL1%${v.name}$)
-!   IF (YDVARS%${v.name}$%LADV) THEN
-!     SELF%${v.name}$%P   => YDCPG_SL1%${v.name}$%P_F
-!     SELF%${v.name}$%F_P => YDCPG_SL1%${v.name}$%F_P_F
-!   ELSE
-!     SELF%${v.name}$%P   => YDVARS%${v.name}$%T1
-!     SELF%${v.name}$%F_P => YDVARS%${v.name}$%FT1
-!   ENDIF
   #:endif
 #:endfor
   ELSE
@@ -149,13 +142,6 @@ IF (LSLAG) THEN
     ENDDO
   #:elif v.dim == 3
     CALL MF_PHYS_NEXT_STATE_TYPE_INIT_3D (YDVARS%${v.name}$, SELF%${v.name}$, YDCPG_SL1%${v.name}$)
-!   IF (YDVARS%${v.name}$%LADV) THEN
-!     SELF%${v.name}$%P   => YDCPG_SL1%${v.name}$%P
-!     SELF%${v.name}$%F_P => YDCPG_SL1%${v.name}$%F_P
-!   ELSE
-!     SELF%${v.name}$%P   => YDVARS%${v.name}$%T1
-!     SELF%${v.name}$%F_P => YDVARS%${v.name}$%FT1
-!   ENDIF
   #:endif
 #:endfor
   ENDIF  
@@ -181,8 +167,6 @@ ELSE
   ENDDO
   #:elif v.dim == 3
   CALL MF_PHYS_NEXT_STATE_TYPE_INIT_EUL_3D (YDVARS%${v.name}$, SELF%${v.name}$)
-! SELF%${v.name}$%P   => YDVARS%${v.name}$%T1
-! SELF%${v.name}$%F_P => YDVARS%${v.name}$%FT1
   #:endif
 #:endfor
 
