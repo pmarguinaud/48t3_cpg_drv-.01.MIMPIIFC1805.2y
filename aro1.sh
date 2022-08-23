@@ -110,6 +110,7 @@ STOP=1
 xpnam --delta="
 &NAMRIP
   CSTOP='h$STOP',
+! CSTOP='t3',
   TSTEP=60,
 /
 &NAMARG
