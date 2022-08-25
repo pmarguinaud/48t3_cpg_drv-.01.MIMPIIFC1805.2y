@@ -4,7 +4,7 @@
 #SBATCH -t 01:10:00
 #SBATCH -N 1
 #SBATCH -p login
-if [ "$SLURM_JOB_PARTITION" ] ; then
+if [ "$SLURM_JOB_PARTITION" ] && [ "$LOGNAME" != "gco" ] ; then
   export GMKTMP=/dev/shm/$LOGNAME
 fi
 #
@@ -158,19 +158,23 @@ cat > $GMKWRKDIR/.masterodb_libs <<end_of_masterodb_libs
 end_of_masterodb_libs
 # SYSTEM LIBRARIES :
 cat > $GMKWRKDIR/.masterodb_sys <<end_of_masterodb_sys
--L/home/gmap/mrpm/khatib/opt/i-2018.5.274/auxlibs/lib -lbufr -lgribex
--L/home/gmap/mrpm/khatib/opt/i-2018.5.274/netcdf-4.7.1/lib -lnetcdff -lnetcdf
--L/home/gmap/mrpm/khatib/opt/i-2018.5.274/eccodes-2.18.1/lib -leccodes_f90 -leccodes
--L/home/gmap/mrpm/khatib/opt/i-2018.5.274/hdf5-1.8.18/lib -lhdf5hl_fortran -lhdf5_fortran -lhdf5
--L/home/gmap/mrpm/khatib/opt/i-2018.5.274/auxlibs/lib -lfdbdummy -lwamdummy -lnaglitedummy -loasisdummy -libmdummy
--Wl,-rpath,/home/gmap/mrpm/khatib/opt/i-2018.5.274/auxlibs/lib
--Wl,-rpath,/home/gmap/mrpm/khatib/opt/i-2018.5.274/netcdf-4.7.1/lib
--Wl,-rpath,/home/gmap/mrpm/khatib/opt/i-2018.5.274/eccodes-2.18.1/lib
--Wl,-rpath,/home/gmap/mrpm/khatib/opt/i-2018.5.274/hdf5-1.8.18/lib
+-L/opt/softs/libraries/ICC_2018.5.274/bufr405/lib -lbufrlinux_intel18.5.274R64
+-L/opt/softs/libraries/ICC_2018.5.274/gribex/lib -lgribexR64
+-L/opt/softs/libraries/ICC_2018.5.274/netcdf-fortran-4.5.2/lib -lnetcdff
+-L/opt/softs/libraries/ICC_2018.5.274/netcdf-c-4.7.1/lib -lnetcdf
+-L/opt/softs/libraries/ICC_2018.5.274/eccodes-2.14.1/lib -leccodes_f90 -leccodes
+-L/opt/softs/libraries/ICC_2018.5.274/hdf5-1.10.5/lib -lhdf5hl_fortran -lhdf5_fortran -lhdf5
+-L/home/mf/dp/marp/gco/opt/i-2018.5.274/lib -lfdbdummy -lwamdummy -lnaglitedummy -loasisdummy -libmdummy
+-Wl,-rpath,/opt/softs/libraries/ICC_2018.5.274/bufr405/lib
+-Wl,-rpath,/opt/softs/libraries/ICC_2018.5.274/gribex/lib
+-Wl,-rpath,/opt/softs/libraries/ICC_2018.5.274/netcdf-fortran-4.5.2/lib
+-Wl,-rpath,/opt/softs/libraries/ICC_2018.5.274/netcdf-c-4.7.1/lib
+-Wl,-rpath,/opt/softs/libraries/ICC_2018.5.274/eccodes-2.14.1/lib
+-Wl,-rpath,/opt/softs/libraries/ICC_2018.5.274/hdf5-1.10.5/lib
 end_of_masterodb_sys
 # LOADER AND OPTIONS :
 cat > $GMKWRKDIR/.masterodb_load <<end_of_masterodb_load
-/home/gmap/mrpm/khatib/public/bin/mimpifc-18.0.5.274 -v -fp-stack-check -qopenmp -qopenmp-threadprivate compat -shared-intel -lrt -lstdc++
+/home/mf/dp/marp/gco/apps/mkpack/support/wrapper/mimpifc-18.0.5.274 -v -fp-stack-check -qopenmp -qopenmp-threadprivate compat -shared-intel -lrt -lstdc++
 end_of_masterodb_load
 #
 # Libraries in hub : do you want to re-configure even if the build directory exists ? (ON/OFF) : 
@@ -188,8 +192,6 @@ export GMK_TEST=OFF
 export GMK_TEST_LIBRARIES_IN_ecSDK="ecbuild eckit fckit"
 export GMK_TEST_LIBRARIES_IN_OOPS="oops_src"
 export GMK_TEST_LIBRARIES_IN_Atlas="atlas"
-export GMK_TEST_LIBRARIES_IN_Fiat="fiat"
-export GMK_TEST_LIBRARIES_IN_Ectrans="ectrans"
 #
 # Libraries in hub : do you want to install packages ? (ON/OFF) : 
 # --------------------------------------------------
