@@ -344,17 +344,9 @@ IF (CDPART (2:2) == 'X') THEN
       & YDMODEL, YDFIELDS, YDSPP, YDSPP_CONFIG, PGPSDT2D, PGFL, PGMVT1, PGFLT1, PTRAJ_PHYS, YDDDH)
     ENDIF
   
-  ENDIF
-
-ENDIF
-
-IF (CDPART (3:3) == 'X') THEN
-    
-  IF (LMPHYS.OR.LSIMPH) THEN
-  
     !*       4.4.2   Store phy. tends.
     
-    IF (YDMODEL%YRML_DYN%YRDYNA%LPC_FULL.AND.(.NOT.YDMODEL%YRML_DYN%YRDYNA%LPC_CHEAP).AND.LSLAG) THEN
+    IF (YDMODEL%YRML_DYN%YRDYNA%LPC_FULL.AND.(.NOT.YDMODEL%YRML_DYN%YRDYNA%LPC_CHEAP).AND.YDCPG_OPTS%LSLAG) THEN
     
   ! * currently valid only for SL2TL advection scheme.
   !   Remarks KY:
@@ -365,13 +357,17 @@ IF (CDPART (3:3) == 'X') THEN
   !   - pressure departure variable: its diabatic tendency is currently
   !     assumed to be zero and it is ignored.
   
-      CALL CPG_PT_ULP_EXPL(YDMODEL, YDGEOMETRY, YDCPG_SL1, YDVARS, YGFL, YDCPG_BNDS%KIDIA, &
-      & YDCPG_BNDS%KFDIA, NCURRENT_ITER > 0, PGFLPT=PGFLPT)
+      CALL CPG_PT_ULP_EXPL(YDMODEL, YDGEOMETRY, YDCPG_SL1, YDVARS, YDMODEL%YRML_GCONF%YGFL, YDCPG_BNDS%KIDIA, &
+      & YDCPG_BNDS%KFDIA, YDMODEL%YRML_DYN%YRDYN%NCURRENT_ITER > 0, PGFLPT=PGFLPT)
 
     ENDIF
   
   ENDIF
-  
+
+ENDIF
+
+IF (CDPART (3:3) == 'X') THEN
+    
   !     ------------------------------------------------------------------
   
   !*       4.5    DIAGNOSTICS.
