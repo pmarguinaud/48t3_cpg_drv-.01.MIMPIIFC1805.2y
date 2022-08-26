@@ -30,3 +30,4 @@ slurm-*.out
 src/local/.fypp
 *.lst
 .*.swp
+*.F90.xml
