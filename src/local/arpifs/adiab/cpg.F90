@@ -208,7 +208,6 @@ CHARACTER(LEN=*)        ,INTENT(IN)     :: CDPART
 
 INTEGER(KIND=JPIM) :: JFLD
 INTEGER(KIND=JPIM) :: IUPTRA
-LOGICAL :: LLGET
 
 REAL(KIND=JPRB), POINTER :: ZP1FORC(:,:)
 
@@ -224,7 +223,6 @@ REAL(KIND=JPRB) :: ZHOOK_HANDLE
 #include "cpg_dyn_tra.intfb.h"
 #include "cpg_gp_tenc.intfb.h"
 #include "cpg_gp.intfb.h"
-#include "cpg_pt_ulp_expl.intfb.h"
 #include "ec_phys_lslphy.intfb.h"
 #include "gpiniddh.intfb.h"
 #include "cpg_pb1.intfb.h"
@@ -338,32 +336,9 @@ IF (CDPART (2:2) == 'X') THEN
   !*       4.4    MF-PHYSICS.
   
   IF (LMPHYS.OR.LSIMPH) THEN
-  
-    IF (NCURRENT_ITER == 0) THEN  
-      CALL MF_PHYS (YDGEOMETRY, YDCPG_BNDS, YDCPG_OPTS, YDCPG_MISC, YDCPG_GPAR, YDCPG_PHY0,          &
-      & YDCPG_PHY9, YDMF_PHYS, YDCPG_DYN0, YDCPG_DYN9, YDMF_PHYS_SURF, YDCPG_SL1, YDCPG_SL2, YDVARS, &
-      & YDMODEL, YDFIELDS, YDSPP, YDSPP_CONFIG, PGPSDT2D, PGFL, PGMVT1, PGFLT1, PTRAJ_PHYS, YDDDH)
-    ENDIF
-  
-    !*       4.4.2   Store phy. tends.
-    
-    IF (YDMODEL%YRML_DYN%YRDYNA%LPC_FULL.AND.(.NOT.YDMODEL%YRML_DYN%YRDYNA%LPC_CHEAP).AND.YDCPG_OPTS%LSLAG) THEN
-    
-  ! * currently valid only for SL2TL advection scheme.
-  !   Remarks KY:
-  !   - PC scheme with Eulerian scheme: physics is passed differently
-  !     from predictor to corrector step, and no call of CPG_PT_ULP is done.
-  !   - LPC_CHEAP: physics is passed differently from predictor to
-  !     corrector step (in LAPINEB), and no call of CPG_PT_ULP is done.
-  !   - pressure departure variable: its diabatic tendency is currently
-  !     assumed to be zero and it is ignored.
-  
-      LLGET = YDMODEL%YRML_DYN%YRDYN%NCURRENT_ITER > 0
-      CALL CPG_PT_ULP_EXPL(YDMODEL, YDGEOMETRY, YDCPG_SL1, YDVARS, YDCPG_BNDS, &
-      & LLGET, PGFLPT)
-
-    ENDIF
-  
+    CALL MF_PHYS (YDGEOMETRY, YDCPG_BNDS, YDCPG_OPTS, YDCPG_MISC, YDCPG_GPAR, YDCPG_PHY0,          &
+    & YDCPG_PHY9, YDMF_PHYS, YDCPG_DYN0, YDCPG_DYN9, YDMF_PHYS_SURF, YDCPG_SL1, YDCPG_SL2, YDVARS, &
+    & YDMODEL, YDFIELDS, YDSPP, YDSPP_CONFIG, PGFLPT, PGPSDT2D, PGFL, PGMVT1, PGFLT1, PTRAJ_PHYS, YDDDH)
   ENDIF
 
 ENDIF
